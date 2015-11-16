@@ -35,11 +35,21 @@
 	font-size: 4em;
 	color: darkred;
 	float: left;
-
 }
 
 #header #menu {
-	float: left;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+#header #menu a {
+	color: black;
+	margin-left: 3em;
+	text-decoration: none;
+}
+
+#header #menu a:hover {
+	color: dodgerblue;
 }
 
 #breadcrumb {
