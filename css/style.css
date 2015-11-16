@@ -33,8 +33,12 @@
 
 #header h1 {
 	font-size: 4em;
-	color: darkred;
 	float: left;
+}
+
+#header h1 a {
+	text-decoration: none;
+	color: darkred;
 }
 
 #header #menu {
@@ -49,7 +53,7 @@
 }
 
 #header #menu a:hover {
-	color: dodgerblue;
+	color: orangered;
 }
 
 #breadcrumb {
@@ -57,7 +61,11 @@
 	height: 0em;
 	width: 0em;*/
 	clear: both;
-	float: center;
+}
+
+#breadcrumb p a {
+	text-decoration: none;
+	color: black;
 }
 
 #footer {
