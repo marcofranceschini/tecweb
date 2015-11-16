@@ -25,17 +25,32 @@
 	vertical-align: middle;
 }
 
+#navbar {
+	width: 80%;
+	margin: auto;
+	clear: both;
+}
+
 #header h1 {
 	font-size: 4em;
 	color: darkred;
+	float: left;
+
 }
 
 #header #menu {
-
+	float: left;
 }
 
 #breadcrumb {
-	visibility: hidden;
+	/*visibility: hidden;
 	height: 0em;
-	width: 0em;
+	width: 0em;*/
+	clear: both;
+	float: center;
+}
+
+#footer {
+	clear: both;
+	float: bottom;
 }
