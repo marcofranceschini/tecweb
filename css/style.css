@@ -71,4 +71,13 @@
 #footer {
 	clear: both;
 	float: bottom;
+	width: 80%;
+	margin: auto;
+	margin-top: 2em;
+	padding: 2em;
+	border-top-style: solid;
+    border-top-color: lightgrey;
+	border-top-width: 1px;
+	text-align: center;
+	font-size: 0.8em;
 }
