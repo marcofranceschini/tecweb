@@ -1,7 +1,17 @@
+@font-face {
+    font-family: sansation_regular;
+    src: url('../res/fonts/Sansation_Regular.ttf');
+}
+
+@font-face {
+	font-family: sansation_bold;
+	src: url('../res/fonts/Sansation_Bold.ttf');
+}
+			
 * {
 	margin: 0;
 	padding: 0;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Maven Pro', sans-serif;
 }
 
 .material-icons.md-18 { 
@@ -31,7 +41,7 @@
 	clear: both;
 }
 
-#header h1 {
+#navbar h1 {
 	font-size: 4em;
 	float: left;
 }
@@ -39,6 +49,7 @@
 #header h1 a {
 	text-decoration: none;
 	color: darkred;
+	font-family: sansation_bold;
 }
 
 #header #menu {
