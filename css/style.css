@@ -31,6 +31,11 @@ a:hover { /*Tutti i link hover della pagina sono oragered*/
 	font-size: 24px; 
 }
 
+#header {
+	background-image: "header.png";
+	background-color: lightgray;
+}
+
 #contacts {
 	float: right;
 	margin-top: 1em;
