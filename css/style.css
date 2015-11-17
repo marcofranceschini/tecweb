@@ -56,16 +56,16 @@ a:hover { /*Tutti i link hover della pagina sono oragered*/
 	vertical-align: middle;
 }
 
-#navbar {
-	width: 80%;
-	margin: auto;
-	clear: both;
-}
-
 #logo {
 	float: left;
 	max-width: 35%;	/* In schermi più piccoli così viene ridotto */
 	padding-top: 1em;
+}
+
+#navbar {
+	width: 80%;
+	margin: auto;
+	clear: both;
 }
 
 #menu {
