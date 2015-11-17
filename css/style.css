@@ -64,24 +64,29 @@
 }
 
 #breadcrumb {
-	/*visibility: hidden;
-	height: 0em;
-	width: 0em;*/
 	clear: both;
 	text-align: center;
 	font-weight: bold;
 	text-transform: uppercase;
-	background: grey;	/* Sfondo di prova, ci mettiamo un'immagine?*/
+	background: grey;	/*Metteremo delle immagini scure in background*/
 	padding: 1.5em;
 }
 
 #path_title {
+	font-family: sansation_bold;
 	font-size: 2em;
-	padding: 0.5em;
+	color: white;
+	padding: 1.2em;
+}
+
+#path span {
+	color: white;
+	font-size: 0.8em;
 }
 
 #path i {
 	vertical-align: middle;
+	color: white;
 }
 
 #breadcrumb p a {
