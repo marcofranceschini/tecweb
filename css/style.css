@@ -98,7 +98,11 @@
 }
 
 #breadcrumb i:hover {
-	
+	color: orangered;
+}
+
+#breadcrumb a:hover {
+	color: orangered;
 }
 
 #content {
@@ -109,11 +113,43 @@
 
 #content p {
 	padding: 1em;
+}
+
+#content .contacts {
+	text-align: center;
+}
+
+#contact_list {
+	width: 40%;
+	margin: auto;
+	padding: 0.5em;
+	list-style-type: none;
+}
+
+#contact_list li {
+	padding: 0.5em;
+}
+
+#contact_list .contact {
+	display: inline-block;
+	float: right;
+	font-weight: bold;
+	text-align: right;
+}
+
+#contact_list li i {
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+	background: lightblue;
+	padding-right: 0.5em;
+}
+
+#content .about {
 	text-align: justify;
 }
 
-#content .important {
-	display: block;
+#content .about_important {
 	text-align: center;
 	padding: 1.1em;
 }
