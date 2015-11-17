@@ -65,11 +65,14 @@
 	color: orangered;
 }
 
-#current {
+#menu #current {
 	color: orangered;
+	margin-left: 4em;
+	text-decoration: none;
+	padding-bottom: 0.3em;
 }
 
-#current {
+#current {	
 	border-bottom-width: 2px;
 	border-bottom-color: orangered;
 	border-bottom-style: solid;
@@ -92,6 +95,10 @@
 #breadcrumb i {
 	vertical-align: middle;
 	color: black;
+}
+
+#breadcrumb i:hover {
+	
 }
 
 #content {
