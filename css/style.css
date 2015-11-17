@@ -75,10 +75,10 @@
 	border-bottom-style: solid;
 }
 
-#breadcrumb {
+#breadcrumb {	
+	clear: both;
 	width: 88%;
 	margin-left: 12%;
-	clear: both;
 	margin-top: 1em;
 	font-weight: bold;
 	text-transform: uppercase;
