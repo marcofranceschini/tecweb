@@ -32,9 +32,12 @@ a:hover { /*Tutti i link hover della pagina sono oragered*/
 }
 
 #header {
-	background-image: "header.png";
-	background-color: lightgray;
+	/*background-image: url("../res/images/header.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: white;*/
 }
+
 
 #contacts {
 	float: right;
