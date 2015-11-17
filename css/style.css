@@ -65,6 +65,10 @@
 	color: orangered;
 }
 
+#menu #current {
+	color: orangered;
+}
+
 #current {
 	border-bottom-width: 2px;
 	border-bottom-color: orangered;
