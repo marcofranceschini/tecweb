@@ -128,3 +128,11 @@
 #footer .copyright {
 	font-size: 1.3em;
 }
+
+#validation {
+	padding-top: 2em;
+}
+
+#xhtml_valid {
+	padding-right: 4em;
+}
