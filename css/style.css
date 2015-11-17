@@ -130,19 +130,17 @@
 	padding: 0.5em;
 }
 
+#contact_list li i {
+	float: left;
+	vertical-align: middle;
+}
+
 #contact_list .contact {
 	display: inline-block;
 	float: right;
+	width: 55%;
 	font-weight: bold;
 	text-align: right;
-}
-
-#contact_list li i {
-	display: inline-block;
-	position: relative;
-	vertical-align: middle;
-	background: lightblue;
-	padding-right: 0.5em;
 }
 
 #content .about {
