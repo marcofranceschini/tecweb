@@ -105,6 +105,12 @@
 	text-align: justify;
 }
 
+#content .important {
+	display: block;
+	text-align: center;
+	padding: 1.1em;
+}
+
 #footer {
 	clear: both;
 	float: bottom;
@@ -119,6 +125,6 @@
 	font-size: 0.8em;
 }
 
-footer .copyright {
-	font-size: 4em;
+#footer .copyright {
+	font-size: 1.3em;
 }
