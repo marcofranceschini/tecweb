@@ -18,20 +18,20 @@
 	font-size: 18px; 
 }
 
-#contatti {
+#contacts {
 	float: right;
 	margin-top: 1em;
 	margin-right: 4em;
 	margin-bottom: 1em;
 }
 
-#contatti p {
+#contacts p {
 	display: inline-block;
 	margin-right: 2em;
 	font-size: 0.8em;
 }
 
-#contatti p i {
+#contacts p i {
 	vertical-align: middle;
 }
 
