@@ -68,29 +68,15 @@
 	text-align: center;
 	font-weight: bold;
 	text-transform: uppercase;
-	background: grey;	/*Metteremo delle immagini scure in background*/
-	padding: 1.5em;
+	text-decoration: none;
 }
 
-#path_title {
-	font-family: sansation_bold;
-	font-size: 2em;
-	color: white;
-	padding: 1.2em;
-}
-
-#path span {
-	color: white;
+#breadcrumb span {
 	font-size: 0.8em;
 }
 
-#path i {
+#breadcrumb i {
 	vertical-align: middle;
-	color: white;
-}
-
-#breadcrumb p a {
-	text-decoration: none;
 	color: black;
 }
 
