@@ -14,8 +14,21 @@
 	font-family: 'Maven Pro', sans-serif;
 }
 
+a {	/*Tutti i link della pagina sono neri senza sottolineatura*/
+	color: black;
+	text-decoration: none;
+}
+
+a:hover { /*Tutti i link hover della pagina sono oragered*/
+	color: orangered;
+}
+
 .material-icons.md-18 { 
 	font-size: 18px; 
+}
+
+.material-icons.md-24 { 
+	font-size: 24px; 
 }
 
 #contacts {
@@ -55,24 +68,15 @@
 }
 
 #menu a {
-	color: black;
 	margin-left: 4em;
-	text-decoration: none;
 	padding-bottom: 0.3em;
 }
 
-#menu a:hover {
-	color: orangered;
-}
-
-#menu #current {
+#current {
 	color: orangered;
 	margin-left: 4em;
 	text-decoration: none;
-	padding-bottom: 0.3em;
-}
-
-#current {	
+	padding-bottom: 0.3em;	
 	border-bottom-width: 2px;
 	border-bottom-color: orangered;
 	border-bottom-style: solid;
@@ -94,15 +98,6 @@
 
 #breadcrumb i {
 	vertical-align: middle;
-	color: black;
-}
-
-#breadcrumb i:hover {
-	color: orangered;
-}
-
-#breadcrumb a:hover {
-	color: orangered;
 }
 
 #content {
@@ -166,8 +161,18 @@
 	font-size: 0.8em;
 }
 
+#footer #administration {
+	float: right;
+	font-size: 1em;
+}
+
+#footer #administration i {
+	vertical-align: middle;
+}
+
 #footer .copyright {
 	font-size: 1.3em;
+	vertical-align: middle;
 }
 
 #validation {
