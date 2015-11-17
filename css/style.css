@@ -19,7 +19,7 @@ a {	/*Tutti i link della pagina sono neri senza sottolineatura*/
 	text-decoration: none;
 }
 
-a:hover { /*Tutti i link hover della pagina sono oragered*/
+a:hover { /*Tutti i link hover della pagina sono orangered*/
 	color: orangered;
 }
 
