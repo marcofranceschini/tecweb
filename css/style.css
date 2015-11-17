@@ -51,16 +51,24 @@
 	font-weight: bold;
 	text-transform: uppercase;
 	padding: 2em;
+	letter-spacing: 0.2em;
 }
 
 #menu a {
 	color: black;
 	margin-left: 4em;
 	text-decoration: none;
+	padding-bottom: 0.3em;
 }
 
 #menu a:hover {
 	color: orangered;
+}
+
+#current {
+	border-bottom-width: 2px;
+	border-bottom-color: orangered;
+	border-bottom-style: solid;
 }
 
 #breadcrumb {
