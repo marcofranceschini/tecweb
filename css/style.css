@@ -168,6 +168,7 @@ a:hover { /*Tutti i link hover della pagina sono oragered*/
 
 #footer #administration i {
 	vertical-align: middle;
+	padding-right: 0.2em;
 }
 
 #footer .copyright {
