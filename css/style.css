@@ -20,7 +20,7 @@ a {	/*Tutti i link della pagina sono neri senza sottolineatura*/
 }
 
 a:hover { /*Tutti i link hover della pagina sono oragered*/
-	//color: orangered;
+	color: orangered;
 }
 
 .material-icons.md-18 { 
