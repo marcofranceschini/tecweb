@@ -35,7 +35,7 @@ a:hover { /*Tutti i link hover della pagina sono oragered*/
 	/*background-image: url("../res/images/header.png");
 	background-repeat: no-repeat;
 	background-size: cover;*/
-	background: darkred;
+	background: #A00;
 	color: white;
 }
 
@@ -95,12 +95,13 @@ a:hover { /*Tutti i link hover della pagina sono oragered*/
 
 #breadcrumb {	
 	clear: both;
-	width: 88%;
-	margin-left: 12%;
-	margin-top: 1em;
+	padding-left: 12%;
+	padding-top: 0.7em;
+	padding-bottom: 0.7em;
 	font-weight: bold;
 	text-transform: uppercase;
 	text-decoration: none;
+	background: darkred;
 }
 
 #breadcrumb span {
