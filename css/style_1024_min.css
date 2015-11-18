@@ -32,16 +32,6 @@
 		font-size: 24px; 
 	}
 		
-	#header_admin {		//NEW -------------------------------------
-		clear: both;
-		padding-left: 12%;
-		padding-top: 0.7em;
-		padding-bottom: 0.7em;
-		text-transform: uppercase;
-		text-decoration: none;
-		background: darkred;
-	}
-	
 	#header {
 		background: #A00;
 		color: white;
@@ -49,6 +39,10 @@
 	
 	#header a {
 		color: white;
+	}
+	
+	#header a:hover {
+		color: lightgrey;
 	}
 	
 	#contacts {
@@ -74,12 +68,32 @@
 		padding-top: 1em;
 	}
 	
+	#logo_admin {		/*NEW -------------------------------------*/
+		//vertical-align: middle;
+		padding-right: 0.5em;
+	}
+	
+	#logo_admin:hover {		/*NEW -------------------------------------*/
+		color: lightgrey;
+	}
+	
 	#navbar {
 		width: 80%;
 		margin: auto;
 		clear: both;
 	}
 	
+	#navbar_admin {		/*NEW -------------------------------------*/
+		clear: both;
+		padding-left: 12%;
+		padding-top: 0.7em;
+		padding-bottom: 0.7em;
+		text-transform: uppercase;
+		text-decoration: none;
+		background: darkred;
+		letter-spacing: 0.2em;
+	}
+		
 	#menu {
 		text-transform: uppercase;
 		padding: 2em;
@@ -89,10 +103,6 @@
 	#menu a {
 		margin-left: 4em;
 		padding-bottom: 0.3em;
-	}
-	
-	#menu a:hover {
-		color: lightgrey;
 	}
 	
 	#current {
