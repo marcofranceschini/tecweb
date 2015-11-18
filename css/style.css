@@ -141,7 +141,7 @@ a:hover { /*Tutti i link hover della pagina sono oragered*/
 #contact_list .contact {
 	display: inline-block;
 	float: right;
-	width: 55%;
+	width: 60%;
 	font-weight: bold;
 	text-align: right;
 }
