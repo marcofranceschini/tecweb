@@ -93,6 +93,13 @@ a:hover { /*Tutti i link hover della pagina sono oragered*/
 	border-bottom-style: solid;
 }
 
+#breadcrumb_home {
+	visibility: hidden;
+	clear: both;
+	padding-top: 0.7em;
+	padding-bottom: 0.7em;
+}
+
 #breadcrumb {	
 	clear: both;
 	padding-left: 12%;
