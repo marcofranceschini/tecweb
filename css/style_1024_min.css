@@ -21,7 +21,7 @@
 	}
 	
 	a:hover { /*Tutti i link hover della pagina sono oragered*/
-		color: orangered;
+		color: #A00;
 	}
 	
 	.material-icons.md-18 { 
@@ -73,6 +73,16 @@
 		clear: both;
 	}
 	
+	#navbar_admin {		//NEW -------------------------------------
+		clear: both;
+		padding-left: 12%;
+		padding-top: 0.7em;
+		padding-bottom: 0.7em;
+		font-weight: bold;
+		text-transform: uppercase;
+		text-decoration: none;
+		background: darkred;
+	}
 	#menu {
 		text-transform: uppercase;
 		padding: 2em;
