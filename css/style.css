@@ -84,12 +84,11 @@ a:hover { /*Tutti i link hover della pagina sono oragered*/
 }
 
 #current {
-	color: orangered;
 	margin-left: 4em;
 	text-decoration: none;
 	padding-bottom: 0.3em;	
 	border-bottom-width: 2px;
-	border-bottom-color: orangered;
+	border-bottom-color: white;
 	border-bottom-style: solid;
 }
 
