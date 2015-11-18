@@ -84,7 +84,11 @@ a:hover { /*Tutti i link hover della pagina sono oragered*/
 }
 
 #menu a:hover {
+<<<<<<< HEAD
 	color: lightgrey;
+=======
+	color: lightgray;
+>>>>>>> da8b27b3a3cb2e56900d86511b499fe58c72d0ca
 }
 
 #current {
