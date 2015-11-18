@@ -31,11 +31,18 @@
 	.material-icons.md-24 { 
 		font-size: 24px; 
 	}
+		
+	#header_admin {		//NEW -------------------------------------
+		clear: both;
+		padding-left: 12%;
+		padding-top: 0.7em;
+		padding-bottom: 0.7em;
+		text-transform: uppercase;
+		text-decoration: none;
+		background: darkred;
+	}
 	
 	#header {
-		/*background-image: url("../res/images/header.png");
-		background-repeat: no-repeat;
-		background-size: cover;*/
 		background: #A00;
 		color: white;
 	}
@@ -73,16 +80,6 @@
 		clear: both;
 	}
 	
-	#navbar_admin {		//NEW -------------------------------------
-		clear: both;
-		padding-left: 12%;
-		padding-top: 0.7em;
-		padding-bottom: 0.7em;
-		font-weight: bold;
-		text-transform: uppercase;
-		text-decoration: none;
-		background: darkred;
-	}
 	#menu {
 		text-transform: uppercase;
 		padding: 2em;
