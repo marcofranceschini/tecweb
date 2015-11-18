@@ -83,6 +83,10 @@ a:hover { /*Tutti i link hover della pagina sono oragered*/
 	padding-bottom: 0.3em;
 }
 
+#menu a:hover {
+	color: lightgrey;
+}
+
 #current {
 	margin-left: 4em;
 	font-weight: bold;
