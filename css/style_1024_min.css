@@ -183,21 +183,18 @@
 	}
 	
 	#content {
-		width: 60%;
+		width: 70%;
 		margin: auto;
 		padding: 2em;
 	}
 	
 	#content p {
 		padding: 1em;
-	}
-	
-	#content .contact_label {
 		text-align: center;
 	}
 	
 	#contact_list {
-		width: 40%;
+		width: 35%;
 		margin: auto;
 		padding: 0.5em;
 		list-style-type: none;
@@ -220,6 +217,53 @@
 		text-align: right;
 	}
 	
+	/* NEW --------------------------------------*/
+	
+	#form_email {
+		padding: 2em;
+	}
+
+	
+	#form_email label{
+		float: left;
+		width: 60%;
+	}
+	
+	#form_email input{
+		float: right;
+		margin-bottom: 0.5em;
+		vertical-align: middle;
+	}
+
+	#admin_panel {	/* NEW --------------------------------------*/
+		width: 60%;
+		margin: auto;
+		margin-top: 2em;
+		margin-bottom: 10em;
+	}
+	
+	#news {
+		float: left;
+	}
+	
+	#products {
+		float: right;
+	}
+	#admin_panel .linked_box {
+		width: 12em;
+		padding-top: 4em;
+		padding-bottom: 4em;
+		text-align: center;
+		font-weight: bold;
+		background: lightgray;
+		
+		border-radius: 0.5em;
+	}
+	#admin_panel .linked_box:hover {
+		background: darkred;
+		color: white;
+	}
+	
 	#content .about {
 		text-align: justify;
 	}
@@ -227,14 +271,8 @@
 	#content .about_important {
 		text-align: center;
 		padding: 1.1em;
+
 	}
-	
-	/* NEW --------------------------------------*/
-	
-	
-	
-	
-	/* FINE NEW ---------------------------------*/
 	
 	#footer {
 		clear: both;
