@@ -294,20 +294,20 @@
 		text-align: right;
 	}
 	
-	/* NEW --------------------------------------*/
 	
-	#form_email {
+	
+	#form_email {	/* NEW --------------------------------------*/
 		padding: 2em;
 		margin: auto;
 		width: 30em;
 	}
 
-	.form_email_element {
+	.form_email_element {	/* NEW --------------------------------------*/
 		padding: 1em;
 		
 	}
 	
-	#form_email_name {
+	#form_email_name {	/* NEW --------------------------------------*/
 		width: 17em;
 		height: 2em;
 		
@@ -318,7 +318,7 @@
 		border-radius: 3px;	
 	}
 	
-	#form_email_mail {
+	#form_email_mail {	/* NEW --------------------------------------*/
 		margin-left: 7em;
 		width: 17em;
 		height: 2em;
@@ -330,13 +330,7 @@
 		border-radius: 3px;
 	}
 	
-	#form_email_label_mex {
-	
-		
-		
-	}
-	
-	#form_email_mex {
+	#form_email_mex {	/* NEW --------------------------------------*/
 		margin-left: 5em;
 		width: 17em;
 		height: 7em;
@@ -349,7 +343,7 @@
 		border-radius: 3px;
 	}
 	
-	#form_email_submit {
+	#form_email_submit {	/* NEW --------------------------------------*/
 		font-size: 1em;
 		margin-top: 3.5em;
 		margin-left: 10em;
@@ -364,7 +358,7 @@
 		 color: #FFF;
 	}
 	
-	#form_email_submit:hover{
+	#form_email_submit:hover{	/* NEW --------------------------------------*/
 		background: darkred;
 	}
 
