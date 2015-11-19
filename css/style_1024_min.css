@@ -243,12 +243,23 @@
 	#admin_panel {	/* NEW --------------------------------------*/
 		width: 60%;
 		margin: auto;
+		margin-top: 2em;
+		margin-bottom: 7em;
 		background: lightskyblue;
 		color: white;
 	}
 	
 	#news {
 		float: left;
+		width: 12em;
+		padding-top: 4em;
+		padding-bottom: 4em;
+		text-align: center;
+		background: darkred;
+	}
+	
+	#products {
+		float: right;
 		width: 12em;
 		padding-top: 4em;
 		padding-bottom: 4em;
@@ -263,6 +274,7 @@
 	#content .about_important {
 		text-align: center;
 		padding: 1.1em;
+
 	}
 	
 	#footer {
