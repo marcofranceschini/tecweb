@@ -259,6 +259,11 @@
 		vertical-align: middle;
 	}
 	
+	#slider {
+		height: 35em;
+		background: lightgray;
+	}
+	
 	#content {
 		width: 70%;
 		margin: auto;
