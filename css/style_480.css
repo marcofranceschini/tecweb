@@ -69,6 +69,7 @@
 	}
 	
 	#menu {
+		text-align: center;
 		text-transform: uppercase;
 		letter-spacing: 0.2em;
 		margin-bottom: 1em;
