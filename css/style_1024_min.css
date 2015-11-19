@@ -44,15 +44,6 @@
 		font-family: 'Maven Pro', sans-serif;
 	}
 	
-	a {	/*Tutti i link della pagina sono neri senza sottolineatura*/
-		color: black;
-		text-decoration: none;
-	}
-	
-	a:hover { /*Tutti i link hover della pagina sono oragered*/
-		color: #A00;
-	}
-	
 	.material-icons.md-18 { 
 		font-size: 18px; 
 	}
@@ -93,7 +84,6 @@
 	
 	#logo {
 		float: left;
-		max-width: 35%;	/* In schermi più piccoli così viene ridotto */
 		padding-top: 1em;
 	}
 	
@@ -144,6 +134,11 @@
 		text-transform: uppercase;
 		padding: 2em;
 		letter-spacing: 0.2em;
+	}
+	
+	#menu li {
+		list-style: none;
+		display: inline;
 	}
 	
 	#menu a {
@@ -250,30 +245,38 @@
 	}
 
 	#admin_panel {	/* NEW --------------------------------------*/
-		width: 60%;
+		width: 50%;
 		margin: auto;
 		margin-top: 2em;
-		margin-bottom: 7em;
-		background: lightskyblue;
-		color: white;
+		margin-bottom: 10em;
 	}
 	
 	#news {
 		float: left;
-		width: 12em;
-		padding-top: 4em;
-		padding-bottom: 4em;
-		text-align: center;
-		background: darkred;
 	}
 	
 	#products {
 		float: right;
-		width: 12em;
-		padding-top: 4em;
-		padding-bottom: 4em;
+	}
+	#admin_panel .linked_box {
+		width: 10em;
+		padding-top: 3.3em;
+		padding-bottom: 3.3em;
 		text-align: center;
+		font-weight: bold;
+		font-size: 1.2em;
+		background: lightgray;
+		text-shadow:  darkslategrey;
+		border-radius: 0.5em;
+	}
+	#admin_panel .linked_box:hover {
 		background: darkred;
+		color: white;
+		
+		transition: all 0.5s ;
+		-webkit-transition: all 0.5s ;
+		-o-transition: all 0.5s ;
+		-moz-transition: all 0.5s ;
 	}
 	
 	#content .about {
@@ -300,12 +303,21 @@
 		font-size: 0.8em;
 	}
 	
-	#footer #administration {
+	#administration {
 		float: right;
 		font-size: 1em;
 	}
 	
-	#footer #administration i {
+	#administration a {
+		color: black;
+		text-decoration: none;
+	}
+	
+	#administration a:hover {
+		color: #A00;
+	}
+	
+	#administration i {
 		vertical-align: middle;
 		padding-right: 0.2em;
 	}
