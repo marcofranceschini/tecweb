@@ -224,27 +224,18 @@
 	
 	/* NEW --------------------------------------*/
 	
-	#text_email {
-		padding: 1em;
-		
+	#form_email {
+		padding: 2em;
 	}
 
-	#form_email_allinea {
-		float: right;
-		width: 60%;
-	}
 	
-	#form_email_name label{
+	#form_email label{
 		float: left;
-		width: 80%;
-		margin-bottom: 0.5em;
-		vertical-align: middle;
+		width: 60%;
 	}
 	
-	#form_email_name input{
-		display: inline-block;
+	#form_email input{
 		float: right;
-		width: 60%;
 		margin-bottom: 0.5em;
 		vertical-align: middle;
 	}
