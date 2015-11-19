@@ -106,7 +106,7 @@
 		text-align: center;
 		text-transform: uppercase;
 		text-decoration: none;
-		background: darkred;
+		background: #A00;
 		letter-spacing: 0.2em;
 		-webkit-transition: all 1s ease;
 		-moz-transition: all 1s ease;
@@ -231,22 +231,46 @@
 		float: left;
 	}
 	
+	#form_email_name {
+		margin-left: 0.5em;
+		width: 15em;
+	}
+	
 	#form_email_mail {
 		margin-left: 7em;
+		width: 15em;
+	}
+	
+	#form_email_label_mex {
 	}
 	
 	#form_email_mex {
 		margin-left: 5em;
+		width: 15em;
+		height: 5em;
 	}
 	
 	#form_email_submit {
 		float: right;
-		margin-top: 2em;
-		text-align: right;
+		margin-top: 1em;
+		margin-left: 9.5em;
+		
+		background: darkred;
+		border: none;
+		padding: 10px 25px 10px 25px;
+		color: #FFF;
+		box-shadow: 1px 1px 5px #B6B6B6;
+		border-radius: 3px;
+		text-shadow: 1px 1px 1px #9E3F3F;
+		cursor: pointer;
+	}
+	
+	#form_email_submit .submit:hover{
+		background: blue;
 	}
 
 	#admin_panel {	/* NEW --------------------------------------*/
-		width: 50%;
+		width: 30em;
 		margin: auto;
 		margin-top: 2em;
 		margin-bottom: 10em;
@@ -260,17 +284,19 @@
 		float: right;
 	}
 	#admin_panel .linked_box {
-		width: 10em;
-		padding-top: 3.3em;
-		padding-bottom: 3.3em;
+		width: 11em;
+		padding-top: 3.5em;
+		padding-bottom: 3.5em;
 		text-align: center;
+		text-transform: uppercase;
 		font-weight: bold;
-		font-size: 1.2em;
+		font-size: 1.1em;
 		background: lightgray;
 		text-shadow:  darkslategrey;
 		border-radius: 0.5em;
 	}
 	#admin_panel .linked_box:hover {
+		/*background-color: rgba(180, 0, 0, 0.5);*/
 		background: darkred;
 		color: white;
 		
