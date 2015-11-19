@@ -308,7 +308,6 @@
 	}
 	
 	#form_email_name {
-		padding-left: 0.5em;
 		width: 17em;
 		height: 2em;
 		
@@ -352,7 +351,9 @@
 	
 	#form_email_submit {
 		font-size: 1em;
-		margin-top: 5em;
+		margin-top: 3.5em;
+		margin-left: 10em;
+		
 		background: #A00;
 		border: none;
 		padding: 10px 25px 10px 25px;
