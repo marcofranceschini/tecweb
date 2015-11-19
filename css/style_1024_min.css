@@ -26,17 +26,93 @@
 .fadeInDown {
 		-moz-animation-name: fadeInDown;
 		-webkit-animation-name: fadeInDown; 
-    	animation-name: fadeInDown;
-		
+    	animation-name: fadeInDown;		
 		-moz-animation-duration: 1.5s;
 		-webkit-animation-duration: 1.5s;
-		animation-duration: 1.5s;
-		
+		animation-duration: 1.5s;		
 		-moz-animation-fill-mode: both;
 		-webkit-animation-fill-mode: both;
 		animation-fill-mode: both;
 }
 
+@-moz-keyframes fadeInLeft {	/*NEW -------------------------------------*/
+	0% { opacity: 0; -moz-transform: translateX(-10em); }
+	100% { opacity: 1; transform: translateX(0); } 
+}
+	
+@-webkit-keyframes fadeInLeft {	/*NEW -------------------------------------*/
+	0% { opacity: 0.5; -webkit-transform: translateX(-10em); }
+	100% { opacity: 1; transform: translateX(0); }
+}
+	
+@keyframes fadeInLeft {	/*NEW -------------------------------------*/
+	0% { opacity: 0; transform: translateX(-10em); }
+	100% { opacity: 1; transform: translateX(0); }
+}
+
+.fadeInLeft {
+		-moz-animation-name: fadeInLeft;
+		-webkit-animation-name: fadeInLeft; 
+    	animation-name: fadeInLeft;		
+		-moz-animation-duration: 1.5s;
+		-webkit-animation-duration: 1.5s;
+		animation-duration: 1.5s;		
+		-moz-animation-fill-mode: both;
+		-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+}
+
+@-moz-keyframes fadeInRight {	/*NEW -------------------------------------*/
+	0% { opacity: 0; -moz-transform: translateX(10em); }
+	100% { opacity: 1; transform: translateX(0); } 
+}
+	
+@-webkit-keyframes fadeInRight {	/*NEW -------------------------------------*/
+	0% { opacity: 0; -webkit-transform: translateX(10em); }
+	100% { opacity: 1; transform: translateX(0); }
+}
+	
+@keyframes fadeInRight {	/*NEW -------------------------------------*/
+	0% { opacity: 0; transform: translateX(10em); }
+	100% { opacity: 1; transform: translateX(0); }
+}
+
+.fadeInRight {
+		-moz-animation-name: fadeInRight;
+		-webkit-animation-name: fadeInRight; 
+    	animation-name: fadeInRight;		
+		-moz-animation-duration: 1.5s;
+		-webkit-animation-duration: 1.5s;
+		animation-duration: 1.5s;		
+		-moz-animation-fill-mode: both;
+		-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+}
+/* ------------------ NON USATA MA LA LASCIO A DISPIOSIZIONE -----------------------
+@-moz-keyframes fadeInGrowing {	
+	0% { opacity: 0.5; -moz-transform: scale(0); }
+	100% { opacity: 1; transform: scale(1); } 
+}	
+@-webkit-keyframes fadeInGrowing {
+	0% { opacity: 0.5; -webkit-transform: scale(0); }
+	100% { opacity: 1; transform: scale(1); }
+}	
+@keyframes fadeInGrowing {
+	0% { opacity: 0.5; transform: scale(0); }
+	100% { opacity: 1; transform: scale(1); }
+}
+.fadeInGrowing {
+		-moz-animation-name: fadeInGrowing;
+		-webkit-animation-name: fadeInGrowing; 
+    	animation-name: fadeInGrowing;		
+		-moz-animation-duration: 0.7s;
+		-webkit-animation-duration: 0.7s;
+		animation-duration: 0.7s;		
+		-moz-animation-fill-mode: both;
+		-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+}
+---------------------------------------------------------------- */
 @media screen and (min-width: 1024px) {			
 	* {
 		margin: 0;
@@ -223,7 +299,7 @@
 	#form_email {
 		padding: 2em;
 		margin: auto;
-		width: 34%;
+		width: 37%;
 	}
 
 	.form_email_element {
@@ -233,40 +309,55 @@
 	
 	#form_email_name {
 		margin-left: 0.5em;
-		width: 15em;
+		width: 17em;
+		
+		border: none;
+		box-shadow: 1px 1px 5px #B6B6B6;	
+		border-radius: 3px;	
 	}
 	
 	#form_email_mail {
 		margin-left: 7em;
-		width: 15em;
+		width: 17em;
+		
+		border: none;
+		box-shadow: 1px 1px 5px #B6B6B6;
+		border-radius: 3px;
 	}
 	
 	#form_email_label_mex {
+		
 	}
 	
 	#form_email_mex {
 		margin-left: 5em;
-		width: 15em;
-		height: 5em;
+		width: 17em;
+		height: 7em;
+		
+		resize: none;
+		
+		border: none;
+		box-shadow: 1px 1px 5px #B6B6B6;
+		border-radius: 3px;
 	}
 	
 	#form_email_submit {
 		float: right;
 		margin-top: 1em;
-		margin-left: 9.5em;
+		margin-left: 11em;
 		
 		background: darkred;
 		border: none;
 		padding: 10px 25px 10px 25px;
-		color: #FFF;
 		box-shadow: 1px 1px 5px #B6B6B6;
 		border-radius: 3px;
 		text-shadow: 1px 1px 1px #9E3F3F;
 		cursor: pointer;
+		 color: #FFF;
 	}
 	
-	#form_email_submit .submit:hover{
-		background: blue;
+	#form_email_submit:hover{
+		background: #A00;
 	}
 
 	#admin_panel {	/* NEW --------------------------------------*/
