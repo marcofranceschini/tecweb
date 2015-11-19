@@ -8,6 +8,87 @@
 	src: url('../res/fonts/Sansation_Bold.ttf');
 }
 
+@-moz-keyframes fadeInDown {	/*NEW -------------------------------------*/
+	0% { opacity: 0; -moz-transform: translateY(-2em); }
+	100% { opacity: 1; transform: translateY(0); } 
+}
+	
+@-webkit-keyframes fadeInDown {	/*NEW -------------------------------------*/
+	0% { opacity: 0; -webkit-transform: translateY(-2em); }
+	100% { opacity: 1; transform: translateY(0); }
+}
+	
+@keyframes fadeInDown {	/*NEW -------------------------------------*/
+	0% { opacity: 0; transform: translateY(-2em); }
+	100% { opacity: 1; transform: translateY(0); }
+}
+
+.fadeInDown {
+		-moz-animation-name: fadeInDown;
+		-webkit-animation-name: fadeInDown; 
+    	animation-name: fadeInDown;		
+		-moz-animation-duration: 1.5s;
+		-webkit-animation-duration: 1.5s;
+		animation-duration: 1.5s;		
+		-moz-animation-fill-mode: both;
+		-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+}
+
+@-moz-keyframes fadeInLeft {	/*NEW -------------------------------------*/
+	0% { opacity: 0; -moz-transform: translateX(-10em); }
+	100% { opacity: 1; transform: translateX(0); } 
+}
+	
+@-webkit-keyframes fadeInLeft {	/*NEW -------------------------------------*/
+	0% { opacity: 0.5; -webkit-transform: translateX(-10em); }
+	100% { opacity: 1; transform: translateX(0); }
+}
+	
+@keyframes fadeInLeft {	/*NEW -------------------------------------*/
+	0% { opacity: 0; transform: translateX(-10em); }
+	100% { opacity: 1; transform: translateX(0); }
+}
+
+.fadeInLeft {
+		-moz-animation-name: fadeInLeft;
+		-webkit-animation-name: fadeInLeft; 
+    	animation-name: fadeInLeft;		
+		-moz-animation-duration: 1.5s;
+		-webkit-animation-duration: 1.5s;
+		animation-duration: 1.5s;		
+		-moz-animation-fill-mode: both;
+		-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+}
+
+@-moz-keyframes fadeInRight {	/*NEW -------------------------------------*/
+	0% { opacity: 0; -moz-transform: translateX(10em); }
+	100% { opacity: 1; transform: translateX(0); } 
+}
+	
+@-webkit-keyframes fadeInRight {	/*NEW -------------------------------------*/
+	0% { opacity: 0; -webkit-transform: translateX(10em); }
+	100% { opacity: 1; transform: translateX(0); }
+}
+	
+@keyframes fadeInRight {	/*NEW -------------------------------------*/
+	0% { opacity: 0; transform: translateX(10em); }
+	100% { opacity: 1; transform: translateX(0); }
+}
+
+.fadeInRight {
+		-moz-animation-name: fadeInRight;
+		-webkit-animation-name: fadeInRight; 
+    	animation-name: fadeInRight;		
+		-moz-animation-duration: 1.5s;
+		-webkit-animation-duration: 1.5s;
+		animation-duration: 1.5s;		
+		-moz-animation-fill-mode: both;
+		-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+}
+
 @media screen and (max-width: 480px) {			
 	* {
 		margin: 0;
@@ -60,6 +141,43 @@
 		width: 80%;
 		margin: auto;
 		clear: both;
+	}
+	
+	#navbar_admin {		/*NEW -------------------------------------*/
+		padding-top: 0.7em;
+		padding-bottom: 0.7em;
+		padding-left: 10%;
+		padding-right: 10%;
+		text-align: center;
+		text-transform: uppercase;
+		text-decoration: none;
+		background: #A00;
+		letter-spacing: 0.2em;
+		-webkit-transition: all 1s ease;
+		-moz-transition: all 1s ease;
+		-o-transition: all 1s ease;
+		transition: all 1s ease;
+	}
+	
+	#navbar_admin span {		/*NEW -------------------------------------*/
+		padding-right: 12em;	/*Soluzione responsive per centrare*/
+		font-weight: bold;
+	}
+	
+	#navbar_admin a {
+		padding-left: 2em;
+	}
+	
+	#admin_back {		/*NEW -------------------------------------*/
+		float: left;
+		background-image: url("../res/images/corona_bianca.png");
+		background-repeat: no-repeat;
+		background-position: 0 -0.1em;
+	}
+	
+	#admin_back:hover {		/*NEW -------------------------------------*/
+		background-image: url("../res/images/corona_grigia.png");
+		background-repeat: no-repeat;
 	}
 	
 	#logo {
@@ -150,6 +268,44 @@
 		width: 60%;
 		font-weight: bold;
 		text-align: right;
+	}
+	
+	#admin_panel {	/* NEW --------------------------------------*/
+		width: 30em;
+		margin: auto;
+		margin-top: 2em;
+		margin-bottom: 10em;
+	}
+	
+	#news {
+		float: left;
+	}
+	
+	#products {
+		float: right;
+	}
+	
+	#admin_panel .linked_box {
+		width: 11em;
+		padding-top: 3.5em;
+		padding-bottom: 3.5em;
+		text-align: center;
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size: 1.1em;
+		background: lightgray;
+		text-shadow:  darkslategrey;
+		border-radius: 0.5em;
+	}
+	#admin_panel .linked_box:hover {
+		/*background-color: rgba(180, 0, 0, 0.5);*/
+		background: #A00;
+		color: white;
+		
+		transition: all 0.5s ;
+		-webkit-transition: all 0.5s ;
+		-o-transition: all 0.5s ;
+		-moz-transition: all 0.5s ;
 	}
 	
 	#content_about{
