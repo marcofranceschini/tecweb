@@ -303,12 +303,11 @@
 	}
 
 	.form_email_element {
-		padding: 0.5em;
-		float: left;
+		padding: 1em;
 	}
 	
 	#form_email_name {
-		margin-left: 0.5em;
+		padding-left: 0.5em;
 		width: 17em;
 		height: 2em;
 		
@@ -328,7 +327,7 @@
 	}
 	
 	#form_email_label_mex {
-		margin-bottom: 1em;
+		
 	}
 	
 	#form_email_mex {
@@ -346,7 +345,7 @@
 	#form_email_submit {
 		float: right;
 		margin-top: 1em;
-		margin-left: 9em;
+		margin-right: 10.5em;
 		font-size: 1em;
 		
 		background: #A00;
