@@ -175,8 +175,8 @@
 	}
 	
 	#navbar_admin {		/*NEW -------------------------------------*/
-		padding-top: 0.7em;
-		padding-bottom: 0.7em;
+		padding-top: 1em;
+		padding-bottom: 1em;
 		padding-left: 10%;
 		padding-right: 10%;
 		text-align: center;
@@ -190,7 +190,7 @@
 		transition: all 1s ease;
 	}
 	
-	#navbar_admin span {		/*NEW -------------------------------------*/
+	#navbar_admin p {		/*NEW -------------------------------------*/
 		padding-right: 12em;	/*Soluzione responsive per centrare*/
 		font-weight: bold;
 	}
