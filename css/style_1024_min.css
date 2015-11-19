@@ -175,18 +175,6 @@
 		text-transform: uppercase;
 		text-decoration: none;
 		background: darkred;
-		
-		-moz-animation-name: fadeIn;		/*NEW -------------------------------------*/
-		-webkit-animation-name: fadeIn; 
-    	animation-name: fadeIn;
-		
-		-moz-animation-duration: 2s;		/*NEW -------------------------------------*/
-		-webkit-animation-duration: 2s;
-		animation-duration: 2s;
-		
-		-moz-animation-fill-mode: both;		/*NEW -------------------------------------*/
-		-webkit-animation-fill-mode: both;
-		animation-fill-mode: both;
 	}
 	
 	#breadcrumb span {
