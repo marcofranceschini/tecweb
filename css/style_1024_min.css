@@ -207,7 +207,7 @@
 		padding: 1em;
 	}
 	
-	#content .contacts {
+	#content .contact_label {
 		text-align: center;
 	}
 	
@@ -243,6 +243,13 @@
 		text-align: center;
 		padding: 1.1em;
 	}
+	
+	/* NEW --------------------------------------*/
+	
+	
+	
+	
+	/* FINE NEW ---------------------------------*/
 	
 	#footer {
 		clear: both;
