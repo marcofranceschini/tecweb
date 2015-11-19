@@ -226,18 +226,27 @@
 	
 	#form_email {
 		padding: 2em;
+		margin: auto;
+		width: 34%;
 	}
 
-	
-	#form_email label{
+	.form_email_element {
+		padding: 0.5em;
 		float: left;
-		width: 60%;
 	}
 	
-	#form_email input{
+	#form_email_mail {
+		margin-left: 7em;
+	}
+	
+	#form_email_mex {
+		margin-left: 5em;
+	}
+	
+	#form_email_submit {
 		float: right;
-		margin-bottom: 0.5em;
-		vertical-align: middle;
+		margin-top: 2em;
+		text-align: right;
 	}
 
 	#admin_panel {	/* NEW --------------------------------------*/
