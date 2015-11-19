@@ -226,22 +226,31 @@
 	
 	#form_email {
 		padding: 2em;
+		margin: auto;
+		width: 34%;
 	}
 
-	
-	#form_email label{
+	.form_email_element {
+		padding: 0.5em;
 		float: left;
-		width: 60%;
 	}
 	
-	#form_email input{
+	#form_email_mail {
+		margin-left: 7em;
+	}
+	
+	#form_email_mex {
+		margin-left: 5em;
+	}
+	
+	#form_email_submit {
 		float: right;
-		margin-bottom: 0.5em;
-		vertical-align: middle;
+		margin-top: 2em;
+		text-align: right;
 	}
 
 	#admin_panel {	/* NEW --------------------------------------*/
-		width: 60%;
+		width: 50%;
 		margin: auto;
 		margin-top: 2em;
 		margin-bottom: 10em;
@@ -255,18 +264,24 @@
 		float: right;
 	}
 	#admin_panel .linked_box {
-		width: 12em;
-		padding-top: 4em;
-		padding-bottom: 4em;
+		width: 10em;
+		padding-top: 3.3em;
+		padding-bottom: 3.3em;
 		text-align: center;
 		font-weight: bold;
+		font-size: 1.2em;
 		background: lightgray;
-		
+		text-shadow:  darkslategrey;
 		border-radius: 0.5em;
 	}
 	#admin_panel .linked_box:hover {
 		background: darkred;
 		color: white;
+		
+		transition: all 0.5s ;
+		-webkit-transition: all 0.5s ;
+		-o-transition: all 0.5s ;
+		-moz-transition: all 0.5s ;
 	}
 	
 	#content .about {
