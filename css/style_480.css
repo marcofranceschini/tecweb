@@ -69,9 +69,9 @@
 	}
 	
 	#menu {
-		float: left;
 		text-transform: uppercase;
 		letter-spacing: 0.2em;
+		margin-bottom: 1em;
 	}
 	
 	#menu li {
@@ -84,7 +84,6 @@
 	}
 	
 	#current {
-		margin-left: 4em;
 		font-weight: bold;
 		text-decoration: none;
 		padding-bottom: 0.3em;	
