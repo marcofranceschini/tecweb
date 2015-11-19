@@ -1,0 +1,210 @@
+@font-face {
+    font-family: sansation_regular;
+    src: url('../res/fonts/Sansation_Regular.ttf');
+}
+
+@font-face {
+	font-family: sansation_bold;
+	src: url('../res/fonts/Sansation_Bold.ttf');
+}
+
+@media screen and (max-width: 768px) {			
+	* {
+		margin: 0;
+		padding: 0;
+		font-family: 'Maven Pro', sans-serif;
+	}
+	
+	a {	/*Tutti i link della pagina sono neri senza sottolineatura*/
+		color: black;
+		text-decoration: none;
+	}
+	
+	a:hover { /*Tutti i link hover della pagina sono oragered*/
+		color: orangered;
+	}
+	
+	.material-icons.md-18 { 
+		font-size: 18px; 
+	}
+	
+	.material-icons.md-24 { 
+		font-size: 24px; 
+	}
+	
+	#header {
+		/*background-image: url("../res/images/header.png");
+		background-repeat: no-repeat;
+		background-size: cover;*/
+		background: #A00;
+		color: white;
+	}
+	
+	#header a {
+		color: white;
+	}
+	
+	#contacts {
+		float: right;
+		margin-top: 1em;
+		margin-right: 4em;
+		margin-bottom: 1em;
+	}
+	
+	#contacts p {
+		display: inline-block;
+		margin-right: 2em;
+		font-size: 0.8em;
+	}
+	
+	#contacts p i {
+		vertical-align: middle;
+	}
+	
+	#logo {
+		float: left;
+		max-width: 35%;	/* In schermi più piccoli così viene ridotto */
+		padding-top: 1em;
+	}
+	
+	#navbar {
+		width: 80%;
+		margin: auto;
+		clear: both;
+	}
+	
+	#menu {
+		text-transform: uppercase;
+		padding: 2em;
+		letter-spacing: 0.2em;
+	}
+	
+	#menu a {
+		margin-left: 4em;
+		padding-bottom: 0.3em;
+	}
+	
+	#menu a:hover {
+		color: lightgrey;
+	}
+	
+	#current {
+		margin-left: 4em;
+		font-weight: bold;
+		text-decoration: none;
+		padding-bottom: 0.3em;	
+		border-bottom-width: 2px;
+		border-bottom-color: white;
+		border-bottom-style: solid;
+	}
+	
+	#breadcrumb_home {
+		visibility: hidden;
+		clear: both;
+		padding-top: 0.7em;
+		padding-bottom: 0.7em;
+	}
+	
+	#breadcrumb {	
+		clear: both;
+		padding-left: 12%;
+		padding-top: 0.7em;
+		padding-bottom: 0.7em;
+		font-weight: bold;
+		text-transform: uppercase;
+		text-decoration: none;
+		background: darkred;
+	}
+	
+	#breadcrumb span {
+		font-size: 0.8em;
+	}
+	
+	#breadcrumb i {
+		vertical-align: middle;
+	}
+	
+	#content {
+		width: 60%;
+		margin: auto;
+		padding: 2em;
+	}
+	
+	#content p {
+		padding: 1em;
+	}
+	
+	#content .contacts {
+		text-align: center;
+	}
+	
+	#contact_list {
+		width: 40%;
+		margin: auto;
+		padding: 0.5em;
+		list-style-type: none;
+	}
+	
+	#contact_list li {
+		padding: 0.5em;
+	}
+	
+	#contact_list li i {
+		float: left;
+		vertical-align: middle;
+	}
+	
+	#contact_list .contact {
+		display: inline-block;
+		float: right;
+		width: 60%;
+		font-weight: bold;
+		text-align: right;
+	}
+	
+	#content .about {
+		text-align: justify;
+	}
+	
+	#content .about_important {
+		text-align: center;
+		padding: 1.1em;
+	}
+	
+	#footer {
+		clear: both;
+		float: bottom;
+		width: 80%;
+		margin: auto;
+		margin-top: 2em;
+		padding: 2em;
+		border-top-style: solid;
+		border-top-color: lightgrey;
+		border-top-width: 1px;
+		text-align: center;
+		font-size: 0.8em;
+	}
+	
+	#footer #administration {
+		float: right;
+		font-size: 1em;
+	}
+	
+	#footer #administration i {
+		vertical-align: middle;
+		padding-right: 0.2em;
+	}
+	
+	#footer .copyright {
+		font-size: 1.3em;
+		vertical-align: middle;
+	}
+	
+	#validation {
+		padding-top: 2em;
+	}
+	
+	#xhtml_valid {
+		padding-right: 4em;
+	}	
+}
