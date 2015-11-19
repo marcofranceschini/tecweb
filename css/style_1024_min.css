@@ -255,10 +255,6 @@
 		background: darkred;
 	}
 	
-	#breadcrumb span {
-		font-size: 0.8em;
-	}
-	
 	#breadcrumb i {
 		vertical-align: middle;
 	}
@@ -303,7 +299,7 @@
 	#form_email {
 		padding: 2em;
 		margin: auto;
-		width: 34%;
+		width: 37%;
 	}
 
 	.form_email_element {
@@ -313,40 +309,55 @@
 	
 	#form_email_name {
 		margin-left: 0.5em;
-		width: 15em;
+		width: 17em;
+		
+		border: none;
+		box-shadow: 1px 1px 5px #B6B6B6;	
+		border-radius: 3px;	
 	}
 	
 	#form_email_mail {
 		margin-left: 7em;
-		width: 15em;
+		width: 17em;
+		
+		border: none;
+		box-shadow: 1px 1px 5px #B6B6B6;
+		border-radius: 3px;
 	}
 	
 	#form_email_label_mex {
+		
 	}
 	
 	#form_email_mex {
 		margin-left: 5em;
-		width: 15em;
-		height: 5em;
+		width: 17em;
+		height: 7em;
+		
+		resize: none;
+		
+		border: none;
+		box-shadow: 1px 1px 5px #B6B6B6;
+		border-radius: 3px;
 	}
 	
 	#form_email_submit {
 		float: right;
 		margin-top: 1em;
-		margin-left: 9.5em;
+		margin-left: 11em;
 		
 		background: darkred;
 		border: none;
 		padding: 10px 25px 10px 25px;
-		color: #FFF;
 		box-shadow: 1px 1px 5px #B6B6B6;
 		border-radius: 3px;
 		text-shadow: 1px 1px 1px #9E3F3F;
 		cursor: pointer;
+		 color: #FFF;
 	}
 	
-	#form_email_submit .submit:hover{
-		background: blue;
+	#form_email_submit:hover{
+		background: #A00;
 	}
 
 	#admin_panel {	/* NEW --------------------------------------*/
