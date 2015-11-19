@@ -26,17 +26,93 @@
 .fadeInDown {
 		-moz-animation-name: fadeInDown;
 		-webkit-animation-name: fadeInDown; 
-    	animation-name: fadeInDown;
-		
+    	animation-name: fadeInDown;		
 		-moz-animation-duration: 1.5s;
 		-webkit-animation-duration: 1.5s;
-		animation-duration: 1.5s;
-		
+		animation-duration: 1.5s;		
 		-moz-animation-fill-mode: both;
 		-webkit-animation-fill-mode: both;
 		animation-fill-mode: both;
 }
 
+@-moz-keyframes fadeInLeft {	/*NEW -------------------------------------*/
+	0% { opacity: 0; -moz-transform: translateX(-10em); }
+	100% { opacity: 1; transform: translateX(0); } 
+}
+	
+@-webkit-keyframes fadeInLeft {	/*NEW -------------------------------------*/
+	0% { opacity: 0.5; -webkit-transform: translateX(-10em); }
+	100% { opacity: 1; transform: translateX(0); }
+}
+	
+@keyframes fadeInLeft {	/*NEW -------------------------------------*/
+	0% { opacity: 0; transform: translateX(-10em); }
+	100% { opacity: 1; transform: translateX(0); }
+}
+
+.fadeInLeft {
+		-moz-animation-name: fadeInLeft;
+		-webkit-animation-name: fadeInLeft; 
+    	animation-name: fadeInLeft;		
+		-moz-animation-duration: 1.5s;
+		-webkit-animation-duration: 1.5s;
+		animation-duration: 1.5s;		
+		-moz-animation-fill-mode: both;
+		-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+}
+
+@-moz-keyframes fadeInRight {	/*NEW -------------------------------------*/
+	0% { opacity: 0; -moz-transform: translateX(10em); }
+	100% { opacity: 1; transform: translateX(0); } 
+}
+	
+@-webkit-keyframes fadeInRight {	/*NEW -------------------------------------*/
+	0% { opacity: 0; -webkit-transform: translateX(10em); }
+	100% { opacity: 1; transform: translateX(0); }
+}
+	
+@keyframes fadeInRight {	/*NEW -------------------------------------*/
+	0% { opacity: 0; transform: translateX(10em); }
+	100% { opacity: 1; transform: translateX(0); }
+}
+
+.fadeInRight {
+		-moz-animation-name: fadeInRight;
+		-webkit-animation-name: fadeInRight; 
+    	animation-name: fadeInRight;		
+		-moz-animation-duration: 1.5s;
+		-webkit-animation-duration: 1.5s;
+		animation-duration: 1.5s;		
+		-moz-animation-fill-mode: both;
+		-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+}
+/* ------------------ NON USATA MA LA LASCIO A DISPIOSIZIONE -----------------------
+@-moz-keyframes fadeInGrowing {	
+	0% { opacity: 0.5; -moz-transform: scale(0); }
+	100% { opacity: 1; transform: scale(1); } 
+}	
+@-webkit-keyframes fadeInGrowing {
+	0% { opacity: 0.5; -webkit-transform: scale(0); }
+	100% { opacity: 1; transform: scale(1); }
+}	
+@keyframes fadeInGrowing {
+	0% { opacity: 0.5; transform: scale(0); }
+	100% { opacity: 1; transform: scale(1); }
+}
+.fadeInGrowing {
+		-moz-animation-name: fadeInGrowing;
+		-webkit-animation-name: fadeInGrowing; 
+    	animation-name: fadeInGrowing;		
+		-moz-animation-duration: 0.7s;
+		-webkit-animation-duration: 0.7s;
+		animation-duration: 0.7s;		
+		-moz-animation-fill-mode: both;
+		-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+}
+---------------------------------------------------------------- */
 @media screen and (min-width: 1024px) {			
 	* {
 		margin: 0;
@@ -324,14 +400,13 @@
 		-moz-transition: all 0.5s ;
 	}
 	
-	#content .about {
+	#content p{
 		text-align: justify;
 	}
 	
-	#content .about_important {
+	#content #about_important {
 		text-align: center;
 		padding: 1.1em;
-
 	}
 	
 	#footer {
