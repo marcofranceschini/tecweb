@@ -302,6 +302,7 @@
 
 	.form_email_element {	/* NEW --------------------------------------*/
 		padding: 1em;	
+		padding-left: 1em;
 	}
 	
 	#form_email_name {	/* NEW --------------------------------------*/
