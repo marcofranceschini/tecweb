@@ -271,7 +271,7 @@
 	}
 	
 	#contact_list {
-		width: 35%;
+		width: 23em;
 		margin: auto;
 		padding: 0.5em;
 		list-style-type: none;
@@ -289,7 +289,7 @@
 	#contact_list .contact {
 		display: inline-block;
 		float: right;
-		width: 60%;
+		width: 12em;
 		font-weight: bold;
 		text-align: right;
 	}
@@ -297,7 +297,7 @@
 	#form_email {	/* NEW --------------------------------------*/
 		padding: 2em;
 		margin: auto;
-		width: 37%;
+		width: 26em;
 	}
 
 	.form_email_element {	/* NEW --------------------------------------*/
@@ -308,7 +308,6 @@
 		width: 17em;
 		height: 2em;
 		float: right;
-		padding-left: 1em;
 		
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;	
@@ -319,7 +318,6 @@
 		width: 17em;
 		height: 2em;
 		float: right;
-		padding-left: 1em;
 		
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
@@ -330,7 +328,6 @@
 		width: 17em;
 		height: 7em;
 		float: right;
-		padding-left: 1em;
 		
 		resize: none;
 		
