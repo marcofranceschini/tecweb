@@ -15,6 +15,8 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<link href="https://fonts.googleapis.com/css?family=Droid+Sans|Maven+Pro" rel="stylesheet" type="text/css" />
 		<link rel="icon" type="image/png" href="../res/images/icon.png" />
+		
+		<script src="../js/function.js"></script>
 	</head>
 	<body>
 		<div id="header">
@@ -49,19 +51,19 @@
 				<p>Oppure contattaci ora via <span lang="en">e-mail</span></p>
 				<form>
 					<div class="form_email_element">
-						<label>Nome &#47; Societ&agrave;</label>
+						<label for="name">Nome &#47; Societ&agrave;</label>
 						<input type="text" name="name" id="form_email_name" />
 					</div>
 					<div class="form_email_element">
-						<label><span lang="en">E-mail</span></label>
+						<label for="mail"><span lang="en">E-mail</span></label>
 						<input type="text" name="mail" id="form_email_mail" />
 					</div>
 					<div class="form_email_element">
-						<label>Messaggio</label>
+						<label for="mex">Messaggio</label>
 						<textarea name="mex" id="form_email_mex" maxlength="150";> </textarea>
 					</div>
 					<div class="form_email_element">
-						<input type="submit" value="Invia" id="form_email_submit" />
+						<input type="button" value="Invia" id="form_email_submit" onclick="sendMail(); return false" />
 					</div>
 				</form>
 			</div>

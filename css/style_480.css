@@ -118,8 +118,6 @@
 		color: white;
 	}
 	
-	
-	
 	#contacts {
 		width: 90%;
 		margin: auto;
@@ -161,7 +159,7 @@
 		transition: all 1s ease;
 	}
 	
-	#navbar_admin span {		/*NEW -------------------------------------*/
+	#navbar_admin p {		/*NEW -------------------------------------*/
 		padding-right: 12em;	/*Soluzione responsive per centrare*/
 		font-weight: bold;
 	}
