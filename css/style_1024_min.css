@@ -310,6 +310,7 @@
 	#form_email_name {
 		margin-left: 0.5em;
 		width: 17em;
+		height: 2em;
 		
 		border: none;
 		box-shadow: 1px 1px 5px #B6B6B6;	
@@ -319,6 +320,7 @@
 	#form_email_mail {
 		margin-left: 7em;
 		width: 17em;
+		height: 2em;
 		
 		border: none;
 		box-shadow: 1px 1px 5px #B6B6B6;
@@ -326,7 +328,7 @@
 	}
 	
 	#form_email_label_mex {
-		
+		margin-bottom: 1em;
 	}
 	
 	#form_email_mex {
@@ -344,9 +346,10 @@
 	#form_email_submit {
 		float: right;
 		margin-top: 1em;
-		margin-left: 11em;
+		margin-left: 9em;
+		font-size: 1em;
 		
-		background: darkred;
+		background: #A00;
 		border: none;
 		padding: 10px 25px 10px 25px;
 		box-shadow: 1px 1px 5px #B6B6B6;
@@ -357,7 +360,7 @@
 	}
 	
 	#form_email_submit:hover{
-		background: #A00;
+		background: darkred;
 	}
 
 	#admin_panel {	/* NEW --------------------------------------*/
@@ -397,14 +400,13 @@
 		-moz-transition: all 0.5s ;
 	}
 	
-	#content .about {
+	#content p{
 		text-align: justify;
 	}
 	
-	#content .about_important {
+	#content #about_important {
 		text-align: center;
 		padding: 1.1em;
-
 	}
 	
 	#footer {
