@@ -23,8 +23,13 @@
 		font-size: 24px; 
 	}
 	
+	a {
+		color: black;
+		text-decoration: none;
+	}
+	
 	#header {
-		background: yellowgreen;
+		background: #A00;
 		color: white;
 	}
 	
@@ -51,26 +56,27 @@
 		vertical-align: middle;
 	}
 	
-	#logo {
-		float: left;
-		padding-top: 1em;
-	}
-	
 	#navbar {
 		width: 80%;
 		margin: auto;
 		clear: both;
 	}
 	
-	#menu {
-		text-transform: uppercase;
-		padding: 1em;
-		letter-spacing: 0.2em;
+	#logo {
+		width: 90%;
+		margin: auto;
 	}
 	
-	#menu a {
-		margin-left: 4em;
-		padding-bottom: 0.3em;
+	#menu {
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: 0.2em;
+		margin-bottom: 1em;
+	}
+	
+	#menu li {
+		list-style: none;
+		margin-top: 1em;
 	}
 	
 	#menu a:hover {
@@ -78,7 +84,6 @@
 	}
 	
 	#current {
-		margin-left: 4em;
 		font-weight: bold;
 		text-decoration: none;
 		padding-bottom: 0.3em;	
@@ -105,10 +110,6 @@
 		background: darkred;
 	}
 	
-	#breadcrumb span {
-		font-size: 0.8em;
-	}
-	
 	#breadcrumb i {
 		vertical-align: middle;
 	}
@@ -128,7 +129,7 @@
 	}
 	
 	#contact_list {
-		width: 40%;
+		width: 20em;
 		margin: auto;
 		padding: 0.5em;
 		list-style-type: none;
@@ -201,5 +202,10 @@
 	#validation {
 		padding-top: 1em;
 		text-align: center;
+	}
+	
+	#validation span{
+		margin-left: 1em;
+		margin-right: 1em;
 	}
 }
