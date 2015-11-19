@@ -213,21 +213,19 @@
 	}
 		
 	#menu {
-		max-height: 2.4em;	/*2.4 è l'altezza dell'header normalmente*/
+		max-height: 2em;
 		text-transform: uppercase;
 		margin-left: 22em;
 		padding-top: 2em;
 		padding-bottom: 2em;
 		letter-spacing: 0.2em;
-		background: lightgrey;
 	}
 	
 	#menu li {
 		display: inline-block;
 		margin-left: 8%;
-		margin-bottom: 1em;
+		margin-bottom: 2%;
 		list-style: none;
-		background: grey;
 	}
 	
 	#current {
