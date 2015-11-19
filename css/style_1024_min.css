@@ -388,7 +388,7 @@
 	}
 	#admin_panel .linked_box:hover {
 		/*background-color: rgba(180, 0, 0, 0.5);*/
-		background: darkred;
+		background: #A00;
 		color: white;
 		
 		transition: all 0.5s ;
