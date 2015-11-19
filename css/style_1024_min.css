@@ -224,17 +224,17 @@
 	
 	/* NEW --------------------------------------*/
 	
-	#text_email {
-		padding: 1em;
+	#form_email {
+		padding: 2em;
 	}
 
 	
-	#content label{
+	#form_email label{
 		float: left;
 		width: 60%;
 	}
 	
-	#content input{
+	#form_email input{
 		float: right;
 		margin-bottom: 0.5em;
 		vertical-align: middle;
