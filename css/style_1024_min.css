@@ -188,7 +188,7 @@
 	}
 	
 	#content {
-		width: 60%;
+		width: 70%;
 		margin: auto;
 		padding: 2em;
 	}
@@ -199,7 +199,7 @@
 	}
 	
 	#contact_list {
-		width: 40%;
+		width: 35%;
 		margin: auto;
 		padding: 0.5em;
 		list-style-type: none;
@@ -226,25 +226,16 @@
 	
 	#text_email {
 		padding: 1em;
-		
 	}
 
-	#form_email_allinea {
-		float: right;
-		width: 60%;
-	}
 	
-	#form_email_name label{
+	#content label{
 		float: left;
-		width: 80%;
-		margin-bottom: 0.5em;
-		vertical-align: middle;
+		width: 60%;
 	}
 	
-	#form_email_name input{
-		display: inline-block;
+	#content input{
 		float: right;
-		width: 60%;
 		margin-bottom: 0.5em;
 		vertical-align: middle;
 	}
