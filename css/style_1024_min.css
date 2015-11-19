@@ -213,21 +213,34 @@
 	}
 		
 	#menu {
+		max-height: 2.4em;	/*2.4 è l'altezza dell'header normalmente*/
 		text-transform: uppercase;
-		margin-left: 1em;
+		margin-left: 24em;
 		padding: 2em;
 		letter-spacing: 0.2em;
-		/*background: lightseagreen;*/
+		background: grey;
 	}
+	/*
+	@media screen and (max-width: 1310px) {	
+		#menu {
+			max-height: 2.4em;
+			text-transform: uppercase;
+			margin-left: 20em;
+			padding-top: 1em;
+			padding-bottom: 1em;
+			letter-spacing: 0.2em;
+		}
+	}*/
 	
 	#menu li {
 		list-style: none;
 		display: inline;
-		
 	}
 	
 	#menu a {
+		display: inline-block;
 		margin-left: 4em;
+		margin-bottom: 1em;
 		padding-bottom: 0.3em;
 	}
 	
