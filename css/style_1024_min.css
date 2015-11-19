@@ -247,30 +247,26 @@
 		margin-bottom: 10em;
 	}
 	
-	#admin_panel a {
-		color: white;
-	}
-	
-	#admin_panel a:hover {
-		color: lightgray;
-	}
-	
 	#news {
 		float: left;
-		width: 12em;
-		padding-top: 4em;
-		padding-bottom: 4em;
-		text-align: center;
-		background: darkred;
 	}
 	
 	#products {
 		float: right;
+	}
+	#admin_panel .linked_box {
 		width: 12em;
 		padding-top: 4em;
 		padding-bottom: 4em;
 		text-align: center;
+		font-weight: bold;
+		background: lightgray;
+		
+		border-radius: 0.5em;
+	}
+	#admin_panel .linked_box:hover {
 		background: darkred;
+		color: white;
 	}
 	
 	#content .about {
