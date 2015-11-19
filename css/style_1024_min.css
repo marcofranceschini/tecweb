@@ -197,7 +197,7 @@
 		padding: 1em;
 	}
 	
-	#content .contact_label {
+	#content p {
 		text-align: center;
 	}
 	
@@ -225,6 +225,35 @@
 		text-align: right;
 	}
 	
+	/* NEW --------------------------------------*/
+	
+	#form_email {
+		padding: 1em;
+		
+	}
+	
+	#form_email_allinea {
+		float: right;
+		width: 60%;
+	}
+	
+	#form_email_name label{
+		float: left;
+		width: 80%;
+		margin-bottom: 0.5em;
+		vertical-align: middle;
+	}
+	
+	#form_email_name input{
+		float: left;
+		width: 80%;
+		margin-bottom: 0.5em;
+		vertical-align: middle;
+	}
+	
+	
+	/* FINE NEW ---------------------------------*/
+	
 	#content .about {
 		text-align: justify;
 	}
@@ -233,13 +262,6 @@
 		text-align: center;
 		padding: 1.1em;
 	}
-	
-	/* NEW --------------------------------------*/
-	
-	
-	
-	
-	/* FINE NEW ---------------------------------*/
 	
 	#footer {
 		clear: both;
