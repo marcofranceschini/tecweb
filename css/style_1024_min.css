@@ -302,13 +302,13 @@
 
 	.form_email_element {	/* NEW --------------------------------------*/
 		padding: 1em;	
-		padding-left: 1em;
 	}
 	
 	#form_email_name {	/* NEW --------------------------------------*/
 		width: 17em;
 		height: 2em;
 		float: right;
+		padding-left: 1em;
 		
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;	
@@ -319,6 +319,7 @@
 		width: 17em;
 		height: 2em;
 		float: right;
+		padding-left: 1em;
 		
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
@@ -329,6 +330,7 @@
 		width: 17em;
 		height: 7em;
 		float: right;
+		padding-left: 1em;
 		
 		resize: none;
 		
