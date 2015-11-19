@@ -375,14 +375,15 @@
 		margin-bottom: 10em;
 	}
 	
-	#news {
+	#news {	/* NEW --------------------------------------*/
 		float: left;
 	}
 	
-	#products {
+	#products {	/* NEW --------------------------------------*/
 		float: right;
 	}
-	#admin_panel .linked_box {
+	
+	#admin_panel .linked_box {	/* NEW --------------------------------------*/
 		width: 11em;
 		padding-top: 3.5em;
 		padding-bottom: 3.5em;
@@ -394,7 +395,8 @@
 		text-shadow:  darkslategrey;
 		border-radius: 0.5em;
 	}
-	#admin_panel .linked_box:hover {
+	
+	#admin_panel .linked_box:hover {	/* NEW --------------------------------------*/
 		/*background-color: rgba(180, 0, 0, 0.5);*/
 		background: #A00;
 		color: white;
