@@ -267,7 +267,6 @@
 		background: darkred;
 	}
 	
-<<<<<<< HEAD
 	#products {
 		float: right;
 		width: 12em;
@@ -275,7 +274,8 @@
 		padding-bottom: 4em;
 		text-align: center;
 		background: darkred;
-=======
+	}
+	
 	#content .about {
 		text-align: justify;
 	}
@@ -283,7 +283,7 @@
 	#content .about_important {
 		text-align: center;
 		padding: 1.1em;
->>>>>>> f6a69f203bc7de424a8301c1908f36e7f75097e0
+
 	}
 	
 	#footer {
