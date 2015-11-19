@@ -8,6 +8,21 @@
 	src: url('../res/fonts/Sansation_Bold.ttf');
 }
 
+@-moz-keyframes fadeIn {	/*NEW -------------------------------------*/
+	0% { opacity: 0; } 
+	100% { opacity: 1; } 
+}
+	
+@-webkit-keyframes fadeIn {	/*NEW -------------------------------------*/
+	0% { opacity: 0; } 
+	100% { opacity: 1; } 
+}
+	
+@keyframes fadeIn {		/*NEW -------------------------------------*/
+	0% { opacity: 0; } 
+	100% { opacity: 1; } 
+} 
+
 @media screen and (min-width: 1024px) {			
 	* {
 		margin: 0;
@@ -68,15 +83,6 @@
 		padding-top: 1em;
 	}
 	
-	#logo_admin {		/*NEW -------------------------------------*/
-		//vertical-align: middle;
-		padding-right: 0.5em;
-	}
-	
-	#logo_admin:hover {		/*NEW -------------------------------------*/
-		color: lightgrey;
-	}
-	
 	#navbar {
 		width: 80%;
 		margin: auto;
@@ -84,14 +90,52 @@
 	}
 	
 	#navbar_admin {		/*NEW -------------------------------------*/
-		clear: both;
-		padding-left: 12%;
 		padding-top: 0.7em;
 		padding-bottom: 0.7em;
+		padding-left: 10%;
+		padding-right: 10%;
+		text-align: center;
 		text-transform: uppercase;
 		text-decoration: none;
 		background: darkred;
 		letter-spacing: 0.2em;
+		-webkit-transition: all 1s ease;
+		-moz-transition: all 1s ease;
+		-o-transition: all 1s ease;
+		transition: all 1s ease;
+		
+		-moz-animation-name: fadeIn;
+		-webkit-animation-name: fadeIn; 
+    	animation-name: fadeIn;
+		
+		-moz-animation-duration: 2s;
+		-webkit-animation-duration: 2s;
+		animation-duration: 2s;
+		
+		-moz-animation-fill-mode: both;
+		-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+	}
+	
+	#navbar_admin span {		/*NEW -------------------------------------*/
+		padding-right: 12em;	/*Soluzione responsive per centrare*/
+		font-weight: bold;
+	}
+	
+	#navbar_admin a {
+		padding-left: 2em;
+	}
+	
+	#admin_back {		/*NEW -------------------------------------*/
+		float: left;
+		background-image: url("../res/images/corona_bianca.png");
+		background-repeat: no-repeat;
+		background-position: 0 -0.1em;
+	}
+	
+	#admin_back:hover {		/*NEW -------------------------------------*/
+		background-image: url("../res/images/corona_grigia.png");
+		background-repeat: no-repeat;
 	}
 		
 	#menu {
@@ -131,6 +175,18 @@
 		text-transform: uppercase;
 		text-decoration: none;
 		background: darkred;
+		
+		-moz-animation-name: fadeIn;		/*NEW -------------------------------------*/
+		-webkit-animation-name: fadeIn; 
+    	animation-name: fadeIn;
+		
+		-moz-animation-duration: 2s;		/*NEW -------------------------------------*/
+		-webkit-animation-duration: 2s;
+		animation-duration: 2s;
+		
+		-moz-animation-fill-mode: both;		/*NEW -------------------------------------*/
+		-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
 	}
 	
 	#breadcrumb span {
