@@ -8,20 +8,34 @@
 	src: url('../res/fonts/Sansation_Bold.ttf');
 }
 
-@-moz-keyframes fadeIn {	/*NEW -------------------------------------*/
-	0% { opacity: 0; } 
-	100% { opacity: 1; } 
+@-moz-keyframes fadeInDown {	/*NEW -------------------------------------*/
+	0% { opacity: 0; -moz-transform: translateY(-2em); }
+	100% { opacity: 1; transform: translateY(0); } 
 }
 	
-@-webkit-keyframes fadeIn {	/*NEW -------------------------------------*/
-	0% { opacity: 0; } 
-	100% { opacity: 1; } 
+@-webkit-keyframes fadeInDown {	/*NEW -------------------------------------*/
+	0% { opacity: 0; -webkit-transform: translateY(-2em); }
+	100% { opacity: 1; transform: translateY(0); }
 }
 	
-@keyframes fadeIn {		/*NEW -------------------------------------*/
-	0% { opacity: 0; } 
-	100% { opacity: 1; } 
-} 
+@keyframes fadeInDown {	/*NEW -------------------------------------*/
+	0% { opacity: 0; transform: translateY(-2em); }
+	100% { opacity: 1; transform: translateY(0); }
+}
+
+.fadeInDown {
+		-moz-animation-name: fadeInDown;
+		-webkit-animation-name: fadeInDown; 
+    	animation-name: fadeInDown;
+		
+		-moz-animation-duration: 1.5s;
+		-webkit-animation-duration: 1.5s;
+		animation-duration: 1.5s;
+		
+		-moz-animation-fill-mode: both;
+		-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+}
 
 @media screen and (min-width: 1024px) {			
 	* {
@@ -103,18 +117,6 @@
 		-moz-transition: all 1s ease;
 		-o-transition: all 1s ease;
 		transition: all 1s ease;
-		
-		-moz-animation-name: fadeIn;
-		-webkit-animation-name: fadeIn; 
-    	animation-name: fadeIn;
-		
-		-moz-animation-duration: 2s;
-		-webkit-animation-duration: 2s;
-		animation-duration: 2s;
-		
-		-moz-animation-fill-mode: both;
-		-webkit-animation-fill-mode: both;
-		animation-fill-mode: both;
 	}
 	
 	#navbar_admin span {		/*NEW -------------------------------------*/
