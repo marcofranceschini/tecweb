@@ -232,6 +232,7 @@
 		
 	}
 	
+<<<<<<< HEAD
 	#form_email_allinea {
 		float: right;
 		width: 60%;
@@ -251,8 +252,23 @@
 		vertical-align: middle;
 	}
 	
+=======
+	#admin_panel {	/* NEW --------------------------------------*/
+		width: 60%;
+		margin: auto;
+		background: lightskyblue;
+		color: white;
+	}
+>>>>>>> 84f6ce274095d08ea500200bc70986ab3de70146
 	
-	/* FINE NEW ---------------------------------*/
+	#news {
+		float: left;
+		width: 12em;
+		padding-top: 4em;
+		padding-bottom: 4em;
+		text-align: center;
+		background: darkred;
+	}
 	
 	#content .about {
 		text-align: justify;
