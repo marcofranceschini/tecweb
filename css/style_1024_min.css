@@ -170,7 +170,7 @@
 	}
 	
 	#navbar {
-		width: 80%;
+		width: 90%;
 		margin: auto;
 		clear: both;
 	}
@@ -213,7 +213,7 @@
 	}
 		
 	#menu {
-		max-height: 2em;
+		max-height: 1.8em;
 		text-transform: uppercase;
 		margin-left: 22em;
 		padding-top: 2em;
