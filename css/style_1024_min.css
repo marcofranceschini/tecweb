@@ -271,7 +271,7 @@
 	}
 	
 	#contact_list {
-		width: 23em;
+		width: 35%;
 		margin: auto;
 		padding: 0.5em;
 		list-style-type: none;
@@ -289,7 +289,7 @@
 	#contact_list .contact {
 		display: inline-block;
 		float: right;
-		width: 12em;
+		width: 60%;
 		font-weight: bold;
 		text-align: right;
 	}
@@ -299,19 +299,27 @@
 	#form_email {	/* NEW --------------------------------------*/
 		padding: 2em;
 		margin: auto;
-		width: 30em;
+		width: 37%;
 	}
 
+<<<<<<< HEAD
 	.form_email_element {	/* NEW --------------------------------------*/
 		padding: 1em;
 		
 	}
 	
 	#form_email_name {	/* NEW --------------------------------------*/
+=======
+	.form_email_element {
+		padding: 0.5em;
+		float: left;
+	}
+	
+	#form_email_name {
+		margin-left: 0.5em;
+>>>>>>> 83c501b43328c7e0563f04aa5e99987e3bc4b48e
 		width: 17em;
 		height: 2em;
-		
-		float: right;
 		
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;	
@@ -323,19 +331,24 @@
 		width: 17em;
 		height: 2em;
 		
-		float: right;
-		
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
 		border-radius: 3px;
 	}
 	
+<<<<<<< HEAD
 	#form_email_mex {	/* NEW --------------------------------------*/
+=======
+	#form_email_label_mex {
+		margin-bottom: 1em;
+	}
+	
+	#form_email_mex {
+>>>>>>> 83c501b43328c7e0563f04aa5e99987e3bc4b48e
 		margin-left: 5em;
 		width: 17em;
 		height: 7em;
 		
-		float: right;
 		resize: none;
 		
 		border: none;
@@ -343,10 +356,15 @@
 		border-radius: 3px;
 	}
 	
+<<<<<<< HEAD
 	#form_email_submit {	/* NEW --------------------------------------*/
+=======
+	#form_email_submit {
+		float: right;
+		margin-top: 1em;
+		margin-left: 9em;
+>>>>>>> 83c501b43328c7e0563f04aa5e99987e3bc4b48e
 		font-size: 1em;
-		margin-top: 3.5em;
-		margin-left: 10em;
 		
 		background: #A00;
 		border: none;
@@ -369,15 +387,15 @@
 		margin-bottom: 10em;
 	}
 	
-	#news {	/* NEW --------------------------------------*/
+	#news {
 		float: left;
 	}
 	
-	#products {	/* NEW --------------------------------------*/
+	#products {
 		float: right;
 	}
 	
-	#admin_panel .linked_box {	/* NEW --------------------------------------*/
+	#admin_panel .linked_box {
 		width: 11em;
 		padding-top: 3.5em;
 		padding-bottom: 3.5em;
@@ -389,8 +407,7 @@
 		text-shadow:  darkslategrey;
 		border-radius: 0.5em;
 	}
-	
-	#admin_panel .linked_box:hover {	/* NEW --------------------------------------*/
+	#admin_panel .linked_box:hover {
 		/*background-color: rgba(180, 0, 0, 0.5);*/
 		background: #A00;
 		color: white;
