@@ -38,7 +38,7 @@
 		
 		<div id="content">
 			<div>
-				<p class="contact_label">Inviaci la tua richiesta in qualsiasi momento della giornata.</p>
+				<p>Inviaci la tua richiesta in qualsiasi momento della giornata.</p>
 				<ul id="contact_list">
 					<li>Telefono: <span class="contact"><i class="material-icons md-24">&#xE0CD;</i>+39 0422 445566</span></li>
 					<li>Fax: <span class="contact"><i class="material-icons md-24">&#xE8AD;</i>+39 0422 445566</span></li>
@@ -46,14 +46,24 @@
 				</ul>
 			</div>
 			<div id="form_email">
-				<p>Oppure contatti ora via e-mail.</p>
+				<p>Oppure contattaci ora via <span lang="en">e-mail</span>.</p>
 			</div>
-		</div>
-		<div id="">
 			<form>
-				<label>Nome</label>
-				<input type="text" name="name" />
-		
+				<div id="form_email_allinea">
+					<label>Nome &amp; Cognome</label>
+					<input type="text" name="name" />
+				</div>
+				<div id="form_email_allinea">
+					<label><span lang="en">E-mail</span></label>
+					<input type="text" name="mail" />
+				</div>
+				<div id="form_email_allinea">
+					<label>Messaggio</label>
+					<input type="text" name="mex" />
+				</div>
+				<div id="form_email_invia">
+					<input type="submit" value="Invia" />
+				</div>
 		
 			</form>
 		</div>

@@ -195,9 +195,6 @@
 	
 	#content p {
 		padding: 1em;
-	}
-	
-	#content .contact_label {
 		text-align: center;
 	}
 	
@@ -225,15 +222,33 @@
 		text-align: right;
 	}
 	
-	#content .about {
-		text-align: justify;
+	/* NEW --------------------------------------*/
+	
+	#text_email {
+		padding: 1em;
+		
+	}
+
+	#form_email_allinea {
+		float: right;
+		width: 60%;
 	}
 	
-	#content .about_important {
-		text-align: center;
-		padding: 1.1em;
+	#form_email_name label{
+		float: left;
+		width: 80%;
+		margin-bottom: 0.5em;
+		vertical-align: middle;
 	}
 	
+	#form_email_name input{
+		display: inline-block;
+		float: right;
+		width: 60%;
+		margin-bottom: 0.5em;
+		vertical-align: middle;
+	}
+
 	#admin_panel {	/* NEW --------------------------------------*/
 		width: 60%;
 		margin: auto;
@@ -252,6 +267,7 @@
 		background: darkred;
 	}
 	
+<<<<<<< HEAD
 	#products {
 		float: right;
 		width: 12em;
@@ -259,6 +275,15 @@
 		padding-bottom: 4em;
 		text-align: center;
 		background: darkred;
+=======
+	#content .about {
+		text-align: justify;
+	}
+	
+	#content .about_important {
+		text-align: center;
+		padding: 1.1em;
+>>>>>>> f6a69f203bc7de424a8301c1908f36e7f75097e0
 	}
 	
 	#footer {
