@@ -270,11 +270,20 @@
 		text-align: right;
 	}
 	
-	#admin_panel {	/* NEW --------------------------------------*/
-		width: 30em;
+	#content_admin {
+		width: 80%;
 		margin: auto;
-		margin-top: 2em;
-		margin-bottom: 10em;
+		padding: 2em;
+	}
+	
+	#content_admin p {
+		text-align: center;
+	}
+	
+	#admin_panel {	/* NEW --------------------------------------*/
+		width: 12em;
+		margin: auto;
+		margin-top: 10em;
 	}
 	
 	#news {
@@ -286,13 +295,13 @@
 	}
 	
 	#admin_panel .linked_box {
-		width: 11em;
-		padding-top: 3.5em;
-		padding-bottom: 3.5em;
+		width: 5em;
+		padding-top: 1em;
+		padding-bottom: 1em;
 		text-align: center;
 		text-transform: uppercase;
 		font-weight: bold;
-		font-size: 1.1em;
+		font-size: 0.8em;
 		background: lightgray;
 		text-shadow:  darkslategrey;
 		border-radius: 0.5em;

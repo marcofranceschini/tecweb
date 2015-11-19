@@ -362,6 +362,16 @@
 	#form_email_submit:hover{
 		background: darkred;
 	}
+	
+	#content_admin {
+		width: 90%;
+		margin: auto;
+		padding: 2em;
+	}
+	
+	#content_admin p {
+		text-align: center;
+	}
 
 	#admin_panel {	/* NEW --------------------------------------*/
 		width: 30em;
