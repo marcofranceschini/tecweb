@@ -306,14 +306,13 @@
 		-moz-transition: all 0.5s ;
 	}
 	
-	#content .about {
+	#content p{
 		text-align: justify;
 	}
 	
-	#content .about_important {
+	#content #about_important {
 		text-align: center;
 		padding: 1.1em;
-
 	}
 	
 	#footer {
