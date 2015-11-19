@@ -297,6 +297,7 @@
 		text-shadow:  darkslategrey;
 		border-radius: 0.5em;
 	}
+	
 	#admin_panel .linked_box:hover {
 		/*background-color: rgba(180, 0, 0, 0.5);*/
 		background: #A00;
