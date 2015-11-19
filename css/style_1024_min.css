@@ -271,7 +271,7 @@
 	}
 	
 	#contact_list {
-		width: 35%;
+		width: 23em;
 		margin: auto;
 		padding: 0.5em;
 		list-style-type: none;
@@ -289,7 +289,7 @@
 	#contact_list .contact {
 		display: inline-block;
 		float: right;
-		width: 60%;
+		width: 12em;
 		font-weight: bold;
 		text-align: right;
 	}
@@ -299,17 +299,20 @@
 	#form_email {
 		padding: 2em;
 		margin: auto;
-		width: 37em;
+		width: 30em;
 	}
 
 	.form_email_element {
 		padding: 1em;
+		
 	}
 	
 	#form_email_name {
 		padding-left: 0.5em;
 		width: 17em;
 		height: 2em;
+		
+		float: right;
 		
 		border: none;
 		box-shadow: 1px 1px 5px #B6B6B6;	
@@ -321,12 +324,16 @@
 		width: 17em;
 		height: 2em;
 		
+		float: right;
+		
 		border: none;
 		box-shadow: 1px 1px 5px #B6B6B6;
 		border-radius: 3px;
 	}
 	
 	#form_email_label_mex {
+	
+		
 		
 	}
 	
@@ -335,6 +342,7 @@
 		width: 17em;
 		height: 7em;
 		
+		float: right;
 		resize: none;
 		
 		border: none;
@@ -343,11 +351,8 @@
 	}
 	
 	#form_email_submit {
-		float: right;
-		margin-top: 1em;
-		margin-right: 10.5em;
 		font-size: 1em;
-		
+		margin-top: 5em;
 		background: #A00;
 		border: none;
 		padding: 10px 25px 10px 25px;
