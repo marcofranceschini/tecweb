@@ -234,12 +234,21 @@
 		padding: 1.1em;
 	}
 	
-	/* NEW --------------------------------------*/
+	#admin_panel {	/* NEW --------------------------------------*/
+		width: 60%;
+		margin: auto;
+		background: lightskyblue;
+		color: white;
+	}
 	
-	
-	
-	
-	/* FINE NEW ---------------------------------*/
+	#news {
+		float: left;
+		width: 12em;
+		padding-top: 4em;
+		padding-bottom: 4em;
+		text-align: center;
+		background: darkred;
+	}
 	
 	#footer {
 		clear: both;
