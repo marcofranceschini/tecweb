@@ -152,13 +152,20 @@
 		text-align: right;
 	}
 	
-	#content .about {
+	#content_about{
+		width: 90%;
+		margin: auto;
+		padding: 1em;
+	}
+	
+	#content_about p {
+		padding: 1em;
 		text-align: justify;
 	}
 	
-	#content .about_important {
+	#content_about #about_important {
 		text-align: center;
-		padding: 1.1em;
+		padding: 1.5em;
 	}
 	
 	#footer {
