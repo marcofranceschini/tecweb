@@ -24,7 +24,7 @@
 	}
 	
 	#header {
-		background: #A00;
+		background: yellowgreen;
 		color: white;
 	}
 	
@@ -33,14 +33,18 @@
 	}
 	
 	#contacts {
+		width: 90%;
+		margin: auto;
 		text-align: center;
-		margin-top: 1em;
-		margin-bottom: 1em;
+		padding-top: 1em;
+		padding-bottom: 1em;
 	}
 	
 	#contacts p {
 		display: inline-block;
 		font-size: 0.8em;
+		padding-left: 1em;
+		padding-right: 1em;
 	}
 	
 	#contacts p i {
@@ -49,7 +53,6 @@
 	
 	#logo {
 		float: left;
-		max-width: 35%;	/* In schermi più piccoli così viene ridotto */
 		padding-top: 1em;
 	}
 	
@@ -61,7 +64,7 @@
 	
 	#menu {
 		text-transform: uppercase;
-		padding: 2em;
+		padding: 1em;
 		letter-spacing: 0.2em;
 	}
 	
@@ -158,7 +161,7 @@
 	}
 	
 	#footer {
-		clear: both;
+		clear: both;	
 		float: bottom;
 		width: 80%;
 		margin: auto;
@@ -170,19 +173,30 @@
 		font-size: 0.8em;
 	}
 	
-	#administration {
+	#administration{
+		width: 90%;
+		margin: auto;
+		text-align: center;
 		font-size: 1em;
+	}
+	
+	#administration a {
+		color: black;
+		text-decoration: none;
+	}
+	
+	#administration a:hover {
+		color: #A00;
 	}
 	
 	#administration i {
 		vertical-align: middle;
-		padding-right: 0.2em;
+		padding-right: 0.3em;
 	}
 	
 	#copy {
 		margin-top: 2em;
 	}
-	
 	
 	#validation {
 		padding-top: 1em;
