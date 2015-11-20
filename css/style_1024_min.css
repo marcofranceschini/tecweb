@@ -120,7 +120,7 @@
 .material-icons.md-24 { 
 	font-size: 24px; 
 }
-@media screen and (min-width: 1024px) {			
+@media screen and (min-width: 1025px) {			
 	* {
 		margin: 0;
 		padding: 0;
