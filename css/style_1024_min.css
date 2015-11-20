@@ -113,19 +113,18 @@
 		animation-fill-mode: both;
 }
 ---------------------------------------------------------------- */
+.material-icons.md-18 { 
+	font-size: 18px; 
+}
+
+.material-icons.md-24 { 
+	font-size: 24px; 
+}
 @media screen and (min-width: 1024px) {			
 	* {
 		margin: 0;
 		padding: 0;
 		font-family: 'Maven Pro', sans-serif;
-	}
-	
-	.material-icons.md-18 { 
-		font-size: 18px; 
-	}
-	
-	.material-icons.md-24 { 
-		font-size: 24px; 
 	}
 	
 	a {
@@ -198,6 +197,12 @@
 	
 	#navbar_admin a {
 		padding-left: 2em;
+	}
+	
+	#admin_back_icon {
+		display: none;
+		height: 0px;
+		width: 0px;
 	}
 	
 	#admin_back {		/*NEW -------------------------------------*/
