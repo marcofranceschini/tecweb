@@ -213,9 +213,9 @@
 	}
 		
 	#menu {
-		max-height: 1.8em;
+		height: 2em;
 		text-transform: uppercase;
-		margin-left: 22em;
+		margin-left: 25em;
 		padding-top: 2em;
 		padding-bottom: 2em;
 		letter-spacing: 0.2em;
@@ -223,7 +223,7 @@
 	
 	#menu li {
 		display: inline-block;
-		margin-left: 8%;
+		margin-left: 5%;
 		margin-bottom: 2%;
 		list-style: none;
 	}
