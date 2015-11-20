@@ -21,6 +21,7 @@
 	#header {
 		background: #A00;
 		color: white;
+		text-align: center;
 	}
 	
 	#header a {
@@ -64,9 +65,6 @@
 	#navbar_admin {		/*NEW -------------------------------------*/
 		padding-top: 1em;
 		padding-bottom: 1em;
-		padding-left: 10%;
-		padding-right: 10%;
-		text-align: center;
 		text-transform: uppercase;
 		text-decoration: none;
 		background: #A00;
@@ -78,7 +76,6 @@
 	}
 	
 	#navbar_admin p {		/*NEW -------------------------------------*/
-		padding-right: 12em;	/*Soluzione responsive per centrare*/
 		font-weight: bold;
 	}
 	
