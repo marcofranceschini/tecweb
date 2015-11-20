@@ -52,7 +52,7 @@
 	#logo {
 		float: left;
 		padding-top: 1em;
-		width: 13em;
+		width: 30%;
 		
 	}
 	
@@ -93,6 +93,7 @@
 	
 	#admin_back_icon {
 		float:left;
+		vertical-align: middle;
 	}
 	
 	#admin_back:hover {		/*NEW -------------------------------------*/
