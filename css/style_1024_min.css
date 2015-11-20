@@ -120,7 +120,7 @@
 .material-icons.md-24 { 
 	font-size: 24px; 
 }
-@media screen and (min-width: 1024px) {			
+@media screen and (min-width: 1025px) {			
 	* {
 		margin: 0;
 		padding: 0;
@@ -264,10 +264,59 @@
 		vertical-align: middle;
 	}
 	
-	#slider {
-		height: 35em;
-		background: lightgray;
+	/*START CAROUSEL CSS*/
+	@keyframes carousel{
+		0%    	{ left:0; }
+		15%   	{ left:0; }
+		30%		{ left:-0%; }
+		35% 	{ left:-100%; }
+		50%   	{ left:-100%; }
+		65% 	{ left:-100%; }
+		70% 	{ left:-200%; }
+		85% 	{ left:-200%; }
+		95% 	{ left:-200%; }
+		100%  	{ left:0; }
 	}
+	
+	.carousel{
+		overflow:hidden;
+		width:100%;
+	}
+	
+	.panes{
+		list-style:none;
+		position:relative;
+		width:300%; /* Number of panes * 100% */
+		overflow:hidden; /* This is used solely to clear floats, it does not add functionality. */
+			
+		-moz-animation:carousel 30s infinite;
+		-webkit-animation:carousel 30s infinite;
+		animation:carousel 30s infinite;
+	}
+	
+	.panes > li{
+		position:relative;
+		float:left;
+		width:33.33333%; /* 100 / number of panes */
+	}
+	
+	.carousel img{
+		display:block;
+		max-width: 100%;
+	}
+	
+	.carousel h2{
+		font-size:1em;
+		padding:0.5em;
+		position:absolute;
+		right:10px;
+		bottom:10px;
+		left:10px;
+		text-align:right;
+		color:#fff;
+		background-color:rgba(0,0,0,0.75);
+	}
+	/*END CAROUSEL CSS*/
 	
 	#content {
 		width: 70%;
