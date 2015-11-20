@@ -49,7 +49,7 @@
 			</div>
 			<div id="form_email">
 				<p>Oppure contattaci ora via <span lang="en">e-mail</span></p>
-				<form>
+				<form action="../cgi/sendmail.pl" method="POST">
 					<div class="form_email_element">
 						<label for="name">Nome &#47; Societ&agrave;</label>
 						<input type="text" name="name" id="form_email_name" />
@@ -63,7 +63,7 @@
 						<textarea name="mex" id="form_email_mex" maxlength="150";> </textarea>
 					</div>
 					<div class="form_email_element">
-						<input type="button" value="Invia" id="form_email_submit" onclick="sendMail(); return false" />
+						<input type="submit" value="Invia" id="form_email_submit" onclick="sendMail(); return false" />
 					</div>
 				</form>
 			</div>
