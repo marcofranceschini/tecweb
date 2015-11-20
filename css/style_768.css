@@ -77,7 +77,7 @@
 	}
 	
 	#navbar_admin p {
-		padding-right: 5em;	/*Soluzione responsive per centrare*/
+		padding-right: 2em;	/*Soluzione responsive per centrare*/
 		font-weight: bold;
 	}
 	
@@ -85,11 +85,12 @@
 		padding-left: 2em;
 	}
 	
-	#admin_back {
+	#admin_back_icon {
 		float: left;
-		background-image: url("../res/images/corona_bianca.png");
-		background-repeat: no-repeat;
-		background-position: 0 -0.1em;
+	}
+	
+	#admin_back {
+		display: none;
 	}
 	
 	#admin_back:hover {
