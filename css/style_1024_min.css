@@ -212,7 +212,7 @@
 		background-repeat: no-repeat;
 	}
 		
-	#menu {
+	#menu {		/*NEW -------------------------------------*/
 		height: 2em;
 		text-transform: uppercase;
 		margin-left: 25em;
@@ -221,7 +221,7 @@
 		letter-spacing: 0.2em;
 	}
 	
-	#menu li {
+	#menu li {	/*NEW -------------------------------------*/
 		display: inline-block;
 		margin-left: 5%;
 		margin-bottom: 2%;
@@ -273,6 +273,43 @@
 	#content p {
 		padding: 1em;
 		text-align: center;
+	}
+	
+	#content_products {
+		width: 50em;
+		margin: auto;
+		padding-top: 2em;
+	}
+	
+	#categories {
+		list-style-type: none;
+	}
+	
+	#categories li {
+		display: inline-block;
+		margin-left: 6%;
+		margin-bottom: 3%;
+	}
+	
+	#categories .linked_box {
+		width: 11em;
+		padding-top: 3.5em;
+		padding-bottom: 3.5em;
+		text-align: center;
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size: 1.1em;		
+		border-radius: 0.5em;
+		background: lightgray;
+	}
+	
+	#categories .linked_box:hover {
+		background: #A00;
+		color: white;		
+		transition: all 0.5s ;
+		-webkit-transition: all 0.5s ;
+		-o-transition: all 0.5s ;
+		-moz-transition: all 0.5s ;
 	}
 	
 	#contact_list {
@@ -396,14 +433,11 @@
 		font-weight: bold;
 		font-size: 1.1em;
 		background: lightgray;
-		text-shadow:  darkslategrey;
 		border-radius: 0.5em;
 	}
 	#admin_panel .linked_box:hover {
-		/*background-color: rgba(180, 0, 0, 0.5);*/
 		background: #A00;
-		color: white;
-		
+		color: white;		
 		transition: all 0.5s ;
 		-webkit-transition: all 0.5s ;
 		-o-transition: all 0.5s ;
