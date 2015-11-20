@@ -1,4 +1,4 @@
-@media screen and (max-width: 768px) {			
+@media screen and (max-width: 768px) and (min-width: 481px) {			
 	* {
 		margin: 0;
 		padding: 0;
@@ -60,7 +60,7 @@
 		clear: both;
 	}
 	
-	#navbar_admin {		/*NEW -------------------------------------*/
+	#navbar_admin {
 		padding-top: 1em;
 		padding-bottom: 1em;
 		padding-left: 10%;
@@ -76,7 +76,7 @@
 		transition: all 1s ease;
 	}
 	
-	#navbar_admin p {		/*NEW -------------------------------------*/
+	#navbar_admin p {
 		padding-right: 12em;	/*Soluzione responsive per centrare*/
 		font-weight: bold;
 	}
@@ -85,19 +85,19 @@
 		padding-left: 2em;
 	}
 	
-	#admin_back {		/*NEW -------------------------------------*/
+	#admin_back {
 		float: left;
 		background-image: url("../res/images/corona_bianca.png");
 		background-repeat: no-repeat;
 		background-position: 0 -0.1em;
 	}
 	
-	#admin_back:hover {		/*NEW -------------------------------------*/
+	#admin_back:hover {
 		background-image: url("../res/images/corona_grigia.png");
 		background-repeat: no-repeat;
 	}
 		
-	#menu {		/*NEW -------------------------------------*/
+	#menu {
 		height: 2em;
 		text-transform: uppercase;
 		margin-left: 25em;
@@ -161,7 +161,7 @@
 	}
 	
 	#content_products {
-		width: 50em;
+		width: 30em;
 		margin: auto;
 		padding-top: 2em;
 	}
@@ -172,14 +172,14 @@
 	
 	#categories li {
 		display: inline-block;
-		margin-left: 6%;
+		margin-left: 2%;
 		margin-bottom: 3%;
 	}
 	
 	#categories .linked_box {
-		width: 11em;
-		padding-top: 3.5em;
-		padding-bottom: 3.5em;
+		width: 8em;
+		padding-top: 2em;
+		padding-bottom: 2em;
 		text-align: center;
 		text-transform: uppercase;
 		font-weight: bold;
@@ -221,17 +221,17 @@
 		text-align: right;
 	}
 	
-	#form_email {	/* NEW --------------------------------------*/
+	#form_email {
 		padding: 2em;
 		margin: auto;
 		width: 26em;
 	}
 
-	.form_email_element {	/* NEW --------------------------------------*/
+	.form_email_element {
 		padding: 1em;	
 	}
 	
-	#form_email_name {	/* NEW --------------------------------------*/
+	#form_email_name {
 		width: 17em;
 		height: 2em;
 		float: right;
@@ -241,7 +241,7 @@
 		border-radius: 3px;	
 	}
 	
-	#form_email_mail {	/* NEW --------------------------------------*/
+	#form_email_mail {
 		width: 17em;
 		height: 2em;
 		float: right;
@@ -251,7 +251,7 @@
 		border-radius: 3px;
 	}
 	
-	#form_email_mex {	/* NEW --------------------------------------*/
+	#form_email_mex {
 		width: 17em;
 		height: 7em;
 		float: right;
@@ -263,7 +263,7 @@
 		border-radius: 3px;
 	}
 	
-	#form_email_submit {	/* NEW --------------------------------------*/
+	#form_email_submit {
 		float: right;
 		margin-top: 2em;
 		margin-bottom: 2em;
@@ -280,7 +280,7 @@
 		 color: #FFF;
 	}
 	
-	#form_email_submit:hover{	/* NEW --------------------------------------*/
+	#form_email_submit:hover{
 		background: darkred;
 	}
 	
@@ -294,7 +294,7 @@
 		text-align: center;
 	}
 
-	#admin_panel {	/* NEW --------------------------------------*/
+	#admin_panel {
 		width: 30em;
 		margin: auto;
 		margin-top: 2em;
