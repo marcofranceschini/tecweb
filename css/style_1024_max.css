@@ -164,7 +164,7 @@
 	}
 	
 	#content_products {
-		width: 50em;
+		width: 45em;
 		margin: auto;
 		padding-top: 2em;
 	}
@@ -175,7 +175,7 @@
 	
 	#categories li {
 		display: inline-block;
-		margin-left: 6%;
+		margin-left: 4%;
 		margin-bottom: 3%;
 	}
 	
@@ -333,7 +333,7 @@
 	}
 	
 	#content_about{
-		width: 70%;
+		width: 85%;
 		margin: auto;
 		padding: 2em;
 	}
