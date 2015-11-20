@@ -89,8 +89,13 @@
 	#admin_back {		/*NEW -------------------------------------*/
 		float: left;
 		background-image: url("../res/images/corona_bianca.png");
+		display: none;
 		background-repeat: no-repeat;
 		background-position: 0 -0.1em;
+	}
+	
+	#admin_back_icon {
+		float:left;
 	}
 	
 	#admin_back:hover {		/*NEW -------------------------------------*/
