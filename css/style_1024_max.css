@@ -135,7 +135,7 @@
 	
 	#breadcrumb {	
 		clear: both;
-		padding-left: 12%;
+		padding-right: 65%;
 		padding-top: 0.7em;
 		padding-bottom: 0.7em;
 		font-weight: bold;
@@ -147,6 +147,7 @@
 	
 	#breadcrumb i {
 		vertical-align: middle;
+		
 	}
 	
 	#slider {
