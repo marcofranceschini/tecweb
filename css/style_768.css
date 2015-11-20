@@ -1,0 +1,393 @@
+@media screen and (max-width: 768px) {			
+	* {
+		margin: 0;
+		padding: 0;
+		font-family: 'Maven Pro', sans-serif;
+	}
+	
+	.material-icons.md-18 { 
+		font-size: 18px; 
+	}
+	
+	.material-icons.md-24 { 
+		font-size: 24px; 
+	}
+	
+	a {
+		color: black;
+		text-decoration: none;
+	}
+	
+	#header {
+		background: #A00;
+		color: white;
+	}
+	
+	#header a {
+		color: white;
+	}
+	
+	#header a:hover {
+		color: lightgrey;
+	}
+	
+	#contacts {
+		float: right;
+		margin-top: 1em;
+		margin-right: 4em;
+		margin-bottom: 1em;
+	}
+	
+	#contacts p {
+		display: inline-block;
+		margin-right: 2em;
+		font-size: 0.8em;
+	}
+	
+	#contacts p i {
+		vertical-align: middle;
+	}
+	
+	#logo {
+		float: left;
+		padding-top: 1em;
+		
+	}
+	
+	#navbar {
+		width: 90%;
+		margin: auto;
+		clear: both;
+	}
+	
+	#navbar_admin {		/*NEW -------------------------------------*/
+		padding-top: 1em;
+		padding-bottom: 1em;
+		padding-left: 10%;
+		padding-right: 10%;
+		text-align: center;
+		text-transform: uppercase;
+		text-decoration: none;
+		background: #A00;
+		letter-spacing: 0.2em;
+		-webkit-transition: all 1s ease;
+		-moz-transition: all 1s ease;
+		-o-transition: all 1s ease;
+		transition: all 1s ease;
+	}
+	
+	#navbar_admin p {		/*NEW -------------------------------------*/
+		padding-right: 12em;	/*Soluzione responsive per centrare*/
+		font-weight: bold;
+	}
+	
+	#navbar_admin a {
+		padding-left: 2em;
+	}
+	
+	#admin_back {		/*NEW -------------------------------------*/
+		float: left;
+		background-image: url("../res/images/corona_bianca.png");
+		background-repeat: no-repeat;
+		background-position: 0 -0.1em;
+	}
+	
+	#admin_back:hover {		/*NEW -------------------------------------*/
+		background-image: url("../res/images/corona_grigia.png");
+		background-repeat: no-repeat;
+	}
+		
+	#menu {		/*NEW -------------------------------------*/
+		height: 2em;
+		text-transform: uppercase;
+		margin-left: 25em;
+		padding-top: 2em;
+		padding-bottom: 2em;
+		letter-spacing: 0.2em;
+	}
+	
+	#menu li {	/*NEW -------------------------------------*/
+		display: inline-block;
+		margin-left: 5%;
+		margin-bottom: 2%;
+		list-style: none;
+	}
+	
+	#current {
+		font-weight: bold;
+		text-decoration: none;
+		padding-bottom: 0.3em;	
+		border-bottom-width: 2px;
+		border-bottom-color: white;
+		border-bottom-style: solid;
+	}
+	
+	#breadcrumb_home {
+		visibility: hidden;
+		clear: both;
+		padding-top: 0.7em;
+		padding-bottom: 0.7em;
+	}
+	
+	#breadcrumb {	
+		clear: both;
+		padding-left: 12%;
+		padding-top: 0.7em;
+		padding-bottom: 0.7em;
+		font-weight: bold;
+		text-transform: uppercase;
+		text-decoration: none;
+		background: darkred;
+	}
+	
+	#breadcrumb i {
+		vertical-align: middle;
+	}
+	
+	#slider {
+		height: 35em;
+		background: lightgray;
+	}
+	
+	#content {
+		width: 70%;
+		margin: auto;
+		padding: 2em;
+	}
+	
+	#content p {
+		padding: 1em;
+		text-align: center;
+	}
+	
+	#content_products {
+		width: 50em;
+		margin: auto;
+		padding-top: 2em;
+	}
+	
+	#categories {
+		list-style-type: none;
+	}
+	
+	#categories li {
+		display: inline-block;
+		margin-left: 6%;
+		margin-bottom: 3%;
+	}
+	
+	#categories .linked_box {
+		width: 11em;
+		padding-top: 3.5em;
+		padding-bottom: 3.5em;
+		text-align: center;
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size: 1.1em;		
+		border-radius: 0.5em;
+		background: lightgray;
+	}
+	
+	#categories .linked_box:hover {
+		background: #A00;
+		color: white;		
+		transition: all 0.5s ;
+		-webkit-transition: all 0.5s ;
+		-o-transition: all 0.5s ;
+		-moz-transition: all 0.5s ;
+	}
+	
+	#contact_list {
+		width: 23em;
+		margin: auto;
+		padding: 0.5em;
+		list-style-type: none;
+	}
+	
+	#contact_list li {
+		padding: 0.5em;
+	}
+	
+	#contact_list li i {
+		float: left;
+		vertical-align: middle;
+	}
+	
+	#contact_list .contact {
+		display: inline-block;
+		float: right;
+		width: 12em;
+		font-weight: bold;
+		text-align: right;
+	}
+	
+	#form_email {	/* NEW --------------------------------------*/
+		padding: 2em;
+		margin: auto;
+		width: 26em;
+	}
+
+	.form_email_element {	/* NEW --------------------------------------*/
+		padding: 1em;	
+	}
+	
+	#form_email_name {	/* NEW --------------------------------------*/
+		width: 17em;
+		height: 2em;
+		float: right;
+		
+		border: none;
+		box-shadow: 1px 1px 5px #3D3D3D;	
+		border-radius: 3px;	
+	}
+	
+	#form_email_mail {	/* NEW --------------------------------------*/
+		width: 17em;
+		height: 2em;
+		float: right;
+		
+		border: none;
+		box-shadow: 1px 1px 5px #3D3D3D;
+		border-radius: 3px;
+	}
+	
+	#form_email_mex {	/* NEW --------------------------------------*/
+		width: 17em;
+		height: 7em;
+		float: right;
+		
+		resize: none;
+		
+		border: none;
+		box-shadow: 1px 1px 5px #3D3D3D;
+		border-radius: 3px;
+	}
+	
+	#form_email_submit {	/* NEW --------------------------------------*/
+		float: right;
+		margin-top: 2em;
+		margin-bottom: 2em;
+		margin-right: 9em;
+		font-size: 1em;
+		
+		background: #A00;
+		border: none;
+		padding: 10px 25px 10px 25px;
+		box-shadow: 1px 1px 5px #B6B6B6;
+		border-radius: 3px;
+		text-shadow: 1px 1px 1px #9E3F3F;
+		cursor: pointer;
+		 color: #FFF;
+	}
+	
+	#form_email_submit:hover{	/* NEW --------------------------------------*/
+		background: darkred;
+	}
+	
+	#content_admin {
+		width: 90%;
+		margin: auto;
+		padding: 2em;
+	}
+	
+	#content_admin p {
+		text-align: center;
+	}
+
+	#admin_panel {	/* NEW --------------------------------------*/
+		width: 30em;
+		margin: auto;
+		margin-top: 2em;
+		margin-bottom: 10em;
+	}
+	
+	#news {
+		float: left;
+	}
+	
+	#products {
+		float: right;
+	}
+	
+	#admin_panel .linked_box {
+		width: 11em;
+		padding-top: 3.5em;
+		padding-bottom: 3.5em;
+		text-align: center;
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size: 1.1em;
+		background: lightgray;
+		border-radius: 0.5em;
+	}
+	#admin_panel .linked_box:hover {
+		background: #A00;
+		color: white;		
+		transition: all 0.5s ;
+		-webkit-transition: all 0.5s ;
+		-o-transition: all 0.5s ;
+		-moz-transition: all 0.5s ;
+	}
+	
+	#content_about{
+		width: 70%;
+		margin: auto;
+		padding: 2em;
+	}
+	
+	#content_about p {
+		padding: 1em;
+		text-align: justify;
+	}
+	
+	#content_about #about_important {
+		text-align: center;
+		padding: 1.5em;
+	}
+	
+	#footer {
+		clear: both;
+		float: bottom;
+		width: 80%;
+		margin: auto;
+		margin-top: 2em;
+		padding: 2em;
+		border-top-style: solid;
+		border-top-color: lightgrey;
+		border-top-width: 1px;
+		text-align: center;
+		font-size: 0.8em;
+	}
+	
+	#administration {
+		float: right;
+		font-size: 1em;
+	}
+	
+	#administration a {
+		color: black;
+		text-decoration: none;
+	}
+	
+	#administration a:hover {
+		color: #A00;
+	}
+	
+	#administration i {
+		vertical-align: middle;
+		padding-right: 0.2em;
+	}
+	
+	#footer .copyright {
+		font-size: 1.3em;
+		vertical-align: middle;
+	}
+	
+	#validation {
+		padding-top: 2em;
+	}
+	
+	#xhtml_valid {
+		padding-right: 4em;
+	}	
+}
