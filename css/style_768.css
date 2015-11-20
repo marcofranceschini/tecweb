@@ -60,7 +60,7 @@
 		clear: both;
 	}
 	
-	#navbar_admin {		/*NEW -------------------------------------*/
+	#navbar_admin {
 		padding-top: 1em;
 		padding-bottom: 1em;
 		padding-left: 10%;
@@ -76,8 +76,8 @@
 		transition: all 1s ease;
 	}
 	
-	#navbar_admin p {		/*NEW -------------------------------------*/
-		padding-right: 12em;	/*Soluzione responsive per centrare*/
+	#navbar_admin p {
+		padding-right: 2em;	/*Soluzione responsive per centrare*/
 		font-weight: bold;
 	}
 	
@@ -85,19 +85,20 @@
 		padding-left: 2em;
 	}
 	
-	#admin_back {		/*NEW -------------------------------------*/
+	#admin_back_icon {
 		float: left;
-		background-image: url("../res/images/corona_bianca.png");
-		background-repeat: no-repeat;
-		background-position: 0 -0.1em;
 	}
 	
-	#admin_back:hover {		/*NEW -------------------------------------*/
+	#admin_back {
+		display: none;
+	}
+	
+	#admin_back:hover {
 		background-image: url("../res/images/corona_grigia.png");
 		background-repeat: no-repeat;
 	}
 		
-	#menu {		/*NEW -------------------------------------*/
+	#menu {
 		height: 2em;
 		text-transform: uppercase;
 		margin-left: 25em;
@@ -150,21 +151,21 @@
 	}
 	
 	#content {
-		width: 70%;
+		width: 90%;
 		margin: auto;
 		padding: 2em;
 	}
 	
 	#content p {
-		padding: 1em;
+		padding-top: 1em;
 		text-align: center;
 	}
 	
 	#content_products {
-		width: 50em;
-		max-width: 9
+		width: 30em;
 		margin: auto;
 		padding-top: 2em;
+		padding-bottom: 1em;
 	}
 	
 	#categories {
@@ -173,14 +174,14 @@
 	
 	#categories li {
 		display: inline-block;
-		margin-left: 6%;
+		margin-left: 2%;
 		margin-bottom: 3%;
 	}
 	
 	#categories .linked_box {
-		width: 11em;
-		padding-top: 3.5em;
-		padding-bottom: 3.5em;
+		width: 8em;
+		padding-top: 2em;
+		padding-bottom: 2em;
 		text-align: center;
 		text-transform: uppercase;
 		font-weight: bold;
@@ -199,7 +200,7 @@
 	}
 	
 	#contact_list {
-		width: 23em;
+		width: 20em;
 		margin: auto;
 		padding: 0.5em;
 		list-style-type: none;
@@ -222,17 +223,21 @@
 		text-align: right;
 	}
 	
-	#form_email {	/* NEW --------------------------------------*/
-		padding: 2em;
+	#form_email {
+		padding-top: 1em;
 		margin: auto;
 		width: 26em;
 	}
+	
+	#form_email p {
+		padding-bottom: 0.5em;
+	}
 
-	.form_email_element {	/* NEW --------------------------------------*/
+	.form_email_element {
 		padding: 1em;	
 	}
 	
-	#form_email_name {	/* NEW --------------------------------------*/
+	#form_email_name {
 		width: 17em;
 		height: 2em;
 		float: right;
@@ -242,7 +247,7 @@
 		border-radius: 3px;	
 	}
 	
-	#form_email_mail {	/* NEW --------------------------------------*/
+	#form_email_mail {
 		width: 17em;
 		height: 2em;
 		float: right;
@@ -252,7 +257,7 @@
 		border-radius: 3px;
 	}
 	
-	#form_email_mex {	/* NEW --------------------------------------*/
+	#form_email_mex {
 		width: 17em;
 		height: 7em;
 		float: right;
@@ -264,7 +269,7 @@
 		border-radius: 3px;
 	}
 	
-	#form_email_submit {	/* NEW --------------------------------------*/
+	#form_email_submit {
 		float: right;
 		margin-top: 2em;
 		margin-bottom: 2em;
@@ -281,7 +286,7 @@
 		 color: #FFF;
 	}
 	
-	#form_email_submit:hover{	/* NEW --------------------------------------*/
+	#form_email_submit:hover{
 		background: darkred;
 	}
 	
@@ -295,8 +300,8 @@
 		text-align: center;
 	}
 
-	#admin_panel {	/* NEW --------------------------------------*/
-		width: 30em;
+	#admin_panel {
+		width: 20em;
 		margin: auto;
 		margin-top: 2em;
 		margin-bottom: 10em;
@@ -311,9 +316,9 @@
 	}
 	
 	#admin_panel .linked_box {
-		width: 11em;
-		padding-top: 3.5em;
-		padding-bottom: 3.5em;
+		width: 8em;
+		padding-top: 2em;
+		padding-bottom: 2em;
 		text-align: center;
 		text-transform: uppercase;
 		font-weight: bold;
@@ -331,7 +336,7 @@
 	}
 	
 	#content_about{
-		width: 70%;
+		width: 90%;
 		margin: auto;
 		padding: 2em;
 	}
@@ -351,7 +356,6 @@
 		float: bottom;
 		width: 80%;
 		margin: auto;
-		margin-top: 2em;
 		padding: 2em;
 		border-top-style: solid;
 		border-top-color: lightgrey;
@@ -361,8 +365,15 @@
 	}
 	
 	#administration {
+		width: 100%;
+		margin: auto;
+		text-align: center;
 		float: right;
 		font-size: 1em;
+	}
+	
+	#administration {		
+		padding-bottom: 2em;
 	}
 	
 	#administration a {

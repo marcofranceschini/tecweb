@@ -1,130 +1,16 @@
-@font-face {
-    font-family: sansation_regular;
-    src: url('../res/fonts/Sansation_Regular.ttf');
-}
-
-@font-face {
-	font-family: sansation_bold;
-	src: url('../res/fonts/Sansation_Bold.ttf');
-}
-
-@-moz-keyframes fadeInDown {	/*NEW -------------------------------------*/
-	0% { opacity: 0; -moz-transform: translateY(-2em); }
-	100% { opacity: 1; transform: translateY(0); } 
-}
-	
-@-webkit-keyframes fadeInDown {	/*NEW -------------------------------------*/
-	0% { opacity: 0; -webkit-transform: translateY(-2em); }
-	100% { opacity: 1; transform: translateY(0); }
-}
-	
-@keyframes fadeInDown {	/*NEW -------------------------------------*/
-	0% { opacity: 0; transform: translateY(-2em); }
-	100% { opacity: 1; transform: translateY(0); }
-}
-
-.fadeInDown {
-		-moz-animation-name: fadeInDown;
-		-webkit-animation-name: fadeInDown; 
-    	animation-name: fadeInDown;		
-		-moz-animation-duration: 1.5s;
-		-webkit-animation-duration: 1.5s;
-		animation-duration: 1.5s;		
-		-moz-animation-fill-mode: both;
-		-webkit-animation-fill-mode: both;
-		animation-fill-mode: both;
-}
-
-@-moz-keyframes fadeInLeft {	/*NEW -------------------------------------*/
-	0% { opacity: 0; -moz-transform: translateX(-10em); }
-	100% { opacity: 1; transform: translateX(0); } 
-}
-	
-@-webkit-keyframes fadeInLeft {	/*NEW -------------------------------------*/
-	0% { opacity: 0.5; -webkit-transform: translateX(-10em); }
-	100% { opacity: 1; transform: translateX(0); }
-}
-	
-@keyframes fadeInLeft {	/*NEW -------------------------------------*/
-	0% { opacity: 0; transform: translateX(-10em); }
-	100% { opacity: 1; transform: translateX(0); }
-}
-
-.fadeInLeft {
-		-moz-animation-name: fadeInLeft;
-		-webkit-animation-name: fadeInLeft; 
-    	animation-name: fadeInLeft;		
-		-moz-animation-duration: 1.5s;
-		-webkit-animation-duration: 1.5s;
-		animation-duration: 1.5s;		
-		-moz-animation-fill-mode: both;
-		-webkit-animation-fill-mode: both;
-		animation-fill-mode: both;
-}
-
-@-moz-keyframes fadeInRight {	/*NEW -------------------------------------*/
-	0% { opacity: 0; -moz-transform: translateX(10em); }
-	100% { opacity: 1; transform: translateX(0); } 
-}
-	
-@-webkit-keyframes fadeInRight {	/*NEW -------------------------------------*/
-	0% { opacity: 0; -webkit-transform: translateX(10em); }
-	100% { opacity: 1; transform: translateX(0); }
-}
-	
-@keyframes fadeInRight {	/*NEW -------------------------------------*/
-	0% { opacity: 0; transform: translateX(10em); }
-	100% { opacity: 1; transform: translateX(0); }
-}
-
-.fadeInRight {
-		-moz-animation-name: fadeInRight;
-		-webkit-animation-name: fadeInRight; 
-    	animation-name: fadeInRight;		
-		-moz-animation-duration: 1.5s;
-		-webkit-animation-duration: 1.5s;
-		animation-duration: 1.5s;		
-		-moz-animation-fill-mode: both;
-		-webkit-animation-fill-mode: both;
-		animation-fill-mode: both;
-}
-/* ------------------ NON USATA MA LA LASCIO A DISPIOSIZIONE -----------------------
-@-moz-keyframes fadeInGrowing {	
-	0% { opacity: 0.5; -moz-transform: scale(0); }
-	100% { opacity: 1; transform: scale(1); } 
-}	
-@-webkit-keyframes fadeInGrowing {
-	0% { opacity: 0.5; -webkit-transform: scale(0); }
-	100% { opacity: 1; transform: scale(1); }
-}	
-@keyframes fadeInGrowing {
-	0% { opacity: 0.5; transform: scale(0); }
-	100% { opacity: 1; transform: scale(1); }
-}
-.fadeInGrowing {
-		-moz-animation-name: fadeInGrowing;
-		-webkit-animation-name: fadeInGrowing; 
-    	animation-name: fadeInGrowing;		
-		-moz-animation-duration: 0.7s;
-		-webkit-animation-duration: 0.7s;
-		animation-duration: 0.7s;		
-		-moz-animation-fill-mode: both;
-		-webkit-animation-fill-mode: both;
-		animation-fill-mode: both;
-}
----------------------------------------------------------------- */
-.material-icons.md-18 { 
-	font-size: 18px; 
-}
-
-.material-icons.md-24 { 
-	font-size: 24px; 
-}
-@media screen and (min-width: 1024px) {			
+@media screen and (max-width: 1024px) and (min-width: 769px){			
 	* {
 		margin: 0;
 		padding: 0;
 		font-family: 'Maven Pro', sans-serif;
+	}
+	
+	.material-icons.md-18 { 
+		font-size: 15px; 
+	}
+	
+	.material-icons.md-24 { 
+		font-size: 24px; 
 	}
 	
 	a {
@@ -165,6 +51,7 @@
 	#logo {
 		float: left;
 		padding-top: 1em;
+		width: 13em;
 		
 	}
 	
@@ -199,12 +86,6 @@
 		padding-left: 2em;
 	}
 	
-	#admin_back_icon {
-		display: none;
-		height: 0px;
-		width: 0px;
-	}
-	
 	#admin_back {		/*NEW -------------------------------------*/
 		float: left;
 		background-image: url("../res/images/corona_bianca.png");
@@ -220,10 +101,11 @@
 	#menu {		/*NEW -------------------------------------*/
 		height: 2em;
 		text-transform: uppercase;
-		margin-left: 25em;
+		margin-left: 5em;
 		padding-top: 2em;
 		padding-bottom: 2em;
 		letter-spacing: 0.2em;
+		font-size: 0.85em;
 	}
 	
 	#menu li {	/*NEW -------------------------------------*/
@@ -255,6 +137,7 @@
 		padding-top: 0.7em;
 		padding-bottom: 0.7em;
 		font-weight: bold;
+		font-size: 0.8em;
 		text-transform: uppercase;
 		text-decoration: none;
 		background: darkred;
@@ -281,7 +164,7 @@
 	}
 	
 	#content_products {
-		width: 50em;
+		width: 45em;
 		margin: auto;
 		padding-top: 2em;
 	}
@@ -292,7 +175,7 @@
 	
 	#categories li {
 		display: inline-block;
-		margin-left: 6%;
+		margin-left: 4%;
 		margin-bottom: 3%;
 	}
 	
@@ -450,7 +333,7 @@
 	}
 	
 	#content_about{
-		width: 70%;
+		width: 85%;
 		margin: auto;
 		padding: 2em;
 	}
@@ -480,8 +363,8 @@
 	}
 	
 	#administration {
-		float: right;
 		font-size: 1em;
+		padding-bottom: 1em;
 	}
 	
 	#administration a {
