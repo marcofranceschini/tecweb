@@ -1,4 +1,4 @@
-@media screen and (min-width: 769px) and (max-width: 1024px) {			
+@media screen and (max-width: 1024px) and (min-width: 769px){			
 	* {
 		margin: 0;
 		padding: 0;
@@ -6,7 +6,7 @@
 	}
 	
 	.material-icons.md-18 { 
-		font-size: 18px; 
+		font-size: 15px; 
 	}
 	
 	.material-icons.md-24 { 
@@ -51,6 +51,7 @@
 	#logo {
 		float: left;
 		padding-top: 1em;
+		width: 13em;
 		
 	}
 	
@@ -100,10 +101,11 @@
 	#menu {		/*NEW -------------------------------------*/
 		height: 2em;
 		text-transform: uppercase;
-		margin-left: 25em;
+		margin-left: 5em;
 		padding-top: 2em;
 		padding-bottom: 2em;
 		letter-spacing: 0.2em;
+		font-size: 0.85em;
 	}
 	
 	#menu li {	/*NEW -------------------------------------*/
@@ -135,6 +137,7 @@
 		padding-top: 0.7em;
 		padding-bottom: 0.7em;
 		font-weight: bold;
+		font-size: 0.8em;
 		text-transform: uppercase;
 		text-decoration: none;
 		background: darkred;
@@ -360,8 +363,8 @@
 	}
 	
 	#administration {
-		float: right;
 		font-size: 1em;
+		padding-bottom: 1em;
 	}
 	
 	#administration a {
