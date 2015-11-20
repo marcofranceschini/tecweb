@@ -143,11 +143,11 @@
 		clear: both;
 	}
 	
-	#navbar_admin {		/*NEW -------------------------------------*/
+	#navbar_admin {
 		padding-top: 1em;
 		padding-bottom: 1em;
-		padding-left: 10%;
-		padding-right: 10%;
+		padding-left: 3%;
+		padding-right: 3%;
 		text-transform: uppercase;
 		text-decoration: none;
 		background: #A00;
@@ -158,25 +158,20 @@
 		transition: all 1s ease;
 	}
 	
-	#navbar_admin p {		/*NEW -------------------------------------*/
-		padding-right: 12em;	/*Soluzione responsive per centrare*/
+	#navbar_admin p {
 		font-weight: bold;
 	}
 	
 	#navbar_admin a {
-		padding-left: 2em;
+		padding-right: 3%;
 	}
 	
-	#admin_back {		/*NEW -------------------------------------*/
-		float: left;
-		background-image: url("../res/images/corona_bianca.png");
-		background-repeat: no-repeat;
-		background-position: 0 -0.1em;
+	#admin_back_icon {		
+		float: right;
 	}
 	
-	#admin_back:hover {		/*NEW -------------------------------------*/
-		background-image: url("../res/images/corona_grigia.png");
-		background-repeat: no-repeat;
+	#admin_back {
+		display: none;
 	}
 	
 	#logo {
