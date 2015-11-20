@@ -32,15 +32,14 @@
 	}
 	
 	#contacts {
-		float: right;
-		margin-top: 1em;
-		margin-right: 4em;
-		margin-bottom: 1em;
+		width: 21em;
+		margin: auto;
+		padding-bottom: 2em;
 	}
 	
 	#contacts p {
 		display: inline-block;
-		margin-right: 2em;
+		margin-left: 2em;
 		font-size: 0.8em;
 	}
 	
@@ -49,13 +48,13 @@
 	}
 	
 	#logo {
-		float: left;
-		padding-top: 1em;
-		
+		display: block;
+		width: 20em;
+		margin: auto;
 	}
 	
 	#navbar {
-		width: 90%;
+		width: 95%;
 		margin: auto;
 		clear: both;
 	}
@@ -63,8 +62,8 @@
 	#navbar_admin {
 		padding-top: 1em;
 		padding-bottom: 1em;
-		padding-left: 10%;
-		padding-right: 10%;
+		padding-left: 5%;
+		padding-right: 5%;
 		text-align: center;
 		text-transform: uppercase;
 		text-decoration: none;
@@ -99,17 +98,17 @@
 	}
 		
 	#menu {
-		height: 2em;
+		width: 27em;
+		margin: auto;
 		text-transform: uppercase;
-		margin-left: 25em;
 		padding-top: 2em;
-		padding-bottom: 2em;
+		padding-bottom: 1em;
 		letter-spacing: 0.2em;
 	}
 	
 	#menu li {	/*NEW -------------------------------------*/
 		display: inline-block;
-		margin-left: 5%;
+		margin-left: 2%;
 		margin-bottom: 2%;
 		list-style: none;
 	}
@@ -126,8 +125,6 @@
 	#breadcrumb_home {
 		visibility: hidden;
 		clear: both;
-		padding-top: 0.7em;
-		padding-bottom: 0.7em;
 	}
 	
 	#breadcrumb {	
@@ -146,7 +143,7 @@
 	}
 	
 	#slider {
-		height: 35em;
+		height: 20em;
 		background: lightgray;
 	}
 	

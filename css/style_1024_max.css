@@ -21,6 +21,7 @@
 	#header {
 		background: #A00;
 		color: white;
+		text-align: center;
 	}
 	
 	#header a {
@@ -51,8 +52,7 @@
 	#logo {
 		float: left;
 		padding-top: 1em;
-		width: 13em;
-		
+		width: 30%;
 	}
 	
 	#navbar {
@@ -64,9 +64,6 @@
 	#navbar_admin {		/*NEW -------------------------------------*/
 		padding-top: 1em;
 		padding-bottom: 1em;
-		padding-left: 10%;
-		padding-right: 10%;
-		text-align: center;
 		text-transform: uppercase;
 		text-decoration: none;
 		background: #A00;
@@ -78,7 +75,6 @@
 	}
 	
 	#navbar_admin p {		/*NEW -------------------------------------*/
-		padding-right: 12em;	/*Soluzione responsive per centrare*/
 		font-weight: bold;
 	}
 	
@@ -89,8 +85,14 @@
 	#admin_back {		/*NEW -------------------------------------*/
 		float: left;
 		background-image: url("../res/images/corona_bianca.png");
+		display: none;
 		background-repeat: no-repeat;
 		background-position: 0 -0.1em;
+	}
+	
+	#admin_back_icon {
+		float:left;
+		vertical-align: middle;
 	}
 	
 	#admin_back:hover {		/*NEW -------------------------------------*/
@@ -133,7 +135,7 @@
 	
 	#breadcrumb {	
 		clear: both;
-		padding-left: 12%;
+		padding-right: 65%;
 		padding-top: 0.7em;
 		padding-bottom: 0.7em;
 		font-weight: bold;
@@ -145,6 +147,7 @@
 	
 	#breadcrumb i {
 		vertical-align: middle;
+		
 	}
 	
 	#slider {
