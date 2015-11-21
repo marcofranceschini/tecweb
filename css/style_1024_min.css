@@ -243,21 +243,27 @@
 	
 	/*NEW*/
 	#pane_1 {
+		position: relative;
 		height: 30em;
 		background-image: url("../res/images/running_wall.jpg");
 	}
 	
 	#pane_2 {
+		position: relative;
 		height: 30em;
 		background-image: url("../res/images/nuoto_wall.jpg");
 	}
 	
 	#pane_3 {
+		position: relative;
 		height: 30em;
 		background-image: url("../res/images/volley_wall.jpg");
 	}
 	
 	.pane_content {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
 		text-align: center;
 	}
 	
