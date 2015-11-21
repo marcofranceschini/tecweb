@@ -8,111 +8,87 @@
 	src: url('../res/fonts/Sansation_Bold.ttf');
 }
 
-@-moz-keyframes fadeInDown {	/*NEW -------------------------------------*/
+@-moz-keyframes fadeInDown {	
 	0% { opacity: 0; -moz-transform: translateY(-2em); }
 	100% { opacity: 1; transform: translateY(0); } 
 }
 	
-@-webkit-keyframes fadeInDown {	/*NEW -------------------------------------*/
+@-webkit-keyframes fadeInDown {
 	0% { opacity: 0; -webkit-transform: translateY(-2em); }
 	100% { opacity: 1; transform: translateY(0); }
 }
 	
-@keyframes fadeInDown {	/*NEW -------------------------------------*/
+@keyframes fadeInDown {
 	0% { opacity: 0; transform: translateY(-2em); }
 	100% { opacity: 1; transform: translateY(0); }
 }
 
-.fadeInDown {
-		-moz-animation-name: fadeInDown;
-		-webkit-animation-name: fadeInDown; 
-    	animation-name: fadeInDown;		
-		-moz-animation-duration: 1.5s;
-		-webkit-animation-duration: 1.5s;
-		animation-duration: 1.5s;		
-		-moz-animation-fill-mode: both;
-		-webkit-animation-fill-mode: both;
-		animation-fill-mode: both;
-}
-
-@-moz-keyframes fadeInLeft {	/*NEW -------------------------------------*/
+@-moz-keyframes fadeInLeft {	
 	0% { opacity: 0; -moz-transform: translateX(-10em); }
 	100% { opacity: 1; transform: translateX(0); } 
 }
 	
-@-webkit-keyframes fadeInLeft {	/*NEW -------------------------------------*/
+@-webkit-keyframes fadeInLeft {
 	0% { opacity: 0.5; -webkit-transform: translateX(-10em); }
 	100% { opacity: 1; transform: translateX(0); }
 }
 	
-@keyframes fadeInLeft {	/*NEW -------------------------------------*/
+@keyframes fadeInLeft {
 	0% { opacity: 0; transform: translateX(-10em); }
 	100% { opacity: 1; transform: translateX(0); }
 }
 
-.fadeInLeft {
-		-moz-animation-name: fadeInLeft;
-		-webkit-animation-name: fadeInLeft; 
-    	animation-name: fadeInLeft;		
-		-moz-animation-duration: 1.5s;
-		-webkit-animation-duration: 1.5s;
-		animation-duration: 1.5s;		
-		-moz-animation-fill-mode: both;
-		-webkit-animation-fill-mode: both;
-		animation-fill-mode: both;
-}
-
-@-moz-keyframes fadeInRight {	/*NEW -------------------------------------*/
+@-moz-keyframes fadeInRight {	
 	0% { opacity: 0; -moz-transform: translateX(10em); }
 	100% { opacity: 1; transform: translateX(0); } 
 }
 	
-@-webkit-keyframes fadeInRight {	/*NEW -------------------------------------*/
+@-webkit-keyframes fadeInRight {
 	0% { opacity: 0; -webkit-transform: translateX(10em); }
 	100% { opacity: 1; transform: translateX(0); }
 }
 	
-@keyframes fadeInRight {	/*NEW -------------------------------------*/
+@keyframes fadeInRight {
 	0% { opacity: 0; transform: translateX(10em); }
 	100% { opacity: 1; transform: translateX(0); }
 }
 
+.fadeInLeft {
+	-moz-animation-name: fadeInLeft;
+	-webkit-animation-name: fadeInLeft; 
+    animation-name: fadeInLeft;		
+	-moz-animation-duration: 1.5s;
+	-webkit-animation-duration: 1.5s;
+	animation-duration: 1.5s;		
+	-moz-animation-fill-mode: both;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
 .fadeInRight {
-		-moz-animation-name: fadeInRight;
-		-webkit-animation-name: fadeInRight; 
-    	animation-name: fadeInRight;		
-		-moz-animation-duration: 1.5s;
-		-webkit-animation-duration: 1.5s;
-		animation-duration: 1.5s;		
-		-moz-animation-fill-mode: both;
-		-webkit-animation-fill-mode: both;
-		animation-fill-mode: both;
+	-moz-animation-name: fadeInRight;
+	-webkit-animation-name: fadeInRight; 
+    animation-name: fadeInRight;		
+	-moz-animation-duration: 1.5s;
+	-webkit-animation-duration: 1.5s;
+	animation-duration: 1.5s;		
+	-moz-animation-fill-mode: both;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
 }
-/* ------------------ NON USATA MA LA LASCIO A DISPIOSIZIONE -----------------------
-@-moz-keyframes fadeInGrowing {	
-	0% { opacity: 0.5; -moz-transform: scale(0); }
-	100% { opacity: 1; transform: scale(1); } 
-}	
-@-webkit-keyframes fadeInGrowing {
-	0% { opacity: 0.5; -webkit-transform: scale(0); }
-	100% { opacity: 1; transform: scale(1); }
-}	
-@keyframes fadeInGrowing {
-	0% { opacity: 0.5; transform: scale(0); }
-	100% { opacity: 1; transform: scale(1); }
+
+.fadeInDown {
+	-moz-animation-name: fadeInDown;
+	-webkit-animation-name: fadeInDown; 
+   	animation-name: fadeInDown;		
+	-moz-animation-duration: 1.5s;
+	-webkit-animation-duration: 1.5s;
+	animation-duration: 1.5s;		
+	-moz-animation-fill-mode: both;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
 }
-.fadeInGrowing {
-		-moz-animation-name: fadeInGrowing;
-		-webkit-animation-name: fadeInGrowing; 
-    	animation-name: fadeInGrowing;		
-		-moz-animation-duration: 0.7s;
-		-webkit-animation-duration: 0.7s;
-		animation-duration: 0.7s;		
-		-moz-animation-fill-mode: both;
-		-webkit-animation-fill-mode: both;
-		animation-fill-mode: both;
-}
----------------------------------------------------------------- */
+
 .material-icons.md-18 { 
 	font-size: 18px; 
 }
@@ -120,6 +96,7 @@
 .material-icons.md-24 { 
 	font-size: 24px; 
 }
+
 @media screen and (min-width: 1025px) {			
 	* {
 		margin: 0;
@@ -264,59 +241,26 @@
 		vertical-align: middle;
 	}
 	
-	/*START CAROUSEL CSS*/
-	@keyframes carousel{
-		0%    	{ left:0; }
-		15%   	{ left:0; }
-		30%		{ left:-0%; }
-		35% 	{ left:-100%; }
-		50%   	{ left:-100%; }
-		65% 	{ left:-100%; }
-		70% 	{ left:-200%; }
-		85% 	{ left:-200%; }
-		95% 	{ left:-200%; }
-		100%  	{ left:0; }
+	/*start carousel*/
+	#content_home {
+		margin-top: 2em;
 	}
 	
-	.carousel{
-		overflow:hidden;
-		width:100%;
+	.carousel-caption h2{
+		padding: 0.2em;
+		background-color: rgba(0, 0, 0, 0.4);
 	}
 	
-	.panes{
-		list-style:none;
-		position:relative;
-		width:300%; /* Number of panes * 100% */
-		overflow:hidden; /* This is used solely to clear floats, it does not add functionality. */
-			
-		-moz-animation:carousel 30s infinite;
-		-webkit-animation:carousel 30s infinite;
-		animation:carousel 30s infinite;
+	.carousel-caption img {
+		width: 40%;
+		height: 40%;
 	}
 	
-	.panes > li{
-		position:relative;
-		float:left;
-		width:33.33333%; /* 100 / number of panes */
+	#media {
+		text-align: center;
+		margin-top: 1em;
 	}
-	
-	.carousel img{
-		display:block;
-		max-width: 100%;
-	}
-	
-	.carousel h2{
-		font-size:1em;
-		padding:0.5em;
-		position:absolute;
-		right:10px;
-		bottom:10px;
-		left:10px;
-		text-align:right;
-		color:#fff;
-		background-color:rgba(0,0,0,0.75);
-	}
-	/*END CAROUSEL CSS*/
+	/*end carousel*/
 	
 	#content {
 		width: 70%;
