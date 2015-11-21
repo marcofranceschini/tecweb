@@ -15,10 +15,6 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css' />
 		<link rel="icon" type="image/png" href="res/images/icon.png" />
-		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>	
-		<script src="js/carousel.js"></script>
 	</head>
 	<body>
 		<div id="header">
@@ -41,17 +37,31 @@
 		</div>
 		
 		<div id="content_home">
-   			<div class="container">
-  				<div id="carousel" class="carousel slide" data-ride="carousel" data-interval="4000">
-					<!-- Indicators -->
-					<ol class="carousel-indicators">
-						<li data-target="#carousel" data-slide-to="0" class="active"></li>
-						<li data-target="#carousel" data-slide-to="1"></li>
-						<li data-target="#carousel" data-slide-to="2"></li>
-					</ol>
-			
-					<!-- Wrapper for slides -->
-					<div class="carousel-inner" role="listbox">
+			<div id="panes">
+				<div id="pane_1">
+					<div class="pane_content">
+						<img src="res/images/chronometer.png" alt="Cronometri"/>
+						<h3>NUOVO CRONOMETRO DIGITALE 10 MEMORIE</h3>
+					</div>
+				</div>
+				
+				<div id="pane_2">
+					<div class="pane_content">
+						<img src="res/images/cuffie.png" alt="Cuffie piscina"/>
+						<h3>VASTA GAMMA DI CUFFIE POLYESTER</h3>
+					</div>
+				</div>
+				
+				<div id="pane_3">
+					<div class="pane_content">
+						<img src="res/images/volley_ball.png" alt="Palla da pallavolo"/>
+						<h3>SCOPRI IL PALLONE VOLLEY "COMPETITION" IN PELLE SINTETICA MORBIDA</h3>
+					</div>
+				</div>
+			</div>		
+		</div>
+		
+				<!--<div class="carousel-inner" role="listbox">
 						<div class="item active">
 							<img class="wallpaper" src="res/images/running_wall.jpg" alt="Running"/>
 							<div class="carousel-caption">
@@ -77,22 +87,13 @@
 						</div>
 					</div>
 			
-					<!-- Left and right controls -->
-					<a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
-						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-						<span class="sr-only">Previous</span>
-					</a>
-					<a class="right carousel-control" href="#carousel" role="button" data-slide="next">
-						<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-						<span class="sr-only">Next</span>
-					</a>
 				</div>
 			</div>
 			<div id="media">
 				<button type="button" id="play" class="btn btn-success btn-lg">Play</button>
   				<button type="button" id="pause" class="btn btn-danger btn-lg">Stop</button>
 			</div>
-		</div>
+		</div>-->
 				
 		<div id="footer">
 			<p id="administration"><a href="pages/admin.html" alt="Accesso all'area amministrativa"><i class="material-icons md-18">&#xE853;</i>Area Riservata</a></p>

@@ -241,26 +241,37 @@
 		vertical-align: middle;
 	}
 	
-	/*start carousel*/
-	#content_home {
-		margin-top: 2em;
+	/*NEW*/
+	#pane_1 {
+		height: 30em;
+		background-image: url("../res/images/running_wall.jpg");
 	}
 	
-	.carousel-caption h2{
-		padding: 0.2em;
-		background-color: rgba(0, 0, 0, 0.4);
+	#pane_2 {
+		height: 30em;
+		background-image: url("../res/images/nuoto_wall.jpg");
 	}
 	
-	.carousel-caption img {
-		width: 40%;
-		height: 40%;
+	#pane_3 {
+		height: 30em;
+		background-image: url("../res/images/volley_wall.jpg");
 	}
 	
-	#media {
+	.pane_content {
 		text-align: center;
-		margin-top: 1em;
 	}
-	/*end carousel*/
+	
+	.pane_content img {
+		width: 20em;
+	}
+	
+	.pane_content h3 {
+		padding: 2em;
+		color: white;
+		background-color: rgba(0, 0, 0, 0.3);
+	}
+	
+	/*END NEW*/
 	
 	#content {
 		width: 70%;
