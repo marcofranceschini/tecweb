@@ -15,6 +15,13 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css' />
 		<link rel="icon" type="image/png" href="res/images/icon.png" />
+		<script>
+			function scrollDown() {
+    			$('html, body').animate({
+					scrollTop: $("#pane_3").offset().top
+				}, 'slow');
+			};
+		</script>
 	</head>
 	<body>
 		<div id="header">
@@ -39,6 +46,7 @@
 		<div id="content_home">
 			<div id="panes">
 				<div id="pane_1">
+					<img id="next" src="res/images/logo.png" onclick="scrollDown()"/>
 					<div class="pane_content">
 						<img src="res/images/chronometer.png" alt="Cronometri"/>
 						<h3>NUOVO CRONOMETRO DIGITALE 10 MEMORIE</h3>
@@ -46,6 +54,7 @@
 				</div>
 				
 				<div id="pane_2">
+					<img id="next" src="res/images/logo.png" onclick="scrollDown()"/>
 					<div class="pane_content">
 						<img src="res/images/cuffie.png" alt="Cuffie piscina"/>
 						<h3>VASTA GAMMA DI CUFFIE POLYESTER</h3>
@@ -53,6 +62,7 @@
 				</div>
 				
 				<div id="pane_3">
+					<img id="next" src="res/images/logo.png" onclick="scrollDown()"/>
 					<div class="pane_content">
 						<img src="res/images/volley_ball.png" alt="Palla da pallavolo"/>
 						<h3>SCOPRI IL PALLONE VOLLEY "COMPETITION" IN PELLE SINTETICA MORBIDA</h3>
@@ -61,40 +71,6 @@
 			</div>		
 		</div>
 		
-				<!--<div class="carousel-inner" role="listbox">
-						<div class="item active">
-							<img class="wallpaper" src="res/images/running_wall.jpg" alt="Running"/>
-							<div class="carousel-caption">
-								<img src="res/images/chronometer.png" alt="Cronometri"/>
-								<h2>NUOVO CRONOMETRO DIGITALE 10 MEMORIE</h2>
-							</div>
-						</div>
-			
-						<div class="item">
-							<img class="wallpaper" src="res/images/nuoto_wall.jpg" alt="Nuoto"/>
-							<div class="carousel-caption">
-								<img src="res/images/cuffie.png" alt="Cuffie da piscina"/>
-								<h2>VASTA GAMMA DI CUFFIE POLYESTER</h2>
-							</div>
-						</div>
-						
-						<div class="item">
-							<img class="wallpaper" src="res/images/volley_wall.jpg" alt="Volley"/>
-							<div class="carousel-caption">
-								<img src="res/images/volley_ball.png" alt="Palloni da volleyball"/>
-								<h2>SCOPRI IL PALLONE VOLLEY "COMPETITION" IN PELLE SINTETICA MORBIDA</h2>
-							</div>
-						</div>
-					</div>
-			
-				</div>
-			</div>
-			<div id="media">
-				<button type="button" id="play" class="btn btn-success btn-lg">Play</button>
-  				<button type="button" id="pause" class="btn btn-danger btn-lg">Stop</button>
-			</div>
-		</div>-->
-				
 		<div id="footer">
 			<p id="administration"><a href="pages/admin.html" alt="Accesso all'area amministrativa"><i class="material-icons md-18">&#xE853;</i>Area Riservata</a></p>
 			<p id="copy">Copyright &copy; 2016 - All right reserved. Ju Rapida SNC - VIA F. PETRARCA, 14/31100 TREVISO ITALY - P. IVA: 01836040269</p>

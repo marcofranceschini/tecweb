@@ -260,6 +260,10 @@
 		background-image: url("../res/images/volley_wall.jpg");
 	}
 	
+	#next {
+		float: right;
+	}
+	
 	.pane_content {
 		position: absolute;
 		bottom: 0;
