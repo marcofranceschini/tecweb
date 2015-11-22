@@ -260,8 +260,19 @@
 		background-image: url("../res/images/volley_wall.jpg");
 	}
 	
-	#next {
+	#backTop {
 		float: right;
+		margin: 1em;
+	}
+	
+	#backTop img {
+		width: 50%;
+		content: url("../res/images/backTop_icon.png");
+	}
+	
+	#backTop img:hover {
+		opacity: 0.7;
+	    filter: alpha(opacity=70);
 	}
 	
 	.pane_content {
@@ -403,7 +414,6 @@
 		margin-bottom: 2em;
 		margin-right: 9em;
 		font-size: 1em;
-		
 		background: #A00;
 		border: none;
 		padding: 10px 25px 10px 25px;
