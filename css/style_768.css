@@ -165,6 +165,10 @@
 		padding-bottom: 1em;
 	}
 	
+	.pane_content img {		/*---- NEW ---- FIX IMG CHE SFORANO ------------*/
+		max-width: 100%;
+	}
+	
 	#categories {
 		list-style-type: none;
 	}
