@@ -236,6 +236,51 @@
 		padding: 1em;
 	}
 	
+	#content_products {
+		max-width: 100%;
+		width: 18em;
+		margin: auto;
+		padding-top: 2em;
+		padding-bottom: 1em;
+	}
+	
+	.pane_content img {		/*---- NEW ---- FIX IMG CHE SFORANO ------------*/
+		max-width: 100%;
+	}
+	
+	#categories {
+		list-style-type: none;
+		max-width: 100%;
+	}
+	
+	#categories li {
+		display: inline-block;
+		margin-left: 3%;
+		margin-bottom: 6%;
+	}
+	
+	#categories .linked_box {
+		max-width: 100%;
+		width: 8em;
+		padding-top: 2em;
+		padding-bottom: 2em;
+		text-align: center;
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size: 1em;		
+		border-radius: 0.5em;
+		background: lightgray;
+	}
+	
+	#categories .linked_box:hover {
+		background: #A00;
+		color: white;		
+		transition: all 0.5s ;
+		-webkit-transition: all 0.5s ;
+		-o-transition: all 0.5s ;
+		-moz-transition: all 0.5s ;
+	}
+	
 	#content .contacts {
 		text-align: center;
 	}
@@ -275,9 +320,10 @@
 	}
 	
 	#admin_panel {	/* NEW --------------------------------------*/
-		width: 12em;
+		width: 11em;
 		margin: auto;
-		margin-top: 10em;
+		padding-top: 2em;
+		padding-bottom: 2em;
 	}
 	
 	#news {
@@ -289,9 +335,9 @@
 	}
 	
 	#admin_panel .linked_box {
-		width: 5em;
-		padding-top: 1em;
-		padding-bottom: 1em;
+		width: 6em;
+		padding-top: 1.5em;
+		padding-bottom: 1.5em;
 		text-align: center;
 		text-transform: uppercase;
 		font-weight: bold;
