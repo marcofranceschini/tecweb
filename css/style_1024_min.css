@@ -104,11 +104,6 @@
 		font-family: 'Maven Pro', sans-serif;
 	}
 	
-	a {
-		color: black;
-		text-decoration: none;
-	}
-	
 	#header {
 		background: #A00;
 		color: white;
@@ -210,9 +205,12 @@
 		list-style: none;
 	}
 	
-	#current {
-		font-weight: bold;
+	#menu a {
 		text-decoration: none;
+	}
+	
+	#menu li #current {
+		font-weight: bold;
 		padding-bottom: 0.3em;	
 		border-bottom-width: 2px;
 		border-bottom-color: white;
@@ -262,12 +260,11 @@
 	
 	#backTop {
 		float: right;
-		margin: 1em;
+		margin: 2em;
 	}
 	
 	#backTop img {
 		width: 50%;
-		content: url("../res/images/backTop_icon.png");
 	}
 	
 	#backTop img:hover {
@@ -400,9 +397,7 @@
 		width: 17em;
 		height: 7em;
 		float: right;
-		
 		resize: none;
-		
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
 		border-radius: 3px;
@@ -492,29 +487,60 @@
 	#footer {
 		clear: both;
 		float: bottom;
-		width: 80%;
-		margin: auto;
-		margin-top: 2em;
+		text-align: center;
 		padding: 2em;
-		border-top-style: solid;
-		border-top-color: lightgrey;
-		border-top-width: 1px;
 		text-align: center;
 		font-size: 0.8em;
+		background-color: #A00;
+		color: white;
 	}
 	
-	#administration {
-		float: right;
-		font-size: 1em;
+	#maps {
+		padding-left: 2em;
+		padding-right: 2em;
 	}
 	
-	#administration a {
-		color: black;
+	#maps ul {
+		list-style: none;
+	}
+	
+	#maps a {
 		text-decoration: none;
+		color: white;
+		text-transform: uppercase;
 	}
 	
-	#administration a:hover {
-		color: #A00;
+	#maps_menu {
+		float: left;
+		text-align: left;
+		letter-spacing: 0.4em;
+	}
+	
+	#maps_menu li {
+		margin: 0.4em;
+	}
+	
+	#maps_menu li a:hover {
+		color: lightgrey;
+	}
+	
+	#maps_categories {
+		float: left;
+		margin-left: 4em;
+		text-align: left;
+		letter-spacing: 0.4em;
+	}
+	
+	#maps_categories li {
+		margin: 0.4em;
+	}
+	
+	#maps_categories li a:hover {
+		color: lightgrey;
+	}
+	
+	#admin_form {
+		float: right;
 	}
 	
 	#administration i {
@@ -522,9 +548,9 @@
 		padding-right: 0.2em;
 	}
 	
-	#footer .copyright {
-		font-size: 1.3em;
-		vertical-align: middle;
+	#copy_panel {
+		clear: both;
+		margin-top: 16em;
 	}
 	
 	#validation {
