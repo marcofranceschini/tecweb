@@ -539,11 +539,19 @@
 		color: lightgrey;
 	}
 	
-	#admin_form {
+	#admin_form_panel {
 		float: right;
 	}
 	
-	#administration i {
+	#admin_form > fieldset {
+		padding: 1em;
+	}
+	
+	#admin_form legend {
+		padding: 1em;
+	}
+	
+	#admin_form i {
 		vertical-align: middle;
 		padding-right: 0.2em;
 	}
