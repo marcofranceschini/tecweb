@@ -429,8 +429,9 @@
 		padding: 2em;
 	}
 	
-	#content_admin p {
+	#content_admin > p {
 		text-align: center;
+		font-size: 1.1em;
 	}
 
 	#admin_panel {	/* NEW --------------------------------------*/
