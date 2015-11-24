@@ -15,7 +15,7 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css' />
 		<link rel="icon" type="image/png" href="res/images/icon.png" />
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
 	</head>
 	<body>
@@ -90,10 +90,10 @@
 						<fieldset>
 							<legend><i class="material-icons md-18">&#xE853;</i>Area Riservata</legend>
 							<label class="form_item" for="username">Username</label>
-							<input class="form_item" type="text" name="username"/>
+							<input class="form_item" id="username" type="text" name="username"/>
 							<label class="form_item" for="password">Password</label>
-							<input class="form_item" type="password" name="password"/>
-							<input id="submit" type="submit" value="Login">
+							<input class="form_item" id="password" type="password" name="password"/>
+							<input id="submit" type="submit" value="Login" />
 						</fieldset>
 					</form>
 				</div>

@@ -15,7 +15,6 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css' />
 		<link rel="icon" type="image/png" href="../res/images/icon.png" />
-		<script src="../js/function.js"></script>
 	</head>
 	<body>
 		<div id="header">
@@ -48,21 +47,21 @@
 			</div>
 			<div id="form_email">
 				<p>Oppure contattaci ora via <span lang="en">e-mail</span></p>
-				<form action="../cgi/sendmail.pl" method="POST">
+				<form action="../cgi/sendmail.pl" method="post">
 					<div class="form_email_element">
-						<label for="name">Nome &#47; Societ&agrave;</label>
+						<label for="form_email_name">Nome &#47; Societ&agrave;</label>
 						<input type="text" name="name" id="form_email_name" />
 					</div>
 					<div class="form_email_element">
-						<label for="mail"><span lang="en">E-mail</span></label>
+						<label for="form_email_mail"><span lang="en">E-mail</span></label>
 						<input type="text" name="mail" id="form_email_mail" />
 					</div>
 					<div class="form_email_element">
-						<label for="mex">Messaggio</label>
-						<textarea name="mex" id="form_email_mex" maxlength="150";> </textarea>
+						<label for="form_email_mex">Messaggio</label>
+						<textarea name="mex" id="form_email_mex" rows="5" cols="5"> </textarea>
 					</div>
 					<div class="form_email_element">
-						<input type="submit" value="Invia" id="form_email_submit" onclick="sendMail(); return false" />
+						<input type="submit" value="Invia" id="form_email_submit" />
 					</div>
 				</form>
 			</div>
@@ -94,10 +93,10 @@
 						<fieldset>
 							<legend><i class="material-icons md-18">&#xE853;</i>Area Riservata</legend>
 							<label class="form_item" for="username">Username</label>
-							<input class="form_item" type="text" name="username"/>
+							<input class="form_item" id="username" type="text" name="username"/>
 							<label class="form_item" for="password">Password</label>
-							<input class="form_item" type="password" name="password"/>
-							<input id="submit" type="submit" value="Login">
+							<input class="form_item" id="password" type="password" name="password"/>
+							<input id="submit" type="submit" value="Login" />
 						</fieldset>
 					</form>
 				</div>
