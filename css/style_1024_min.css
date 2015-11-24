@@ -488,7 +488,6 @@
 		clear: both;
 		float: bottom;
 		text-align: center;
-		padding: 2em;
 		text-align: center;
 		font-size: 0.8em;
 		background-color: #A00;
@@ -496,8 +495,9 @@
 	}
 	
 	#footer_top {
-		width: 80%;
+		width: 70%;
 		margin: auto;
+		padding: 2em;
 	}
 	
 	#maps {
@@ -574,7 +574,9 @@
 	
 	#copy_panel {
 		clear: both;
-		margin-top: 18em; /*Why ci vuole così tanto per mandarlo giù di poco? Forse per clear both? Boh Boh*/
+		background-color: darkred;
+		margin-top: 16em;
+		padding: 2em;
 	}
 	
 	#validation {
