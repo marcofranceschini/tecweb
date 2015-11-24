@@ -486,8 +486,8 @@
 	
 	#footer {
 		clear: both;
-		float: bottom;
-		text-align: center;
+		position: relative;
+		bottom: 0;
 		text-align: center;
 		font-size: 0.8em;
 		background-color: #A00;
