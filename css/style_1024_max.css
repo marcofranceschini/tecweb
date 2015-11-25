@@ -353,16 +353,85 @@
 	
 	#footer {
 		clear: both;
-		float: bottom;
-		width: 80%;
-		margin: auto;
-		margin-top: 2em;
-		padding: 2em;
-		border-top-style: solid;
-		border-top-color: lightgrey;
-		border-top-width: 1px;
+		position: relative;
+		bottom: 0;
 		text-align: center;
 		font-size: 0.8em;
+		background-color: #A00;
+		color: white;
+	}
+	
+	#footer_top {
+		width: 70%;
+		margin: auto;
+		padding: 2em;
+	}
+	
+	#maps {
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+	
+	#maps ul {
+		list-style: none;
+	}
+	
+	#maps a {
+		text-decoration: none;
+		color: white;
+		text-transform: uppercase;
+	}
+	
+	#maps_menu {
+		float: left;
+		text-align: left;
+		letter-spacing: 0.4em;
+	}
+	
+	#maps_menu li {
+		margin: 0.4em;
+	}
+	
+	#maps_menu li a:hover {
+		color: lightgrey;
+	}
+	
+	#maps_categories {
+		float: left;
+		text-align: left;
+		letter-spacing: 0.4em;
+	}
+	
+	#maps_categories li {
+		margin: 0.4em;
+	}
+	
+	#maps_categories li a:hover {
+		color: lightgrey;
+	}
+	
+	#admin_form_panel {
+		float: right;
+	}
+	
+	#admin_form > fieldset {
+		padding: 1em;
+	}
+	
+	#admin_form legend {
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+	
+	#admin_form i {
+		vertical-align: middle;
+		padding-right: 0.2em;
+	}
+	
+	.form_item {
+		display: block;
+		text-align: left;
+		margin-bottom: 1em;
 	}
 	
 	#administration {
@@ -398,6 +467,13 @@
 	
 	#submit {/*--------------------------------NEW------------------------------------*/
 		
+	}
+	
+	#copy_panel {
+		clear: both;
+		background-color: darkred;
+		margin-top: 16em;
+		padding: 2em;
 	}
 	
 	#footer .copyright {
