@@ -319,7 +319,7 @@
 	}
 	
 	#categories .linked_box {
-		display: inline-block;/*<<<---New ---------------------------------------------------------*/
+		display: inline-block;
 		width: 11em;
 		padding-top: 3.5em;
 		padding-bottom: 3.5em;
