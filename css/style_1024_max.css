@@ -154,22 +154,21 @@
 	#pane_1 {
 		position: relative;
 		height: 25em;
+		width: auto;
 		background-image: url("../res/images/running_wall.jpg");
-		
-		display: block;
-    	margin: 0 auto;
-		resize: both;
 	}
 	
 	#pane_2 {
 		position: relative;
-		height: 30em;
+		height: 25em;
+		width: auto;
 		background-image: url("../res/images/nuoto_wall.jpg");
 	}
 	
 	#pane_3 {
 		position: relative;
-		height: 30em;
+		height: 25em;
+		width: auto;
 		background-image: url("../res/images/volley_wall.jpg");
 	}
 	
@@ -197,7 +196,7 @@
 	
 	.pane_content img {
 		/*width: 34%; ???? USO PERCENTUALE, ALMENO VIENE DECENTEMENTE ANCHE RIDUCENDO LA DIMENSIONE DELLA PAGINA ???*/
-		width: 15em;
+		width: 17em;
 	}
 	
 	.pane_content h3 {
