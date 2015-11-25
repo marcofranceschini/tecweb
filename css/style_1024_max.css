@@ -384,6 +384,22 @@
 		padding-right: 0.2em;
 	}
 	
+	#username {/*--------------------------------NEW------------------------------------*/
+		border: none;
+		box-shadow: 1px 1px 5px #3D3D3D;
+		border-radius: 3px;
+	}
+	
+	#password {/*--------------------------------NEW------------------------------------*/
+		border: none;
+		box-shadow: 1px 1px 5px #3D3D3D;
+		border-radius: 3px;
+	}
+	
+	#submit {/*--------------------------------NEW------------------------------------*/
+		
+	}
+	
 	#footer .copyright {
 		font-size: 1.3em;
 		vertical-align: middle;

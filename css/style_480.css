@@ -408,6 +408,18 @@
 		padding-right: 0.3em;
 	}
 	
+	#username {/*--------------------------------NEW------------------------------------*/
+		border: none;
+		box-shadow: 1px 1px 5px #3D3D3D;
+		border-radius: 3px;
+	}
+	
+	#password {/*--------------------------------NEW------------------------------------*/
+		border: none;
+		box-shadow: 1px 1px 5px #3D3D3D;
+		border-radius: 3px;
+	}
+	
 	#copy {
 		margin-top: 2em;
 	}
