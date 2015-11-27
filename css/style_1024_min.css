@@ -282,6 +282,8 @@
 		padding-bottom: 0.7em;
 		text-decoration: none;
 		color: black;
+		text-transform: uppercase;
+		font-weight: bold;
 	}
 	
 	#backTop:hover {
@@ -290,12 +292,6 @@
 	
 	#backTop i {
 		vertical-align: middle;
-	}
-	
-	#backTop > p {
-		text-transform: uppercase;
-		font-weight: bold;
-		display: inline;
 	}
 	/*END NEW*/
 	
