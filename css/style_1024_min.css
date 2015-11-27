@@ -258,20 +258,6 @@
 		background-image: url("../res/images/volley_wall.jpg");
 	}
 	
-	#backTop {
-		float: right;
-		margin: 2em;
-	}
-	
-	#backTop img {
-		width: 50%;
-	}
-	
-	#backTop img:hover {
-		opacity: 0.7;
-	    filter: alpha(opacity=70); /* Internet Explorer older version - Da errore in validazione perchè è una opzione proprietaria di Microsoft e non presente sui CSS standard */
-	}
-	
 	.pane_content {
 		position: absolute;
 		bottom: 0;
@@ -289,6 +275,28 @@
 		background-color: rgba(0, 0, 0, 0.3);
 	}
 	
+	#backTop {
+		text-align: center;
+		display: block;
+		padding-top: 0.7em;
+		padding-bottom: 0.7em;
+		text-decoration: none;
+		color: black;
+	}
+	
+	#backTop:hover {
+		color: #A00;
+	}
+	
+	#backTop i {
+		vertical-align: middle;
+	}
+	
+	#backTop > p {
+		text-transform: uppercase;
+		font-weight: bold;
+		display: inline;
+	}
 	/*END NEW*/
 	
 	#content {
