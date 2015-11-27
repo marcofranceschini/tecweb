@@ -338,11 +338,15 @@
 		font-size: 1.1em;		
 		border-radius: 0.5em;
 		background: lightgray;
-		color: black;		
+		color: white;
+		text-shadow: 2px 2px 2px black;
+		background-image: url("../res/images/running_wall.jpg");	
+		background-size: 150%;
+		background-repeat: no-repeat;
 	}
 	
 	#categories .linked_box:hover {
-		background: #A00;
+		opacity: 0.7;
 		color: white;		
 		transition: all 0.5s ;
 		-webkit-transition: all 0.5s ;
