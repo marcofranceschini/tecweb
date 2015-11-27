@@ -260,16 +260,19 @@
 	}
 	
 	#categories .linked_box {
+		display: inline-block;
 		max-width: 100%;
 		width: 8em;
 		padding-top: 2em;
 		padding-bottom: 2em;
 		text-align: center;
 		text-transform: uppercase;
+		text-decoration: none;
 		font-weight: bold;
 		font-size: 1em;		
 		border-radius: 0.5em;
 		background: lightgray;
+		color: black;
 	}
 	
 	#categories .linked_box:hover {
@@ -359,7 +362,7 @@
 	}
 	
 	#content_about{
-		width: 90%;
+		width: 80%;
 		margin: auto;
 		padding: 1em;
 	}
@@ -375,23 +378,105 @@
 	}
 	
 	#footer {
-		clear: both;	
-		float: bottom;
-		width: 80%;
-		margin: auto;
-		margin-top: 2em;
-		padding: 2em;
-		border-top-style: solid;
-		border-top-color: lightgrey;
-		border-top-width: 1px;
+		clear: both;
+		position: relative;
+		bottom: 0;
+		text-align: center;
 		font-size: 0.8em;
+		background-color: #A00;
+		color: white;
 	}
 	
-	#administration{
+	#footer_top {
 		width: 90%;
 		margin: auto;
+		padding: 2em;
+	}
+	
+	#maps {
+		padding-left: 0.5em;
+		padding-right: 0.5em;
+	}
+	
+	#maps ul {
+		list-style: none;
+	}
+	
+	#maps a {
+		text-decoration: none;
+		color: white;
+		text-transform: uppercase;
+	}
+	
+	#maps_menu {
+		display: inline-block;
+		vertical-align: top;
+		text-align: left;
+		letter-spacing: 0.4em;
+		margin-left: -3em;
+		padding-right: 1em;
+		padding-bottom: 1em;
+	}
+	
+	#maps_menu li {
+		margin: 0.4em;
+	}
+	
+	#maps_menu li a:hover {
+		color: lightgrey;
+	}
+	
+	#maps_categories {
+		display: inline-block;
+		vertical-align: top;
+		text-align: left;
+		letter-spacing: 0.4em;
+		padding-bottom: 1.5em;
+	}
+	
+	#maps_categories li {
+		margin: 0.4em;
+	}
+	
+	#maps_categories li a:hover {
+		color: lightgrey;
+	}
+	
+	#admin_form_panel {
+		display: inline-block;
+		vertical-align: top;
+	}
+	
+	#admin_form > fieldset {
+		padding: 1em;
+	}
+	
+	#admin_form legend {
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+	
+	#admin_form i {
+		vertical-align: middle;
+		padding-right: 0.2em;
+	}
+	
+	.form_item {
+		display: block;
+		text-align: left;
+		margin-bottom: 1em;
+	}
+	
+	#administration {
+		width: 100%;
+		margin: auto;
 		text-align: center;
+		float: right;
 		font-size: 1em;
+	}
+	
+	#administration {		
+		padding-bottom: 2em;
 	}
 	
 	#administration a {
@@ -405,32 +490,32 @@
 	
 	#administration i {
 		vertical-align: middle;
-		padding-right: 0.3em;
+		padding-right: 0.2em;
 	}
 	
-	#username {/*--------------------------------NEW------------------------------------*/
+	#username {
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
 		border-radius: 3px;
 	}
 	
-	#password {/*--------------------------------NEW------------------------------------*/
+	#password {
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
 		border-radius: 3px;
 	}
 	
-	#copy {
-		margin-top: 2em;
+	#copy_panel {
+		clear: both;
+		background-color: darkred;
+		padding: 2em;
 	}
 	
 	#validation {
-		padding-top: 1em;
-		text-align: center;
+		padding-top: 2em;
 	}
 	
-	#validation span{
-		margin-left: 1em;
-		margin-right: 1em;
+	#xhtml_valid {
+		padding-right: 4em;
 	}
 }

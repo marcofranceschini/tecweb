@@ -258,20 +258,6 @@
 		background-image: url("../res/images/volley_wall.jpg");
 	}
 	
-	#backTop {
-		float: right;
-		margin: 2em;
-	}
-	
-	#backTop img {
-		width: 50%;
-	}
-	
-	#backTop img:hover {
-		opacity: 0.7;
-	    filter: alpha(opacity=70); /* Internet Explorer older version - Da errore in validazione perchè è una opzione proprietaria di Microsoft e non presente sui CSS standard */
-	}
-	
 	.pane_content {
 		position: absolute;
 		bottom: 0;
@@ -289,6 +275,24 @@
 		background-color: rgba(0, 0, 0, 0.3);
 	}
 	
+	#backTop {
+		text-align: center;
+		display: block;
+		padding-top: 0.7em;
+		padding-bottom: 0.7em;
+		text-decoration: none;
+		color: black;
+		text-transform: uppercase;
+		font-weight: bold;
+	}
+	
+	#backTop:hover {
+		color: #A00;
+	}
+	
+	#backTop i {
+		vertical-align: middle;
+	}
 	/*END NEW*/
 	
 	#content {
@@ -319,19 +323,26 @@
 	}
 	
 	#categories .linked_box {
+		display: inline-block;
 		width: 11em;
 		padding-top: 3.5em;
 		padding-bottom: 3.5em;
 		text-align: center;
 		text-transform: uppercase;
+		text-decoration: none;
 		font-weight: bold;
 		font-size: 1.1em;		
 		border-radius: 0.5em;
 		background: lightgray;
+		color: white;
+		text-shadow: 2px 2px 2px black;
+		background-image: url("../res/images/running_wall.jpg");	
+		background-size: 150%;
+		background-repeat: no-repeat;
 	}
 	
 	#categories .linked_box:hover {
-		background: #A00;
+		opacity: 0.7;
 		color: white;		
 		transition: all 0.5s ;
 		-webkit-transition: all 0.5s ;
@@ -571,12 +582,14 @@
 	
 	#username {/*--------------------------------NEW------------------------------------*/
 		border: none;
+		height: 1.5em;
 		box-shadow: 1px 1px 5px #3D3D3D;
 		border-radius: 3px;
 	}
 	
 	#password {/*--------------------------------NEW------------------------------------*/
 		border: none;
+		height: 1.5em;
 		box-shadow: 1px 1px 5px #3D3D3D;
 		border-radius: 3px;
 	}

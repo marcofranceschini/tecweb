@@ -241,15 +241,18 @@
 	}
 	
 	#categories .linked_box {
+		display: inline-block;
 		width: 11em;
 		padding-top: 3.5em;
 		padding-bottom: 3.5em;
 		text-align: center;
 		text-transform: uppercase;
+		text-decoration: none;
 		font-weight: bold;
 		font-size: 1.1em;		
 		border-radius: 0.5em;
 		background: lightgray;
+		color: black;
 	}
 	
 	#categories .linked_box:hover {
