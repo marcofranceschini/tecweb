@@ -237,11 +237,11 @@
 	}
 	
 	#content_products {
-		max-width: 100%;
-		width: 18em;
+		width: 90%;
 		margin: auto;
+		text-align: center;
 		padding-top: 2em;
-		padding-bottom: 1em;
+		padding-bottom: 2em;
 	}
 	
 	.pane_content img {		/*---- NEW ---- FIX IMG CHE SFORANO ------------*/
@@ -325,49 +325,48 @@
 	}
 	
 	#form_email {	
-		padding: 2em;
+		width: 90%;
 		margin: auto;
-		width: 26em;
+		padding-top: 2em;
+		padding-bottom: 2em;
 	}
 	
 	.form_email_element {
 		padding: 1em;	
 	}
 	
+	.form_email_element > label {
+		display: block;
+		margin-bottom: 1em;	
+	}
+	
 	#form_email_name {	
-		width: 17em;
-		height: 2em;
-		float: right;
+		width: 100%;
+		padding: 0.5em;
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;	
-		border-radius: 3px;	
+		border-radius: 3px;
 	}
 	
 	#form_email_mail {	
-		width: 17em;
-		height: 2em;
-		float: right;
-		
+		width: 100%;
+		padding: 0.5em;
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
 		border-radius: 3px;
 	}
 	
-	#form_email_mex {	/* NEW --------------------------------------*/
-		width: 17em;
-		height: 7em;
-		float: right;
+	#form_email_mex {	
+		width: 100%;
+		padding: 0.5em;
 		resize: none;
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
 		border-radius: 3px;
 	}
 	
-	#form_email_submit {	/* NEW --------------------------------------*/
+	#form_email_submit {
 		float: right;
-		margin-top: 2em;
-		margin-bottom: 2em;
-		margin-right: 9em;
 		font-size: 1em;
 		background: #A00;
 		border: none;
@@ -376,10 +375,10 @@
 		border-radius: 3px;
 		text-shadow: 1px 1px 1px #9E3F3F;
 		cursor: pointer;
-		 color: #FFF;
+		color: #FFF;
 	}
 	
-	#form_email_submit:hover{	/* NEW --------------------------------------*/
+	#form_email_submit:hover{
 		background: darkred;
 	}
 	
@@ -433,7 +432,7 @@
 	}
 	
 	#content_about{
-		width: 80%;
+		width: 90%;
 		margin: auto;
 		padding: 1em;
 	}
