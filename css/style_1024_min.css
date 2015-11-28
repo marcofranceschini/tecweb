@@ -350,6 +350,17 @@
 		-moz-transition: all 0.5s ;
 	}
 	
+	#content_contacts {
+		width: 80%;
+		margin: auto;
+		padding: 2em;
+	}
+	
+	#content_contacts p {
+		padding: 1em;
+		text-align: center;
+	}
+	
 	#contact_list {
 		width: 23em;
 		margin: auto;

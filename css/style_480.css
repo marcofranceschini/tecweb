@@ -284,7 +284,19 @@
 		-moz-transition: all 0.5s ;
 	}
 	
-	#content .contacts {
+	#content_contacts {
+		width: 90%;
+		margin: auto;
+		padding-top: 2em;
+		padding-bottom: 2em;
+	}
+	
+	#content_contacts p {
+		padding: 1em;
+		text-align: center;
+	}
+	
+	#content_contacts .contacts {
 		text-align: center;
 	}
 	
