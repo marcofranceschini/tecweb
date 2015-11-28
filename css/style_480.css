@@ -312,6 +312,65 @@
 		text-align: right;
 	}
 	
+	#form_email {	
+		padding: 2em;
+		margin: auto;
+		width: 26em;
+	}
+	
+	.form_email_element {
+		padding: 1em;	
+	}
+	
+	#form_email_name {	
+		width: 17em;
+		height: 2em;
+		float: right;
+		border: none;
+		box-shadow: 1px 1px 5px #3D3D3D;	
+		border-radius: 3px;	
+	}
+	
+	#form_email_mail {	
+		width: 17em;
+		height: 2em;
+		float: right;
+		
+		border: none;
+		box-shadow: 1px 1px 5px #3D3D3D;
+		border-radius: 3px;
+	}
+	
+	#form_email_mex {	/* NEW --------------------------------------*/
+		width: 17em;
+		height: 7em;
+		float: right;
+		resize: none;
+		border: none;
+		box-shadow: 1px 1px 5px #3D3D3D;
+		border-radius: 3px;
+	}
+	
+	#form_email_submit {	/* NEW --------------------------------------*/
+		float: right;
+		margin-top: 2em;
+		margin-bottom: 2em;
+		margin-right: 9em;
+		font-size: 1em;
+		background: #A00;
+		border: none;
+		padding: 10px 25px 10px 25px;
+		box-shadow: 1px 1px 5px #B6B6B6;
+		border-radius: 3px;
+		text-shadow: 1px 1px 1px #9E3F3F;
+		cursor: pointer;
+		 color: #FFF;
+	}
+	
+	#form_email_submit:hover{	/* NEW --------------------------------------*/
+		background: darkred;
+	}
+	
 	#content_admin {
 		width: 80%;
 		margin: auto;

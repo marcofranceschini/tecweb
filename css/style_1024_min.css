@@ -577,7 +577,6 @@
 	.form_item {
 		display: block;
 		text-align: left;
-		margin-bottom: 1em;
 	}
 	
 	#username {/*--------------------------------NEW------------------------------------*/
@@ -585,6 +584,9 @@
 		height: 1.5em;
 		box-shadow: 1px 1px 5px #3D3D3D;
 		border-radius: 3px;
+		margin-bottom: 1.5em;
+		padding: 0.5em; /*testo spostato a dx*/
+		height: 0.5em; /*padding ingrandisce il form, così lo riduco*/
 	}
 	
 	#password {/*--------------------------------NEW------------------------------------*/
@@ -592,6 +594,9 @@
 		height: 1.5em;
 		box-shadow: 1px 1px 5px #3D3D3D;
 		border-radius: 3px;
+		margin-bottom: 0.5em;
+		padding: 0.5em; /*testo spostato a dx*/
+		height: 0.5em; /*padding ingrandisce il form, così lo riduco*/
 	}
 	
 	#submit {/*--------------------------------NEW------------------------------------*/
@@ -602,6 +607,7 @@
 		border-radius: 3px;
 		cursor: pointer;
 		color: black;
+		margin-top: 1em;
 	}
 	
 	#submit:hover{	/* NEW --------------------------------------*/
