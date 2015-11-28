@@ -517,6 +517,10 @@
 		color: black;	
 	}
 	
+	#submit:hover{	/* NEW --------------------------------------*/
+		background: #9d9d9d;
+	}
+	
 	#copy_panel {
 		clear: both;
 		background-color: darkred;
