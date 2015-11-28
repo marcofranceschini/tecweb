@@ -211,6 +211,25 @@
 		background-color: rgba(0, 0, 0, 0.3);
 	}
 	
+	#backTop {
+		margin-right: 14em; /* Da rivedere*/
+		display: block;
+		padding-top: 0.7em;
+		padding-bottom: 0.7em;
+		text-decoration: none;
+		color: black;
+		text-transform: uppercase;
+		font-weight: bold;
+	}
+	
+	#backTop:hover {
+		color: #A00;
+	}
+	
+	#backTop i {
+		vertical-align: middle;
+	}
+	
 	/*END NEW*/
 	
 	#content {
