@@ -7,7 +7,8 @@ use HTML::Entities;
 
 sub createSession() { # Per creare una sessione
 $session = new CGI::Session();
-$session->param('user', $user, 'psw', $psw);
+$session->param('user', $user);
+$session->param('psw', $psw);
 #print $session->header(-location=>"$base");
 }
 
