@@ -237,11 +237,11 @@
 	}
 	
 	#content_products {
-		max-width: 100%;
-		width: 18em;
+		width: 90%;
 		margin: auto;
+		text-align: center;
 		padding-top: 2em;
-		padding-bottom: 1em;
+		padding-bottom: 2em;
 	}
 	
 	.pane_content img {		/*---- NEW ---- FIX IMG CHE SFORANO ------------*/
