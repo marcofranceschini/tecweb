@@ -437,7 +437,7 @@
 	
 	.cat_label {
 		display: inline-block;
-		background-image: url("../res/images/black_bg.png");
+		background-color: rgba(0, 0, 0, 0.55);
 		width: 100%;
 		text-align: center;
 		text-transform: uppercase;
