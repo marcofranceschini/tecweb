@@ -505,6 +505,18 @@
 		border-radius: 3px;
 	}
 	
+	#submit {/*--------------------------------NEW------------------------------------*/
+		background: #c3c3c3;
+		border: none;
+		padding: 5px 20px 5px 20px;
+		box-shadow: 1px 1px 3px #3D3D3D;
+		border-radius: 1px;
+		text-shadow: 1px 1px 1px #3D3D3D;
+		cursor: pointer;
+		color: black;
+		
+	}
+	
 	#copy_panel {
 		clear: both;
 		background-color: darkred;
