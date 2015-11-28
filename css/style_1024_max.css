@@ -249,11 +249,6 @@
 		width: 11em;
 		padding-top: 3.5em;
 		padding-bottom: 3.5em;
-		text-align: center;
-		text-transform: uppercase;
-		text-decoration: none;
-		font-weight: bold;
-		font-size: 1.1em;		
 		border-radius: 0.5em;
 		color: white;
 		text-shadow: 0px 3px 3px black, 0px 0px 3px black, 2px 0px 3px black, -2px 0px 3px black;
@@ -365,6 +360,11 @@
 		display: inline-block;
 		background-image: url("../res/images/black_bg.png");
 		width: 100%;
+		text-align: center;
+		text-transform: uppercase;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 1.1em;		
 	}
 	
 	#content_contacts {

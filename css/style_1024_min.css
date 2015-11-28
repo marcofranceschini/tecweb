@@ -322,22 +322,17 @@
 		margin-bottom: 3%;
 	}
 	
-	#categories .linked_box {
+	#categories .linked_box {		/* ---------------- UPDATE ---------------------------------------*/
 		display: inline-block;
 		width: 11em;
 		padding-top: 3.5em;
-		padding-bottom: 3.5em;
-		text-align: center;
-		text-transform: uppercase;
-		text-decoration: none;
-		font-weight: bold;
-		font-size: 1.1em;		
+		padding-bottom: 3.5em;	
 		border-radius: 0.5em;
 		color: white;
 		text-shadow: 0px 3px 3px black, 0px 0px 3px black, 2px 0px 3px black, -2px 0px 3px black;
 	}
 	
-	#categories .linked_box:hover {
+	#categories .linked_box:hover {		/* ---------------- UPDATE ---------------------------------------*/
 		transition: all 0.5s ;
 		-webkit-transition: all 0.5s ;
 		-o-transition: all 0.5s ;
@@ -444,6 +439,11 @@
 		display: inline-block;
 		background-image: url("../res/images/black_bg.png");
 		width: 100%;
+		text-align: center;
+		text-transform: uppercase;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 1.1em;	
 	}
 	
 	/*--------- END NEW -------------------------------------------------- */
