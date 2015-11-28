@@ -285,13 +285,11 @@
 	}
 	
 	#content_contacts {
-		max-width: 100%;
 		padding-top: 2em;
 		padding-bottom: 2em;
 	}
 	
 	#content_contacts p {
-
 		padding: 1em;
 		text-align: center;
 	}
