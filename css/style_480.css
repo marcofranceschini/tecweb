@@ -226,6 +226,62 @@
 		vertical-align: middle;
 	}
 	
+	/*NEW*/
+	#pane_1 {
+		position: relative;
+		height: 30em;
+		background-image: url("../res/images/running_wall.jpg");
+	}
+	
+	#pane_2 {
+		position: relative;
+		height: 30em;
+		background-image: url("../res/images/nuoto_wall.jpg");
+	}
+	
+	#pane_3 {
+		position: relative;
+		height: 30em;
+		background-image: url("../res/images/volley_wall.jpg");
+	}
+	
+	.pane_content {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		text-align: center;
+	}
+	
+	.pane_content img {
+		width: 20em;
+	}
+	
+	.pane_content h3 {
+		padding: 2em;
+		color: white;
+		background-color: rgba(0, 0, 0, 0.3);
+	}
+	
+	#backTop {
+		text-align: center;
+		display: block;
+		padding-top: 0.7em;
+		padding-bottom: 0.7em;
+		text-decoration: none;
+		color: black;
+		text-transform: uppercase;
+		font-weight: bold;
+	}
+	
+	#backTop:hover {
+		color: #A00;
+	}
+	
+	#backTop i {
+		vertical-align: middle;
+	}
+	/*END NEW*/
+	
 	#content {
 		width: 80%;
 		margin: auto;
