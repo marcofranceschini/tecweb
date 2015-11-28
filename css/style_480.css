@@ -1,94 +1,3 @@
-@font-face {
-    font-family: sansation_regular;
-    src: url('../res/fonts/Sansation_Regular.ttf');
-}
-
-@font-face {
-	font-family: sansation_bold;
-	src: url('../res/fonts/Sansation_Bold.ttf');
-}
-
-@-moz-keyframes fadeInDown {	/*NEW -------------------------------------*/
-	0% { opacity: 0; -moz-transform: translateY(-2em); }
-	100% { opacity: 1; transform: translateY(0); } 
-}
-	
-@-webkit-keyframes fadeInDown {	/*NEW -------------------------------------*/
-	0% { opacity: 0; -webkit-transform: translateY(-2em); }
-	100% { opacity: 1; transform: translateY(0); }
-}
-	
-@keyframes fadeInDown {	/*NEW -------------------------------------*/
-	0% { opacity: 0; transform: translateY(-2em); }
-	100% { opacity: 1; transform: translateY(0); }
-}
-
-.fadeInDown {
-		-moz-animation-name: fadeInDown;
-		-webkit-animation-name: fadeInDown; 
-    	animation-name: fadeInDown;		
-		-moz-animation-duration: 1.5s;
-		-webkit-animation-duration: 1.5s;
-		animation-duration: 1.5s;		
-		-moz-animation-fill-mode: both;
-		-webkit-animation-fill-mode: both;
-		animation-fill-mode: both;
-}
-
-@-moz-keyframes fadeInLeft {	/*NEW -------------------------------------*/
-	0% { opacity: 0; -moz-transform: translateX(-10em); }
-	100% { opacity: 1; transform: translateX(0); } 
-}
-	
-@-webkit-keyframes fadeInLeft {	/*NEW -------------------------------------*/
-	0% { opacity: 0.5; -webkit-transform: translateX(-10em); }
-	100% { opacity: 1; transform: translateX(0); }
-}
-	
-@keyframes fadeInLeft {	/*NEW -------------------------------------*/
-	0% { opacity: 0; transform: translateX(-10em); }
-	100% { opacity: 1; transform: translateX(0); }
-}
-
-.fadeInLeft {
-		-moz-animation-name: fadeInLeft;
-		-webkit-animation-name: fadeInLeft; 
-    	animation-name: fadeInLeft;		
-		-moz-animation-duration: 1.5s;
-		-webkit-animation-duration: 1.5s;
-		animation-duration: 1.5s;		
-		-moz-animation-fill-mode: both;
-		-webkit-animation-fill-mode: both;
-		animation-fill-mode: both;
-}
-
-@-moz-keyframes fadeInRight {	/*NEW -------------------------------------*/
-	0% { opacity: 0; -moz-transform: translateX(10em); }
-	100% { opacity: 1; transform: translateX(0); } 
-}
-	
-@-webkit-keyframes fadeInRight {	/*NEW -------------------------------------*/
-	0% { opacity: 0; -webkit-transform: translateX(10em); }
-	100% { opacity: 1; transform: translateX(0); }
-}
-	
-@keyframes fadeInRight {	/*NEW -------------------------------------*/
-	0% { opacity: 0; transform: translateX(10em); }
-	100% { opacity: 1; transform: translateX(0); }
-}
-
-.fadeInRight {
-		-moz-animation-name: fadeInRight;
-		-webkit-animation-name: fadeInRight; 
-    	animation-name: fadeInRight;		
-		-moz-animation-duration: 1.5s;
-		-webkit-animation-duration: 1.5s;
-		animation-duration: 1.5s;		
-		-moz-animation-fill-mode: both;
-		-webkit-animation-fill-mode: both;
-		animation-fill-mode: both;
-}
-
 @media screen and (max-width: 480px) {			
 	* {
 		margin: 0;
@@ -327,17 +236,123 @@
 		font-weight: bold;
 		font-size: 1em;		
 		border-radius: 0.5em;
-		background: lightgray;
-		color: black;
+		color: white;
+		text-shadow: 0px 3px 3px black, 0px 0px 3px black, 2px 0px 3px black, -2px 0px 3px black;
 	}
 	
 	#categories .linked_box:hover {
-		background: #A00;
-		color: white;		
 		transition: all 0.5s ;
 		-webkit-transition: all 0.5s ;
 		-o-transition: all 0.5s ;
 		-moz-transition: all 0.5s ;
+	}
+	
+	#categories .linked_box:hover {
+		transition: all 0.5s ;
+		-webkit-transition: all 0.5s ;
+		-o-transition: all 0.5s ;
+		-moz-transition: all 0.5s ;
+	}
+	
+	#cat_calcio {
+		background-image: url("../res/images/thumbnails/calcio3_thumbnail.png");		
+		background-size: 110%;
+		background-repeat: no-repeat;
+	}
+	
+	#cat_calcio:hover {
+		background-image: url("../res/images/thumbnails/calcio3_thumbnail_trasparente.png");	
+	}
+	
+	#cat_basket {
+		background-image: url("../res/images/thumbnails/basket_thumbnail.png");		
+		background-size: 100%;
+		background-repeat: no-repeat;
+	}
+	
+	#cat_basket:hover {
+		background-image: url("../res/images/thumbnails/basket_thumbnail_trasparente.png");
+	}
+	
+	#cat_volley {
+		background-image: url("../res/images/thumbnails/volley_thumbnail.png");		
+		background-size: 100%;
+		background-repeat: no-repeat;
+	}
+	
+	#cat_volley:hover {
+		background-image: url("../res/images/thumbnails/volley_thumbnail_trasparente.png");	
+	}
+	
+	#cat_tennistavolo {
+		background-image: url("../res/images/thumbnails/pingpong_thumbnail.png");		
+		background-size: 110%;
+		background-repeat: no-repeat;
+	}
+	
+	#cat_tennistavolo:hover {
+		background-image: url("../res/images/thumbnails/pingpong_thumbnail_trasparente.png");
+	}
+	
+	#cat_nuoto {
+		background-image: url("../res/images/thumbnails/nuoto_thumbnail.png");		
+		background-size: 150%;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	
+	#cat_nuoto:hover {
+		background-image: url("../res/images/thumbnails/nuoto_thumbnail_trasparente.png");
+	}
+	
+	#cat_minigolf {
+		background-image: url("../res/images/thumbnails/minigolf_thumbnail.png");		
+		background-size: 150%;
+		background-repeat: no-repeat;
+		background-position: left;
+	}
+	
+	#cat_minigolf:hover {
+		background-image: url("../res/images/thumbnails/minigolf_thumbnail_trasparente.png");	
+	}
+	
+	#cat_calciobalilla {
+		background-image: url("../res/images/thumbnails/calciobalilla_thumbnail.png");		
+		background-size: 120%;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	
+	#cat_calciobalilla:hover {
+		background-image: url("../res/images/thumbnails/calciobalilla_thumbnail_trasparente.png");	
+	}
+	
+	#cat_protezioni {
+		background-image: url("../res/images/thumbnails/protezioni_thumbnail.png");		
+		background-size: 130%;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	
+	#cat_protezioni:hover {
+		background-image: url("../res/images/thumbnails/protezioni_thumbnail_trasparente.png");	
+	}
+	
+	#cat_accessori {
+		background-image: url("../res/images/thumbnails/accessori_thumbnail.png");		
+		background-size: 135%;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	
+	#cat_accessori:hover {
+		background-image: url("../res/images/thumbnails/accessori_thumbnail_trasparente.png");	
+	}
+	
+	.cat_label {
+		display: inline-block;
+		background-image: url("../res/images/black_bg.png");
+		width: 100%;
 	}
 	
 	#content_contacts {

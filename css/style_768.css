@@ -244,17 +244,116 @@
 		font-weight: bold;
 		font-size: 1.1em;		
 		border-radius: 0.5em;
-		background: lightgray;
-		color: black;
+		color: white;
+		text-shadow: 0px 3px 3px black, 0px 0px 3px black, 2px 0px 3px black, -2px 0px 3px black;
 	}
 	
 	#categories .linked_box:hover {
-		background: #A00;
-		color: white;		
 		transition: all 0.5s ;
 		-webkit-transition: all 0.5s ;
 		-o-transition: all 0.5s ;
 		-moz-transition: all 0.5s ;
+	}
+	
+	#cat_calcio {
+		background-image: url("../res/images/thumbnails/calcio3_thumbnail.png");		
+		background-size: 110%;
+		background-repeat: no-repeat;
+	}
+	
+	#cat_calcio:hover {
+		background-image: url("../res/images/thumbnails/calcio3_thumbnail_trasparente.png");	
+	}
+	
+	#cat_basket {
+		background-image: url("../res/images/thumbnails/basket_thumbnail.png");		
+		background-size: 100%;
+		background-repeat: no-repeat;
+	}
+	
+	#cat_basket:hover {
+		background-image: url("../res/images/thumbnails/basket_thumbnail_trasparente.png");
+	}
+	
+	#cat_volley {
+		background-image: url("../res/images/thumbnails/volley_thumbnail.png");		
+		background-size: 100%;
+		background-repeat: no-repeat;
+	}
+	
+	#cat_volley:hover {
+		background-image: url("../res/images/thumbnails/volley_thumbnail_trasparente.png");	
+	}
+	
+	#cat_tennistavolo {
+		background-image: url("../res/images/thumbnails/pingpong_thumbnail.png");		
+		background-size: 110%;
+		background-repeat: no-repeat;
+	}
+	
+	#cat_tennistavolo:hover {
+		background-image: url("../res/images/thumbnails/pingpong_thumbnail_trasparente.png");
+	}
+	
+	#cat_nuoto {
+		background-image: url("../res/images/thumbnails/nuoto_thumbnail.png");		
+		background-size: 150%;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	
+	#cat_nuoto:hover {
+		background-image: url("../res/images/thumbnails/nuoto_thumbnail_trasparente.png");
+	}
+	
+	#cat_minigolf {
+		background-image: url("../res/images/thumbnails/minigolf_thumbnail.png");		
+		background-size: 150%;
+		background-repeat: no-repeat;
+		background-position: left;
+	}
+	
+	#cat_minigolf:hover {
+		background-image: url("../res/images/thumbnails/minigolf_thumbnail_trasparente.png");	
+	}
+	
+	#cat_calciobalilla {
+		background-image: url("../res/images/thumbnails/calciobalilla_thumbnail.png");		
+		background-size: 120%;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	
+	#cat_calciobalilla:hover {
+		background-image: url("../res/images/thumbnails/calciobalilla_thumbnail_trasparente.png");	
+	}
+	
+	#cat_protezioni {
+		background-image: url("../res/images/thumbnails/protezioni_thumbnail.png");		
+		background-size: 130%;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	
+	#cat_protezioni:hover {
+		background-image: url("../res/images/thumbnails/protezioni_thumbnail_trasparente.png");	
+	}
+	
+	#cat_accessori {
+		background-image: url("../res/images/thumbnails/accessori_thumbnail.png");		
+		background-size: 135%;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	
+	#cat_accessori:hover {
+		background-image: url("../res/images/thumbnails/accessori_thumbnail_trasparente.png");	
+	}
+	
+	.cat_label {
+		display: inline-block;
+		background-image: url("../res/images/black_bg.png");
+		width: 100%;
 	}
 	
 	#content_contacts {
