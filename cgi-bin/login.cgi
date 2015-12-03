@@ -12,6 +12,7 @@ $password = @password[1];
 
 if ($username eq "admin" && $password eq "admin") {
 	print "GG WP";
+	print "<script>location.replace(\"pages\admin.html\")</script>";
 } else {
 	print "ERROR";
 }
