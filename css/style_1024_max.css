@@ -411,33 +411,38 @@
 		padding: 1em;	
 	}
 	
-	#form_email_name {	/* NEW --------------------------------------*/
-		width: 17em;
-		height: 2em;
+	#form_email_name {	
+		width: 15em;
+		height: 1.5em;
+		font-size: 1em;
+		padding-left: 0.5em;
+		padding-right: 0.5em;
 		float: right;
-		
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;	
 		border-radius: 3px;	
 	}
 	
-	#form_email_mail {	/* NEW --------------------------------------*/
-		width: 17em;
-		height: 2em;
+	#form_email_mail {	
+		width: 15em;
+		height: 1.5em;
+		font-size: 1em;
+		padding-left: 0.5em;
+		padding-right: 0.5em;
 		float: right;
-		
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
 		border-radius: 3px;
 	}
 	
-	#form_email_mex {	/* NEW --------------------------------------*/
-		width: 17em;
-		height: 7em;
+	#form_email_mex {
+		width: 15em;
+		height: 8em;
+		font-size: 1em;
+		padding-left: 0.5em;
+		padding-right: 0.5em;
 		float: right;
-		
 		resize: none;
-		
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
 		border-radius: 3px;
