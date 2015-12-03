@@ -401,10 +401,9 @@
 	}
 	
 	#form_email_name {
-		width: 17em;
-		height: 2em;
+		width: 30%;
 		float: right;
-		
+		padding: 0.5;
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;	
 		border-radius: 3px;	
@@ -414,7 +413,7 @@
 		width: 17em;
 		height: 2em;
 		float: right;
-		
+		padding: 0.5;
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
 		border-radius: 3px;
