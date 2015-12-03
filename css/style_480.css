@@ -656,6 +656,7 @@
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
 		border-radius: 3px;
+		margin-top: 0.2em;
 		padding-left: 0.5em;
 		padding-right: 0.5em;
 	}
@@ -666,6 +667,7 @@
 		padding: 5px 20px 5px 20px;
 		box-shadow: 1px 1px 3px #3D3D3D;
 		border-radius: 3px;
+		margin-top: 0.2em;
 		cursor: pointer;
 		color: black;	
 	}
