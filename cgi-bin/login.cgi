@@ -1,3 +1,5 @@
+#!C:/xampp/perl/bin/perl.exe
+
 #!/usr/bin/perl
 
 print "Content-Type: text/html\n\n";
@@ -12,7 +14,7 @@ $password = @password[1];
 
 if ($username eq "admin" && $password eq "admin") {
 	print "GG WP";
-	print "<script>location.replace(\"pages\admin.html\")</script>";
+	print "<script>location.replace(\"../pages/admin.html\")</script>";		#attenzione agli slash e al percorso
 } else {
 	print "ERROR";
 }
