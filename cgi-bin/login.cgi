@@ -3,13 +3,8 @@
 #!C:/xampp/perl/bin/perl.exe
  
 use CGI;
+use CGI::Session;
 use warnings;
-
-#sub createSession($name, $value) {
-#	$session = new CGI::Session();
-#	$session->param($name, $value);
-#	print $session->header(-location=>"$base");
-#}
 
 #sub getSession($name) {
 #	$session = CGI::Session->load() or die $!;
@@ -40,7 +35,7 @@ $username = @username[1];
 $password = @password[1];
  
 
- if ($username eq "admin" && $password eq "admin") {
+if ($username eq "admin" && $password eq "admin") {
 	#print "GG WP";
 	#print "<script>location.replace(\"../pages/admin.html\")</script>";		#attenzione agli slash e al percorso
 	#$query = new CGI;
@@ -48,24 +43,22 @@ $password = @password[1];
 	#print $query->redirect('http://www.devdaily.com/');
 	#print $query->header(-location => 'http://www.goolge.it');
 	
-	#my $session = new CGI::Session("driver:File", undef, {Directory=>'/tmp'});
+	my $s = new CGI::Session("driver:File", undef, {Directory=>'/tmp'});
 	#my $ses_id = $session->id();
-	print $username;
-	$session = CGI::Session->new();
-	$session->param('user', ''+$username);
-	$session->param('pass', ''+$password);
-	print ""+$session->param('user');
+	#print $username;
+	#$session = CGI::Session->new();
+	    
+	#$session = new CGI::Session("driver:File", $cgi, {Directory=>'/tmp'});
 
+	#$s = CGI::Session->new();
+    #$s = CGI::Session->new("driver:file", $sid);
+    #$s = CGI::Session->new("driver:file", $sid, {Directory=>'/tmp'});
+	#my $sid = $cgi->cookie("CGISESSID") || undef;
+	#my $s = new CGI::Session(undef, $sid, {Directory=>'/tmp'});
 
-
-	
-	#$page = new CGI;
-	#$nome_utente = $page->param('user', $username),
-	#createSession('user', $username);
-	#$page = new CGI;
-	#ricava il contenuto del widget ‘utente’
-	#$nome_utente = $page->param('pass', $password),
-	#createSession('pass', $password);
+	$s->param('user', $username);
+	$s->param('pass', $password);
+	print $s->param('user');
 	
 	#print "GG WP";
 	#print "<script>location.replace(\"../pages/admin.html\")</script>";		#attenzione agli slash e al percorso
