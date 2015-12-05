@@ -1,6 +1,6 @@
 #!C:/xampp/perl/bin/perl.exe
  
- #!/usr/bin/perl
+#!/usr/bin/perl
  
 use CGI;
 use warnings;
