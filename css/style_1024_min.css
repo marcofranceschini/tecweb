@@ -179,6 +179,7 @@
 	
 	#admin_back {		/*NEW -------------------------------------*/
 		float: left;
+		text-decoration: none;
 		background-image: url("../res/images/corona_bianca.png");
 		background-repeat: no-repeat;
 		background-position: 0 -0.1em;
