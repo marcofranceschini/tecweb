@@ -1,11 +1,20 @@
-#!C:/xampp/perl/bin/perl.exe
-
 #!/usr/bin/perl
 
-use CGI;
-use warnings;
+#!C:/xampp/perl/bin/perl.exe
 
-print "Content-Type: text/html\n\n";
+#use warnings;
+
+#my $filename = "../pages/admin.html";  #whatever
+#system("start file://$filename");
+
+#$file = "filehandle";
+#$FileName = "../pages/admin.html";
+#open(file, $FileName) or die "cannot open < input.txt: $!";
+
+#use CGI;
+#$query=../pages/admin.html;
+#print $query->redirect('../pages/admin.html'); #deve essere la prima cosa che si stampa altrimenti non funziona
+
 
 read(STDIN, $buffer, $ENV{'CONTENT_LENGTH'});
 
@@ -16,16 +25,9 @@ $username = @username[1];
 $password = @password[1];
 
 if ($username eq "admin" && $password eq "admin") {
-	$query = new CGI;
-	#print $query->redirect('http://www.devdaily.com/');
-	print $query->header(-location => 'http://www.goolge.it');
-	
-	
-	#print "GG WP";
-	#print "<script>location.replace(\"../pages/admin.html\")</script>";		#attenzione agli slash e al percorso
-	#print redirect(-url=>'../pages/admin.html');
-	#$url = "../pages/admin.html";
-	#open(FILE, $url) || die "errore nella open\n\n";
-} else {
+	print "GG WP";
+	#print "<script>location.replace(\"../pages/admin.html\")</script>";	
+		#attenzione agli slash e al percorso
+}else{
 	print "ERROR";
 }
