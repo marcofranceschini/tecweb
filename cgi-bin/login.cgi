@@ -2,7 +2,7 @@
 
 #!C:/xampp/perl/bin/perl.exe
 
-#use warnings;
+use warnings;
 
 #my $filename = "../pages/admin.html";  #whatever
 #system("start file://$filename");
