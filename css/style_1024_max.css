@@ -507,12 +507,12 @@
 		font-weight: bold;
 		font-size: 1.1em;
 		color: white;
-		background: rgba(200, 0, 0, 0.7);
-		text-shadow: 0px 3px 3px black, 0px 0px 3px black, 2px 0px 3px black, -2px 0px 3px black;
+		background: #A00;
+		text-shadow: 0px 3px 3px black, 0px 0px 3px black;
 	}
 	
-	#admin_panel .linked_box:hover {
-		background: #A00;
+	#admin_panel .linked_box:hover {		
+		background: rgba(200, 0, 0, 0.7);
 		color: white;		
 		transition: all 0.5s ;
 		-webkit-transition: all 0.5s ;
