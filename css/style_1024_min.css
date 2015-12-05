@@ -555,6 +555,7 @@
 		width: 90%;
 		margin: auto;
 		padding: 2em;
+		min-height: 15em;
 	}
 	
 	#content_admin > p {
@@ -610,6 +611,48 @@
 		text-decoration: none;
 		font-weight: bold;
 		font-size: 1.1em;	
+	}
+	
+	#action_bar {		/*----------------------------------- NEW -------------------------------- */
+		height: 6em;
+	}	
+	
+	#action_box {
+		width: 25em;
+		margin: auto;
+	}
+	
+	#action_back {
+		float: left;
+	}
+	
+	#action_add {
+		float: right;
+	}
+	
+	#action_box .linked_box {
+		display: inline-block;
+		width: 6em;
+		padding-top: 1.5em;
+		padding-bottom: 1.5em;	
+		border-radius: 0.5em;
+		text-align: center;
+		text-transform: uppercase;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 1.1em;
+		color: white;
+		background: #A00;
+		text-shadow: 0px 3px 3px black, 0px 0px 3px black;
+	}
+	
+	#action_box .linked_box:hover {
+		background: rgba(200, 0, 0, 0.7);
+		color: white;		
+		transition: all 0.5s ;
+		-webkit-transition: all 0.5s ;
+		-o-transition: all 0.5s ;
+		-moz-transition: all 0.5s ;
 	}
 	
 	#content_about{
@@ -757,7 +800,6 @@
 	#copy_panel {
 		clear: both;
 		background-color: darkred;
-		margin-top: 16em;
 		padding: 2em;
 	}
 	
