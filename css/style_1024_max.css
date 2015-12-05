@@ -597,6 +597,7 @@
 		width: 70%;
 		margin: auto;
 		padding: 2em;
+		min-height: 15em;
 	}
 	
 	#maps {
