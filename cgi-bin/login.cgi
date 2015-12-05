@@ -37,27 +37,15 @@ $password = @password[1];
 
 if ($username eq "admin" && $password eq "admin") {
 	#print "GG WP";
-	#print "<script>location.replace(\"../pages/admin.html\")</script>";		#attenzione agli slash e al percorso
+	print "<script>location.replace(\"../pages/admin.html\")</script>";		#attenzione agli slash e al percorso
 	#$query = new CGI;
 
 	#print $query->redirect('http://www.devdaily.com/');
 	#print $query->header(-location => 'http://www.goolge.it');
 	
-	my $s = new CGI::Session("driver:File", undef, {Directory=>'/tmp'});
-	#my $ses_id = $session->id();
-	#print $username;
-	#$session = CGI::Session->new();
-	    
-	#$session = new CGI::Session("driver:File", $cgi, {Directory=>'/tmp'});
-
-	#$s = CGI::Session->new();
-    #$s = CGI::Session->new("driver:file", $sid);
-    #$s = CGI::Session->new("driver:file", $sid, {Directory=>'/tmp'});
-	#my $sid = $cgi->cookie("CGISESSID") || undef;
-	#my $s = new CGI::Session(undef, $sid, {Directory=>'/tmp'});
-
-	$s->param('user', $username);
-	$s->param('pass', $password);
+	my $session = new CGI::Session("driver:File", undef, {Directory=>'/tmp'});
+	$session->param('user', $username);
+	$session->param('pass', $password);
 	print $s->param('user');
 	
 	#print "GG WP";
