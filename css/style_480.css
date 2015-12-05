@@ -462,7 +462,8 @@
 	#content_admin {
 		width: 80%;
 		margin: auto;
-		padding: 2em;
+		padding-top: 2em;
+		min-height: 10em;
 	}
 	
 	#content_admin p {
@@ -470,10 +471,10 @@
 	}
 	
 	#admin_panel {	/* NEW --------------------------------------*/
-		width: 11em;
+		width: 13em;
 		margin: auto;
 		padding-top: 2em;
-		padding-bottom: 5em;
+		padding-bottom: 10em;
 	}
 	
 	#news {
@@ -490,11 +491,6 @@
 		padding-top: 1.5em;
 		padding-bottom: 1.5em;	
 		border-radius: 0.5em;
-		text-align: center;
-		text-transform: uppercase;
-		text-decoration: none;
-		font-weight: bold;
-		font-size: 0.8em;
 		color: white;
 		background: #A00;
 		text-shadow: 0px 3px 3px black, 0px 0px 3px black;
@@ -516,7 +512,48 @@
 		text-transform: uppercase;
 		text-decoration: none;
 		font-weight: bold;
-		font-size: 1.1em;	
+	}
+	
+	#action_bar {
+		height: 4em;
+	}	
+	
+	#action_box {
+		width: 14em;
+		margin: auto;
+	}
+	
+	#action_back {
+		float: left;
+	}
+	
+	#action_add {
+		float: right;
+	}
+	
+	#action_box .linked_box {
+		display: inline-block;
+		width: 5.5em;
+		padding-top: 1.2em;
+		padding-bottom: 1.2em;	
+		border-radius: 0.5em;
+		text-align: center;
+		text-transform: uppercase;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 0.9em;
+		color: white;
+		background: #A00;
+		text-shadow: 0px 3px 3px black, 0px 0px 3px black;
+	}
+	
+	#action_box .linked_box:hover {
+		background: rgba(200, 0, 0, 0.7);
+		color: white;		
+		transition: all 0.5s ;
+		-webkit-transition: all 0.5s ;
+		-o-transition: all 0.5s ;
+		-moz-transition: all 0.5s ;
 	}
 	
 	#content_about{
