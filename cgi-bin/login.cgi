@@ -1,28 +1,11 @@
+#!/usr/bin/perl
 #!C:/xampp/perl/bin/perl.exe
 
-#!/usr/bin/perl
+# ATTENZIONE! SE USI WIN SCAMBIA L'ORDINE DELLE RIGHE QUI SOPRA
  
 use CGI;
 use CGI::Session;
 use warnings;
-
-#sub getSession($name) {
-#	$session = CGI::Session->load() or die $!;
-#	if ($session->is_expired || $session->is_empty ) {
-#		return undef;
-#	} else {
-#		my $app = $session->param($name);
-#		return $app;
-#	}
-#}
-
-#sub destroySession() {
-#	$session = CGI::Session->load() or die $!;
-#	$SID = $session->id();
-#	$session->close();
-#	$session->delete();
-#	$session->flush();
-#}
 
 print "Content-Type: text/html\n\n";
  
@@ -48,8 +31,6 @@ if ($username eq "admin" && $password eq "admin") {
 	$session->param('pass', $password);
 	print $s->param('user');
 	
-	#print "GG WP";
-	#print "<script>location.replace(\"../pages/admin.html\")</script>";		#attenzione agli slash e al percorso
 	#print redirect(-url=>'../pages/admin.html');
 	#$url = "../pages/admin.html";
 	#open(FILE, $url) || die "errore nella open\n\n";
