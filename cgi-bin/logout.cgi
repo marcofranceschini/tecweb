@@ -1,5 +1,6 @@
-#!/usr/bin/perl
 #!C:/xampp/perl/bin/perl.exe
+#!/usr/bin/perl
+
 
 # ATTENZIONE! SE USI WIN SCAMBIA L'ORDINE DELLE RIGHE QUI SOPRA
  
@@ -18,8 +19,8 @@ print "Content-Type: text/html\n\n";
 #}
 
 
-$user = getSession('user');
-#$session = CGI::Session->load("driver:File", undef, {Directory=>'/usr/tmp'});
+#$user = getSession('user');
+$session = CGI::Session->load("driver:File", undef, {Directory=>'/usr/tmp'});
 
 #if ( $s->is_expired ) {
 #	print "oi oi";
@@ -28,8 +29,8 @@ $user = getSession('user');
 #if ( $s->is_empty ) {
 	#print "vuota";
 #}
-#$password = $session->param('pass');
-print $user;
+$password = $session->param('pass');
+print $password;
 
 sub getSession($name) {
 	$session = CGI::Session->load("driver:File", undef, {Directory=>'/tmp'}) or die $!;

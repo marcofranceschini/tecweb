@@ -1,5 +1,6 @@
-#!/usr/bin/perl
 #!C:/xampp/perl/bin/perl.exe
+#!/usr/bin/perl
+
 
 # ATTENZIONE! SE USI WIN SCAMBIA L'ORDINE DELLE RIGHE QUI SOPRA
  
