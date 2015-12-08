@@ -20,7 +20,7 @@ print "Content-Type: text/html\n\n";
 
 
 #$user = getSession('user');
-$session = CGI::Session->load("driver:File", undef, {Directory=>'/usr/tmp'});
+$session = CGI::Session->load("driver:File", undef, {Directory=>'/tmp'});
 
 #if ( $s->is_expired ) {
 #	print "oi oi";

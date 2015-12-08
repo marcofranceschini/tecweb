@@ -30,7 +30,8 @@ if ($username eq "admin" && $password eq "admin") {
 	my $session = new CGI::Session("driver:File", undef, {Directory=>'/tmp'});
 	$session->param('user', $username);
 	$session->param('pass', $password);
-	print $s->param('user');
+	$session->flush(); 
+
 	
 	#print redirect(-url=>'../pages/admin.html');
 	#$url = "../pages/admin.html";
