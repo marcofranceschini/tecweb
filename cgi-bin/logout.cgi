@@ -1,11 +1,12 @@
-#!C:/xampp/perl/bin/perl.exe
 #!/usr/bin/perl
+#!C:/xampp/perl/bin/perl.exe
 
 
 # ATTENZIONE! SE USI WIN SCAMBIA L'ORDINE DELLE RIGHE QUI SOPRA
  
 use CGI;
 use CGI::Session;
+use CGI::Cookie;
 use warnings;
 
 print "Content-Type: text/html\n\n";
@@ -20,7 +21,9 @@ print "Content-Type: text/html\n\n";
 
 
 #$user = getSession('user');
-$session = CGI::Session->load("driver:File", undef, {Directory=>'/tmp'});
+my $biscotto = $cgi->cookie("MY_SID") || undef;
+#$session    = new CGI::Session("driver:File", $sid, {Directory=>'/tmp'});
+$session = CGI::Session->load("driver:File", $cgi, {Directory=>'/tmp'});
 
 #if ( $s->is_expired ) {
 #	print "oi oi";

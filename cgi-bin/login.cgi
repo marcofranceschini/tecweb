@@ -1,5 +1,5 @@
-#!C:/xampp/perl/bin/perl.exe
 #!/usr/bin/perl
+#!C:/xampp/perl/bin/perl.exe
 
 
 # ATTENZIONE! SE USI WIN SCAMBIA L'ORDINE DELLE RIGHE QUI SOPRA
@@ -21,17 +21,21 @@ $password = @password[1];
 
 if ($username eq "admin" && $password eq "admin") {
 	#print "GG WP";
-	print "<script>location.replace(\"../pages/admin.html\")</script>";		#attenzione agli slash e al percorso
 	#$query = new CGI;
-
 	#print $query->redirect('http://www.devdaily.com/');
 	#print $query->header(-location => 'http://www.goolge.it');
 	
-	my $session = new CGI::Session("driver:File", undef, {Directory=>'/tmp'});
+	$session = new CGI::Session("driver:File", undef, {Directory=>'/tmp'});
+	
+	$sid = $session->id();
+	$cookie = $cgi->cookie(CGISESSID => $session->id);
+    print $cgi->header( -cookie=>$cookie );
+	
 	$session->param('user', $username);
 	$session->param('pass', $password);
 	$session->flush(); 
 
+	#print "<script>location.replace(\"../pages/admin.html\")</script>";	#attenzione agli slash e al percorso
 	
 	#print redirect(-url=>'../pages/admin.html');
 	#$url = "../pages/admin.html";
