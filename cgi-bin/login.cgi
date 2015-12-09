@@ -25,7 +25,7 @@ if ($username eq "admin" && $password eq "admin") {
 	#print $query->redirect('http://www.devdaily.com/');
 	#print $query->header(-location => 'http://www.goolge.it');
 	
-	$session = new CGI::Session("driver:File", undef, {Directory=>'/tmp'});
+	$session = new CGI::Session("PROVA", undef, {Directory=>'/tmp'});
 	
 	$sid = $session->id();
 	$cookie = $cgi->cookie(CGISESSID => $session->id);
