@@ -41,9 +41,9 @@ if ($username eq "admin" && $password eq "admin") {
 	$sid = $session->id();
 	print "ID SESSIONE=".$sid;
 	
-	$cgi = CGI.new("html4")
-	$prova = CGI::Session.new($cgi,'session_key' => '111');
-	$sid = $prova->id();
+	#$cgi = CGI.new("html4")
+	#$prova = CGI::Session.new($cgi,'session_key' => '111');
+	#$sid = $prova->id();
 	
 	$biscotto = CGI::Cookie->new(-name=>'ID',-value=>$sid);
 	#print header(-cookie=>$biscotto);
