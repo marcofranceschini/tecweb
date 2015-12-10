@@ -5,6 +5,8 @@
 # ATTENZIONE! SE USI WIN SCAMBIA L'ORDINE DELLE RIGHE QUI SOPRA
  
 use CGI;
+use CGI qw/:standard/;
+use CGI::Cookie;
 use CGI::Session;
 use warnings;
 
@@ -25,11 +27,15 @@ if ($username eq "admin" && $password eq "admin") {
 	#print $query->redirect('http://www.devdaily.com/');
 	#print $query->header(-location => 'http://www.goolge.it');
 	
-	$session = new CGI::Session("PROVA", undef, {Directory=>'/tmp'});
-	
+	$session = new CGI::Session("driver:File", undef, {Directory=>'/tmp'});
+	$session->name("PROVA");
 	$sid = $session->id();
-	$cookie = $cgi->cookie(CGISESSID => $session->id);
-    print $cgi->header( -cookie=>$cookie );
+	print $sid;
+	$biscotto = CGI::Cookie->new(-name=>'ID',-value=>$sid);
+	print header(-cookie=>$biscotto);
+
+	#$cookie = $cgi->cookie(CGISESSID => $sid);
+    	#print $cgi->header( -cookie=>$cookie );
 	
 	$session->param('user', $username);
 	$session->param('pass', $password);

@@ -6,6 +6,7 @@
  
 use CGI;
 use CGI::Session;
+use CGI qw/:standard/;
 use CGI::Cookie;
 use warnings;
 
@@ -21,9 +22,14 @@ print "Content-Type: text/html\n\n";
 
 
 #$user = getSession('user');
-my $biscotto = $cgi->cookie("MY_SID") || undef;
-#$session    = new CGI::Session("driver:File", $sid, {Directory=>'/tmp'});
-$session = CGI::Session->load("driver:File", $cgi, {Directory=>'/tmp'});
+#$biscotto = $cgi->cookie("driver:File") || undef;
+#$sid = $biscotto->param('user', $username);
+
+%cookies = CGI::Cookie->fetch;
+$id = $cookies{'ID'}->value;
+print $id;
+$session = CGI::Session->load($id, undef, {Directory=>'/tmp'});
+
 
 #if ( $s->is_expired ) {
 #	print "oi oi";
