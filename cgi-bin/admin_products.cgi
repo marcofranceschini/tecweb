@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #!C:/xampp/perl/bin/perl.exe
 
-# ATTENZIONE! SE USI WIN SCAMBIA L'ORDINE DELLE RIGHE QUI SOPRA
+# ATTENZIONE! IN BASE AL TUO O.S. CAMBIA LE RIGHE QUI SOPRA
 
 print "Content-Type: text/html\n\n";
 

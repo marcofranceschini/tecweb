@@ -1,11 +1,12 @@
+#!C:/xampp/perl/bin/perl.exe
 #!/usr/bin/perl
 #!/Users/danielef/perl5/perlbrew/perls/perl-5.16.0/bin/perl
-#!C:/xampp/perl/bin/perl.exe
 
-# ATTENZIONE! SE USI WIN SCAMBIA L'ORDINE DELLE RIGHE QUI SOPRA
-# Il secondo è il path di Nenne, dont touch it
- 
+
+# ATTENZIONE! IN BASE AL TUO O.S. CAMBIA LE RIGHE QUI SOPRA
+
 use CGI;
+use CGI::Carp qw(fatalsToBrowser); # show errors in browser
 use CGI::Session;
 use CGI qw/:standard/;
 use CGI::Cookie;
@@ -26,10 +27,15 @@ print "Content-Type: text/html\n\n";
 #$biscotto = $cgi->cookie("driver:File") || undef;
 #$sid = $biscotto->param('user', $username);
 
-%cookies = CGI::Cookie->fetch;
-$id = $cookies{'ID'}->value;
-print $id;
-$session = CGI::Session->load($id, undef, {Directory=>'/tmp'});
+#%cookies = CGI::Cookie->fetch;
+#$id = $cookies{'ID'}->value;
+#print $id;
+#$session = CGI::Session->load($id, undef, {Directory=>'/tmp'});
+
+$CGI::Session::Driver::file::FileName = "sessione"; # Cambio nome al file contenente la sessione
+$session = CGI::Session->load("driver:File", undef, {Directory=>'/tmp'});
+$sid = $session->id();
+print "ID SESSIONE=".$sid;
 
 
 #if ( $s->is_expired ) {
