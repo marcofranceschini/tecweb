@@ -1,8 +1,9 @@
 #!/usr/bin/perl
+#!/Users/danielef/perl5/perlbrew/perls/perl-5.16.0/bin/perl
 #!C:/xampp/perl/bin/perl.exe
 
-
 # ATTENZIONE! SE USI WIN SCAMBIA L'ORDINE DELLE RIGHE QUI SOPRA
+# Il secondo è il path di Nenne, dont touch it
  
 use CGI;
 use CGI qw/:standard/;
