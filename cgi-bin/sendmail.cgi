@@ -2,35 +2,45 @@
 
 use CGI;
 use CGI::Session;
-use Net::SMTP::SSL;
-   
+use Net::SMTP;
+
 $q = CGI->new;
 print $q->header();
 
+$from = "";
+$subject = "Request info from ";
+$body = "";
 
-my $to = 'neneabc1@gmail.com';
-my $subject = 'Test subject';
-my $body = 'Test body';
-my $from = 'dfavaro.guest@gmail.com';
-my $password = 'Bellabella.12';
+use CGI qw(:standard Vars);
+my %data = Vars();
 
-my $smtp;
-if (not $smtp = Net::SMTP::SSL->new(
-	'smtp.gmail.com',
-    Port => 465,
-    Debug => 1)) {
-   	die "Could not connect to server\n";
+$from = $data{"name"};
+$subject = $data{"mail"};
+$body = $data{"mex"};
+
+if ($from ne '' && $subject ne '' && $body ne '') {
+    my $mailer = new Net::SMTP(
+        'mail.smtp2go.com',
+        Hello	=>	'mail.smtp2go.com',
+        Port    =>  2525,
+        User    =>  'neneabc1@gmail.com',
+        Password=>  'bellabella.12');
+	
+    $mailer->mail($from);
+    $mailer->to('neneabc1@gmail.com');
+    $mailer->data;
+    $mailer->datasend("Sent from perl! Fuck yeah!");
+    $mailer->dataend;
+    $mailer->quit;
+    
+    #Verificare con or die
+    print " <script>
+    			alert(\"Grazie! Verrai contatto al piu' presto!\");
+			</script>";
+    print " <script>location.replace(\"../pages/contacts.html\")</script>";
+} else {
+    print " <script>
+    			alert(\"Compila tutti i campi correttamente!\");
+			</script>";
+    print " <script>location.replace(\"../pages/contacts.html\")</script>";
 }
-
-$smtp->data();
-$smtp->datasend("From: " . $from . "\n");
-$smtp->datasend("To: " . $to . "\n");
-$smtp->datasend("Subject: " . $subject . "\n");
-$smtp->datasend("\n");
-$smtp->datasend($body . "\n");
-$smtp->dataend();
-$smtp->quit;
-
-$smtp->auth($from, $password) or die "Authentication failed!\n";
-$smtp->mail('dfavaro.guest@gmail.com');
-$smtp->to('neneabc1@gmail.com');
