@@ -453,6 +453,7 @@
 		text-shadow: 1px 1px 1px #9E3F3F;
 		cursor: pointer;
 		color: #FFF;
+		margin-right: 33%; /*-------------NEW-------------*/
 	}
 	
 	#form_email_submit:hover{
@@ -640,6 +641,7 @@
 	#admin_form_panel {
 		display: inline-block;
 		vertical-align: top;
+		margin-right: 2em; /*-----------------NEW-----------*/
 	}
 	
 	#admin_form > fieldset {
