@@ -45,7 +45,7 @@ print "Content-Type: text/html\n\n";
 	#print "vuota";
 #}
 #$password = $session->param('pass');
-$sessione=getSession();
+$sessione = getSession();
 print $session{'pass'};
 
 #$session->flush(); 
@@ -55,7 +55,7 @@ sub getSession() {
 	if ($session->is_expired || $session->is_empty) {
 		print "MERDA";
 	} else {
-		my %ritorno=('user', $session->param('user'), 'pass', $session->param('pass'));
+		my %ritorno = ('user', $session->param('user'), 'pass', $session->param('pass'));
 		return $ritorno;
 	}
 }
