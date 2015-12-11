@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 use CGI;
+use CGI::Session;
 use Net::SMTP::SSL;
    
 $q = CGI->new;
