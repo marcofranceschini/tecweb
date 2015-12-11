@@ -74,18 +74,24 @@ if ($username eq "admin" && $password eq "admin") {
 		print "	<script>
     				alert(\"Inserisci lo username\");
 				</script>";
-	} else if ($password eq "") {	# Password vuota
-		print "	<script>
-    				alert(\"Inserisci la password\");
-				</script>";
-	}else if($username ne "admin") {	# Username errato
-		print "	<script>
-   					alert(\"Username errato\");
-				</script>";
-	}else if($password ne "admin") {	# Password errata
-		print "	<script>
-    				alert(\"Password errata\");
-				</script>";
+	} else {
+		if ($password eq "") {	# Password vuota
+			print "	<script>
+    					alert(\"Inserisci la password\");
+					</script>";
+		} else { 
+			if ($username ne "admin") {	# Username errato
+				print "	<script>
+   							alert(\"Username errato\");
+						</script>";
+			} else {
+				if ($password ne "admin") {	# Password errata
+					print "	<script>
+    							alert(\"Password errata\");
+							</script>";
+				}
+			}
+		}
 	}
  	#my $url='../tecwebproject/pages/admin.html';
  	#print "Location: $url\n\n";
