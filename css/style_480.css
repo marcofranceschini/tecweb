@@ -640,6 +640,7 @@
 	#admin_form_panel {
 		display: inline-block;
 		vertical-align: top;
+		margin-right: 2em; /*-----------------NEW-----------*/
 	}
 	
 	#admin_form > fieldset {
