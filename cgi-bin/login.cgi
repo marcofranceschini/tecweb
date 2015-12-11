@@ -41,7 +41,8 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 	#$session = new CGI::Session("driver:File", undef, {Directory=>'/tmp'});
 	#$session->name("PROVA");
 	#$sid = $session->id();
-	createSession();
+	$prova = createSession();
+	print "".$prova->param('user');
 	print "Ho fatto??";
 	$sessione=getSession();
 	print $sessione{'pass'};
@@ -67,23 +68,20 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 	#$url = "../pages/admin.html";
 	#open(FILE, $url) || die "errore nella open\n\n";
 
- } else {	# Login sbagliato
+ } else {	# Login errato
  	if($username eq "" and $password eq "") { # Username e password vuoti
 		 print "<script>
     			alert(\"Riempi i campi per accedere\");
 			</script>";
-	 }else{
-		if($username eq "") {	# Username vuoto
+	 }elsif($username eq "") {	# Username vuoto
 			print "<script>
     			alert(\"Inserisci lo username\");
 			</script>";
-		}else{
-			if($password eq "") {	# Password vuota
+		}elsif($password eq "") {	# Password vuota
 				print "<script>
     				alert(\"Inserisci la password\");
 				</script>";
-			}else{
-				if($username ne "admin") {	# Username errato
+			}elsif($username ne "admin") {	# Username errato
 					print "<script>
     					alert(\"Username errato\");
 					</script>";
@@ -91,7 +89,6 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 					print "<script>
     					alert(\"Password errata\");
 					</script>";
-
 				}
 			}
 		}
@@ -110,13 +107,13 @@ sub createSession() {
 	$session = new CGI::Session();
 	$session->param('user', $username);
 	$session->param('pass', $password);
-	$session->expire('+1M'); 
+	return $session;
 }
  
 sub getSession() {
-	$session = CGI::Session->load() or die CGI::Session->errstr();
+	$session = CGI::Session->load() or die CGI::Session->errstr;
 	if ($session->is_expired || $session->is_empty) {
-		print "MERDA";
+		print "NON GHE SE NIENTE DA CARICAR";
 	} else {
 		my %ritorno=('user', $session->param('user'), 'pass', $session->param('pass'));
 		return $ritorno;

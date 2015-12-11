@@ -13,15 +13,6 @@ use warnings;
 
 print "Content-Type: text/html\n\n";
 
-#sub destroySession() {
-#	$session = CGI::Session->load() or die $!;
-#	$SID = $session->id();
-#	$session->close();
-#	$session->delete();
-#	$session->flush();
-#}
-
-
 #$user = getSession('user');
 #$biscotto = $cgi->cookie("driver:File") || undef;
 #$sid = $biscotto->param('user', $username);
@@ -54,11 +45,19 @@ print $session{'pass'};
 #$session->flush(); 
 
 sub getSession() {
-	$session = CGI::Session->load() or die CGI::Session->errstr();
+	$session = CGI::Session->load() or die CGI::Session->errstr;
 	if ($session->is_expired || $session->is_empty) {
-		print "MERDA";
+		print "NON GHE SE NIENTE DA CARICAR";
 	} else {
 		my %ritorno = ('user', $session->param('user'), 'pass', $session->param('pass'));
 		return $ritorno;
 	}
+}
+
+sub destroySession() {
+	$session = CGI::Session->load() or die $!;
+	$SID = $session->id();
+	$session->close();
+	$session->delete();
+	$session->flush();
 }
