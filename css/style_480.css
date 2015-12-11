@@ -101,7 +101,7 @@
 	}
 	
 	#menu a:hover {
-		color: lightgrey;
+		color: lightgrey;	/* Alternativa?? #308E89*/
 	}
 	
 	#current {

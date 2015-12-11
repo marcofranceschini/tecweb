@@ -1,10 +1,11 @@
 #!/usr/bin/perl
+#!/Users/danielef/perl5/perlbrew/perls/perl-5.16.0/bin/perl
 #!C:/xampp/perl/bin/perl.exe
 
 # ATTENZIONE! IN BASE AL TUO O.S. CAMBIA LE RIGHE QUI SOPRA
 
 use CGI;
-use CGI::Carp qw(fatalsToBrowser); # show errors in browser
+use CGI::Carp qw(fatalsToBrowser);	# Show errors in browser
 use CGI::Session;
 use CGI qw/:standard/;
 use CGI::Cookie;
@@ -44,6 +45,9 @@ print "Content-Type: text/html\n\n";
 	#print "vuota";
 #}
 #$password = $session->param('pass');
+
+$sessione=getSession();
+print $sessione{'pass'};
 $sessione = getSession();
 print $session{'pass'};
 
