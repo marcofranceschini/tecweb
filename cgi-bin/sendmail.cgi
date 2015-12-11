@@ -1,4 +1,4 @@
-#!/Users/danielef/perl5/perlbrew/perls/perl-5.16.0/bin/perl
+#!/usr/bin/perl
 
 use CGI;
 use Net::SMTP::SSL;

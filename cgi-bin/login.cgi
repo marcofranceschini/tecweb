@@ -66,8 +66,9 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 	#print redirect(-url=>'../pages/admin.html');
 	#$url = "../pages/admin.html";
 	#open(FILE, $url) || die "errore nella open\n\n";
+
  } else {	# Login sbagliato
- 	if($username eq "" and $password eq "") {
+ 	if($username eq "" and $password eq "") { # Username e password vuoti
 		 print "<script>
     			alert(\"Riempi i campi per accedere\");
 			</script>";
@@ -90,6 +91,7 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 					print "<script>
     					alert(\"Password errata\");
 					</script>";
+
 				}
 			}
 		}
