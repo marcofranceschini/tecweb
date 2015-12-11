@@ -1,6 +1,6 @@
-#!/Users/danielef/perl5/perlbrew/perls/perl-5.16.0/bin/perl
-#!C:/xampp/perl/bin/perl.exe
 #!/usr/bin/perl
+#!C:/xampp/perl/bin/perl.exe
+#!/Users/danielef/perl5/perlbrew/perls/perl-5.16.0/bin/perl
 
 # ATTENZIONE! IN BASE AL TUO O.S. CAMBIA LE RIGHE QUI SOPRA
 
@@ -31,10 +31,10 @@ print "Content-Type: text/html\n\n";
 #print $id;
 #$session = CGI::Session->load($id, undef, {Directory=>'/tmp'});
 
-$CGI::Session::Driver::file::FileName = "sessione"; # Cambio nome al file contenente la sessione
-$session = CGI::Session->load("driver:File", undef, {Directory=>'/tmp'});
-$sid = $session->id();
-print "ID SESSIONE=".$sid;
+#$CGI::Session::Driver::file::FileName = "sessione"; # Cambio nome al file contenente la sessione
+#$session = CGI::Session->load("driver:File", undef, {Directory=>'/tmp'});
+#$sid = $session->id();
+#print "ID SESSIONE=".$sid;
 
 
 #if ( $s->is_expired ) {
@@ -44,15 +44,18 @@ print "ID SESSIONE=".$sid;
 #if ( $s->is_empty ) {
 	#print "vuota";
 #}
-$password = $session->param('pass');
-print $password;
+#$password = $session->param('pass');
+$sessione=getSession();
+print $session{'pass'};
 
-sub getSession($name) {
-	$session = CGI::Session->load("driver:File", undef, {Directory=>'/tmp'}) or die $!;
-	if ($session->is_expired || $session->is_empty ) {
-		return undef;
+#$session->flush(); 
+
+sub getSession() {
+	$session = CGI::Session->load() or die CGI::Session->errstr();
+	if ($session->is_expired || $session->is_empty) {
+		print "MERDA";
 	} else {
-		my $app = $session->param($name);
-		return $app;
+		my %ritorno=('user', $session->param('user'), 'pass', $session->param('pass'));
+		return $ritorno;
 	}
 }
