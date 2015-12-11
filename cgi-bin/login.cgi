@@ -1,5 +1,5 @@
-#!/Users/danielef/perl5/perlbrew/perls/perl-5.16.0/bin/perl
 #!/usr/bin/perl
+#!/Users/danielef/perl5/perlbrew/perls/perl-5.16.0/bin/perl
 #!C:/xampp/perl/bin/perl.exe
 
 # ATTENZIONE! IN BASE AL TUO O.S. CAMBIA LE RIGHE QUI SOPRA
@@ -29,7 +29,7 @@ $username = @username[1];
 $password = @password[1];
  
 
-if ($username eq "admin" && $password eq "admin") {
+if ($username eq "admin" && $password eq "admin") {	# Login corretto
 	#print "GG WP";
 	#$query = new CGI;
 	#print $query->redirect('http://www.devdaily.com/');
@@ -43,6 +43,8 @@ if ($username eq "admin" && $password eq "admin") {
 	#$sid = $session->id();
 	createSession();
 	print "Ho fatto??";
+	$sessione=getSession();
+	print $sessione{'pass'};
 	#print "ID SESSIONE=".$sid;
 	
 	#$cgi = CGI.new("html4")
@@ -59,38 +61,44 @@ if ($username eq "admin" && $password eq "admin") {
 	#$session->param('pass', $password);
 	#print "USERNAME=".$session->param('user');
 
-	#print "<script>location.replace(\"../pages/admin.html\")</script>";	#attenzione agli slash e al percorso
+	#print "<script>location.replace(\"../pages/admin.html\")</script>";	# Attenzione agli slash e al percorso
 	
 	#print redirect(-url=>'../pages/admin.html');
 	#$url = "../pages/admin.html";
 	#open(FILE, $url) || die "errore nella open\n\n";
- } else {
- 	# fare reindirizzamento alla home + js che indica cosa e' sbagliato nella form di login
- 	print "ERROR";
- 	
- 	
- 	#print "<script type=\"text/javascript\"> window.open(\"your-cgi-wrapper.cgi?rm=popupstart\",\"popup\", \"width=500\");</script>";
-	if($username eq "") {	# Username vuoto
-		print "<script>
-    			alert(\"Inserisci lo username\");
-		</script>";
-	}else{
-		if($password eq "") {	# Password vuota
+ } else {	# Login sbagliato
+ 	if($username eq "" and $password eq "") {
+		 print "<script>
+    			alert(\"Riempi i campi per accedere\");
+			</script>";
+	 }else{
+		if($username eq "") {	# Username vuoto
 			print "<script>
-    				alert(\"Inserisci la password\");
+    			alert(\"Inserisci lo username\");
 			</script>";
 		}else{
-			if($username ne "admin") {	# Username errato
+			if($password eq "") {	# Password vuota
 				print "<script>
+    				alert(\"Inserisci la password\");
+				</script>";
+			}else{
+				if($username ne "admin") {	# Username errato
+					print "<script>
     					alert(\"Username errato\");
-				</script>";
-			}else{	# Password errata
-				print "<script>
+					</script>";
+				}else{	# Password errata
+					print "<script>
     					alert(\"Password errata\");
-				</script>";
+					</script>";
+				}
 			}
 		}
-	}
+	 }
+	
+	# RIVEDERE IL REINDIRIZZAMENTO; C'É UN MODO PER RIMANARE SULLA PAGINA (IN CUI SI FA IL LOGIN) SENZA REINDIRIZZARE E 
+	# SENZA USARE CGI NELL'HTML?
+	print "<script>location.replace(\"../\")</script>";		# Attenzione agli slash e al percorso
+ 	
  	#my $url='../tecwebproject/pages/admin.html';
  	#print "Location: $url\n\n";
  	#print redirect($url);
@@ -103,3 +111,12 @@ sub createSession() {
 	$session->expire('+1M'); 
 }
  
+sub getSession() {
+	$session = CGI::Session->load() or die CGI::Session->errstr();
+	if ($session->is_expired || $session->is_empty) {
+		print "MERDA";
+	} else {
+		my %ritorno=('user', $session->param('user'), 'pass', $session->param('pass'));
+		return $ritorno;
+	}
+}
