@@ -10,8 +10,6 @@ use CGI::Cookie;
 use CGI::Session;
 use warnings;
 
-print CGI->header;
-
 read(STDIN, $buffer, $ENV{'CONTENT_LENGTH'});
 
 $username = "";	# Per il popup con user vuoto
@@ -40,6 +38,9 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 	print "Ho fatto??";
 	$s = getSession();
 	print $s{'pass'};
+	
+	print redirect(-url => '../pages/admin.html');
+	
 	#print "ID SESSIONE=".$sid;
 	
 	#$cgi = CGI.new("html4")
@@ -63,34 +64,26 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 	#open(FILE, $url) || die "errore nella open\n\n";
 
  } else {	# Login errato
+ 	#in ogni login form dobbiamo usare un campo hidden con valore il nome della pagine html
+	#dove risiede in modo da saper tornarci qui sotto
+	print CGI->header;
+	print "<h1>Qualcosa &egrave; andato storto :(</h1>";
  	if ($username eq "" and $password eq "") { # Username e password vuoti
-		print "	<script>
-    				alert(\"Riempi i campi per accedere\");
-				</script>";
+		print "<h3>Username e password non inseriti!</h3>";
 	} elsif ($username eq "") {	# Username vuoto
-		print "	<script>
-    				alert(\"Inserisci lo username\");
-				</script>";
+		print "<h3>Username non inserito!</h3>";
 	} elsif ($password eq "") {	# Password vuota
-		print "	<script>
-    				alert(\"Inserisci la password\");
-				</script>";
+		print "<h3>Password non inserita!</h3>";
 	} elsif ($username ne "admin") {	# Username errato
-		print "	<script>
-    				alert(\"Username errato\");
-				</script>";
+		print "<h3>Username inserito non corretto!</h3>";
 	} else {	# Password errata
-		print "<script>
-    				alert(\"Password errata\");
-				</script>";
+		print "<h3>Password inserita non corretta!</h3>";
 	}
 
-	#Lasciamo temporaneamente perdere, sistemiamo quando facciamo la home in CGI
 	print a({
 		-href	=>	'../',
 		-title	=>	'Redirect to Home Page'
-	}, "Home Page");
-	#print "<script>location.replace(\"../\")</script>";
+	}, "Clicca qui per tornare alla Home Page e riprovare");
  }
  
 sub createSession() {
