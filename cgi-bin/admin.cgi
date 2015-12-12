@@ -22,9 +22,9 @@ $username = @username[1];
 $password = @password[1];
  
 if ($username eq "admin" && $password eq "admin") {	# Login corretto
-	#Crea session -> stampa tutto admin.html
 	$sessione = createSession();
 	
+	#stampa admin.html	
 	
 
 } else {	# Login errato
