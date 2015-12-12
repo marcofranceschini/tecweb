@@ -4,22 +4,19 @@
 # ATTENZIONE! IN BASE AL TUO O.S. CAMBIA LE RIGHE QUI SOPRA
  
 use CGI;
-use CGI::Carp qw(fatalsToBrowser); # show errors in browser
-use CGI qw/:standard/;
+use CGI::Carp qw(fatalsToBrowser);
+use CGI qw(:standard);
 use CGI::Cookie;
 use CGI::Session;
-#use CGI::Enurl; # Per la print location
-
-#use CGI::Session::Driver::file;
-
 use warnings;
 
-print "Content-Type: text/html\n\n";
- 
+my $q = new CGI;
+print $q->header;
+
 read(STDIN, $buffer, $ENV{'CONTENT_LENGTH'});
 
-$username="";	# Per il popup con user vuoto
-$password="";	# Per il popup con password vuota
+$username = "";	# Per il popup con user vuoto
+$password = "";	# Per il popup con password vuota
 @pairs = split(/&/, $buffer);
 # Rivedere l'aggiunta della riga $value =~ tr/+/ /; per compatibilità con vecchi browser
 @username = split(/=/, @pairs[0]);
@@ -27,7 +24,6 @@ $username = @username[1];
 @password = split(/=/, @pairs[1]);
 $password = @password[1];
  
-
 if ($username eq "admin" && $password eq "admin") {	# Login corretto
 	#print "GG WP";
 	#$query = new CGI;
@@ -89,14 +85,13 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
     				alert(\"Password errata\");
 				</script>";
 	}
-	
-	# RIVEDERE IL REINDIRIZZAMENTO; C'É UN MODO PER RIMANARE SULLA PAGINA (IN CUI SI FA IL LOGIN) SENZA REINDIRIZZARE E 
-	# SENZA USARE CGI NELL'HTML?
-	print "<script>location.replace(\"../\")</script>";		# Attenzione agli slash e al percorso
- 	
- 	#my $url='../tecwebproject/pages/admin.html';
- 	#print "Location: $url\n\n";
- 	#print redirect($url);
+
+	#Lasciamo temporaneamente perdere, sistemiamo quando facciamo la home in CGI
+	print a({
+		-href	=>	'../',
+		-title	=>	'Redirect to Home Page'
+	}, "Home Page");
+	#print "<script>location.replace(\"../\")</script>";
  }
  
 sub createSession() {
