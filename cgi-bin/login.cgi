@@ -10,8 +10,7 @@ use CGI::Cookie;
 use CGI::Session;
 use warnings;
 
-my $q = new CGI;
-print $q->header;
+print CGI->header;
 
 read(STDIN, $buffer, $ENV{'CONTENT_LENGTH'});
 
