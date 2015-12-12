@@ -10,8 +10,6 @@ use CGI::Cookie;
 use CGI::Session;
 use warnings;
 
-read(STDIN, $buffer, $ENV{'CONTENT_LENGTH'});
-
 $username = "";	# Per il popup con user vuoto
 $password = "";	# Per il popup con password vuota
 $page = "";
