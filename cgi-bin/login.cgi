@@ -68,30 +68,27 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 	#open(FILE, $url) || die "errore nella open\n\n";
 
  } else {	# Login errato
- 	if($username eq "" and $password eq "") { # Username e password vuoti
-		 print "<script>
-    			alert(\"Riempi i campi per accedere\");
-			</script>";
-	 }elsif($username eq "") {	# Username vuoto
-			print "<script>
-    			alert(\"Inserisci lo username\");
-			</script>";
-		}elsif($password eq "") {	# Password vuota
-				print "<script>
+ 	if ($username eq "" and $password eq "") { # Username e password vuoti
+		print "	<script>
+    				alert(\"Riempi i campi per accedere\");
+				</script>";
+	} elsif ($username eq "") {	# Username vuoto
+		print "	<script>
+    				alert(\"Inserisci lo username\");
+				</script>";
+	} elsif ($password eq "") {	# Password vuota
+		print "	<script>
     				alert(\"Inserisci la password\");
 				</script>";
-			}elsif($username ne "admin") {	# Username errato
-					print "<script>
-    					alert(\"Username errato\");
-					</script>";
-				}else{	# Password errata
-					print "<script>
-    					alert(\"Password errata\");
-					</script>";
-				}
-			}
-		}
-	 }
+	} elsif ($username ne "admin") {	# Username errato
+		print "	<script>
+    				alert(\"Username errato\");
+				</script>";
+	} else {	# Password errata
+		print "<script>
+    				alert(\"Password errata\");
+				</script>";
+	}
 	
 	# RIVEDERE IL REINDIRIZZAMENTO; C'É UN MODO PER RIMANARE SULLA PAGINA (IN CUI SI FA IL LOGIN) SENZA REINDIRIZZARE E 
 	# SENZA USARE CGI NELL'HTML?
