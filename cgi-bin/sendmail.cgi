@@ -3,6 +3,7 @@
 use CGI;
 use CGI::Session;
 use Net::SMTP;
+use CGI qw(:standard Vars);
 
 $q = CGI->new;
 print $q->header();
@@ -11,7 +12,6 @@ $from = "";
 $subject = "";
 $body = "";
 
-use CGI qw(:standard Vars);
 my %data = Vars();
 
 $from = $data{"name"};

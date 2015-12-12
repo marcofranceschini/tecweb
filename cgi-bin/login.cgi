@@ -5,7 +5,7 @@
  
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
-use CGI qw(:standard);
+use CGI qw(:standard Vars);
 use CGI::Cookie;
 use CGI::Session;
 use warnings;
@@ -14,12 +14,12 @@ read(STDIN, $buffer, $ENV{'CONTENT_LENGTH'});
 
 $username = "";	# Per il popup con user vuoto
 $password = "";	# Per il popup con password vuota
-@pairs = split(/&/, $buffer);
-# Rivedere l'aggiunta della riga $value =~ tr/+/ /; per compatibilità con vecchi browser
-@username = split(/=/, @pairs[0]);
-$username = @username[1];
-@password = split(/=/, @pairs[1]);
-$password = @password[1];
+$page = "";
+
+my %data = Vars();
+$username = $data{"username"};
+$password = $data{"password"};
+$page = $data{"page"};
  
 if ($username eq "admin" && $password eq "admin") {	# Login corretto
 	#print "GG WP";
@@ -64,8 +64,6 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 	#open(FILE, $url) || die "errore nella open\n\n";
 
  } else {	# Login errato
- 	#in ogni login form dobbiamo usare un campo hidden con valore il nome della pagine html
-	#dove risiede in modo da saper tornarci qui sotto
 	print CGI->header;
 	print "<h1>Qualcosa &egrave; andato storto :(</h1>";
  	if ($username eq "" and $password eq "") { # Username e password vuoti
@@ -81,9 +79,9 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 	}
 
 	print a({
-		-href	=>	'../',
-		-title	=>	'Redirect to Home Page'
-	}, "Clicca qui per tornare alla Home Page e riprovare");
+		-href	=>	$page,
+		-title	=>	'Redirect to previous page'
+	}, "Clicca qui per tornare indietro e riprovare");
  }
  
 sub createSession() {
