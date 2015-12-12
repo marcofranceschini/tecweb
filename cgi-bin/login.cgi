@@ -35,11 +35,11 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 	#$session = new CGI::Session("driver:File", undef, {Directory=>'/tmp'});
 	#$session->name("PROVA");
 	#$sid = $session->id();
-	$prova = createSession();
-	print "".$prova->param('user');
+	$sessione = createSession();
+	print $sessione->param('user')."<br>".$sessione->param('pass')."<br>";
 	print "Ho fatto??";
-	$sessione = getSession();
-	print $sessione{'pass'};
+	$s = getSession();
+	print $s{'pass'};
 	#print "ID SESSIONE=".$sid;
 	
 	#$cgi = CGI.new("html4")
