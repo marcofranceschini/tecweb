@@ -38,7 +38,7 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 	$prova = createSession();
 	print "".$prova->param('user');
 	print "Ho fatto??";
-	$sessione=getSession();
+	$sessione = getSession();
 	print $sessione{'pass'};
 	#print "ID SESSIONE=".$sid;
 	
