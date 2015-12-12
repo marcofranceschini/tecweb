@@ -8,7 +8,7 @@ $q = CGI->new;
 print $q->header();
 
 $from = "";
-$subject = "Request info from ";
+$subject = "";
 $body = "";
 
 use CGI qw(:standard Vars);
@@ -19,19 +19,20 @@ $subject = $data{"mail"};
 $body = $data{"mex"};
 
 if ($from ne '' && $subject ne '' && $body ne '') {
-    my $mailer = new Net::SMTP(
+    my $smtp = Net::SMTP->new(
         'mail.smtp2go.com',
         Hello	=>	'mail.smtp2go.com',
         Port    =>  2525,
+        Timeout =>  10,
         User    =>  'neneabc1@gmail.com',
-        Password=>  'bellabella.12');
+        Password=>  'bellabella.12') or die;
 	
-    $mailer->mail($from);
-    $mailer->to('neneabc1@gmail.com');
-    $mailer->data;
-    $mailer->datasend("Sent from perl! Fuck yeah!");
-    $mailer->dataend;
-    $mailer->quit;
+    $smtp->mail($from);
+    $smtp->to('neneabc1@gmail.com');
+    $smtp->data;
+    $smtp->datasend("Sent from perl! Fuck yeah!");
+    $smtp->dataend;
+    $smtp->quit;
     
     #Verificare con or die
     print " <script>
