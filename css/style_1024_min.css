@@ -307,6 +307,45 @@
 		text-align: center;
 	}
 	
+	#content_error {
+		width: 80%;
+		margin: auto;
+		text-align: center;
+	}
+	
+	#content_error h3 {
+		padding-top: 3em;
+		padding-bottom: 5em;
+	}
+	
+	#content_error p {
+		text-transform: uppercase;
+		padding: 1em;
+	}
+	
+	#previous_page {
+		display: inline-block;
+		padding: 2em;
+		text-decoration: none;
+		width: 6em;
+		padding-top: 1em;
+		padding-bottom: 1em;	
+		border-radius: 0.5em;
+		color: white;
+		background: #A00;
+		text-shadow: 0px 3px 3px black, 0px 0px 3px black;
+		text-transform: uppercase;
+	}
+	
+	#previous_page:hover {
+		background: rgba(200, 0, 0, 0.7);
+		color: white;		
+		transition: all 0.5s ;
+		-webkit-transition: all 0.5s ;
+		-o-transition: all 0.5s ;
+		-moz-transition: all 0.5s ;
+	}
+	
 	#content_products {
 		width: 45em;
 		margin: auto;

@@ -1,5 +1,6 @@
-#!/usr/bin/perl
 #!C:/xampp/perl/bin/perl.exe
+#!/usr/bin/perl
+
 
 # ATTENZIONE! IN BASE AL TUO O.S. CAMBIA LE RIGHE QUI SOPRA
  
@@ -62,9 +63,39 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 	#open(FILE, $url) || die "errore nella open\n\n";
 
  } else {	# Login errato
-	print CGI->header;
-	print "<h1>Qualcosa &egrave; andato storto :(</h1>";
- 	if ($username eq "" and $password eq "") { # Username e password vuoti
+	#print CGI->header;			#usiamo il nosrto header
+	print "Content-Type: text/html\n\n";
+	print <<EOF;
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+		<head>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+			<title>Errore - Amministrazione - Ju Rapida</title>
+			<meta name="title" content="Ju Rapida S.N.C." />
+			<meta name="description" content="Pagina di errore del sito Ju Rapida." />
+			<!-- meta name="keywords" content="ju rapida, ammin, articoli sportivi, calcio, tennistavolo, volley, carlo tavallini, vendita;" -->
+			<meta name="author" content="Fabiano Tavallini, Marco Franceschini, Daniele Favaro" />
+			<meta name="copyright" content="Ju Rapida S.N.C." />
+			<meta name="viewport" content="width=device-width">
+			<link href="../css/style_1024_max.css" rel="stylesheet" type="text/css" />
+			<link href="../css/style_768.css" rel="stylesheet" type="text/css" />
+			<link href="../css/style_480.css" rel="stylesheet" type="text/css" />
+			<link href="../css/style_1024_min.css" rel="stylesheet" type="text/css" />
+			<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+			<link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css' />
+			<link rel="icon" type="image/png" href="res/images/icon.png" />
+		</head>
+		<body>
+			<div id="header">
+				<div id="navbar_admin">
+					<h3>Qualcosa &egrave; andato storto</h3>
+				</div>
+			</div>
+			
+			<div id="content_error">
+EOF
+
+	if ($username eq "" and $password eq "") { # Username e password vuoti
 		print "<h3>Username e password non inseriti!</h3>";
 	} elsif ($username eq "") {	# Username vuoto
 		print "<h3>Username non inserito!</h3>";
@@ -76,10 +107,22 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 		print "<h3>Password inserita non corretta!</h3>";
 	}
 
+	print "<p>Per tornare indietro e riprovare</p>";
 	print a({
+		-id		=>	'previous_page',
 		-href	=>	$page,
 		-title	=>	'Redirect to previous page'
-	}, "Clicca qui per tornare indietro e riprovare");
+	}, "Clicca qui");
+
+			
+						
+	print <<EOF;
+			</div>
+		</body>
+	</html>
+EOF
+
+ 	
  }
  
 sub createSession() {
@@ -92,7 +135,7 @@ sub createSession() {
 sub getSession() {
 	$session = CGI::Session->load() or die CGI::Session->errstr;
 	if ($session->is_expired || $session->is_empty) {
-		print "NON GHE SE NIENTE DA CARICAR";
+		print "Non c'&egrave; nulla da caricare";
 	} else {
 		my %ritorno=('user', $session->param('user'), 'pass', $session->param('pass'));
 		return $ritorno;
