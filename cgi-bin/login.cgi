@@ -1,8 +1,11 @@
 #!C:/xampp/perl/bin/perl.exe
+<<<<<<< HEAD
 #!/usr/bin/perl
 
 
 # ATTENZIONE! IN BASE AL TUO O.S. CAMBIA LE RIGHE QUI SOPRA
+=======
+>>>>>>> 47f252dcdb2610884676da348271396995aef696
  
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
@@ -38,7 +41,7 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 	$s = getSession();
 	print $s{'pass'};
 	
-	print redirect(-url => '../pages/admin.html');
+	print redirect(-url => 'admin.cgi');
 	
 	#print "ID SESSIONE=".$sid;
 	

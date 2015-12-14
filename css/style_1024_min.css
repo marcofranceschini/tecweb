@@ -601,6 +601,11 @@
 		text-align: center;
 		font-size: 1.1em;
 	}
+	
+	#content_admin #placeholder {
+		text-align: center;
+		margin-top: 200em;
+	}
 
 	#admin_panel {	/* NEW --------------------------------------*/
 		width: 30em;
