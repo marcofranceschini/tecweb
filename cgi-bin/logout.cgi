@@ -38,15 +38,13 @@ print "Content-Type: text/html\n\n";
 
 $sessione=getSession();
 print $sessione{'pass'};
-$sessione = getSession();
-print $session{'pass'};
 
 #$session->flush(); 
 
 sub getSession() {
-	$session = CGI::Session->load() or die CGI::Session->errstr;
-	if ($session->is_expired || $session->is_empty) {
-		print "NON GHE SE NIENTE DA CARICAR";
+	$session = CGI::Session->load() or die $!; #CGI::Session->errstr
+	if ($session->is_expired || $session->is_empty) { # Entra nell'if con la condizione is_empty
+		print "NON CARICO NIENTE!";
 	} else {
 		my %ritorno = ('user', $session->param('user'), 'pass', $session->param('pass'));
 		return $ritorno;
