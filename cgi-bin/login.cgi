@@ -1,11 +1,8 @@
 #!C:/xampp/perl/bin/perl.exe
-<<<<<<< HEAD
 #!/usr/bin/perl
 
 
 # ATTENZIONE! IN BASE AL TUO O.S. CAMBIA LE RIGHE QUI SOPRA
-=======
->>>>>>> 47f252dcdb2610884676da348271396995aef696
  
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
