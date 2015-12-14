@@ -1,9 +1,14 @@
 #!/usr/bin/perl
 #!C:/xampp/perl/bin/perl.exe
 
-# ATTENZIONE! IN BASE AL TUO O.S. CAMBIA LE RIGHE QUI SOPRA
+use CGI;
+use CGI::Carp qw(fatalsToBrowser);
+use CGI qw(:standard Vars);
+use CGI::Cookie;
+use CGI::Session;
+use warnings;
 
-print "Content-Type: text/html\n\n";
+print CGI->header;
 
 print <<EOF;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -17,10 +22,10 @@ print <<EOF;
 		<meta name="author" content="Fabiano Tavallini, Marco Franceschini, Daniele Favaro" />
 		<meta name="copyright" content="Ju Rapida S.N.C." />
 		<meta name="viewport" content="width=device-width">
-		<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
-		<link href="../tecwebproject/css/style_768.css" rel="stylesheet" type="text/css" />
-		<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
-		<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
+		<link href="../css/style_1024_max.css" rel="stylesheet" type="text/css" />
+		<link href="../css/style_768.css" rel="stylesheet" type="text/css" />
+		<link href="../css/style_480.css" rel="stylesheet" type="text/css" />
+		<link href="../css/style_1024_min.css" rel="stylesheet" type="text/css" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css' />
 		<link rel="icon" type="image/png" href="res/images/icon.png" />
@@ -35,13 +40,7 @@ print <<EOF;
 		</div>
 		
 		<div id="content_admin">
-EOF
 
-
-#<!-- -------------- CGI - MODAL ------------ -->
-			
-						
-print <<EOF;
 		</div>
 		
 		<div id="action_bar">
