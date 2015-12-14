@@ -40,12 +40,17 @@ print <<EOF;
 		</div>
 		
 		<div id="content_admin">
+EOF
 
+#if (lista prodotti vuota)
+print printPlaceholder();
+
+print <<EOF;
 		</div>
 		
 		<div id="action_bar">
 			<div id="action_box">
-				<a id="action_back" class="linked_box fadeInLeft" href="admin.html">Indietro</a>
+				<a id="action_back" class="linked_box fadeInLeft" href="admin.cgi">Indietro</a>
 				<a id="action_add" class="linked_box fadeInRight" href="">Aggiungi</a>
 			</div>
 		</div>
@@ -66,3 +71,11 @@ print <<EOF;
 	</body>
 </html>
 EOF
+
+sub printPlaceholder() {
+	$placeholder = "<div>
+						<h1>Nessun prodotto ancora inserito.</h1>
+						<img src=\"../res/images/empty_list.png\" alt=\"Immagina lista prodotti vuota\" \>
+					</div>";
+	return $placeholder;
+}
