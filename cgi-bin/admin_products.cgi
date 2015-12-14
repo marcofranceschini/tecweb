@@ -39,7 +39,7 @@ print <<EOF;
 			</div>
 		</div>
 		
-		<div id="content_admin">
+		<div id="content_admin">	
 EOF
 
 #if (lista prodotti vuota)
@@ -73,7 +73,7 @@ print <<EOF;
 EOF
 
 sub printPlaceholder() {
-	$placeholder = "<div>
+	$placeholder = "<div id=\"placeholder\">
 						<h1>Nessun prodotto ancora inserito.</h1>
 						<img src=\"../res/images/empty_list.png\" alt=\"Immagina lista prodotti vuota\" \>
 					</div>";
