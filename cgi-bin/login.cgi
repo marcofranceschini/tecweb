@@ -106,15 +106,16 @@ EOF
 		print "<h3>Password inserita non corretta!</h3>";
 	}
 
-	print "<p>Per tornare indietro e riprovare</p>";
+	#print "<p>Per tornare indietro e riprovare</p>";
+	if ($page eq "") {
+		$page = "../index.html";
+	}
 	print a({
 		-id		=>	'previous_page',
-		-href	=>	$page,
+		-href	=>	$page."#admin_form",
 		-title	=>	'Redirect to previous page'
-	}, "Clicca qui");
-
+	}, "Riprova");
 			
-						
 	print <<EOF;
 			</div>
 		</body>
