@@ -43,7 +43,7 @@ print <<EOF;
 			<div>
 				<a href="#close" title="Close" class="close">X</a>
 				<h2>Inserisci un nuovo prodotto</h2>
-				<form action="../cgi-bin/login.cgi" method="post">
+				<form action="../cgi-bin/....cgi" method="post">
 					<label class="form_item" for="product_category">Categoria</label>
 					<select class="form_item" id="product_category">
 						<option value="calcio">Calcio</option>
@@ -62,7 +62,9 @@ print <<EOF;
 					<input class="form_item" id="product_name" type="text" />
 					<label class="form_item" for="product_desc">Descrizione</label>
 					<textarea class="form_item" id="product_desc" type="product_desc"></textarea>
-					
+					<label class="form_item" for="product_image">Carica <span lang="en">thumbnail</span></label>
+					<input class="form_item" id="product_image" type="file" />
+
 					<input id="submit" type="submit" value="Inserisci" />
 				</form>
 			</div>
