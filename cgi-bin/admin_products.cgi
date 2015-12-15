@@ -39,6 +39,15 @@ print <<EOF;
 			</div>
 		</div>
 		
+		<div id="openModal" class="modalDialog">
+			<div>
+				<a href="#close" title="Close" class="close">X</a>
+				<h2>Nuovo prodotto</h2>
+				<p>This is a sample modal box that can be created using the powers of CSS3.</p>
+				<p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p>
+			</div>
+		</div>
+		
 		<div id="content_admin">	
 EOF
 
@@ -51,7 +60,7 @@ print <<EOF;
 		<div id="action_bar">
 			<div id="action_box">
 				<a id="action_back" class="linked_box fadeInLeft" href="admin.cgi">Indietro</a>
-				<a id="action_add" class="linked_box fadeInRight" href="">Aggiungi</a>
+				<a id="action_add" class="linked_box fadeInRight" href="#openModal">Aggiungi</a>
 			</div>
 		</div>
 				
