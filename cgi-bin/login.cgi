@@ -92,9 +92,13 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 			</div>
 			
 			<div id="content_error">
+				<img src="../res/images/error.png" alt="Immagine di errore" />
 EOF
 
-	if ($username eq "" and $password eq "") { # Username e password vuoti
+	if (!%data) {
+		print "<h3>Riprova ad eseguire il login!</h3>";
+		$page = "../index.html";
+	}elsif ($username eq "" and $password eq "") { # Username e password vuoti
 		print "<h3>Username e password non inseriti!</h3>";
 	} elsif ($username eq "") {	# Username vuoto
 		print "<h3>Username non inserito!</h3>";
@@ -104,12 +108,7 @@ EOF
 		print "<h3>Username inserito non corretto!</h3>";
 	} else {	# Password errata
 		print "<h3>Password inserita non corretta!</h3>";
-	}
-
-	#print "<p>Per tornare indietro e riprovare</p>";
-	if ($page eq "") {
-		$page = "../index.html";
-	}
+	} 
 	print a({
 		-id		=>	'previous_page',
 		-href	=>	$page."#admin_form",
