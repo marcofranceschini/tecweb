@@ -604,7 +604,10 @@
 	
 	#content_admin #placeholder {
 		text-align: center;
-		margin-top: 200em;
+	}
+	
+	#content_admin #placeholder > img {
+		max-width: 80%;
 	}
 
 	#admin_panel {	/* NEW --------------------------------------*/
