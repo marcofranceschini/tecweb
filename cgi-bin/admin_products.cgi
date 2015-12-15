@@ -42,9 +42,29 @@ print <<EOF;
 		<div id="openModal" class="modalDialog">
 			<div>
 				<a href="#close" title="Close" class="close">X</a>
-				<h2>Nuovo prodotto</h2>
-				<p>This is a sample modal box that can be created using the powers of CSS3.</p>
-				<p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p>
+				<h2>Inserisci un nuovo prodotto</h2>
+				<form action="../cgi-bin/login.cgi" method="post">
+					<label class="form_item" for="product_category">Categoria</label>
+					<select class="form_item" id="product_category">
+						<option value="calcio">Calcio</option>
+						<option value="basket"><span lang="en">Basket</span></option>
+						<option value="volley"><span lang="en">Volley</span></option>
+						<option value="tennistavolo">Tennistavolo</option>
+						<option value="nuoto">Nuoto</option>
+						<option value="minigolf">Minigolf</option>
+						<option value="calciobalilla">Calciobalilla</option>
+						<option value="protezioni">Protezioni</option>
+						<option value="accessori">Accessori</option>
+					</select>
+					<label class="form_item" for="product_code">Codice</label>
+					<input class="form_item" id="product_code" type="text" />
+					<label class="form_item" for="product_name">Nome</label>
+					<input class="form_item" id="product_name" type="text" />
+					<label class="form_item" for="product_desc">Descrizione</label>
+					<textarea class="form_item" id="product_desc" type="product_desc"></textarea>
+					
+					<input id="submit" type="submit" value="Inserisci" />
+				</form>
 			</div>
 		</div>
 		
@@ -83,7 +103,7 @@ EOF
 
 sub printPlaceholder() {
 	$placeholder = "<div id=\"placeholder\">
-						<h1>Nessun prodotto ancora inserito.</h1>
+						<h1>Nessun prodotto ancora inserito</h1>
 						<img src=\"../res/images/empty_list.png\" alt=\"Immagina lista prodotti vuota\" \>
 					</div>";
 	return $placeholder;
