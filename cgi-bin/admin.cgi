@@ -5,17 +5,19 @@
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
 use CGI qw(:standard Vars);
-use CGI::Cookie;
 use CGI::Session;
 use warnings;
 
-print CGI->header;
+print "Content-Type: text/html\n\n";
 
 #Da usare il lab
 #<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
 #<link href="../tecwebproject/css/style_768.css" rel="stylesheet" type="text/css" />
 #<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
 #<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
+
+$sessione = getSession();
+
 
 print <<EOF;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -69,3 +71,12 @@ print <<EOF;
 	</body>
 </html>
 EOF
+
+sub getSession() {
+	$session = CGI::Session->load() or die $!; #CGI::Session->errstr
+	if ($session->is_expired || $session->is_empty) {
+		print redirect(-url=>'../');
+	} else {
+		return $session;
+	}
+}

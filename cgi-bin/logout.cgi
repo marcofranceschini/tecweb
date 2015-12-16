@@ -12,19 +12,8 @@ use CGI qw/:standard/;
 use warnings;
 
 
-my $sessione = destroySession(); 
+destroySession(); 
 print redirect(-url=>'../');
-
-sub getSession() {
-	$session = CGI::Session->load() or die $!; #CGI::Session->errstr
-	if ($session->is_expired) { # Entra nell'if con la condizione is_empty
-		print "expired";
-	} elsif ($session->is_empty) {
-		print "empty";
-	} else {
-		print $session->param('pass');
-	}
-}
 
 sub destroySession() {
 	$session = CGI::Session->load() or die $!;
