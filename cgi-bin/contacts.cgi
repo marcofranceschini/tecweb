@@ -8,6 +8,8 @@ use CGI::Carp qw(fatalsToBrowser);
 
 print "Content-Type: text/html\n\n";
 
+$mail = '/usr/sbin/sendmail';
+
 $from = "";
 $subject = "";
 $body = "";
@@ -64,7 +66,7 @@ print <<EOF;
 				<ul id="contact_list">
 					<li>Telefono: <span class="contact"><i class="material-icons md-24">&#xE0CD;</i>+39 0422 445566</span></li>
 					<li>Fax: <span class="contact"><i class="material-icons md-24">&#xE8AD;</i>+39 0422 445566</span></li>
-					<li>Email: <span class="contact"><i class="material-icons md-24">&#xE0BE;</i>jurapida@gmail.com</span></li>
+					<li>Email: <span class="contact"><i class="material-icons md-24">&#xE0BE;</i>jurapida\@gmail.com</span></li>
 				</ul>
 			</div>
 			<div id="form_email">
@@ -101,7 +103,7 @@ if (%data) {
 			Port    =>  2525,
 			Timeout =>  10,
 			User    =>  'neneabc1@gmail.com',
-			Password =>  'bellabella.12') or die "Error";
+			Password =>  'bellabella.12') or die "Net::SMTP->new die";
 		
 		$smtp->mail($from);
 		$smtp->to('neneabc1@gmail.com');
