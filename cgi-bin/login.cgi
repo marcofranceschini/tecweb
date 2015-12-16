@@ -29,8 +29,7 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 	print $sessione->header(-location=>"admin.cgi");
 
  } else {	# Login errato
-	#print CGI->header;			#usiamo il nostro header
-	
+	print "Content-Type: text/html\n\n";
 	# Da usare in lab
 	#<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
 	#<link href="../tecwebproject/css/style_768.css" rel="stylesheet" type="text/css" />
