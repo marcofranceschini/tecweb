@@ -1,5 +1,6 @@
-#!/usr/bin/perl
 #!C:/xampp/perl/bin/perl.exe
+#!/usr/bin/perl
+
 
 # ATTENZIONE! IN BASE AL TUO O.S. CAMBIA LE RIGHE QUI SOPRA
  
@@ -34,7 +35,11 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 	#$sid = $session->id();
 	$sessione = createSession();
 	#print $sessione->param('user')."<br>".$sessione->param('pass')."<br />";
-	print $sessione->header(-location=>"logout.cgi");
+	
+	
+	print $sessione->header(-location=>"admin.cgi");
+	
+	
 	#$s = getSession();
 	#print "<br>La password dopo load &egrave; ".$s{'pass'};
 	#print redirect(-url => 'admin.cgi');
