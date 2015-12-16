@@ -505,6 +505,7 @@
 	/*NEW*/
 	#content_contacts .form_email_element h5 {
 		color: red;
+		display: none;
 	}
 	
 	#contact_list {
