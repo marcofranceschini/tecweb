@@ -1,6 +1,5 @@
-#!C:/xampp/perl/bin/perl.exe
 #!/usr/bin/perl
-
+#!C:/xampp/perl/bin/perl.exe
 
 # ATTENZIONE! IN BASE AL TUO O.S. CAMBIA LE RIGHE QUI SOPRA
  
@@ -9,8 +8,6 @@ use CGI::Carp qw(fatalsToBrowser);
 use CGI qw(:standard Vars);
 use CGI::Session;
 use warnings;
-
-#print "Content-Type: text/html\n\n";
 	
 $username = "";	# Per il messaggio con user vuoto
 $password = "";	# Per il messaggio con password vuota
@@ -22,57 +19,24 @@ $password = $data{"password"};
 $page = $data{"page"};
  
 if ($username eq "admin" && $password eq "admin") {	# Login corretto
-	#print "GG WP";
-	#$query = new CGI;
-	#print $query->redirect('http://www.devdaily.com/');
-	#print $query->header(-location => 'http://www.goolge.it');
 	
 	#$CGI::Session::Driver::file::FileName = "sessione"; # Cambio nome al file contenente la sessione
 	#$session = new CGI::Session(undef, {Directory=>'/tmp'});
 	
 	#$session = new CGI::Session("driver:File", undef, {Directory=>'/tmp'});
 	#$session->name("PROVA");
-	#$sid = $session->id();
-	$sessione = createSession();
-	#print $sessione->param('user')."<br>".$sessione->param('pass')."<br />";
-	
-	
+	my $sessione = createSession();
 	print $sessione->header(-location=>"admin.cgi");
-	
-	
-	#$s = getSession();
-	#print "<br>La password dopo load &egrave; ".$s{'pass'};
-	#print redirect(-url => 'admin.cgi');
-	
-	#print "ID SESSIONE=".$sid;
-	
-	#$cgi = CGI.new("html4")
-	#$prova = CGI::Session.new($cgi,'session_key' => '111');
-	#$sid = $prova->id();
-	
-	#$biscotto = CGI::Cookie->new(-name=>'ID',-value=>$sid);
-	#print header(-cookie=>$biscotto);
-
-	#$cookie = $cgi->cookie(CGISESSID => $sid);
-	#print $cgi->header( -cookie=>$cookie );
-	
-	#$session->param('user', $username);
-	#$session->param('pass', $password);
-	#print "USERNAME=".$session->param('user');
-
-	#print "<script>location.replace(\"../pages/admin.html\")</script>";	# Attenzione agli slash e al percorso
-	
-	#print redirect(-url=>'../pages/admin.html');
-	#$url = "../pages/admin.html";
-	#open(FILE, $url) || die "errore nella open\n\n";
 
  } else {	# Login errato
 	#print CGI->header;			#usiamo il nostro header
+	
 	# Da usare in lab
 	#<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
 	#<link href="../tecwebproject/css/style_768.css" rel="stylesheet" type="text/css" />
 	#<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
 	#<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
+	
 	print <<EOF;
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
@@ -138,16 +102,4 @@ sub createSession() {
 	$session->param('user', $username);
 	$session->param('pass', $password);
 	return $session;
-}
- 
-sub getSession() {
-	$session = CGI::Session->load() or die CGI::Session->errstr;
-	if ($session->is_expired) {
-		print "Non c'&egrave; nulla da caricare";
-	} else {
-		print $session->param('pass');
-		#my %ritorno=('user', $session->param('user'), 'pass', $session->param('pass'));
-		#print $ritorno{'user'};
-		#return $ritorno;
-	}
 }

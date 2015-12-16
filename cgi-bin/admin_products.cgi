@@ -1,5 +1,5 @@
-#!C:/xampp/perl/bin/perl.exe
 #!/usr/bin/perl
+#!C:/xampp/perl/bin/perl.exe
 
 
 use CGI;
@@ -29,10 +29,10 @@ print <<EOF;
 		<meta name="author" content="Fabiano Tavallini, Marco Franceschini, Daniele Favaro" />
 		<meta name="copyright" content="Ju Rapida S.N.C." />
 		<meta name="viewport" content="width=device-width">
-		<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
-		<link href="../tecwebproject/css/style_768.css" rel="stylesheet" type="text/css" />
-		<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
-		<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
+		<link href="../css/style_1024_max.css" rel="stylesheet" type="text/css" />
+		<link href="../css/style_768.css" rel="stylesheet" type="text/css" />
+		<link href="../css/style_480.css" rel="stylesheet" type="text/css" />
+		<link href="../css/style_1024_min.css" rel="stylesheet" type="text/css" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css' />
 		<link rel="icon" type="image/png" href="res/images/icon.png" />
@@ -113,13 +113,9 @@ EOF
 sub printPlaceholder() {
 	# Da usare in lab: ../tecwebproject/res/images/empty_list.png
 	$placeholder = "<div id=\"placeholder\">
-<<<<<<< HEAD
 						<h1>Nessun prodotto ancora inserito</h1>
-						<img src=\"../tecwebproject/res/images/empty_list.png\" alt=\"Immagina lista prodotti vuota\" \>
-=======
-						<h3>Nessun prodotto ancora inserito</h3>
 						<img src=\"../res/images/empty_list.png\" alt=\"Immagina lista prodotti vuota\" \>
->>>>>>> 6e1736a6270eedd86a9bdfd3822d377fd0720cbe
+
 					</div>";
 	return $placeholder;
 }
