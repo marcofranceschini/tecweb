@@ -90,12 +90,8 @@ print <<EOF;
 				</form>
 			</div>
 		</div>
+		
 EOF
-	print "	<script type=\"text/javascript\">
-					document.getElementById(\"error_mail\").syle.display = \"none\";
-					document.getElementById(\"error_name\").syle.display = \"none\";
-					document.getElementById(\"error_mex\").syle.display = \"none\";
-			</script>";
 if (%data) {
 	if ($from ne '' && $subject ne '' && $body ne '') {
 		my $smtp = Net::SMTP->new(
@@ -114,17 +110,17 @@ if (%data) {
 		$smtp->quit;
 		
 		print "Grazie! Verrai contatto al piu' presto!";
-	} elsif ($from ne "") {
+	} elsif ($from ne '') {
 		print "	<script type=\"text/javascript\">
-					document.getElementById('error_mail').syle.display = \"none\";
+					document.getElementById(\"error_mail\").style.display = \"compact\";
 				</script>";
-	} elsif ($subject ne "") {
+	} elsif ($subject ne '') {
 		print "	<script type=\"text/javascript\">
-					document.getElementById('error_name').syle.display = \"none\";
+					document.getElementById(\"error_name\").style.display = \"compact\";
 				</script>";
-	} elsif ($body ne "") {
+	} elsif ($body ne '') {
 		print "	<script type=\"text/javascript\">
-					document.getElementById('error_mex').syle.display = \"none\";
+					document.getElementById(\"error_mex\").style.display = \"compact\";
 				</script>";
 	}	
 }
