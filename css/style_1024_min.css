@@ -165,6 +165,7 @@
 	#navbar_admin p {		/*NEW -------------------------------------*/
 		padding-right: 12em;	/*Soluzione responsive per centrare*/
 		font-weight: bold;
+		font-size: 1.1em;
 	}
 	
 	#navbar_admin a {
@@ -620,7 +621,7 @@
 	
 	#content_admin #placeholder > img {
 		max-width: 80%;
-	}
+	}	
 	
 	.modalDialog {
 		position: fixed;
@@ -769,8 +770,8 @@
 	#action_box .linked_box {
 		display: inline-block;
 		width: 6em;
-		padding-top: 1.5em;
-		padding-bottom: 1.5em;	
+		padding-top: 1.2em;
+		padding-bottom: 1.2em;	
 		border-radius: 0.5em;
 		text-align: center;
 		text-transform: uppercase;
@@ -778,7 +779,7 @@
 		font-weight: bold;
 		color: white;
 		background: #A00;
-		text-shadow: 0px 3px 3px black, 0px 0px 3px black;
+		text-shadow: 0px 1px 1px black, 0px 0px 1px black;
 	}
 	
 	#action_box .linked_box:hover {
