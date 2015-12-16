@@ -119,12 +119,3 @@ sub printPlaceholder() {
 					</div>";
 	return $placeholder;
 }
-
-sub getSession() {
-	$session = CGI::Session->load() or die $!; #CGI::Session->errstr
-	if ($session->is_expired || $session->is_empty) { # Entra nell'if con la condizione is_empty
-		print "expired";
-	} else {
-		return $session;
-	}
-}

@@ -18,6 +18,10 @@ print "Content-Type: text/html\n\n";
 
 $sessione = getSession();
 
+$comment= param('admin_back');
+if (defined(param('admin_back'))) {
+	print $sessione->header(-location=>"logout.cgi");
+}
 
 print <<EOF;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -42,7 +46,7 @@ print <<EOF;
 		<div id="header" class="fadeInDown">
 			<div id="navbar_admin">
 				<a id="admin_back_icon" href="../index.html"><i class="material-icons md-24">&#xE88A;</i></a>
-				<p><a id="admin_back" href="../cgi-bin/logout.cgi">Torna al sito</a></p>
+				<p><a id="admin_back" href="../cgi-bin/admin.cgi">Torna al sito</a></p>
 				<p>Area Amministrativa</p>
 			</div>
 		</div>
