@@ -6,12 +6,11 @@
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
 use CGI qw(:standard Vars);
-use CGI::Cookie;
 use CGI::Session;
 use warnings;
 
-$username = "";	# Per il popup con user vuoto
-$password = "";	# Per il popup con password vuota
+$username = "";	# Per il messaggio con user vuoto
+$password = "";	# Per il messaggio con password vuota
 $page = "";
 
 my %data = Vars();
@@ -33,11 +32,10 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 	#$sid = $session->id();
 	$sessione = createSession();
 	print $sessione->param('user')."<br>".$sessione->param('pass')."<br>";
-	print "Ho fatto??";
 	$s = getSession();
-	print $s{'pass'};
+	print "La password dopo load &egrave; ".$s{'pass'};
 	
-	print redirect(-url => 'admin.cgi');
+	#print redirect(-url => 'admin.cgi');
 	
 	#print "ID SESSIONE=".$sid;
 	
@@ -62,8 +60,13 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 	#open(FILE, $url) || die "errore nella open\n\n";
 
  } else {	# Login errato
-	#print CGI->header;			#usiamo il nosrto header
+	#print CGI->header;			#usiamo il nostro header
 	print "Content-Type: text/html\n\n";
+	# Da usare in lab
+	#<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
+	#<link href="../tecwebproject/css/style_768.css" rel="stylesheet" type="text/css" />
+	#<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
+	#<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
 	print <<EOF;
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
@@ -76,10 +79,10 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 			<meta name="author" content="Fabiano Tavallini, Marco Franceschini, Daniele Favaro" />
 			<meta name="copyright" content="Ju Rapida S.N.C." />
 			<meta name="viewport" content="width=device-width">
-			<link href="../css/style_1024_max.css" rel="stylesheet" type="text/css" />
-			<link href="../css/style_768.css" rel="stylesheet" type="text/css" />
-			<link href="../css/style_480.css" rel="stylesheet" type="text/css" />
-			<link href="../css/style_1024_min.css" rel="stylesheet" type="text/css" />
+			<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
+			<link href="../tecwebproject/css/style_768.css" rel="stylesheet" type="text/css" />
+			<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
+			<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
 			<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 			<link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css' />
 			<link rel="icon" type="image/png" href="res/images/icon.png" />
