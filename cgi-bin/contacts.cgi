@@ -37,7 +37,7 @@ if (%data) {
 		$smtp->quit;
 		
 		$result = "Grazie! Verrai contatto al piu' presto!";
-	} else {
+	} elsif {
 		$result = "Compila tutti i campi correttamente!";
 	}
 }
@@ -97,14 +97,17 @@ print <<EOF;
 					<div class="form_email_element">
 						<label for="form_email_name">Nome &#47; Societ&agrave;</label>
 						<input type="text" name="name" id="form_email_name" />
+						<h5 class="form_email_error">Inserire Nome &#47; Societ&agrave;</h5>
 					</div>
 					<div class="form_email_element">
 						<label for="form_email_mail"><span lang="en">Email</span></label>
 						<input type="text" name="mail" id="form_email_mail" />
+						<h5 class="form_email_error">Inserisci la tua email</h5>
 					</div>
 					<div class="form_email_element">
 						<label for="form_email_mex">Messaggio</label>
 						<textarea name="mex" id="form_email_mex" rows="5" cols="5"> </textarea>
+						<h5 class="form_email_error">Inserisci un messaggio</h5>
 					</div>
 					<div class="form_email_element">
 						<input type="submit" value="Invia" id="form_email_submit" />
