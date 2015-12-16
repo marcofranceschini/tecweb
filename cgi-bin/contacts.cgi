@@ -112,15 +112,15 @@ if (%data) {
 		print "Grazie! Verrai contatto al piu' presto!";
 	} elsif ($from ne '') {
 		print "	<script type=\"text/javascript\">
-					document.getElementById(\"error_mail\").style.display = \"compact\";
+					document.getElementById(\"error_mail\").style.display = \"block\";
 				</script>";
 	} elsif ($subject ne '') {
 		print "	<script type=\"text/javascript\">
-					document.getElementById(\"error_name\").style.display = \"compact\";
+					document.getElementById(\"error_name\").style.display = \"block\";
 				</script>";
 	} elsif ($body ne '') {
 		print "	<script type=\"text/javascript\">
-					document.getElementById(\"error_mex\").style.display = \"compact\";
+					document.getElementById(\"error_mex\").style.display = \"block\";
 				</script>";
 	}	
 }
