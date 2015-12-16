@@ -9,7 +9,7 @@ use CGI qw(:standard Vars);
 use CGI::Session;
 use warnings;
 
-print "Content-Type: text/html\n\n";
+#print "Content-Type: text/html\n\n";
 	
 $username = "";	# Per il messaggio con user vuoto
 $password = "";	# Per il messaggio con password vuota
@@ -33,9 +33,10 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 	#$session->name("PROVA");
 	#$sid = $session->id();
 	$sessione = createSession();
-	print $sessione->param('user')."<br>".$sessione->param('pass')."<br>";
-	$s = getSession();
-	print "<br>La password dopo load &egrave; ".$s{'pass'};
+	#print $sessione->param('user')."<br>".$sessione->param('pass')."<br />";
+	print $sessione->header(-location=>"logout.cgi");
+	#$s = getSession();
+	#print "<br>La password dopo load &egrave; ".$s{'pass'};
 	#print redirect(-url => 'admin.cgi');
 	
 	#print "ID SESSIONE=".$sid;
@@ -136,10 +137,12 @@ sub createSession() {
  
 sub getSession() {
 	$session = CGI::Session->load() or die CGI::Session->errstr;
-	if ($session->is_expired || $session->is_empty) {
+	if ($session->is_expired) {
 		print "Non c'&egrave; nulla da caricare";
 	} else {
-		my %ritorno=('user', $session->param('user'), 'pass', $session->param('pass'));
-		return $ritorno;
+		print $session->param('pass');
+		#my %ritorno=('user', $session->param('user'), 'pass', $session->param('pass'));
+		#print $ritorno{'user'};
+		#return $ritorno;
 	}
 }

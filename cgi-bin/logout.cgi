@@ -43,11 +43,12 @@ print $sessione{'pass'};
 
 sub getSession() {
 	$session = CGI::Session->load() or die $!; #CGI::Session->errstr
-	if ($session->is_expired || $session->is_empty) { # Entra nell'if con la condizione is_empty
-		print "NON CARICO NIENTE!";
+	if ($session->is_expired) { # Entra nell'if con la condizione is_empty
+		print "expired";
+	} elsif ($session->is_empty) {
+		print "empty";
 	} else {
-		my %ritorno = ('user', $session->param('user'), 'pass', $session->param('pass'));
-		return $ritorno;
+		print $session->param('pass');
 	}
 }
 

@@ -4,6 +4,7 @@ use CGI;
 use CGI::Session;
 use Net::SMTP;
 use CGI qw(:standard Vars);
+use CGI::Carp qw(fatalsToBrowser);
 
 print "Content-Type: text/html\n\n";
 
@@ -100,7 +101,7 @@ if (%data) {
 			Port    =>  2525,
 			Timeout =>  10,
 			User    =>  'neneabc1@gmail.com',
-			Password=>  'bellabella.12') or die;
+			Password =>  'bellabella.12') or die "Error";
 		
 		$smtp->mail($from);
 		$smtp->to('neneabc1@gmail.com');
