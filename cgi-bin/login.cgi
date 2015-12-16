@@ -20,11 +20,6 @@ $page = $data{"page"};
  
 if ($username eq "admin" && $password eq "admin") {	# Login corretto
 	
-	#$CGI::Session::Driver::file::FileName = "sessione"; # Cambio nome al file contenente la sessione
-	#$session = new CGI::Session(undef, {Directory=>'/tmp'});
-	
-	#$session = new CGI::Session("driver:File", undef, {Directory=>'/tmp'});
-	#$session->name("PROVA");
 	my $sessione = createSession();
 	print $sessione->header(-location=>"admin.cgi");
 
