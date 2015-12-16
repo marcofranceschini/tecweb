@@ -50,7 +50,7 @@ print <<EOF;
 					<li><a href="../index.html"><span xml:lang="en">Home</span></a></li>
 					<li><a href="../pages/products.html">Prodotti</a></li> <!--Comprese le offerte-->
 					<li><span id="current">Contatti</span></li>
-					<li><a href="about.html">Chi siamo</a></li>
+					<li><a href="../pages/about.html">Chi siamo</a></li>
 				</ul>
 			</div>
 			<div id="breadcrumb">
