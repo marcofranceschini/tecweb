@@ -1,6 +1,5 @@
-#!C:/xampp/perl/bin/perl.exe
 #!/usr/bin/perl
-
+#!C:/xampp/perl/bin/perl.exe
 
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
