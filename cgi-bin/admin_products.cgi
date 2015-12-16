@@ -1,5 +1,6 @@
-#!/usr/bin/perl
 #!C:/xampp/perl/bin/perl.exe
+#!/usr/bin/perl
+
 
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
@@ -105,7 +106,7 @@ EOF
 
 sub printPlaceholder() {
 	$placeholder = "<div id=\"placeholder\">
-						<h1>Nessun prodotto ancora inserito</h1>
+						<h3>Nessun prodotto ancora inserito</h3>
 						<img src=\"../res/images/empty_list.png\" alt=\"Immagina lista prodotti vuota\" \>
 					</div>";
 	return $placeholder;
