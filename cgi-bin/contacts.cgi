@@ -7,8 +7,6 @@ use CGI qw(:standard Vars);
 
 print "Content-Type: text/html\n\n";
 
-$result = "";
-
 $from = "";
 $subject = "";
 $body = "";
@@ -18,29 +16,6 @@ my %data = Vars();
 $from = $data{"name"};
 $subject = $data{"mail"};
 $body = $data{"mex"};
-
-if (%data) {
-	if ($from ne '' && $subject ne '' && $body ne '') {
-		my $smtp = Net::SMTP->new(
-			'mail.smtp2go.com',
-			Hello	=>	'mail.smtp2go.com',
-			Port    =>  2525,
-			Timeout =>  10,
-			User    =>  'neneabc1@gmail.com',
-			Password=>  'bellabella.12') or die;
-		
-		$smtp->mail($from);
-		$smtp->to('neneabc1@gmail.com');
-		$smtp->data;
-		$smtp->datasend("Sent from perl! Fuck yeah!");
-		$smtp->dataend;
-		$smtp->quit;
-		
-		$result = "Grazie! Verrai contatto al piu' presto!";
-	} elsif {
-		$result = "Compila tutti i campi correttamente!";
-	}
-}
 
 print <<EOF;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -97,17 +72,17 @@ print <<EOF;
 					<div class="form_email_element">
 						<label for="form_email_name">Nome &#47; Societ&agrave;</label>
 						<input type="text" name="name" id="form_email_name" />
-						<h5 class="form_email_error">Inserire Nome &#47; Societ&agrave;</h5>
+						<h5 id="error_name">Inserire Nome &#47; Societ&agrave;</h5>
 					</div>
 					<div class="form_email_element">
 						<label for="form_email_mail"><span lang="en">Email</span></label>
 						<input type="text" name="mail" id="form_email_mail" />
-						<h5 class="form_email_error">Inserisci la tua email</h5>
+						<h5 id="error_mail">Inserisci la tua email</h5>
 					</div>
 					<div class="form_email_element">
 						<label for="form_email_mex">Messaggio</label>
 						<textarea name="mex" id="form_email_mex" rows="5" cols="5"> </textarea>
-						<h5 class="form_email_error">Inserisci un messaggio</h5>
+						<h5 id="error_mex">Inserisci un messaggio</h5>
 					</div>
 					<div class="form_email_element">
 						<input type="submit" value="Invia" id="form_email_submit" />
@@ -115,7 +90,45 @@ print <<EOF;
 				</form>
 			</div>
 		</div>
+EOF
+	print "	<script type=\"text/javascript\">
+					document.getElementById(\"error_mail\").syle.display = \"none\";
+					document.getElementById(\"error_name\").syle.display = \"none\";
+					document.getElementById(\"error_mex\").syle.display = \"none\";
+			</script>";
+if (%data) {
+	if ($from ne '' && $subject ne '' && $body ne '') {
+		my $smtp = Net::SMTP->new(
+			'mail.smtp2go.com',
+			Hello	=>	'mail.smtp2go.com',
+			Port    =>  2525,
+			Timeout =>  10,
+			User    =>  'neneabc1@gmail.com',
+			Password=>  'bellabella.12') or die;
 		
+		$smtp->mail($from);
+		$smtp->to('neneabc1@gmail.com');
+		$smtp->data;
+		$smtp->datasend("Sent from perl! Yeah!");
+		$smtp->dataend;
+		$smtp->quit;
+		
+		print "Grazie! Verrai contatto al piu' presto!";
+	} elsif ($from ne "") {
+		print "	<script type=\"text/javascript\">
+					document.getElementById('error_mail').syle.display = \"none\";
+				</script>";
+	} elsif ($subject ne "") {
+		print "	<script type=\"text/javascript\">
+					document.getElementById('error_name').syle.display = \"none\";
+				</script>";
+	} elsif ($body ne "") {
+		print "	<script type=\"text/javascript\">
+					document.getElementById('error_mex').syle.display = \"none\";
+				</script>";
+	}	
+}
+print <<EOF;
 		<div id="footer">
 			<div id="footer_top">
 				<div id="maps">

@@ -494,7 +494,7 @@
 		border-radius: 0.5em;
 		color: white;
 		background: #A00;
-		text-shadow: 0px 3px 3px black, 0px 0px 3px black;
+		text-shadow: 0px 1px 1px black, 0px 0px 1px black;
 	}
 	
 	#admin_panel .linked_box:hover {
@@ -545,7 +545,7 @@
 		font-size: 0.9em;
 		color: white;
 		background: #A00;
-		text-shadow: 0px 3px 3px black, 0px 0px 3px black;
+		text-shadow: 0px 1px 1px black, 0px 0px 1px black;
 	}
 	
 	#action_box .linked_box:hover {
