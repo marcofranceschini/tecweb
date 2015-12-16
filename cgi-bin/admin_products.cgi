@@ -10,6 +10,12 @@ use warnings;
 
 print CGI->header;
 
+#Da usare il lab
+#<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
+#<link href="../tecwebproject/css/style_768.css" rel="stylesheet" type="text/css" />
+#<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
+#<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
+
 print <<EOF;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
@@ -22,10 +28,10 @@ print <<EOF;
 		<meta name="author" content="Fabiano Tavallini, Marco Franceschini, Daniele Favaro" />
 		<meta name="copyright" content="Ju Rapida S.N.C." />
 		<meta name="viewport" content="width=device-width">
-		<link href="../css/style_1024_max.css" rel="stylesheet" type="text/css" />
-		<link href="../css/style_768.css" rel="stylesheet" type="text/css" />
-		<link href="../css/style_480.css" rel="stylesheet" type="text/css" />
-		<link href="../css/style_1024_min.css" rel="stylesheet" type="text/css" />
+		<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
+		<link href="../tecwebproject/css/style_768.css" rel="stylesheet" type="text/css" />
+		<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
+		<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css' />
 		<link rel="icon" type="image/png" href="res/images/icon.png" />
@@ -104,9 +110,10 @@ print <<EOF;
 EOF
 
 sub printPlaceholder() {
+	# Da usare in lab: ../tecwebproject/res/images/empty_list.png
 	$placeholder = "<div id=\"placeholder\">
 						<h1>Nessun prodotto ancora inserito</h1>
-						<img src=\"../res/images/empty_list.png\" alt=\"Immagina lista prodotti vuota\" \>
+						<img src=\"../tecwebproject/res/images/empty_list.png\" alt=\"Immagina lista prodotti vuota\" \>
 					</div>";
 	return $placeholder;
 }
