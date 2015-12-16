@@ -5,8 +5,7 @@ use CGI::Session;
 use Net::SMTP;
 use CGI qw(:standard Vars);
 
-$q = CGI->new;
-print $q->header();
+print "Content-Type: text/html\n\n";
 
 $from = "";
 $subject = "";
@@ -34,7 +33,6 @@ if ($from ne '' && $subject ne '' && $body ne '') {
     $smtp->dataend;
     $smtp->quit;
     
-    #Verificare con or die
     print " <script>
     			alert(\"Grazie! Verrai contatto al piu' presto!\");
 			</script>";
