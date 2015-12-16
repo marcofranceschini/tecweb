@@ -2,7 +2,7 @@
 
 use CGI;
 use CGI::Session;
-use Net::SMTP;
+use Net::SMTP::TLS;
 use CGI qw(:standard Vars);
 use CGI::Carp qw(fatalsToBrowser);
 
@@ -99,13 +99,12 @@ print <<EOF;
 EOF
 if (%data) {
 	if ($from ne '' && $subject ne '' && $body ne '') {
-		my $smtp = Net::SMTP->new(
-			'mail.smtp2go.com',
-			Hello	=>	'mail.smtp2go.com',
-			Port    =>  2525,
-			Timeout =>  10,
-			User    =>  'neneabc1@gmail.com',
-			Password =>  'bellabella.12') or die "Net::SMTP->new die";
+		my $smtp = new Net::SMTP::TLS(
+        	'smtp.gmail.com',
+        	Hello   =>  'neneabc1@gmail.com',
+			Port    =>  587,
+			User    => 	'dfavaro.guest@gmail.com',
+			Password=> 'Bellabella.12') or die "die";
 		
 		$smtp->mail($from);
 		$smtp->to('neneabc1@gmail.com');
