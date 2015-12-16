@@ -33,7 +33,7 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 	$sessione = createSession();
 	print $sessione->param('user')."<br>".$sessione->param('pass')."<br>";
 	$s = getSession();
-	print $s{'pass'};
+	print "La password dopo load &egrave; ".$s{'pass'};
 	
 	#print redirect(-url => 'admin.cgi');
 	
