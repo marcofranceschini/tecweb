@@ -330,10 +330,7 @@
 	
 	#previous_page {
 		display: inline-block;
-		padding: 2em;
-		width: 6em;
-		padding-top: 1em;
-		padding-bottom: 1em;	
+		padding: 1em;	
 		border-radius: 0.5em;
 		color: white;
 		background: #A00;
@@ -344,7 +341,7 @@
 	}
 	
 	#previous_page:hover {
-		background: rgba(200, 0, 0, 1);
+		background: rgba(200, 0, 0, 0.8);
 		color: white;		
 		transition: all 0.5s ;
 		-webkit-transition: all 0.5s ;
