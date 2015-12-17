@@ -10,18 +10,12 @@ print "Content-Type: text/html\n\n";
 
 $mail = '/usr/sbin/sendmail';
 
-$from = "";
-$subject = "";
-$body = "";
+my %FORM = Vars();
 
-my %data = Vars();
+$name = $FORM{"name"};
+$from = $FORM{"mail"};
+$body = $FORM{"mex"};
 
-$from = $data{"name"};
-$subject = $data{"mail"};
-$body = $data{"mex"};
-
-# Usiamo name nel form, va tolto?
-# What?
 print <<EOF;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
@@ -97,35 +91,41 @@ print <<EOF;
 		</div>
 		
 EOF
-if (%data) {
-	if ($from ne '' && $subject ne '' && $body ne '') {
+print $FORM{'mex'};
+if (%FORM) {
+	if ($name ne '' && $from ne '' && $body ne '') {
 		my $smtp = new Net::SMTP::TLS(
         	'smtp.gmail.com',
-        	Hello   =>  'neneabc1@gmail.com',
 			Port    =>  587,
-			User    => 	'dfavaro.guest@gmail.com',
-			Password=> 'Bellabella.12') or die "die";
+			User    => 	'request.jurapida',
+			Password=> 	'bellabella.12') or die "die";
 		
-		$smtp->mail($from);
-		$smtp->to('neneabc1@gmail.com');
+		$smtp->mail();
+		$smtp->to('request.jurapida@gmail.com');
 		$smtp->data;
-		$smtp->datasend("Sent from perl! Yeah!");
+		$smtp->datasend($mex);
+		#$smtp->datasend("Informazioni richieste da:");
+		#."\nEmail: ".$from."\n\nMessaggio:\n".$body);
 		$smtp->dataend;
 		$smtp->quit;
 		
 		print "Grazie! Verrai contatto al piu' presto!";
-	} elsif ($from ne '') {
-		print "	<script type=\"text/javascript\">
-					document.getElementById(\"error_mail\").style.display = \"block\";
-				</script>";
-	} elsif ($subject ne '') {
-		print "	<script type=\"text/javascript\">
-					document.getElementById(\"error_name\").style.display = \"block\";
-				</script>";
-	} elsif ($body ne '') {
-		print "	<script type=\"text/javascript\">
-					document.getElementById(\"error_mex\").style.display = \"block\";
-				</script>";
+	} else {
+		if ($name eq '') {
+			print "	<script type=\"text/javascript\">
+						document.getElementById(\"error_name\").style.display = \"block\";
+					</script>";
+		} 
+		if ($from eq '') {
+			print "	<script type=\"text/javascript\">
+						document.getElementById(\"error_mail\").style.display = \"block\";
+					</script>";
+		}
+		if ($body eq '') {
+			print "	<script type=\"text/javascript\">
+						document.getElementById(\"error_mex\").style.display = \"block\";
+					</script>";
+		}
 	}	
 }
 print <<EOF;
