@@ -122,7 +122,7 @@ if (%FORM) {
 						document.getElementById(\"error_mail\").style.display = \"block\";
 					</script>";
 		}
-		if ($body eq '') {
+		if ($body eq '') {  #C'è un bug che crea uno spazio in automatico sulla textarea
 			print "	<script type=\"text/javascript\">
 						document.getElementById(\"error_mex\").style.display = \"block\";
 					</script>";
