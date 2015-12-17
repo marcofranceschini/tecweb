@@ -91,7 +91,6 @@ print <<EOF;
 		</div>
 		
 EOF
-print $FORM{'mex'};
 if (%FORM) {
 	if ($name ne '' && $from ne '' && $body ne '') {
 		my $smtp = new Net::SMTP::TLS(
@@ -102,21 +101,23 @@ if (%FORM) {
 		
 		$smtp->mail();
 		$smtp->to('request.jurapida@gmail.com');
-		$smtp->data;
-		$smtp->datasend($mex);
-		#$smtp->datasend("Informazioni richieste da:");
-		#."\nEmail: ".$from."\n\nMessaggio:\n".$body);
+		$smtp->data();
+		$smtp->datasend("From: ".$from."\n");
+		$smtp->datasend("To: request.jurapida\@gmail.com\n");
+		$smtp->datasend("Reply-To: ".$from."\n");
+		$smtp->datasend("Subject: Richiesta da ".$from."\n\n");
+		$smtp->datasend($body."\n");
 		$smtp->dataend;
 		$smtp->quit;
 		
-		print "Grazie! Verrai contatto al piu' presto!";
+		print "Grazie! Verrai contatto al piu' presto!"; #Sistemare coi CSS
 	} else {
 		if ($name eq '') {
 			print "	<script type=\"text/javascript\">
 						document.getElementById(\"error_name\").style.display = \"block\";
 					</script>";
 		} 
-		if ($from eq '') {
+		if ($from eq '') {	#Controllare che $from contenga il carattere [at]
 			print "	<script type=\"text/javascript\">
 						document.getElementById(\"error_mail\").style.display = \"block\";
 					</script>";
