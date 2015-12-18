@@ -138,9 +138,15 @@ EOF
 						location.hash = \"#contacts_form\";
 					</script>";
 		} 
-		if ($from eq '' || index($from, "\@") != -1) {	#Controllare che $from contenga il carattere [at]
+		if ($from eq '') {
 			print "	<script type=\"text/javascript\">
 						document.getElementById(\"error_mail\").style.display = \"block\";
+						location.hash = \"#contacts_form\";
+					</script>";
+		} elsif (index($from, "\@") == -1) {
+			print "	<script type=\"text/javascript\">
+						document.getElementById(\"error_mail\").style.display = \"block\";
+						document.getElementById(\"error_mail\").innerHtml = \"Email inserita non valida\";
 						location.hash = \"#contacts_form\";
 					</script>";
 		}
