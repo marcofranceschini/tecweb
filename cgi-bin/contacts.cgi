@@ -138,7 +138,7 @@ EOF
 						location.hash = \"#contacts_form\";
 					</script>";
 		} 
-		if ($from eq '') {	#Controllare che $from contenga il carattere [at]
+		if ($from eq '' || index($from, "\@") != -1) {	#Controllare che $from contenga il carattere [at]
 			print "	<script type=\"text/javascript\">
 						document.getElementById(\"error_mail\").style.display = \"block\";
 						location.hash = \"#contacts_form\";
