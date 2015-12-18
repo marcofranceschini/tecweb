@@ -147,7 +147,6 @@ EOF
 		if ($body eq '') {
 			print "	<script type=\"text/javascript\">
 						document.getElementById(\"error_mex\").style.display = \"block\";
-						var app = document.getElementById('form_email').getElementByTagName('form');
 						location.hash = \"#contacts_form\";
 					</script>";
 		}
