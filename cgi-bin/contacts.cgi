@@ -106,7 +106,7 @@ print <<EOF;
 		
 EOF
 if (%FORM) {
-	if ($name ne '' && $from ne '' && $body ne '') {
+	if ($name ne '' && $from ne '' && index($from, '@') != -1 && $body ne '') {
 		my $smtp = new Net::SMTP::TLS(
         	'smtp.gmail.com',
 			Port    =>  587,
@@ -143,10 +143,10 @@ EOF
 						document.getElementById(\"error_mail\").style.display = \"block\";
 						location.hash = \"#contacts_form\";
 					</script>";
-		} elsif (index($from, "\@") == -1) {
+		} elsif (index($from, '@') == -1) {
 			print "	<script type=\"text/javascript\">
 						document.getElementById(\"error_mail\").style.display = \"block\";
-						document.getElementById(\"error_mail\").innerHtml = \"Email inserita non valida\";
+						document.getElementById(\"error_mail\").innerHTML = \"Email inserita non valida\";
 						location.hash = \"#contacts_form\";
 					</script>";
 		}
