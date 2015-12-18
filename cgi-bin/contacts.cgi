@@ -69,17 +69,26 @@ print <<EOF;
 				<form action="../cgi-bin/contacts.cgi" method="post">
 					<div class="form_email_element">
 						<label for="form_email_name">Nome &#47; Societ&agrave;</label>
-						<input type="text" name="name" id="form_email_name" />
+						<input type="text" name="name" id="form_email_name"
+EOF
+print "value=\"".$FORM{'name'}."\"/>";
+print <<EOF;
 						<h5 id="error_name">Inserire Nome &#47; Societ&agrave;</h5>
 					</div>
 					<div class="form_email_element">
 						<label for="form_email_mail"><span lang="en">Email</span></label>
-						<input type="text" name="mail" id="form_email_mail" />
+						<input type="text" name="mail" id="form_email_mail"
+EOF
+print "value=\"".$FORM{'mail'}."\"/>";
+print <<EOF;
 						<h5 id="error_mail">Inserisci la tua email</h5>
 					</div>
 					<div class="form_email_element">
 						<label for="form_email_mex">Messaggio</label>
-						<textarea name="mex" id="form_email_mex" rows="5" cols="5"> </textarea>
+						<textarea name="mex" id="form_email_mex" rows="5" cols="5">
+EOF
+print $FORM{'mex'}."</textarea>";
+print <<EOF;
 						<h5 id="error_mex">Inserisci un messaggio</h5>
 					</div>
 					<div class="form_email_element">
@@ -121,7 +130,7 @@ if (%FORM) {
 						document.getElementById(\"error_mail\").style.display = \"block\";
 					</script>";
 		}
-		if ($body eq '') {  #C'è un bug che crea uno spazio in automatico sulla textarea
+		if ($body eq '') {
 			print "	<script type=\"text/javascript\">
 						document.getElementById(\"error_mex\").style.display = \"block\";
 					</script>";
