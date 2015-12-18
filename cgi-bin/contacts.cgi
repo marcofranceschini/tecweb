@@ -127,6 +127,7 @@ if (%FORM) {
 		print <<EOF;
 		<script type="text/javascript">
 			document.getElementById('form_email').style.display = "none";
+			location.hash = "#mail_sent";
 		</script>
 		<p id="mail_sent">Grazie! La ricontatteremo al pi&ugrave; presto!</p>		
 EOF
