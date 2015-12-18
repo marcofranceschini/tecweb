@@ -17,9 +17,11 @@ print "Content-Type: text/html\n\n";
 #<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
 
 $sessione = getSession();
+print "".$session->param('user');
 
-$comment= param('admin_back');
-if (defined(param('admin_back'))) {
+my $cgi = CGI->new();
+my $param = $cgi->param('param');
+if ($param) {
 	print $sessione->header(-location=>"logout.cgi");
 }
 
@@ -46,7 +48,7 @@ print <<EOF;
 		<div id="header" class="fadeInDown">
 			<div id="navbar_admin">
 				<a id="admin_back_icon" href="../index.html"><i class="material-icons md-24">&#xE88A;</i></a>
-				<p><a id="admin_back" href="../cgi-bin/admin.cgi">Torna al sito</a></p>
+				<p><a id="admin_back" href="../cgi-bin/admin.cgi?param=1">Torna al sito</a></p>
 				<p>Area Amministrativa</p>
 			</div>
 		</div>
