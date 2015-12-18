@@ -502,12 +502,7 @@
 		text-align: center;
 	}
 	
-	/*NEW*/
-	#content_contacts .form_email_element h5 {
-		color: red;
-		display: none;
-	}
-	
+	/*NEW*/	
 	#contact_list {
 		width: 23em;
 		margin: auto;
@@ -595,8 +590,23 @@
 		 color: #FFF;
 	}
 	
-	#form_email_submit:hover{	/* NEW --------------------------------------*/
+	#form_email_submit:hover {	/* NEW --------------------------------------*/
 		background: darkred;
+	}
+	
+	.mail_form_error {
+		color: red;
+		display: none;
+	}
+	
+	#mail_sent {
+		width: 80%;
+		margin: auto;
+		text-align: center;
+		margin-top: 3em;
+		margin-bottom: 6em;
+		font-weight: bold;
+		font-size: 1.2em;
 	}
 	
 	#content_admin {

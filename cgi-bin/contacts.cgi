@@ -71,17 +71,23 @@ print <<EOF;
 						<label for="form_email_name">Nome &#47; Societ&agrave;</label>
 						<input type="text" name="name" id="form_email_name"
 EOF
-print "value=\"".$FORM{'name'}."\"/>";
+if ($FORM{'name'}) {
+	print "value=\"".$FORM{'name'}."\"";
+} 
+print "/>";
 print <<EOF;
-						<h5 id="error_name">Inserire Nome &#47; Societ&agrave;</h5>
+						<h5 class="mail_form_error" id="error_name">Inserire Nome &#47; Societ&agrave;</h5>
 					</div>
 					<div class="form_email_element">
 						<label for="form_email_mail"><span lang="en">Email</span></label>
 						<input type="text" name="mail" id="form_email_mail"
 EOF
-print "value=\"".$FORM{'mail'}."\"/>";
+if ($FORM{'mail'}) {
+	print "value=\"".$FORM{'mail'}."\"";
+}
+print "/>";
 print <<EOF;
-						<h5 id="error_mail">Inserisci la tua email</h5>
+						<h5 class="mail_form_error" id="error_mail">Inserisci la tua email</h5>
 					</div>
 					<div class="form_email_element">
 						<label for="form_email_mex">Messaggio</label>
@@ -89,7 +95,7 @@ print <<EOF;
 EOF
 print $FORM{'mex'}."</textarea>";
 print <<EOF;
-						<h5 id="error_mex">Inserisci un messaggio</h5>
+						<h5 class="mail_form_error" id="error_mex">Inserisci un messaggio</h5>
 					</div>
 					<div class="form_email_element">
 						<input type="submit" value="Invia" id="form_email_submit" />
@@ -118,7 +124,12 @@ if (%FORM) {
 		$smtp->dataend;
 		$smtp->quit;
 		
-		print "Grazie! Verrai contatto al piu' presto!"; #Sistemare coi CSS
+		print <<EOF;
+		<script type="text/javascript">
+			document.getElementById('form_email').style.display = "none";
+		</script>
+		<p id="mail_sent">Grazie! La ricontatteremo al pi&ugrave; presto!</p>		
+EOF
 	} else {
 		if ($name eq '') {
 			print "	<script type=\"text/javascript\">

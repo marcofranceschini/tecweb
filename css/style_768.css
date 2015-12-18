@@ -498,6 +498,21 @@
 		background: darkred;
 	}
 	
+	.mail_form_error {
+		color: red;
+		display: none;
+	}
+	
+	#mail_sent {
+		width: 80%;
+		margin: auto;
+		text-align: center;
+		margin-top: 2em;
+		margin-bottom: 4em;
+		font-weight: bold;
+		font-size: 1.2em;
+	}
+	
 	#content_admin {
 		width: 90%;
 		margin: auto;
