@@ -66,7 +66,7 @@ print <<EOF;
 			</div>
 			<div id="form_email">
 				<p>Oppure contattaci ora via <span lang="en">Email</span></p>
-				<form action="../cgi-bin/contacts.cgi" method="post">
+				<form id="contacts_form" action="../cgi-bin/contacts.cgi" method="post">
 					<div class="form_email_element">
 						<label for="form_email_name">Nome &#47; Societ&agrave;</label>
 						<input type="text" name="name" id="form_email_name"
@@ -135,16 +135,20 @@ EOF
 		if ($name eq '') {
 			print "	<script type=\"text/javascript\">
 						document.getElementById(\"error_name\").style.display = \"block\";
+						location.hash = \"#contacts_form\";
 					</script>";
 		} 
 		if ($from eq '') {	#Controllare che $from contenga il carattere [at]
 			print "	<script type=\"text/javascript\">
 						document.getElementById(\"error_mail\").style.display = \"block\";
+						location.hash = \"#contacts_form\";
 					</script>";
 		}
 		if ($body eq '') {
 			print "	<script type=\"text/javascript\">
 						document.getElementById(\"error_mex\").style.display = \"block\";
+						var app = document.getElementById('form_email').getElementByTagName('form');
+						location.hash = \"#contacts_form\";
 					</script>";
 		}
 	}	
