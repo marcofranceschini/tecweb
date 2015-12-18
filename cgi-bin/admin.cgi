@@ -22,8 +22,9 @@ print "".$session->param('user');
 my $cgi = CGI->new();
 my $param = $cgi->param('param');
 if ($param) {
+	print "".$param;
 	print $sessione->header(-location=>"logout.cgi");
-}
+}else{
 
 print <<EOF;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -77,7 +78,7 @@ print <<EOF;
 	</body>
 </html>
 EOF
-
+}
 sub getSession() {
 	$session = CGI::Session->load() or die $!; #CGI::Session->errstr
 	if ($session->is_expired || $session->is_empty) {
