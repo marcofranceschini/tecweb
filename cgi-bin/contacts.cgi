@@ -1,7 +1,6 @@
 #!/usr/bin/perl
 
 use CGI;
-use CGI::Session;
 use Net::SMTP::TLS;
 use CGI qw(:standard Vars);
 use CGI::Carp qw(fatalsToBrowser);
