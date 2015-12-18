@@ -412,9 +412,11 @@
 	}
 	
 	#contact_list {
-		width: 20em;
+		width: 18em;
+		max-width: 100%;
 		margin: auto;
-		padding: 0.5em;
+		padding-top: 0.5em;
+		padding-bottom: 1em;	
 		list-style-type: none;
 	}
 	
@@ -427,14 +429,22 @@
 		vertical-align: middle;
 	}
 	
+	#contact_list .contact_label {
+		display: inline-block;
+	}
+	
 	#contact_list .contact {
 		display: inline-block;
 		float: right;
-		width: 60%;
-		font-weight: bold;
-		text-align: right;
+		width: 12em;
+		max-width: 100%;
+		font-weight: bold;		
+		padding-bottom: 0.5em;
 	}
-	
+	#contact_list .contact_data {
+		display: inline-block;
+		float: right;
+	}
 	#form_email {	
 		width: 90%;
 		margin: auto;
@@ -641,15 +651,13 @@
 	}
 	
 	#footer_top {
-		width: 90%;
-		margin: auto;
 		padding-top: 2em;
 		padding-bottom: 2em;
 	}
 	
 	#maps {
-		padding-left: 0.5em;
-		padding-right: 0.5em;
+		padding-left: 1em;
+		padding-right: 1em;
 	}
 	
 	#maps ul {
@@ -663,12 +671,12 @@
 	}
 	
 	#maps_menu {
+		width: 13em;
+		margin: auto;
 		display: inline-block;
 		vertical-align: top;
 		text-align: left;
 		letter-spacing: 0.4em;
-		margin-left: 3em;
-		padding-right: 1em;
 		padding-bottom: 1em;
 	}
 	
