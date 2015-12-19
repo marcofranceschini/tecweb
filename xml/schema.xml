@@ -32,6 +32,7 @@
 				<xs:element name="code" type="xs:string"/>
 				<xs:element name="name" type="xs:string"/>
 				<xs:element name="description" type="xs:string"/>
+				<xs:element name="shortDescription" type="xs:string"/>
 				<xs:element name="imgUrl" type="xs:string"/>
 				<xs:element name="backgroundUrl" type="xs:string"/>
 				<xs:element name="inEvidence" type="xs:boolean"/>
