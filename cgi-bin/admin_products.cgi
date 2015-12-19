@@ -149,6 +149,14 @@ EOF
 	</html>
 EOF
 }
+<<<<<<< HEAD
+=======
+sub printPlaceholder() {
+	# Da usare in lab: ../tecwebproject/res/images/empty_list.png
+	$placeholder = "<div id=\"placeholder\">
+						<p>Nessun prodotto ancora inserito</p>
+						<img src=\"../res/images/empty_list.png\" alt=\"Immagina lista prodotti vuota\" \>
+>>>>>>> 47f1b523a4f6b28e9a8a2cfd3043d884e23bb92f
 
 
 
