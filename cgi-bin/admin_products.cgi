@@ -144,8 +144,8 @@ EOF
 			
 			<div id="action_bar">
 				<div id="action_box">
-					<a id="action_back" class="linked_box fadeInLeft" href="admin.cgi">Indietro</a>
-					<a id="action_add" class="linked_box fadeInRight" href="#openModal">Aggiungi</a>
+					<a id="action_back" class="linked_box" href="admin.cgi">Indietro</a>
+					<a id="action_add" class="linked_box" href="#openModal">Aggiungi</a>
 				</div>
 			</div>
 					
