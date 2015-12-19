@@ -84,7 +84,7 @@ if ($param) { # LOGOUT - E' stato premuto il link per uscire
 				<div>
 					<a href="#close" title="Close" class="close">X</a>
 					<p>Inserisci un nuovo prodotto</p>
-					<form action="../cgi-bin/....cgi" method="post">
+					<form action="admin_products.cgi" method="post">
 						<label class="form_item" for="product_category">Categoria</label>
 						<select class="form_item" id="product_category">
 							<option value="calcio">Calcio</option>
@@ -115,7 +115,12 @@ if ($param) { # LOGOUT - E' stato premuto il link per uscire
 			
 			<div id="content_admin">	
 EOF
-
+	#salvare dati XML
+	print %FORM;
+	
+	#prendere dati XML
+	
+	
 	#if (lista prodotti vuota)
 	print printPlaceholder();
 	
