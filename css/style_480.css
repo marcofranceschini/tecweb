@@ -544,7 +544,7 @@
 	}
 	
 	#content_admin #placeholder > p {
-		font-size: 0.5em;
+		font-size: 1em;
 		font-weight: bold;
 	}
 	
@@ -570,7 +570,7 @@
 	}
 	
 	.modalDialog > div {
-		width: 10em;
+		width: 12em;
 		position: relative;
 		margin: auto;
 		margin-top: 2em;
@@ -606,17 +606,16 @@
 	#openModal p {
 		font-size: 1em;
 		font-weight: bold;
+		margin-bottom: 1em;
 	}
 	
 	#openModal label {
-		padding-top: 0.5em;
+		padding-top: 0.2em;
 	}
 	
 	#openModal .form_item {
 		width: 80%;
-		margin-top: 0.5em;
-		font-size: 1em;
-		padding: 0.2em;
+		font-size: 0.8em;
 		resize: none;
 	}
 	
