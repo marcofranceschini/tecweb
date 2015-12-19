@@ -115,12 +115,17 @@ if ($param) { # LOGOUT - E' stato premuto il link per uscire
 			
 			<div id="content_admin">	
 EOF
-	#salvare dati XML
-	print %FORM;
+	if (%FORM) {
+		#salvare dati XML
+		my %FORM = Vars();
 	
-	#prendere dati XML
+		print %FORM;
 	
+		#prendere dati XML
 	
+	} else {
+		print "CIAOOOO";
+	}
 	#if (lista prodotti vuota)
 	print printPlaceholder();
 	
