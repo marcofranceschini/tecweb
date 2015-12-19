@@ -627,19 +627,23 @@
 	}
 	
 	#content_admin #placeholder > img {
-		max-width: 80%;
+		width: 15em;
 	}	
 	
+	#content_admin #placeholder > p {
+		font-size: 2em;
+		font-weight: bold;
+	}
+	
 	.modalDialog {
-		position: absolute;
-		font-family: Arial, Helvetica, sans-serif;
+		position: fixed;
 		top: 0;
 		right: 0;
 		bottom: 0;
 		left: 0;
 		overflow: scroll;
 		background: rgba(0,0,0,0.8);
-		z-index: 99;
+		z-index: 100;
 		opacity:0;
 		-webkit-transition: opacity 200ms ease-in;
 		-moz-transition: opacity 200ms ease-in;
@@ -686,8 +690,9 @@
 		background: #D00;
 	}
 	
-	#openModal form {
-
+	#openModal p {
+		font-size: 1.6em;
+		font-weight: bold;
 	}
 	
 	#openModal label {
