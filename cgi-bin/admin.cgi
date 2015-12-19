@@ -45,7 +45,7 @@ if ($param) { # LOGOUT - E' stato premuto il link per uscire
 			<body>
 				<div id="header" class="fadeInDown">
 					<div id="navbar_admin">
-						<a id="admin_back_icon" href="../index.html"><i class="material-icons md-24">&#xE88A;</i></a>
+						<a id="admin_back_icon" href="../cgi-bin/admin.cgi?param=1"><i class="material-icons md-24">&#xE88A;</i></a>
 						<p><a id="admin_back" href="../cgi-bin/admin.cgi?param=1">Torna al sito</a></p>
 						<p>Area Amministrativa</p>
 					</div>
