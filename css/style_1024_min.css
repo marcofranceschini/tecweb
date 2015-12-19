@@ -723,8 +723,16 @@
 		border-radius: 3px;	
 	}
 	
-	#openModal submit {
-		margin-left: 20%;
+	#submitModal {
+		background: #A00;
+		border: none;
+		padding: 10px 25px 10px 25px;
+		box-shadow: 1px 1px 5px #B6B6B6;
+		border-radius: 3px;
+		text-shadow: 1px 1px 1px #9E3F3F;
+		cursor: pointer;
+		color: #FFF;
+		margin-left: 60%;
 	}
 	
 	#openModal .form_item {
