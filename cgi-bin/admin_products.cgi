@@ -40,7 +40,6 @@ sub printPlaceholder() {
 	$placeholder = "<div id=\"placeholder\">
 						<h1>Nessun prodotto ancora inserito</h1>
 						<img src=\"../res/images/empty_list.png\" alt=\"Immagina lista prodotti vuota\" \>
-
 					</div>";
 	return $placeholder;
 }
@@ -52,7 +51,7 @@ my $cgi = CGI->new();
 my $param = $cgi->param('param');
 if ($param) { # LOGOUT - E' stato premuto il link per uscire
 	destroySession();
-}else{
+} else {
 	print "Content-Type: text/html\n\n";
 	print <<EOF;
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -148,7 +147,5 @@ EOF
 		</body>
 	</html>
 EOF
+
 }
-
-
-
