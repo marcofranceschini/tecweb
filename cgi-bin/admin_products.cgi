@@ -5,6 +5,7 @@ use CGI;
 use CGI::Carp qw(fatalsToBrowser);
 use CGI qw(:standard Vars);
 use CGI::Session;
+use XML::LibXML;
 use warnings;
 
 #Da usare il lab
@@ -126,9 +127,19 @@ EOF
 	} else {
 		print "CIAOOOO";
 	}
-	#if (lista prodotti vuota)
-	print printPlaceholder();
 	
+	#lettura da file XML
+    my $file = '../xml/db.xml';
+    my $parser = XML::LibXML->new();
+    my $doc = $parser->parse_file($file);
+    my $radice = $doc->getDocumentElement;
+	my @prodotti = $radice->getElementsByTagName('products');
+	
+	if (!@prodotti) {
+	   	print printPlaceholder();
+    } else {
+     	print @prodotti;   
+    }
 	print <<EOF;
 			</div>
 			
