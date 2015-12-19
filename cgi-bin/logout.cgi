@@ -1,5 +1,6 @@
-#!/usr/bin/perl
 #!C:/xampp/perl/bin/perl.exe
+#!/usr/bin/perl
+
 
 
 
