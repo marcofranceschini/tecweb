@@ -79,13 +79,13 @@ if ($param) { # LOGOUT - E' stato premuto il link per uscire
 					<p><a id="admin_back" href="../cgi-bin/admin.cgi?param=1">Torna al sito</a></p>
 					<p>Gestione Prodotti</p>
 				</div>
-			</div>
+			</div> 
 			
 			<div id="openModal" class="modalDialog">
 				<div>
 					<a href="#close" title="Close" class="close">X</a>
 					<p>Inserisci un nuovo prodotto</p>
-					<form action="../cgi-bin/admin_products.cgi" method="post">
+					<form action="../cgi-bin/admin_products.cgi" method="get">
 						<label class="form_item" for="product_category">Categoria</label>
 						<select class="form_item" id="product_category">
 							<option value="calcio">Calcio</option>
