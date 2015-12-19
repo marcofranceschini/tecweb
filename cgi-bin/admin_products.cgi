@@ -108,8 +108,12 @@ if ($param) { # LOGOUT - E' stato premuto il link per uscire
 						<label class="form_item" for="product_image">Carica <span lang="en">thumbnail</span></label>
 						<input class="form_item" id="product_image" type="file" />
 						
+<<<<<<< HEAD
 						<input id="submit" type="reset" value="Reset" />
 						<input id="submit" type="submit" value="Inserisci" />
+=======
+						<input id="submitModal" type="submit" value="Inserisci" />
+>>>>>>> 682c7f03dbc46bda22434ed154e6b5c473c56229
 					</form>
 				</div>
 			</div>
