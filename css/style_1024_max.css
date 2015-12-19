@@ -648,6 +648,7 @@
 		text-shadow: 1px 1px 1px #9E3F3F;
 		cursor: pointer;
 		color: #FFF;
+		margin-left: 60%;
 	}
 	
 	#openModal .form_item {
