@@ -94,4 +94,3 @@ sub destroySession() {
 	$session->flush();
 	print redirect(-url=>'../'); # Torno in home
 }
-
