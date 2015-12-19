@@ -1,10 +1,12 @@
-#!/usr/bin/perl
 #!C:/xampp/perl/bin/perl.exe
+#!/usr/bin/perl
+
 
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
 use CGI qw(:standard Vars);
 use CGI::Session;
+use XML::LibXML;
 use warnings;
 
 #Da usare il lab
@@ -115,15 +117,24 @@ if ($param) { # LOGOUT - E' stato premuto il link per uscire
 			
 			<div id="content_admin">	
 EOF
+
 	#salvare dati XML
 	print %FORM;
 	
-	#prendere dati XML
+	#lettura da file XML
+    my $file = '../xml/db.xml';
+    my $parser = XML::LibXML->new();
+    my $doc = $parser->parse_file($file);
+    my $radice = $doc->getDocumentElement;
+	my @elementi = $radice->getElementsByTagName('products');      #contenitore dei 'product'
+    
 	
-	
-	#if (lista prodotti vuota)
-	print printPlaceholder();
-	
+	if (!@elements) {
+	   print printPlaceholder();
+    } else {
+     
+     print @elementi;   
+    }
 	print <<EOF;
 			</div>
 			
