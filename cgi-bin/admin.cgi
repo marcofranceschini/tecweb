@@ -7,14 +7,11 @@ use CGI qw(:standard Vars);
 use CGI::Session;
 use warnings;
 
-
 #Da usare il lab
 #<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
 #<link href="../tecwebproject/css/style_768.css" rel="stylesheet" type="text/css" />
 #<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
 #<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
-
-
 
 sub getSession() {
 	$sessione = CGI::Session->load() or die $!; #CGI::Session->errstr
@@ -34,7 +31,6 @@ sub destroySession() {
 	$session->flush() or die "errore flush";
 	print redirect(-url=>'../'); # Torno in home
 }
-
 	
 my $session = getSession(); # Verifico che la sessione ci sia
 
@@ -61,7 +57,7 @@ if ($app) { # LOGOUT - E' stato premuto il link per uscire
 				<link href="../css/style_1024_min.css" rel="stylesheet" type="text/css" />
 				<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 				<link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css' />
-				<link rel="icon" type="image/png" href="res/images/icon.png" />
+				<link rel="icon" type="image/png" href="../res/images/icon.png" />
 			</head>
 			<body>
 				<div id="header" class="fadeInDown">
