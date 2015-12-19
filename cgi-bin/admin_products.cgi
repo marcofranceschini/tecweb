@@ -86,7 +86,7 @@ if ($param) { # LOGOUT - E' stato premuto il link per uscire
 					<p>Inserisci un nuovo prodotto</p>
 					<form action="admin_products.cgi" method="post">
 						<label class="form_item" for="product_category">Categoria</label>
-						<select class="form_item" id="product_category" name="categoria">
+						<select class="form_item" id="product_category" name="product_category">
 							<option value="calcio">Calcio</option>
 							<option value="basket"><span lang="en">Basket</span></option>
 							<option value="volley"><span lang="en">Volley</span></option>
@@ -98,15 +98,15 @@ if ($param) { # LOGOUT - E' stato premuto il link per uscire
 							<option value="accessori">Accessori</option>
 						</select>
 						<label class="form_item" for="product_code">Codice</label>
-						<input class="form_item" id="product_code" type="text" />
+						<input class="form_item" id="product_code" type="text"  name="product_code" />
 						<label class="form_item" for="product_name">Nome</label>
-						<input class="form_item" id="product_name" type="text" />
+						<input class="form_item" id="product_name" type="text" name="product_name" />
 						<label class="form_item" for="product_desc">Descrizione</label>
-						<textarea class="form_item" id="product_desc"></textarea>
+						<textarea class="form_item" id="product_desc"  name="product_desc" ></textarea>
 						<label class="form_item" for="thumbnail_desc">Descrizione breve</label>
-						<textarea class="form_item" id="thumbnail_desc"></textarea>
+						<textarea class="form_item" id="thumbnail_desc"  name="thumbnail_desc" ></textarea>
 						<label class="form_item" for="product_image">Carica <span lang="en">thumbnail</span></label>
-						<input class="form_item" id="product_image" type="file" />
+						<input class="form_item" id="product_image" type="file" name="image" />
 						
 						<input id="submit_modal" type="submit" value="Inserisci" />
 					</form>
