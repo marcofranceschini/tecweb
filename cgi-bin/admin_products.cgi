@@ -117,9 +117,7 @@ if ($param) { # LOGOUT - E' stato premuto il link per uscire
 			
 			<div id="content_admin">	
 EOF
-
-    
-    my %FORM = Vars();
+	my %FORM = Vars();
 	if (%FORM) {
 		#salvare dati XML
 	
@@ -139,10 +137,9 @@ EOF
 	my @elementi = $radice->getElementsByTagName('products');      #contenitore dei 'product'
 	
 	if (!@elements) {
-	   print printPlaceholder();
+	   	print printPlaceholder();
     } else {
-     
-     print @elementi;   
+     	print @elementi;   
     }
 	print <<EOF;
 			</div>
