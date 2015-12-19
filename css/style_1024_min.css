@@ -695,6 +695,12 @@
 		font-weight: bold;
 	}
 	
+	#openModal select {
+		border: none;
+		box-shadow: 1px 1px 5px #3D3D3D;
+		border-radius: 3px;	
+	}
+	
 	#openModal label {
 		padding-top: 0.5em;
 	}
