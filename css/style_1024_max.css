@@ -546,6 +546,11 @@
 		width: 15em;
 	}	
 	
+	#content_admin #placeholder > p {
+		font-size: 1.6em;
+		font-weight: bold;
+	}
+	
 	.modalDialog {
 		position: fixed;
 		top: 0;

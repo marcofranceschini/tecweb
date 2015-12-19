@@ -547,6 +547,11 @@
 		width: 10em;
 	}
 	
+	#content_admin #placeholder > p {
+		font-size: 1em;
+		font-weight: bold;
+	}
+	
 	.modalDialog {
 		position: fixed;
 		top: 0;
@@ -569,7 +574,7 @@
 	}
 	
 	.modalDialog > div {
-		width: 20em;
+		width: 10em;
 		position: relative;
 		margin: auto;
 		margin-top: 2em;
