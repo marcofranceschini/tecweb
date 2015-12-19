@@ -1,5 +1,5 @@
+#!C:/Perl64/bin/perl.exe
 #!/usr/bin/perl
-#!C:/xampp/perl/bin/perl.exe
 
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
@@ -86,7 +86,7 @@ if ($param) { # LOGOUT - E' stato premuto il link per uscire
 					<p>Inserisci un nuovo prodotto</p>
 					<form action="admin_products.cgi" method="post">
 						<label class="form_item" for="product_category">Categoria</label>
-						<select class="form_item" id="product_category">
+						<select class="form_item" id="product_category" name="categoria">
 							<option value="calcio">Calcio</option>
 							<option value="basket"><span lang="en">Basket</span></option>
 							<option value="volley"><span lang="en">Volley</span></option>
