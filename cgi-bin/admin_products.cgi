@@ -124,7 +124,7 @@ EOF
 		#prendere dati XML
 	
 	} else {
-		print "CIAOOOO";
+		print "NADA";
 	}
 	
 	#lettura da file XML
