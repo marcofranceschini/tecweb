@@ -641,22 +641,24 @@
 		background: rgba(0,0,0,0.8);
 		z-index: 99;
 		opacity:0;
-		-webkit-transition: opacity 400ms ease-in;
-		-moz-transition: opacity 400ms ease-in;
-		transition: opacity 400ms ease-in;
+		-webkit-transition: opacity 200ms ease-in;
+		-moz-transition: opacity 200ms ease-in;
+		transition: opacity 200ms ease-in;
 		pointer-events: none;
 	}
 	
 	.modalDialog:target {
-		opacity:1;
+		opacity: 1;
 		pointer-events: auto;
 	}
 	
 	.modalDialog > div {
 		width: 25em;
 		position: relative;
-		margin: 10% auto;
-		padding: 1em;
+		margin: auto;
+		margin-top: 2em;
+		margin-bottom: 2em;
+		padding: 1.5em;
 		border-radius: 0.5em;
 		background: #fff;
 	}

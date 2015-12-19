@@ -70,13 +70,13 @@ print <<EOF;
 					<input class="form_item" id="product_code" type="text" />
 					<label class="form_item" for="product_name">Nome</label>
 					<input class="form_item" id="product_name" type="text" />
-					<label class="form_item" for="product_desc">Descrizione prodotto</label>
+					<label class="form_item" for="product_desc">Descrizione</label>
 					<textarea class="form_item" id="product_desc"></textarea>
+					<label class="form_item" for="thumbnail_desc">Descrizione breve</label>
+					<textarea class="form_item" id="thumbnail_desc"></textarea>
 					<label class="form_item" for="product_image">Carica <span lang="en">thumbnail</span></label>
 					<input class="form_item" id="product_image" type="file" />
-					<label class="form_item" for="thumbnail_desc">Descrizione immagine</label>
-					<textarea class="form_item" id="thumbnail_desc"></textarea>
-
+					
 					<input id="submit" type="submit" value="Inserisci" />
 				</form>
 			</div>
