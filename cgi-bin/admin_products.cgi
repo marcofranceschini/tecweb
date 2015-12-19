@@ -13,6 +13,39 @@ use warnings;
 #<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
 #<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
 
+
+
+sub getSession() {
+	$sessione = CGI::Session->load() or die $!; #CGI::Session->errstr
+	if ($sessione->is_expired || $sessione->is_empty) { # Se manca la sessione torno in home
+		#print redirect(-url=>'../');
+	}
+}
+
+sub destroySession() {
+	$session = CGI::Session->load() or die $!;
+	#$SID = $session->id();
+	$session->close();
+	$session->delete();
+	$session->flush();
+	#print redirect(-url=>'../'); # Torno in home
+	print "Content-Type: text/html\n\n";
+	print "prova";
+	$sessione = CGI::Session->load() or die $!; #CGI::Session->errstr
+	print $session->param('pass');
+}
+
+sub printPlaceholder() {
+	# Da usare in lab: ../tecwebproject/res/images/empty_list.png
+	$placeholder = "<div id=\"placeholder\">
+						<h1>Nessun prodotto ancora inserito</h1>
+						<img src=\"../res/images/empty_list.png\" alt=\"Immagina lista prodotti vuota\" \>
+
+					</div>";
+	return $placeholder;
+}
+
+
 getSession(); # Verifico che la sessione ci sia
 
 my $cgi = CGI->new();
@@ -20,7 +53,7 @@ my $param = $cgi->param('param');
 if ($param) { # LOGOUT - E' stato premuto il link per uscire
 	destroySession();
 }else{
-	print CGI->header;
+	print "Content-Type: text/html\n\n";
 	print <<EOF;
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
@@ -116,32 +149,6 @@ EOF
 	</html>
 EOF
 }
-sub printPlaceholder() {
-	# Da usare in lab: ../tecwebproject/res/images/empty_list.png
-	$placeholder = "<div id=\"placeholder\">
-						<h1>Nessun prodotto ancora inserito</h1>
-						<img src=\"../res/images/empty_list.png\" alt=\"Immagina lista prodotti vuota\" \>
 
-					</div>";
-	return $placeholder;
-}
 
-sub getSession() {
-	$sessione = CGI::Session->load() or die $!; #CGI::Session->errstr
-	if ($sessione->is_expired || $sessione->is_empty) { # Se manca la sessione torno in home
-		#print redirect(-url=>'../');
-	}
-}
 
-sub destroySession() {
-	$session = CGI::Session->load() or die $!;
-	$SID = $session->id();
-	$session->close();
-	$session->delete();
-	$session->flush();
-	#print redirect(-url=>'../'); # Torno in home
-	print "Content-Type: text/html\n\n";
-	print "prova";
-	$sessione = CGI::Session->load() or die $!; #CGI::Session->errstr
-	print $session->param('pass');
-}
