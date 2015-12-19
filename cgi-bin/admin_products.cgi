@@ -1,14 +1,11 @@
 #!/usr/bin/perl
 #!C:/xampp/perl/bin/perl.exe
 
-
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
 use CGI qw(:standard Vars);
 use CGI::Session;
 use warnings;
-
-
 
 #Da usare il lab
 #<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
