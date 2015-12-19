@@ -15,6 +15,27 @@ use warnings;
 #<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
 #<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
 
+
+
+sub getSession() {
+	$sessione = CGI::Session->load() or die $!; #CGI::Session->errstr
+	if ($sessione->is_expired || $sessione->is_empty) { # Se manca la sessione torno in home
+		#print redirect(-url=>'../');
+	} else {
+		return $sessione;
+	}
+}
+
+sub destroySession() {
+	$session = CGI::Session->load() or die $!;
+	#$SID = $session->id();
+	$session->close();
+	$session->delete();
+	$session->flush();
+	print redirect(-url=>'../'); # Torno in home
+}
+
+
 $session = getSession(); # Verifico che la sessione ci sia
 
 my $cgi = CGI->new();
@@ -75,22 +96,4 @@ if ($param) { # LOGOUT - E' stato premuto il link per uscire
 			</body>
 		</html>
 EOF
-}
-
-sub getSession() {
-	$sessione = CGI::Session->load() or die $!; #CGI::Session->errstr
-	if ($sessione->is_expired || $sessione->is_empty) { # Se manca la sessione torno in home
-		print redirect(-url=>'../');
-	} else {
-		return $sessione;
-	}
-}
-
-sub destroySession() {
-	$session = CGI::Session->load() or die $!;
-	$SID = $session->id();
-	$session->close();
-	$session->delete();
-	$session->flush();
-	print redirect(-url=>'../'); # Torno in home
 }
