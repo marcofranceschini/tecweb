@@ -114,7 +114,7 @@ EOF
 sub printPlaceholder() {
 	# Da usare in lab: ../tecwebproject/res/images/empty_list.png
 	$placeholder = "<div id=\"placeholder\">
-						<h1>Nessun prodotto ancora inserito</h1>
+						<p>Nessun prodotto ancora inserito</p>
 						<img src=\"../res/images/empty_list.png\" alt=\"Immagina lista prodotti vuota\" \>
 
 					</div>";

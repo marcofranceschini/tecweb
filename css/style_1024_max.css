@@ -536,6 +536,95 @@
 		text-align: center;
 		font-size: 1.1em;
 	}
+	
+	/*NEW START*/
+	#content_admin #placeholder {
+		text-align: center;
+	}
+	
+	#content_admin #placeholder > img {
+		width: 15em;
+	}	
+	
+	.modalDialog {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		overflow: scroll;
+		background: rgba(0,0,0,0.8);
+		z-index: 100;
+		opacity:0;
+		-webkit-transition: opacity 200ms ease-in;
+		-moz-transition: opacity 200ms ease-in;
+		transition: opacity 200ms ease-in;
+		pointer-events: none;
+	}
+	
+	.modalDialog:target {
+		opacity: 1;
+		pointer-events: auto;
+	}
+	
+	.modalDialog > div {
+		width: 25em;
+		position: relative;
+		margin: auto;
+		margin-top: 2em;
+		margin-bottom: 2em;
+		padding: 1.5em;
+		border-radius: 0.5em;
+		background: #fff;
+	}
+	
+	.close {
+		background: #A00;
+		color: #FFFFFF;
+		line-height: 1.5em;
+		position: absolute;
+		right: -0.7em;
+		text-align: center;
+		top: -0.7em;
+		width: 1.5em;
+		text-decoration: none;
+		font-weight: bold;
+		-webkit-border-radius: 1em;
+		-moz-border-radius: 1em;
+		border-radius: 1em;
+		-moz-box-shadow: 0.5em 0.5em 1em #000;
+		-webkit-box-shadow: 0.5em 0.5em 1em #000;
+		box-shadow: 0.5em 0.5em 1em #000;
+	}
+	
+	.close:hover { 
+		background: #D00;
+	}
+	
+	#openModal label {
+		padding-top: 0.5em;
+	}
+	
+	#openModal .form_item {
+		width: 80%;
+		margin-top: 0.5em;
+		font-size: 1em;
+		padding: 0.2em;
+		resize: none;
+	}
+	
+	#openModal #submit {
+		text-align: center;
+		margin-top: 2em;
+		font-size: 1em;
+		background: #A00;
+		color: white;
+	}
+	
+	#openModal #submit:hover {
+		background: rgba(200, 0, 0, 1);
+	}
+	/*NEW END*/
 
 	#admin_panel {	/* NEW --------------------------------------*/
 		width: 30em;

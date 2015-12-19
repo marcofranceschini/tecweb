@@ -632,7 +632,6 @@
 	
 	.modalDialog {
 		position: fixed;
-		font-family: Arial, Helvetica, sans-serif;
 		top: 0;
 		right: 0;
 		bottom: 0;
@@ -684,10 +683,6 @@
 	
 	.close:hover { 
 		background: #D00;
-	}
-	
-	#openModal form {
-
 	}
 	
 	#openModal label {
