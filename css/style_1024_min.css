@@ -699,6 +699,18 @@
 		padding-top: 0.5em;
 	}
 	
+	#product_code {
+		border: none;
+		box-shadow: 1px 1px 5px #3D3D3D;
+		border-radius: 3px;	
+	}
+	
+	#product_desc {
+		border: none;
+		box-shadow: 1px 1px 5px #3D3D3D;
+		border-radius: 3px;	
+	}
+	
 	#openModal .form_item {
 		width: 80%;
 		margin-top: 0.5em;
