@@ -1,6 +1,5 @@
-#!C:/xampp/perl/bin/perl.exe
 #!/usr/bin/perl
-
+#!C:/xampp/perl/bin/perl.exe
 
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
@@ -134,12 +133,12 @@ EOF
     my $parser = XML::LibXML->new();
     my $doc = $parser->parse_file($file);
     my $radice = $doc->getDocumentElement;
-	my @elementi = $radice->getElementsByTagName('products');      #contenitore dei 'product'
+	my @prodotti = $radice->getElementsByTagName('products');
 	
-	if (!@elements) {
+	if (!@prodotti) {
 	   	print printPlaceholder();
     } else {
-     	print @elementi;   
+     	print @prodotti;   
     }
 	print <<EOF;
 			</div>
