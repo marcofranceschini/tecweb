@@ -20,8 +20,9 @@ use warnings;
 sub getSession() {
 	$sessione = CGI::Session->load() or die $!; #CGI::Session->errstr
 	if ($sessione->is_expired || $sessione->is_empty) { # Se manca la sessione torno in home
-		#print redirect(-url=>'../');
+		print redirect(-url=>'../');
 	} else {
+		print $sessione->param('pass');
 		return $sessione;
 	}
 }
@@ -29,18 +30,18 @@ sub getSession() {
 sub destroySession() {
 	$session = CGI::Session->load() or die $!;
 	#$SID = $session->id();
-	$session->close();
-	$session->delete();
-	$session->flush();
+	$session->close() or die "errore close";
+	$session->delete() or die "errore delete";
+	$session->flush() or die "errore flush";
 	print redirect(-url=>'../'); # Torno in home
 }
 
-
-$session = getSession(); # Verifico che la sessione ci sia
+	
+my $session = getSession(); # Verifico che la sessione ci sia
 
 my $cgi = CGI->new();
-my $param = $cgi->param('param');
-if ($param) { # LOGOUT - E' stato premuto il link per uscire
+my $app = $cgi->param('appoggio');
+if ($app) { # LOGOUT - E' stato premuto il link per uscire
 	destroySession();
 }else{
 	print "Content-Type: text/html\n\n";
@@ -66,8 +67,8 @@ if ($param) { # LOGOUT - E' stato premuto il link per uscire
 			<body>
 				<div id="header" class="fadeInDown">
 					<div id="navbar_admin">
-						<a id="admin_back_icon" href="../cgi-bin/admin.cgi?param=1"><i class="material-icons md-24">&#xE88A;</i></a>
-						<p><a id="admin_back" href="../cgi-bin/admin.cgi?param=1">Torna al sito</a></p>
+						<a id="admin_back_icon" href="../cgi-bin/admin.cgi?appoggio=1"><i class="material-icons md-24">&#xE88A;</i></a>
+						<p><a id="admin_back" href="../cgi-bin/admin.cgi?appoggio=1">Torna al sito</a></p>
 						<p>Area Amministrativa</p>
 					</div>
 				</div>
