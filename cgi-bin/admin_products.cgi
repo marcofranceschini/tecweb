@@ -17,6 +17,8 @@ print CGI->header;
 #<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
 #<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
 
+getSession(); # Verifico che la sessione ci sia
+
 print <<EOF;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
@@ -120,4 +122,11 @@ sub printPlaceholder() {
 
 					</div>";
 	return $placeholder;
+}
+
+sub getSession() {
+	$sessione = CGI::Session->load() or die $!; #CGI::Session->errstr
+	if ($sessione->is_expired || $sessione->is_empty) { # Se manca la sessione torno in home
+		print redirect(-url=>'../');
+	}
 }
