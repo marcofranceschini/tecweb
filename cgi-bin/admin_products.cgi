@@ -85,7 +85,7 @@ if ($param) { # LOGOUT - E' stato premuto il link per uscire
 			<div id="openModal" class="modalDialog">
 				<div>
 					<a href="#close" title="Close" class="close">X</a>
-					<h2>Inserisci un nuovo prodotto</h2>
+					<p>Inserisci un nuovo prodotto</p>
 					<form action="../cgi-bin/....cgi" method="post">
 						<label class="form_item" for="product_category">Categoria</label>
 						<select class="form_item" id="product_category">
