@@ -13,8 +13,6 @@ use warnings;
 #<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
 #<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
 
-
-
 sub getSession() {
 	$sessione = CGI::Session->load() or die $!; #CGI::Session->errstr
 	if ($sessione->is_expired || $sessione->is_empty) { # Se manca la sessione torno in home
@@ -38,7 +36,7 @@ sub destroySession() {
 sub printPlaceholder() {
 	# Da usare in lab: ../tecwebproject/res/images/empty_list.png
 	$placeholder = "<div id=\"placeholder\">
-						<h1>Nessun prodotto ancora inserito</h1>
+						<p>Nessun prodotto ancora inserito</p>
 						<img src=\"../res/images/empty_list.png\" alt=\"Immagina lista prodotti vuota\" \>
 					</div>";
 	return $placeholder;
@@ -85,7 +83,7 @@ if ($param) { # LOGOUT - E' stato premuto il link per uscire
 			<div id="openModal" class="modalDialog">
 				<div>
 					<a href="#close" title="Close" class="close">X</a>
-					<h2>Inserisci un nuovo prodotto</h2>
+					<p>Inserisci un nuovo prodotto</p>
 					<form action="../cgi-bin/....cgi" method="post">
 						<label class="form_item" for="product_category">Categoria</label>
 						<select class="form_item" id="product_category">

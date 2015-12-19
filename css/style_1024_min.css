@@ -690,6 +690,11 @@
 		background: #D00;
 	}
 	
+	#openModal p {
+		font-size: 1.6em;
+		font-weight: bold;
+	}
+	
 	#openModal label {
 		padding-top: 0.5em;
 	}
