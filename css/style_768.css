@@ -517,7 +517,8 @@
 		width: 90%;
 		max-width: 100%;
 		margin: auto;
-		padding: 2em;
+        padding-top: 2em;
+        padding-bottom: 2em;
 		min-height: 10em;
 	}
 	
