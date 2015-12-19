@@ -52,7 +52,7 @@ my $cgi = CGI->new();
 my $param = $cgi->param('param');
 if ($param) { # LOGOUT - E' stato premuto il link per uscire
 	destroySession();
-}else{
+} else {
 	print "Content-Type: text/html\n\n";
 	print <<EOF;
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -149,14 +149,14 @@ EOF
 	</html>
 EOF
 }
-<<<<<<< HEAD
-=======
+
 sub printPlaceholder() {
 	# Da usare in lab: ../tecwebproject/res/images/empty_list.png
 	$placeholder = "<div id=\"placeholder\">
 						<p>Nessun prodotto ancora inserito</p>
 						<img src=\"../res/images/empty_list.png\" alt=\"Immagina lista prodotti vuota\" \>
->>>>>>> 47f1b523a4f6b28e9a8a2cfd3043d884e23bb92f
+					</div>";
+}
 
 
 
