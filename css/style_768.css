@@ -628,18 +628,6 @@
 		border-radius: 3px;	
 	}
 	
-	#submit_modal {
-		background: #A00;
-		border: none;
-		padding: 10px 25px 10px 25px;
-		box-shadow: 1px 1px 5px #B6B6B6;
-		border-radius: 3px;
-		text-shadow: 1px 1px 1px #9E3F3F;
-		cursor: pointer;
-		color: #FFF;
-		margin-left: 60%;
-	}
-	
 	#openModal .form_item {
 		width: 80%;
 		margin-top: 0.5em;
@@ -648,15 +636,20 @@
 		resize: none;
 	}
 	
-	#openModal #submit {
-		text-align: center;
-		margin-top: 2em;
-		font-size: 1em;
+	#submit_modal {
 		background: #A00;
-		color: white;
+		border: none;
+		padding: 0.8em 1.2em 0.8em 1.2em;
+		box-shadow: 1px 1px 5px #B6B6B6;
+		border-radius: 3px;
+		font-size: 1em;
+		text-shadow: 1px 1px 1px #9E3F3F;
+		color: #FFF;
+		margin-top: 1em;
+		margin-left: 50%;
 	}
 	
-	#openModal #submit:hover {
+	#submit_modal:hover {
 		background: rgba(200, 0, 0, 1);
 	}
 	/*NEW END*/
