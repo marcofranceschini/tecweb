@@ -86,7 +86,7 @@ if ($param) { # LOGOUT - E' stato premuto il link per uscire
 				<div>
 					<a href="#close" title="Close" class="close">X</a>
 					<p>Inserisci un nuovo prodotto</p>
-					<form action="admin_products.cgi" method="post">
+					<form action="../cgi-bin/admin_products.cgi" method="post">
 						<label class="form_item" for="product_category">Categoria</label>
 						<select class="form_item" id="product_category">
 							<option value="calcio">Calcio</option>
@@ -118,8 +118,18 @@ if ($param) { # LOGOUT - E' stato premuto il link per uscire
 			<div id="content_admin">	
 EOF
 
-	#salvare dati XML
-	print %FORM;
+    
+    my %FORM = Vars();
+	if (%FORM) {
+		#salvare dati XML
+	
+		print $FORM{'product_code'};
+	
+		#prendere dati XML
+	
+	} else {
+		print "CIAOOOO";
+	}
 	
 	#lettura da file XML
     my $file = '../xml/db.xml';
@@ -127,7 +137,6 @@ EOF
     my $doc = $parser->parse_file($file);
     my $radice = $doc->getDocumentElement;
 	my @elementi = $radice->getElementsByTagName('products');      #contenitore dei 'product'
-    
 	
 	if (!@elements) {
 	   print printPlaceholder();
