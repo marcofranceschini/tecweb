@@ -46,8 +46,8 @@ sub printPlaceholder() {
 getSession(); # Verifico che la sessione ci sia
 
 my $cgi = CGI->new();
-my $param = $cgi->param('param');
-if ($param) { # LOGOUT - E' stato premuto il link per uscire
+my $logout = $cgi->param('logout');
+if ($logout) { # LOGOUT - E' stato premuto il link per uscire
 	destroySession();
 } else {
 	print "Content-Type: text/html\n\n";
@@ -74,8 +74,8 @@ if ($param) { # LOGOUT - E' stato premuto il link per uscire
 		<body>
 			<div id="header">
 				<div id="navbar_admin">
-					<a id="admin_back_icon" href="../cgi-bin/admin.cgi?param=1"><i class="material-icons md-24">&#xE88A;</i></a>
-					<p><a id="admin_back" href="../cgi-bin/admin.cgi?param=1">Torna al sito</a></p>
+					<a id="admin_back_icon" href="../cgi-bin/admin.cgi?logout=1"><i class="material-icons md-24">&#xE88A;</i></a>
+					<p><a id="admin_back" href="../cgi-bin/admin.cgi?logout=1">Torna al sito</a></p>
 					<p>Gestione Prodotti</p>
 				</div>
 			</div> 
@@ -137,10 +137,6 @@ EOF
             my $prodotto = $doc->findnodes($query)->get_node(1) or die "Prodotto non trovato";
             my $padre = $prodotto->parentNode;
             $padre->removeChild($prodotto);
-            #pulizia delle tabulazioni
-            #my $tab = $doc->findnodes("/products[text()=\"${nbsp}\"]")->get_node(1) or die "Tab non trovato";
-            #$padre = $tab->parentNode;
-            #$padre->removeChild("${nbsp}");
         }
         if($INPUT{'insert'}) {
             #scrittura su file XML	
