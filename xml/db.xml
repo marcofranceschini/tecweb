@@ -21,15 +21,6 @@
         <inEvidence>false</inEvidence>
     </product>
 	<product>
-		<category>Calcio</category>
-		<code>1234</code>
-		<name>nome</name>
-		<description>desc</description>
-		<shortDescription>thumb</shortDescription>
-		<backgroundImg/>
-		<inEvidence>false</inEvidence>
-	</product>
-	<product>
 		<category>Volley</category>
 		<code>VL022</code>
 		<name>COMPETITION</name>

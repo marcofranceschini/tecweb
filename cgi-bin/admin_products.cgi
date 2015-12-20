@@ -126,10 +126,14 @@ EOF
 	if (%INPUT) {
         
         if($INPUT{'modify'}) {
+            #modifica del database
             print "MODIFICA SELEZIONATA";
+            my $prodotto = $INPUT{'modify'};
         }
         if($INPUT{'remove'}) {
+            #rimozione dal database
             print "RIMOZIONE SELEZIONATA";
+            my $prodotto = $INPUT{'remove'};
         }
         if($INPUT{'insert'}) {
             #scrittura su file XML	
@@ -173,22 +177,24 @@ EOF
         print "<div id=\"products_label\"><span>Codice</span><span id=\"product_name_label\">Nome</span><span>Categoria</span></div>";
         for(my $i=0; $i < scalar @prodotti; $i++)
         {
+            my $codice = $prodotti[$i]->findnodes("code/text()");
+            my $nome = $prodotti[$i]->findnodes("name/text()");
+            my $categoria = $prodotti[$i]->findnodes("category/text()");
             print "<div class=\"product_card\">";
-            print "<span class=\"product_code\">".$prodotti[$i]->findnodes("code/text()")."</span>";
-            print "<span class=\"product_name\">".$prodotti[$i]->findnodes("name/text()")."</span>";
-            print "<span class=\"product_category\">".$prodotti[$i]->findnodes("category/text()")."</span>";
-            print <<EOF;
-            <div id="product_buttons">
-                <form id="form_modify" action="admin_products.cgi" method="post">
-                        <input type="hidden" name="modify" value="true" />
-                        <input class="button" type="submit" value="Modifica" />
+            print "<span class=\"product_code\">".$codice."</span>";
+            print "<span class=\"product_name\">".$nome."</span>";
+            print "<span class=\"product_category\">".$categoria."</span>";
+            print
+            "<div id=\"product_buttons\">
+                <form id=\"form_modify\" action=\"admin_products.cgi\" method=\"post\">
+                        <input type=\"hidden\" name=\"modify\" value=\"".$codice."\" />
+                        <input class=\"button\" type=\"submit\" value=\"Modifica\" />
                 </form>
-                <form id="form_remove" action="admin_products.cgi" method="post">
-                        <input type="hidden" name="remove" value="true" />
-                        <input class="button" type="submit" value="Rimuovi" />
+                <form id=\"form_remove\" action=\"admin_products.cgi\" method=\"post\">
+                        <input type=\"hidden\" name=\"remove\" value=\"".$codice."\" />
+                        <input class=\"button\" type=\"submit\" value=\"Rimuovi\" />
                 </form>
-            </div>
-EOF
+            </div>";
             print "</div>";
         }
         print "</div>";
