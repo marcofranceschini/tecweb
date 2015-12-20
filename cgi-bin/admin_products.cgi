@@ -128,12 +128,20 @@ EOF
         if($INPUT{'modify'}) {
             #modifica del database
             print "MODIFICA SELEZIONATA";
-            my $prodotto = $INPUT{'modify'};
+            my $codice_prodotto = $INPUT{'modify'};
         }
         if($INPUT{'remove'}) {
             #rimozione dal database
             print "RIMOZIONE SELEZIONATA";
-            my $prodotto = $INPUT{'remove'};
+            my $codice_prodotto = $INPUT{'remove'};
+            my $query = "/products/product [code=\"".$codice_prodotto."\"]";
+            my $prodotto = $doc->findnodes($query)->get_node(1) or die "Prodotto non trovato";
+            my $padre = $prodotto->parentNode;
+            $padre->removeChild($prodotto);
+            #serializzazione e chiusura del file
+            open(OUT, ">$file");
+            print OUT $doc->toString;
+            close(OUT);
         }
         if($INPUT{'insert'}) {
             #scrittura su file XML	
@@ -156,8 +164,11 @@ EOF
             "\t</product>\n";
             $nodo = $parser->parse_balanced_chunk($new_product) or die "Frammento non ben formato\n";
             $padre = $doc->findnodes("/products")->get_node(1) or die "Errore nel padre\n";
-            $padre->appendChild($nodo);
-            
+            if($padre){
+                $padre->appendChild($nodo);
+            } else {
+                print "<p>Database mal formato</p>";
+            }
             #serializzazione e chiusura del file
             open(OUT, ">$file");
             print OUT $doc->toString;
@@ -172,6 +183,7 @@ EOF
 	if (!@prodotti) {
 	   	print printPlaceholder();
     } else {
+        #stampa le card dei prodotti
         print "<p id=\"products_number\">Sono presenti: ".scalar @prodotti." prodotti</p>";
         print "<div id=\"products_container\">";
         print "<div id=\"products_label\"><span>Codice</span><span id=\"product_name_label\">Nome</span><span>Categoria</span></div>";
@@ -200,8 +212,6 @@ EOF
         print "</div>";
     }
     
-    
-    
 	print <<EOF;
 			</div>
 			
@@ -228,5 +238,4 @@ EOF
 		</body>
 	</html>
 EOF
-
 }
