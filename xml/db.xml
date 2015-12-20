@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <products>
     <product>
-        <category>calcio</category>
+        <category>Calcio</category>
         <code>C0011</code>
         <name>Evolution</name>
         <description>Pallone da calcio bla bla bla bla bla bla bla bla bla bla bla bla bla</description>
@@ -11,7 +11,7 @@
         <inEvidence>false</inEvidence>
     </product>
     <product>
-        <category>basket</category>
+        <category>Basket</category>
         <code>B0010</code>
         <name>Pallone Minibasket</name>
         <description>Pallone da basket bla bla bla bla bla bla bla bla bla bla bla bla bla</description>
@@ -21,11 +21,20 @@
         <inEvidence>false</inEvidence>
     </product>
 	<product>
-		<category>calcio</category>
+		<category>Calcio</category>
 		<code>1234</code>
 		<name>nome</name>
 		<description>desc</description>
 		<shortDescription>thumb</shortDescription>
+		<backgroundImg/>
+		<inEvidence>false</inEvidence>
+	</product>
+	<product>
+		<category>Volley</category>
+		<code>VL022</code>
+		<name>COMPETITION</name>
+		<description>Pallone da Volley misura 5 in pelle sintetica morbida.</description>
+		<shortDescription>Pallone da Volley misura 5 in pelle sintetica.</shortDescription>
 		<backgroundImg/>
 		<inEvidence>false</inEvidence>
 	</product>

@@ -87,15 +87,15 @@ if ($param) { # LOGOUT - E' stato premuto il link per uscire
 					<form action="admin_products.cgi" method="post">
 						<label class="form_item" for="product_category">Categoria</label>
 						<select class="form_item" id="product_category" name="product_category">
-							<option value="calcio">Calcio</option>
-							<option value="basket"><span lang="en">Basket</span></option>
-							<option value="volley"><span lang="en">Volley</span></option>
-							<option value="tennistavolo">Tennistavolo</option>
-							<option value="nuoto">Nuoto</option>
-							<option value="minigolf">Minigolf</option>
-							<option value="calciobalilla">Calciobalilla</option>
-							<option value="protezioni">Protezioni</option>
-							<option value="accessori">Accessori</option>
+							<option value="Calcio">Calcio</option>
+							<option value="Basket"><span lang="en">Basket</span></option>
+							<option value="Volley"><span lang="en">Volley</span></option>
+							<option value="Tennistavolo">Tennistavolo</option>
+							<option value="Nuoto">Nuoto</option>
+							<option value="Minigolf">Minigolf</option>
+							<option value="Calciobalilla">Calciobalilla</option>
+							<option value="Protezioni">Protezioni</option>
+							<option value="Accessori">Accessori</option>
 						</select>
 						<label class="form_item" for="product_code">Codice</label>
 						<input class="form_item" id="product_code" type="text"  name="product_code" />
@@ -107,7 +107,7 @@ if ($param) { # LOGOUT - E' stato premuto il link per uscire
 						<textarea class="form_item" id="thumbnail_desc"  name="thumbnail_desc" ></textarea>
 						<label class="form_item" for="product_image">Carica <span lang="en">thumbnail</span></label>
 						<input class="form_item" id="product_image" type="file" name="image" />
-						
+						<input type="hidden" name="insert" value="true" />
 						<input id="submit_modal" type="submit" value="Inserisci" />
 					</form>
 				</div>
@@ -122,35 +122,43 @@ EOF
     my $doc = $parser->parse_file($file) or die "Errore nel parsing";
     my $radice = $doc->getDocumentElement or die "Errore elemento radice";
     
-	%FORM = Vars();
-	if (%FORM) {
-		#scrittura su file XML
-	
-        my $category = $FORM{'product_category'};
-		my $code = $FORM{'product_code'};
-        my $name = $FORM{'product_name'};
-        my $desc = $FORM{'product_desc'};
-        my $thumbnail_desc = $FORM{'thumbnail_desc'};
-        #my image =  = $FORM{'product_image'};        
+	my %INPUT = Vars();
+	if (%INPUT) {
         
-        $new_product =
-        "\t<product>\n".
-        "\t\t<category>".$category."</category>\n".
-        "\t\t<code>".$code."</code>\n".
-        "\t\t<name>".$name."</name>\n".
-        "\t\t<description>".$desc."</description>\n".
-        "\t\t<shortDescription>".$thumbnail_desc."</shortDescription>\n".
-        "\t\t<backgroundImg></backgroundImg>\n".
-        "\t\t<inEvidence>false</inEvidence>\n".
-        "\t</product>\n";
-        $nodo = $parser->parse_balanced_chunk($new_product) or die "Frammento non ben formato\n";
-        $padre = $doc->findnodes("/products")->get_node(1) or die "Errore nel padre\n";
-        $padre->appendChild($nodo);
-        
-        #serializzazione e chiusura del file
-        open(OUT, ">$file");
-        print OUT $doc->toString;
-        close(OUT);
+        if($INPUT{'modify'}) {
+            print "MODIFICA SELEZIONATA";
+        }
+        if($INPUT{'remove'}) {
+            print "RIMOZIONE SELEZIONATA";
+        }
+        if($INPUT{'insert'}) {
+            #scrittura su file XML	
+            my $category = $INPUT{'product_category'};
+            my $code = $INPUT{'product_code'};
+            my $name = $INPUT{'product_name'};
+            my $desc = $INPUT{'product_desc'};
+            my $thumbnail_desc = $INPUT{'thumbnail_desc'};
+            #my image =  = $INPUT{'product_image'};        
+            
+            $new_product =
+            "\t<product>\n".
+            "\t\t<category>".$category."</category>\n".
+            "\t\t<code>".$code."</code>\n".
+            "\t\t<name>".$name."</name>\n".
+            "\t\t<description>".$desc."</description>\n".
+            "\t\t<shortDescription>".$thumbnail_desc."</shortDescription>\n".
+            "\t\t<backgroundImg></backgroundImg>\n".
+            "\t\t<inEvidence>false</inEvidence>\n".
+            "\t</product>\n";
+            $nodo = $parser->parse_balanced_chunk($new_product) or die "Frammento non ben formato\n";
+            $padre = $doc->findnodes("/products")->get_node(1) or die "Errore nel padre\n";
+            $padre->appendChild($nodo);
+            
+            #serializzazione e chiusura del file
+            open(OUT, ">$file");
+            print OUT $doc->toString;
+            close(OUT);
+        }
 	}
     
 	#lettura da file XML
@@ -162,14 +170,26 @@ EOF
     } else {
         print "<p id=\"products_number\">Sono presenti: ".scalar @prodotti." prodotti</p>";
         print "<div id=\"products_container\">";
+        print "<div id=\"products_label\"><span>Codice</span><span id=\"product_name_label\">Nome</span><span>Categoria</span></div>";
         for(my $i=0; $i < scalar @prodotti; $i++)
         {
-            print "<p class=\"product\">";
+            print "<div class=\"product_card\">";
             print "<span class=\"product_code\">".$prodotti[$i]->findnodes("code/text()")."</span>";
             print "<span class=\"product_name\">".$prodotti[$i]->findnodes("name/text()")."</span>";
             print "<span class=\"product_category\">".$prodotti[$i]->findnodes("category/text()")."</span>";
-            
-            print "</p>";
+            print <<EOF;
+            <div id="product_buttons">
+                <form id="form_modify" action="admin_products.cgi" method="post">
+                        <input type="hidden" name="modify" value="true" />
+                        <input class="button" type="submit" value="Modifica" />
+                </form>
+                <form id="form_remove" action="admin_products.cgi" method="post">
+                        <input type="hidden" name="remove" value="true" />
+                        <input class="button" type="submit" value="Rimuovi" />
+                </form>
+            </div>
+EOF
+            print "</div>";
         }
         print "</div>";
     }
