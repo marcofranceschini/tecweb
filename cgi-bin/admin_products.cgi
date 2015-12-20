@@ -133,7 +133,16 @@ EOF
         my $thumbnail_desc = $FORM{'thumbnail_desc'};
         #my image =  = $FORM{'product_image'};        
         
-        $new_product = "\t<product>prodotto enne</product>\n";
+        $new_product =
+        "\t<product>\n".
+        "\t\t<category>".$category."</category>\n".
+        "\t\t<code>".$code."</code>\n".
+        "\t\t<name>".$name."</name>\n".
+        "\t\t<description>".$desc."</description>\n".
+        "\t\t<shortDescription>".$thumbnail_desc."</shortDescription>\n".
+        "\t\t<backgroundImg></backgroundImg>\n".
+        "\t\t<inEvidence>false</inEvidence>\n".
+        "\t</product>\n";
         $nodo = $parser->parse_balanced_chunk($new_product) or die "Frammento non ben formato\n";
         $padre = $doc->findnodes("/products")->get_node(1) or die "Errore nel padre\n";
         $padre->appendChild($nodo);
@@ -146,7 +155,7 @@ EOF
     
 	#lettura da file XML
 	#my @prodotti = $radice->getElementsByTagName('product') or die "Errore prodotti\n";
-    my @prodotti = $doc->findnodes("/products/product/text()") or die "Errore prodotti\n";
+    my @prodotti = $doc->findnodes("/products/product") or die "Errore prodotti\n";
 	
 	if (!@prodotti) {
 	   	print printPlaceholder();
@@ -156,11 +165,10 @@ EOF
         for(my $i=0; $i < scalar @prodotti; $i++)
         {
             print "<p class=\"product\">";
-            print $prodotti[$i];
+            print $prodotti[$i]->getElementsByTagName("name");
             print "</p>";
         }
         print "</div>";
-        #print @prodotti;
     }
     
     

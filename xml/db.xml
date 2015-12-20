@@ -1,7 +1,32 @@
 <?xml version="1.0"?>
 <products>
-    <product>primo prodotto</product>
-    <product>secondo prodotto</product>
-    <product>terzo prodotto</product>
-	<product>prodotto enne</product>
+    <product>
+        <category>calcio</category>
+        <code>C0011</code>
+        <name>Evolution</name>
+        <description>Pallone da calcio bla bla bla bla bla bla bla bla bla bla bla bla bla</description>
+        <shortDescription>Pallone da calcio</shortDescription>
+        <img>c0011.png</img>
+        <backgroundImg/>
+        <inEvidence>false</inEvidence>
+    </product>
+    <product>
+        <category>basket</category>
+        <code>B0010</code>
+        <name>Pallone Minibasket</name>
+        <description>Pallone da basket bla bla bla bla bla bla bla bla bla bla bla bla bla</description>
+        <shortDescription>Pallone da basket</shortDescription>
+        <img>b0010.png</img>
+        <backgroundImg/>
+        <inEvidence>false</inEvidence>
+    </product>
+	<product>
+		<category>calcio</category>
+		<code>1234</code>
+		<name>nome</name>
+		<description>desc</description>
+		<shortDescription>thumb</shortDescription>
+		<backgroundImg/>
+		<inEvidence>false</inEvidence>
+	</product>
 </products>
