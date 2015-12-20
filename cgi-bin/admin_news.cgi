@@ -13,12 +13,11 @@ getSession(); # Verifico che la sessione ci sia
 
 
 
-
-
-
 sub getSession() {
 	$sessione = CGI::Session->load() or die $!; #CGI::Session->errstr
 	if ($sessione->is_expired || $sessione->is_empty) { # Se manca la sessione torno in home
 		print redirect(-url=>'../');
+	}else{
+		print "Content-Type: text/html\n\n";
 	}
 }
