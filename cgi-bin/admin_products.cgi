@@ -165,7 +165,10 @@ EOF
         for(my $i=0; $i < scalar @prodotti; $i++)
         {
             print "<p class=\"product\">";
-            print $prodotti[$i]->getElementsByTagName("name");
+            print "<span class=\"product_code\">".$prodotti[$i]->findnodes("code/text()")."</span>";
+            print "<span class=\"product_name\">".$prodotti[$i]->findnodes("name/text()")."</span>";
+            print "<span class=\"product_category\">".$prodotti[$i]->findnodes("category/text()")."</span>";
+            
             print "</p>";
         }
         print "</div>";

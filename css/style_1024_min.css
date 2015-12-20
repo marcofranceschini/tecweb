@@ -637,6 +637,17 @@
         box-shadow: 1px 1px 3px;
     }
     
+    #content_admin #products_container span { /* new */
+        display: inline-block;
+        width: 10em;
+        margin-right: 0.5em;
+        text-align: center;
+    }
+    
+    #content_admin #products_container .product_name { /* new */
+        text-align: left;
+    }
+    
 	#content_admin #placeholder {
 		text-align: center;
 	}
