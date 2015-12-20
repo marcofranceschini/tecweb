@@ -119,29 +119,28 @@ EOF
     #apertura file XML
     my $file = '../xml/db.xml';
     my $parser = XML::LibXML->new();
+    $parser->keep_blanks(0);
     my $doc = $parser->parse_file($file) or die "Errore nel parsing";
     my $radice = $doc->getDocumentElement or die "Errore elemento radice";
     
 	my %INPUT = Vars();
-	if (%INPUT) {
-        
+	if (%INPUT) {  #se riceve dati in input
         if($INPUT{'modify'}) {
             #modifica del database
             print "MODIFICA SELEZIONATA";
-            my $codice_prodotto = $INPUT{'modify'};
+            #my $codice_prodotto = $INPUT{'modify'};
         }
         if($INPUT{'remove'}) {
             #rimozione dal database
-            print "RIMOZIONE SELEZIONATA";
             my $codice_prodotto = $INPUT{'remove'};
             my $query = "/products/product [code=\"".$codice_prodotto."\"]";
             my $prodotto = $doc->findnodes($query)->get_node(1) or die "Prodotto non trovato";
             my $padre = $prodotto->parentNode;
             $padre->removeChild($prodotto);
-            #serializzazione e chiusura del file
-            open(OUT, ">$file");
-            print OUT $doc->toString;
-            close(OUT);
+            #pulizia delle tabulazioni
+            #my $tab = $doc->findnodes("/products[text()=\"${nbsp}\"]")->get_node(1) or die "Tab non trovato";
+            #$padre = $tab->parentNode;
+            #$padre->removeChild("${nbsp}");
         }
         if($INPUT{'insert'}) {
             #scrittura su file XML	
@@ -153,15 +152,15 @@ EOF
             #my image =  = $INPUT{'product_image'};        
             
             $new_product =
-            "\t<product>\n".
-            "\t\t<category>".$category."</category>\n".
-            "\t\t<code>".$code."</code>\n".
-            "\t\t<name>".$name."</name>\n".
-            "\t\t<description>".$desc."</description>\n".
-            "\t\t<shortDescription>".$thumbnail_desc."</shortDescription>\n".
-            "\t\t<backgroundImg></backgroundImg>\n".
-            "\t\t<inEvidence>false</inEvidence>\n".
-            "\t</product>\n";
+            "<product>".
+            "<category>".$category."</category>".
+            "<code>".$code."</code>".
+            "<name>".$name."</name>".
+            "<description>".$desc."</description>".
+            "<shortDescription>".$thumbnail_desc."</shortDescription>".
+            "<backgroundImg></backgroundImg>".
+            "<inEvidence>false</inEvidence>".
+            "</product>";
             $nodo = $parser->parse_balanced_chunk($new_product) or die "Frammento non ben formato\n";
             $padre = $doc->findnodes("/products")->get_node(1) or die "Errore nel padre\n";
             if($padre){
@@ -169,16 +168,16 @@ EOF
             } else {
                 print "<p>Database mal formato</p>";
             }
-            #serializzazione e chiusura del file
-            open(OUT, ">$file");
-            print OUT $doc->toString;
-            close(OUT);
         }
+        #serializzazione e chiusura del file
+        open(OUT, ">$file");
+        print OUT $doc->toString(2);    #2: indenta correttamente
+        close(OUT);
 	}
     
 	#lettura da file XML
 	#my @prodotti = $radice->getElementsByTagName('product') or die "Errore prodotti\n";
-    my @prodotti = $doc->findnodes("/products/product") or die "Errore prodotti\n";
+    my @prodotti = $doc->findnodes("/products/product");
 	
 	if (!@prodotti) {
 	   	print printPlaceholder();
