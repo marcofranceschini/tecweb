@@ -13,31 +13,32 @@
   		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="product">
-		<xs:simpleType name="category">
-			<xs:restriction base="xs:string">
-				<xs:enumeration value="Calcio"/>
-				<xs:enumeration value="Basket"/>
-				<xs:enumeration value="Volley"/>
-				<xs:enumeration value="Tennistavolo"/>
-				<xs:enumeration value="Nuoto"/>
-				<xs:enumeration value="Minigolf"/>
-				<xs:enumeration value="Calciobalilla"/>
-				<xs:enumeration value="Protezioni"/>
-				<xs:enumeration value="Accessori"/>
-			</xs:restriction>
-		</xs:simpleType>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="code" type="xs:string"/>
-				<xs:element name="name" type="xs:string"/>
-				<xs:element name="description" type="xs:string"/>
-				<xs:element name="shortDescription" type="xs:string"/>
-				<xs:element name="imgUrl" type="xs:string"/>
-				<xs:element name="backgroundUrl" type="xs:string"/>
-				<xs:element name="inEvidence" type="xs:boolean"/>
-			</xs:sequence>
-		</xs:complexType>
+    <xs:element name="products">
+        <xs:element name="product">
+            <xs:simpleType name="category">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Calcio"/>
+                    <xs:enumeration value="Basket"/>
+                    <xs:enumeration value="Volley"/>
+                    <xs:enumeration value="Tennistavolo"/>
+                    <xs:enumeration value="Nuoto"/>
+                    <xs:enumeration value="Minigolf"/>
+                    <xs:enumeration value="Calciobalilla"/>
+                    <xs:enumeration value="Protezioni"/>
+                    <xs:enumeration value="Accessori"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="code" type="xs:string"/>
+                    <xs:element name="name" type="xs:string"/>
+                    <xs:element name="description" type="xs:string"/>
+                    <xs:element name="shortDescription" type="xs:string"/>
+                    <xs:element name="imgUrl" type="xs:string"/>
+                    <xs:element name="backgroundUrl" type="xs:string"/>
+                    <xs:element name="inEvidence" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:element>
 	</xs:element>
-	
 </xs:schema>

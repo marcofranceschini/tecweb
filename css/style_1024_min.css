@@ -618,6 +618,25 @@
 	}
 	
 	/*NEW START*/
+    #content_admin #products_number {  /* new */
+        font-weight: bold;
+        padding-bottom: 2em;
+    }
+    
+    #content_admin #products_container { /* new */
+        width: 60%;
+        margin: auto;
+        
+    }
+    
+    #content_admin #products_container .product{ /* new */
+        margin-top: 1em;
+        margin-bottom: 1em;
+        padding: 1em;
+        background: #ddd;
+        box-shadow: 1px 1px 3px;
+    }
+    
 	#content_admin #placeholder {
 		text-align: center;
 	}

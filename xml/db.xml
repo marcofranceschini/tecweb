@@ -1,5 +1,7 @@
+<?xml version="1.0"?>
 <products>
-    <product>
-    merda
-    </product>
+    <product>primo prodotto</product>
+    <product>secondo prodotto</product>
+    <product>terzo prodotto</product>
+	<product>prodotto enne</product>
 </products>

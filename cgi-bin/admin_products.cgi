@@ -115,30 +115,56 @@ if ($param) { # LOGOUT - E' stato premuto il link per uscire
 			
 			<div id="content_admin">	
 EOF
-	%FORM = Vars();
-	if (%FORM) {
-		#salvare dati XML
-	
-		print $FORM{'product_code'};
-	
-		#prendere dati XML
-	
-	} else {
-		print "NADA";
-	}
-	
-	#lettura da file XML
+
+    #apertura file XML
     my $file = '../xml/db.xml';
     my $parser = XML::LibXML->new();
-    my $doc = $parser->parse_file($file);
-    my $radice = $doc->getDocumentElement;
-	my @prodotti = $radice->getElementsByTagName('products');
+    my $doc = $parser->parse_file($file) or die "Errore nel parsing";
+    my $radice = $doc->getDocumentElement or die "Errore elemento radice";
+    
+	%FORM = Vars();
+	if (%FORM) {
+		#scrittura su file XML
+	
+        my $category = $FORM{'product_category'};
+		my $code = $FORM{'product_code'};
+        my $name = $FORM{'product_name'};
+        my $desc = $FORM{'product_desc'};
+        my $thumbnail_desc = $FORM{'thumbnail_desc'};
+        #my image =  = $FORM{'product_image'};        
+        
+        $new_product = "\t<product>prodotto enne</product>\n";
+        $nodo = $parser->parse_balanced_chunk($new_product) or die "Frammento non ben formato\n";
+        $padre = $doc->findnodes("/products")->get_node(1) or die "Errore nel padre\n";
+        $padre->appendChild($nodo);
+        
+        #serializzazione e chiusura del file
+        open(OUT, ">$file");
+        print OUT $doc->toString;
+        close(OUT);
+	}
+    
+	#lettura da file XML
+	#my @prodotti = $radice->getElementsByTagName('product') or die "Errore prodotti\n";
+    my @prodotti = $doc->findnodes("/products/product/text()") or die "Errore prodotti\n";
 	
 	if (!@prodotti) {
 	   	print printPlaceholder();
     } else {
-     	print @prodotti;   
+        print "<p id=\"products_number\">Sono presenti: ".scalar @prodotti." prodotti</p>";
+        print "<div id=\"products_container\">";
+        for(my $i=0; $i < scalar @prodotti; $i++)
+        {
+            print "<p class=\"product\">";
+            print $prodotti[$i];
+            print "</p>";
+        }
+        print "</div>";
+        #print @prodotti;
     }
+    
+    
+    
 	print <<EOF;
 			</div>
 			
