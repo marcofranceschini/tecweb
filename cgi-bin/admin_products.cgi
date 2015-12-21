@@ -251,12 +251,13 @@ EOF
             print "<span class=\"product_code\">".$codice."</span>";
             print "<span class=\"product_name\">".$nome."</span>";
             print "<span class=\"product_category\">".$categoria."</span>";
-           # <form id=\"form_modify\" action=\"admin_products.cgi\" method=\"post\">
-             #           <input type=\"hidden\" name=\"modify\" value=\"".$codice."\" />
-              #          <input class=\"button\" type=\"submit\" value=\"Modifica\" />
-              #  </form>
+           #<a id=\"action_add\" href=\"#openModify?value=\"".$codice."\">Modifica</a> 
+		  
 			print "<div id=\"product_buttons\">
-                <a id=\"action_add\" href=\"#openModify?value=\"".$codice."\">Modifica</a>
+                 <form id=\"form_modify\" action=\"admin_products.cgi#openModify\" method=\"post\">
+                        <input type=\"hidden\" name=\"modify\" value=\"".$codice."\" />
+                        <input class=\"button\" type=\"submit\" value=\"Modifica\" />
+                </form>
                 <form id=\"form_remove\" action=\"admin_products.cgi\" method=\"post\">
                         <input type=\"hidden\" name=\"remove\" value=\"".$codice."\" />
                         <input class=\"button\" type=\"submit\" value=\"Rimuovi\" />
