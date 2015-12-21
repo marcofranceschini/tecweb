@@ -84,7 +84,7 @@ for(my $i=0; $i < scalar @prodotti; $i++)
     print "<span class=\"product_code\">".$codice."</span>";
     print "<span class=\"product_name\">".$nome."</span>";
     print "<span class=\"product_category\">".$categoria."</span>";
-    #print "<img src=\"../res/images/products/".$immagine."\" alt=\"".$descrizione_corta."\"/>";
+    print "<img src=\"../res/images/products/".$immagine."\" alt=\"".$descrizione_corta."\"/>";
     print "<p class=\"product_short_description\">".$descrizione_corta."</p>";
     print
     "<div id=\"product_buttons\">
