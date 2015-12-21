@@ -1,5 +1,5 @@
-#!C:/Perl64/bin/perl.exe
 #!/usr/bin/perl
+#!C:/Perl64/bin/perl.exe
 
 
 
@@ -182,7 +182,7 @@ EOF
                 </div>
 EOF
         }
-        if($INPUT{'modify'}) {
+        if($INPUT{'modify'}) { # Inserisco i dati o verifico che siano stati modificati e poi inserisco quelli opportuni?
       		# Modifica del database
 			print "modifica selezionata";
             my $category = $INPUT{'product_category'};
@@ -190,6 +190,24 @@ EOF
             my $name = $INPUT{'product_name'};
             my $desc = $INPUT{'product_desc'};
             my $thumbnail_desc = $INPUT{'thumbnail_desc'};
+			my $image = $cgi->param("image");
+			
+			#upload dell'immagine
+            if ( !$image ) {
+                die "There was a problem uploading your photo (try a smaller file).";
+            } else {
+                my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
+                $image = $name.$extension;
+                $image =~ tr/ /_/;
+                $image =~ s/[^$safe_filename_characters]//g;
+                my $upload_file_handle = $cgi->upload("image");
+                open ( UPLOADFILE, ">$upload_dir/$image" ) or die "$!";
+                binmode UPLOADFILE;
+                while ( <$upload_file_handle> ) {
+                    print UPLOADFILE;
+                }
+                close UPLOADFILE;
+            }  
         }
         if($INPUT{'remove'}) {
             #rimozione dal database
