@@ -176,7 +176,7 @@ EOF
 EOF
     
 	if (%INPUT) {  #se riceve dati in input
-        if($INPUT{'submit_modal_modify'}) {
+        if($INPUT{'modify'}) {
       		# Modifica del database
 			
             #my $codice_prodotto = $INPUT{'modify'};
@@ -265,7 +265,6 @@ EOF
 		  
 			print "<div id=\"product_buttons\">
                  <form id=\"form_modify\" action=\"admin_products.cgi#openModify\" method=\"post\">
-                        <input type=\"hidden\" name=\"modify\" value=\"".$codice."\" />
                         <input class=\"button\" type=\"submit\" value=\"Modifica\" />
                 </form>
                 <form id=\"form_remove\" action=\"admin_products.cgi\" method=\"post\">
