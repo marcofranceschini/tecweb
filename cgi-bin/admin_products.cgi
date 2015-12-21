@@ -232,7 +232,7 @@ EOF
               #          <input class=\"button\" type=\"submit\" value=\"Modifica\" />
               #  </form>
 			print "<div id=\"product_buttons\">
-                <a id=\"action_add\" class=\"linked_box\" href=\"#openModify\">Aggiungi</a>
+                <a id=\"action_add\" href=\"#openModify & value=\"1\"\">Modifica</a>
                 <form id=\"form_remove\" action=\"admin_products.cgi\" method=\"post\">
                         <input type=\"hidden\" name=\"remove\" value=\"".$codice."\" />
                         <input class=\"button\" type=\"submit\" value=\"Rimuovi\" />
