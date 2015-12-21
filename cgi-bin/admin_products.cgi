@@ -122,9 +122,18 @@ if ($logout) { # LOGOUT - E' stato premuto il link per uscire
 			<div id="content_admin">	
 EOF
 
-	# Modal di modifica
+	#recupero i dati dall'input
 	my %INPUT = Vars();
 	my $code = $INPUT{'modify'};
+    
+    #apertura file XML
+    my $file = '../xml/db.xml';
+    my $parser = XML::LibXML->new();
+    $parser->keep_blanks(0);
+    my $doc = $parser->parse_file($file) or die "Errore nel parsing";
+    my $radice = $doc->getDocumentElement or die "Errore elemento radice";
+    
+    # Modal di modifica
 	print <<EOF;
             <div id="openModify" class="modalDialog">
                 <div>
@@ -161,15 +170,7 @@ EOF
             </div>
         </div>
 EOF
-
-    #apertura file XML
-    my $file = '../xml/db.xml';
-    my $parser = XML::LibXML->new();
-    $parser->keep_blanks(0);
-    my $doc = $parser->parse_file($file) or die "Errore nel parsing";
-    my $radice = $doc->getDocumentElement or die "Errore elemento radice";
     
-	
 	if (%INPUT) {  #se riceve dati in input
         if($INPUT{'submit_modal_modify'}) {
       		# Modifica del database
