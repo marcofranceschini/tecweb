@@ -163,7 +163,8 @@ EOF
 	my %INPUT = Vars();
 	if (%INPUT) {  #se riceve dati in input
         if($INPUT{'submit_modal_modify'}) {
-      
+      		# Modifica del database
+			
             #my $codice_prodotto = $INPUT{'modify'};
         }
         if($INPUT{'remove'}) {
@@ -232,7 +233,7 @@ EOF
               #          <input class=\"button\" type=\"submit\" value=\"Modifica\" />
               #  </form>
 			print "<div id=\"product_buttons\">
-                <a id=\"action_add\" href=\"#openModify & value=\"1\"\">Modifica</a>
+                <a id=\"action_add\" href=\"#openModify?value=\"".$codice."\">Modifica</a>
                 <form id=\"form_remove\" action=\"admin_products.cgi\" method=\"post\">
                         <input type=\"hidden\" name=\"remove\" value=\"".$codice."\" />
                         <input class=\"button\" type=\"submit\" value=\"Rimuovi\" />
