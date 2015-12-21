@@ -1,5 +1,6 @@
-#!/usr/bin/perl
 #!C:/Perl64/bin/perl.exe
+#!/usr/bin/perl
+
 
 
 use CGI;
@@ -125,40 +126,40 @@ EOF
 	my %INPUT = Vars();
 	my $code = $INPUT{'modify'};
 	print <<EOF;
-		<div id="openModify" class="modalDialog">
-			<div>
-				<a href="#close" title="Close" class="close">X</a>
-				<p>Modifica un prodotto</p>
-				<form action="admin_products.cgi" method="post">
-					<label class="form_item" for="product_category">Categoria</label>
-					<select class="form_item" id="product_category" name="product_category">
-						<option value="Calcio">Calcio</option>
-						<option value="Basket"><span lang="en">Basket</span></option>
-						<option value="Volley"><span lang="en">Volley</span></option>
-						<option value="Tennistavolo">Tennistavolo</option>
-						<option value="Nuoto">Nuoto</option>
-						<option value="Minigolf">Minigolf</option>
-						<option value="Calciobalilla">Calciobalilla</option>
-						<option value="Protezioni">Protezioni</option>
-						<option value="Accessori">Accessori</option>
-					</select>
-					<label class="form_item" for="product_code">Codice</label>
+            <div id="openModify" class="modalDialog">
+                <div>
+                    <a href="#close" title="Close" class="close">X</a>
+                    <p>Modifica un prodotto</p>
+                    <form action="admin_products.cgi" method="post">
+                        <label class="form_item" for="product_category">Categoria</label>
+                        <select class="form_item" id="product_category" name="product_category">
+                            <option value="Calcio">Calcio</option>
+                            <option value="Basket"><span lang="en">Basket</span></option>
+                            <option value="Volley"><span lang="en">Volley</span></option>
+                            <option value="Tennistavolo">Tennistavolo</option>
+                            <option value="Nuoto">Nuoto</option>
+                            <option value="Minigolf">Minigolf</option>
+                            <option value="Calciobalilla">Calciobalilla</option>
+                            <option value="Protezioni">Protezioni</option>
+                            <option value="Accessori">Accessori</option>
+                        </select>
+                        <label class="form_item" for="product_code">Codice</label>
 EOF
-	print "<input class=\"form_item\" id=\"product_code\" type=\"text\"  name=\"product_code\" value=\"".$code."\" />";
-	print <<EOF;
-				<label class="form_item" for="product_name">Nome</label>
-				<input class="form_item" id="product_name" type="text" name="product_name" />
-				<label class="form_item" for="product_desc">Descrizione</label>
-				<textarea class="form_item" id="product_desc"  name="product_desc" ></textarea>
-				<label class="form_item" for="thumbnail_desc">Descrizione breve</label>
-				<textarea class="form_item" id="thumbnail_desc"  name="thumbnail_desc" ></textarea>
-				<label class="form_item" for="product_image">Carica <span lang="en">thumbnail</span></label>
-				<input class="form_item" id="product_image" type="file" name="image" />
-				<input type="hidden" name="insert" value="true" />
-				<input id="submit_modal_modify" type="submit" value="Modifica" />
-			</form>
-		</div>
-	</div>
+    print "<input class=\"form_item\" id=\"product_code\" type=\"text\"  name=\"product_code\" value=\"".$code."\" />";
+    print <<EOF;
+                    <label class="form_item" for="product_name">Nome</label>
+                    <input class="form_item" id="product_name" type="text" name="product_name" />
+                    <label class="form_item" for="product_desc">Descrizione</label>
+                    <textarea class="form_item" id="product_desc"  name="product_desc" ></textarea>
+                    <label class="form_item" for="thumbnail_desc">Descrizione breve</label>
+                    <textarea class="form_item" id="thumbnail_desc"  name="thumbnail_desc" ></textarea>
+                    <label class="form_item" for="product_image">Carica <span lang="en">thumbnail</span></label>
+                    <input class="form_item" id="product_image" type="file" name="image" />
+                    <input type="hidden" name="insert" value="true" />
+                    <input id="submit_modal_modify" type="submit" value="Modifica" />
+                </form>
+            </div>
+        </div>
 EOF
 
     #apertura file XML
@@ -204,7 +205,7 @@ EOF
                 my $upload_file_handle = $cgi->upload("image");
                 open ( UPLOADFILE, ">$upload_dir/$image" ) or die "$!";
                 binmode UPLOADFILE;
-                while ( <$upload_filehandle> ) {
+                while ( <$upload_file_handle> ) {
                     print UPLOADFILE;
                 }
                 close UPLOADFILE;
