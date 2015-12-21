@@ -59,6 +59,9 @@ print <<EOF;
 		</div>
 				
 		<div id="content_products_cgi">
+            <div id="products_navigator">
+                <!-- selettore di categorie e filtri per i prodotti -->
+            </div>
 EOF
 
 #lettura da file XML
@@ -79,19 +82,17 @@ for(my $i=0; $i < scalar @prodotti; $i++)
     my $nome = $prodotti[$i]->findnodes("name/text()");
     my $categoria = $prodotti[$i]->findnodes("category/text()");
     my $immagine = $prodotti[$i]->findnodes("img/text()");
-    print $immagine;
     my $descrizione = $prodotti[$i]->findnodes("description/text()");
     my $descrizione_corta = $prodotti[$i]->findnodes("shortDescription/text()");
     print "<div class=\"product_card\">";
+    print "<img src=\"../res/images/products/".$immagine."\" alt=\"".$descrizione_corta."\"/>";
     print "<span class=\"product_code\">".$codice."</span>";
     print "<span class=\"product_name\">".$nome."</span>";
-    print "<span class=\"product_category\">".$categoria."</span>";
-    print "<img src=\"../res/images/products/".$immagine."\" alt=\"".$descrizione_corta."\"/>";
     print "<p class=\"product_short_description\">".$descrizione_corta."</p>";
     print
-    "<div id=\"product_buttons\">
-        <form id=\"form_modify\" action=\"product_displayer.cgi\" method=\"post\">
-               <input type=\"hidden\" name=\"modify\" value=\"".$codice."\" />
+    "<div class=\"product_display_button\">
+        <form class=\"form_display\" action=\"product_displayer.cgi\" method=\"post\">
+               <input type=\"hidden\" name=\"display\" value=\"".$codice."\" />
                <input class=\"button\" type=\"submit\" value=\"Apri\" />
         </form>
     </div>";
