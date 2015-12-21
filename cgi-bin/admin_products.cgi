@@ -124,7 +124,6 @@ EOF
 
 	#recupero i dati dall'input
 	my %INPUT = Vars();
-	my $code = $INPUT{'modify'};
     
     #apertura file XML
     my $file = '../xml/db.xml';
@@ -133,7 +132,12 @@ EOF
     my $doc = $parser->parse_file($file) or die "Errore nel parsing";
     my $radice = $doc->getDocumentElement or die "Errore elemento radice";
     
-    # Modal di modifica
+    # Modal di modifica    
+	my $code = $INPUT{'modify'};
+    my $query = "/products/product [code=\"".$code."\"]";
+    my $prodotto = $doc->findnodes($query)->get_node(1) or die "Prodotto non trovato";
+    my $nome = $prodotto->findnodes("name/text()");
+    my $categoria = $prodotto->findnodes("category/text()");
 	print <<EOF;
             <div id="openModify" class="modalDialog">
                 <div>
