@@ -27,4 +27,14 @@
     <backgroundImg/>
     <inEvidence>false</inEvidence>
   </product>
+  <product>
+    <category>Calcio</category>
+    <code>123456</code>
+    <name>Prova IMG</name>
+    <description>Prova IMG Prova IMGProva IMG Prova IMG Prova IMGProva IMG</description>
+    <shortDescription>Prova IMG</shortDescription>
+    <img>CRONOMETRO_10_M.png</img>
+    <backgroundImg/>
+    <inEvidence>false</inEvidence>
+  </product>
 </products>

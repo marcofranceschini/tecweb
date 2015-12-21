@@ -630,7 +630,7 @@
     #products_container { /* new */
         width: 60%;
         margin: auto;
-        
+        min-width: 45em;
     }
     
     #products_container .product_card{ /* new */
