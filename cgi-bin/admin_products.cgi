@@ -122,6 +122,40 @@ if ($logout) { # LOGOUT - E' stato premuto il link per uscire
 EOF
 
 # Modal di modifica
+print <<EOF;
+	<div id="openModify" class="modalDialog">
+		<div>
+			<a href="#close" title="Close" class="close">X</a>
+			<p>Inserisci un nuovo prodotto</p>
+			<form action="admin_products.cgi" method="post">
+				<label class="form_item" for="product_category">Categoria</label>
+				<select class="form_item" id="product_category" name="product_category">
+					<option value="Calcio">Calcio</option>
+					<option value="Basket"><span lang="en">Basket</span></option>
+					<option value="Volley"><span lang="en">Volley</span></option>
+					<option value="Tennistavolo">Tennistavolo</option>
+					<option value="Nuoto">Nuoto</option>
+					<option value="Minigolf">Minigolf</option>
+					<option value="Calciobalilla">Calciobalilla</option>
+					<option value="Protezioni">Protezioni</option>
+					<option value="Accessori">Accessori</option>
+				</select>
+				<label class="form_item" for="product_code">Codice</label>
+				<input class="form_item" id="product_code" type="text"  name="product_code" />
+				<label class="form_item" for="product_name">Nome</label>
+				<input class="form_item" id="product_name" type="text" name="product_name" />
+				<label class="form_item" for="product_desc">Descrizione</label>
+				<textarea class="form_item" id="product_desc"  name="product_desc" ></textarea>
+				<label class="form_item" for="thumbnail_desc">Descrizione breve</label>
+				<textarea class="form_item" id="thumbnail_desc"  name="thumbnail_desc" ></textarea>
+				<label class="form_item" for="product_image">Carica <span lang="en">thumbnail</span></label>
+				<input class="form_item" id="product_image" type="file" name="image" />
+				<input type="hidden" name="insert" value="true" />
+				<input id="submit_modal_modify" type="submit" value="Modifica" />
+			</form>
+		</div>
+	</div>
+EOF
 
     #apertura file XML
     my $file = '../xml/db.xml';
@@ -135,7 +169,6 @@ EOF
         if($INPUT{'submit_modal_modify'}) {
       		# Modifica del database
 			my $code = $INPUT{'value'}
-			
             #my $codice_prodotto = $INPUT{'modify'};
         }
         if($INPUT{'remove'}) {
