@@ -1,5 +1,5 @@
-#!C:/Perl64/bin/perl.exe
-#!/usr/bin/perl
+#!C:/Perl64/bin/perl.exe -T
+#!/usr/bin/perl -T
 
 
 use CGI;
@@ -7,7 +7,11 @@ use CGI::Carp qw(fatalsToBrowser);
 use CGI qw(:standard Vars);
 use CGI::Session;
 use XML::LibXML;
+use File::Basename;
 use warnings;
+$CGI::POST_MAX = 1024 * 5000;   #massimo upload
+my $safe_filename_characters = "a-zA-Z0-9_.-";  #caratteri sicuri
+my $upload_dir = "../res/images/products";
 
 #Da usare il lab
 #<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
@@ -85,7 +89,7 @@ if ($logout) { # LOGOUT - E' stato premuto il link per uscire
 				<div>
 					<a href="#close" title="Close" class="close">X</a>
 					<p>Inserisci un nuovo prodotto</p>
-					<form action="admin_products.cgi" method="post">
+					<form action="admin_products.cgi" method="post" enctype="multipart/form-data">
 						<label class="form_item" for="product_category">Categoria</label>
 						<select class="form_item" id="product_category" name="product_category">
 							<option value="Calcio">Calcio</option>
@@ -146,7 +150,30 @@ EOF
             my $name = $INPUT{'product_name'};
             my $desc = $INPUT{'product_desc'};
             my $thumbnail_desc = $INPUT{'thumbnail_desc'};
-            #my image =  = $INPUT{'product_image'};        
+            #my image =  = $INPUT{'product_image'};
+            my $image = $cgi->param("image");  
+            
+            #upload dell'immagine
+            if ( !$image ) {
+                #print $cgi->header( );
+                print "There was a problem uploading your photo (try a smaller file).";
+                exit;
+            } else {
+                my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
+                $image = $name.$extension;
+                $image =~ tr/ /_/;
+                $image =~ s/[^$safe_filename_characters]//g;
+                if ( !($filename =~ /^([$safe_filename_characters]+)$/) ) {
+                    die "Filename contains invalid characters";
+                }
+                my $upload_file_handle = $cgi->upload("image");
+                open ( UPLOADFILE, ">$upload_dir/$filename" ) or die "$!";
+                binmode UPLOADFILE;
+                while ( <$upload_filehandle> ) {
+                    print UPLOADFILE;
+                }
+                close UPLOADFILE;
+            }
             
             $new_product =
             "<product>".
@@ -155,6 +182,7 @@ EOF
             "<name>".$name."</name>".
             "<description>".$desc."</description>".
             "<shortDescription>".$thumbnail_desc."</shortDescription>".
+            "<img>".$image."</img>".
             "<backgroundImg></backgroundImg>".
             "<inEvidence>false</inEvidence>".
             "</product>";
