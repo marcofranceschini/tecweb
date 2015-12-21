@@ -121,27 +121,31 @@ if ($logout) { # LOGOUT - E' stato premuto il link per uscire
 			<div id="content_admin">	
 EOF
 
-# Modal di modifica
-print <<EOF;
-	<div id="openModify" class="modalDialog">
-		<div>
-			<a href="#close" title="Close" class="close">X</a>
-			<p>Inserisci un nuovo prodotto</p>
-			<form action="admin_products.cgi" method="post">
-				<label class="form_item" for="product_category">Categoria</label>
-				<select class="form_item" id="product_category" name="product_category">
-					<option value="Calcio">Calcio</option>
-					<option value="Basket"><span lang="en">Basket</span></option>
-					<option value="Volley"><span lang="en">Volley</span></option>
-					<option value="Tennistavolo">Tennistavolo</option>
-					<option value="Nuoto">Nuoto</option>
-					<option value="Minigolf">Minigolf</option>
-					<option value="Calciobalilla">Calciobalilla</option>
-					<option value="Protezioni">Protezioni</option>
-					<option value="Accessori">Accessori</option>
-				</select>
-				<label class="form_item" for="product_code">Codice</label>
-				<input class="form_item" id="product_code" type="text"  name="product_code" />
+	# Modal di modifica
+	my %INPUT = Vars();
+	my $code = $INPUT{'modify'};
+	print <<EOF;
+		<div id="openModify" class="modalDialog">
+			<div>
+				<a href="#close" title="Close" class="close">X</a>
+				<p>Modifica un prodotto</p>
+				<form action="admin_products.cgi" method="post">
+					<label class="form_item" for="product_category">Categoria</label>
+					<select class="form_item" id="product_category" name="product_category">
+						<option value="Calcio">Calcio</option>
+						<option value="Basket"><span lang="en">Basket</span></option>
+						<option value="Volley"><span lang="en">Volley</span></option>
+						<option value="Tennistavolo">Tennistavolo</option>
+						<option value="Nuoto">Nuoto</option>
+						<option value="Minigolf">Minigolf</option>
+						<option value="Calciobalilla">Calciobalilla</option>
+						<option value="Protezioni">Protezioni</option>
+						<option value="Accessori">Accessori</option>
+					</select>
+					<label class="form_item" for="product_code">Codice</label>
+EOF
+	print "<input class=\"form_item\" id=\"product_code\" type=\"text\"  name=\"product_code\" value=\"".$code."\" />";
+	print <<EOF;
 				<label class="form_item" for="product_name">Nome</label>
 				<input class="form_item" id="product_name" type="text" name="product_name" />
 				<label class="form_item" for="product_desc">Descrizione</label>
@@ -164,11 +168,11 @@ EOF
     my $doc = $parser->parse_file($file) or die "Errore nel parsing";
     my $radice = $doc->getDocumentElement or die "Errore elemento radice";
     
-	my %INPUT = Vars();
+	
 	if (%INPUT) {  #se riceve dati in input
         if($INPUT{'submit_modal_modify'}) {
       		# Modifica del database
-			my $code = $INPUT{'value'}
+			
             #my $codice_prodotto = $INPUT{'modify'};
         }
         if($INPUT{'remove'}) {
