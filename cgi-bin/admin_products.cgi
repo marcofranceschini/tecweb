@@ -136,8 +136,8 @@ EOF
 	my $code = $INPUT{'modify'};
     my $query = "/products/product [code=\"".$code."\"]";
     my $prodotto = $doc->findnodes($query)->get_node(1) or die "Prodotto non trovato";
-    my $nome = $prodotto->findnodes("name/text()");
-    my $categoria = $prodotto->findnodes("category/text()");
+    my $name = $prodotto->findnodes("name/text()");
+    my $category = $prodotto->findnodes("category/text()");
 	print <<EOF;
             <div id="openModify" class="modalDialog">
                 <div>
@@ -158,17 +158,17 @@ EOF
                         </select>
                         <label class="form_item" for="product_code">Codice</label>
 EOF
-    print "<input class=\"form_item\" id=\"product_code\" type=\"text\"  name=\"product_code\" value=\"".$code."\" />";
-    print <<EOF;
-                    <label class="form_item" for="product_name">Nome</label>
-                    <input class="form_item" id="product_name" type="text" name="product_name" />
-                    <label class="form_item" for="product_desc">Descrizione</label>
-                    <textarea class="form_item" id="product_desc"  name="product_desc" ></textarea>
-                    <label class="form_item" for="thumbnail_desc">Descrizione breve</label>
-                    <textarea class="form_item" id="thumbnail_desc"  name="thumbnail_desc" ></textarea>
+            print "<input class=\"form_item\" id=\"product_code\" type=\"text\"  name=\"product_code\" value=\"".$code."\" />";
+            print "<label class=\"form_item\" for=\"product_name\">Nome</label>";
+            print "<input class=\"form_item\" id=\"product_name\" type=\"text\" name=\"product_name\" value=\"".$name."\" />";
+            print "<label class=\"form_item\" for=\"product_desc\">Descrizione</label>";
+            print "<textarea class=\"form_item\" id=\"product_desc\"  name=\"product_desc\" >".."</textarea>";
+            print "<label class=\"form_item\" for=\"thumbnail_desc\">Descrizione breve</label>";
+            print "<textarea class=\"form_item\" id=\"thumbnail_desc\"  name=\"thumbnail_desc\" >".."</textarea>";
+            print <<EOF;
                     <label class="form_item" for="product_image">Carica <span lang="en">thumbnail</span></label>
                     <input class="form_item" id="product_image" type="file" name="image" />
-                    <input type="hidden" name="insert" value="true" />
+                    <input type="hidden" name="modify" value="true" />
                     <input id="submit_modal_modify" type="submit" value="Modifica" />
                 </form>
             </div>
