@@ -1,5 +1,6 @@
-#!/usr/bin/perl
 #!C:/Perl64/bin/perl.exe
+#!/usr/bin/perl
+
 
 
 use CGI;
@@ -78,6 +79,7 @@ for(my $i=0; $i < scalar @prodotti; $i++)
     my $nome = $prodotti[$i]->findnodes("name/text()");
     my $categoria = $prodotti[$i]->findnodes("category/text()");
     my $immagine = $prodotti[$i]->findnodes("img/text()");
+    print $immagine;
     my $descrizione = $prodotti[$i]->findnodes("description/text()");
     my $descrizione_corta = $prodotti[$i]->findnodes("shortDescription/text()");
     print "<div class=\"product_card\">";

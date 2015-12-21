@@ -29,10 +29,10 @@
   </product>
   <product>
     <category>Calcio</category>
-    <code>11111111111</code>
-    <name>immagine</name>
-    <description>prova</description>
-    <shortDescription/>
+    <code>111111111111</code>
+    <name>immagine prova</name>
+    <description/>
+    <shortDescription>img prova</shortDescription>
     <img>polsiera.png</img>
     <backgroundImg/>
     <inEvidence>false</inEvidence>
