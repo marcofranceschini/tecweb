@@ -1,5 +1,6 @@
-#!/usr/bin/perl
 #!C:/Perl64/bin/perl.exe
+#!/usr/bin/perl
+
 
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
@@ -179,7 +180,7 @@ EOF
 	   	print printPlaceholder();
     } else {
         #stampa le card dei prodotti
-        print "<p id=\"products_number\">Sono presenti: ".scalar @prodotti." prodotti</p>";
+        print "<p id=\"products_number\">Sono presenti ".scalar @prodotti." prodotti</p>";
         print "<div id=\"products_container\">";
         print "<div id=\"products_label\"><span>Codice</span><span id=\"product_name_label\">Nome</span><span>Categoria</span></div>";
         for(my $i=0; $i < scalar @prodotti; $i++)
