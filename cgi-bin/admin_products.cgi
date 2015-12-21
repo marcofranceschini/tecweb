@@ -150,6 +150,9 @@ EOF
                             <form action="admin_products.cgi" method="post">
                                 <label class="form_item" for="product_category">Categoria</label>
                                 <select class="form_item" id="product_category" name="product_category">
+EOF
+                    print "<option value=\"".$category."\">".$category."</option>";
+                    print <<EOF;
                                     <option value="Calcio">Calcio</option>
                                     <option value="Basket"><span lang="en">Basket</span></option>
                                     <option value="Volley"><span lang="en">Volley</span></option>
@@ -170,7 +173,7 @@ EOF
                     print "<label class=\"form_item\" for=\"thumbnail_desc\">Descrizione breve</label>";
                     print "<textarea class=\"form_item\" id=\"thumbnail_desc\"  name=\"thumbnail_desc\" >".$shortDescription."</textarea>";
                     print <<EOF;
-                            <label class="form_item" for="product_image">Carica <span lang="en">thumbnail</span></label>
+                            <label class="form_item" for="product_image">Nuova <span lang="en">thumbnail</span></label>
                             <input class="form_item" id="product_image" type="file" name="image" />
                             <input type="hidden" name="modify" value="true" />
                             <input id="submit_modal_modify" type="submit" value="Modifica" />
