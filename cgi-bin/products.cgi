@@ -1,8 +1,26 @@
+#!C:/Perl64/bin/perl.exe
+#!/usr/bin/perl
+
+
+use CGI;
+use CGI::Carp qw(fatalsToBrowser);
+use CGI qw(:standard Vars);
+use XML::LibXML;
+use warnings;
+
+my $cgi = CGI->new();
+my $category = $cgi->param('category');
+print $category;
+
+print "Content-Type: text/html\n\n";
+print <<EOF;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Prodotti - Ju Rapida</title>
+EOF
+print "<title>".$category." - Ju Rapida</title>";
+print <<EOF;
 		<meta name="title" content="Prodotti - Ju Rapida S.N.C." />
 		<meta name="description" content="Vendiamo una vasta gamma di articoli per ogni genere sportivo" />
 		<meta name="keywords" content="ju rapida, articoli sportivi, prodotti, sport;" />
@@ -33,21 +51,23 @@
 				</ul>
 			</div>
 			<div id="breadcrumb">
-				<a href="../index.html"><i class="material-icons md-18" >&#xE88A;</i></a> &gt; Prodotti
+EOF
+print "<a href=\"../index.html\"><i class=\"material-icons md-18\" >&#xE88A;</i></a> &gt; <a href=\"../pages/products.html\">Prodotti</a> &gt; ".$category;
+print <<EOF;
 			</div>
 		</div>
 				
 		<div id="content_products">
 			<ul id="categories" class="fadeInDown">
-				<li><a id="cat_calcio" class="linked_box" href="../cgi-bin/products.cgi?category=Calcio"><span class="cat_label">Calcio</span></a></li>	<!-- Compresi parastinchi -->
-				<li><a id="cat_basket" class="linked_box" href="../cgi-bin/products.cgi?category=Basket"><span class="cat_label">Basket</span></a></li>
-				<li><a id="cat_volley" class="linked_box" href="../cgi-bin/products.cgi?category=Volley"><span class="cat_label">Volley</span></a></li>
-				<li><a id="cat_tennistavolo" class="linked_box" href="../cgi-bin/products.cgi?category=Tennistavolo"><span class="cat_label">Tennistavolo</span></a></li>
-				<li><a id="cat_nuoto" class="linked_box" href="../cgi-bin/products.cgi?category=Nuoto"><span class="cat_label">Nuoto</span></a></li>
-				<li><a id="cat_minigolf" class="linked_box" href="../cgi-bin/products.cgi?category=Minigolf"><span class="cat_label">Minigolf</span></a></li>
-				<li><a id="cat_calciobalilla" class="linked_box" href="../cgi-bin/products.cgi?category=Calciobalilla"><span class="cat_label">Calciobalilla</span></a></li>
-				<li><a id="cat_protezioni" class="linked_box" href="../cgi-bin/products.cgi?category=Protezioni"><span class="cat_label">Protezioni</span></a></li>
-				<li><a id="cat_accessori" class="linked_box" href="../cgi-bin/products.cgi?category=Accessori"><span class="cat_label">Accessori</span></a></li>	<!-- Cronometri, Fischi, Paradenti -->
+				<li><a id="cat_calcio" class="linked_box" href="../cgi-bin/products.cgi?category=calcio"><span class="cat_label">Calcio</span></a></li>	<!-- Compresi parastinchi -->
+				<li><a id="cat_basket" class="linked_box" href="../cgi-bin/products.cgi?category=basket"><span class="cat_label">Basket</span></a></li>
+				<li><a id="cat_volley" class="linked_box" href="../cgi-bin/products.cgi?category=volley"><span class="cat_label">Volley</span></a></li>
+				<li><a id="cat_tennistavolo" class="linked_box" href="../cgi-bin/products.cgi?category=tennistavolo"><span class="cat_label">Tennistavolo</span></a></li>
+				<li><a id="cat_nuoto" class="linked_box" href="../cgi-bin/products.cgi?category=nuoto"><span class="cat_label">Nuoto</span></a></li>
+				<li><a id="cat_minigolf" class="linked_box" href="../cgi-bin/products.cgi?category=minigolf"><span class="cat_label">Minigolf</span></a></li>
+				<li><a id="cat_calciobalilla" class="linked_box" href="../cgi-bin/products.cgi?category=calciobalilla"><span class="cat_label">Calciobalilla</span></a></li>
+				<li><a id="cat_protezioni" class="linked_box" href="../cgi-bin/products.cgi?category=protezioni"><span class="cat_label">Protezioni</span></a></li>
+				<li><a id="cat_accessori" class="linked_box" href="../cgi-bin/products.cgi?category=accessori"><span class="cat_label">Accessori</span></a></li>	<!-- Cronometri, Fischi, Paradenti -->
 			</ul>
 		</div>
 		
@@ -61,15 +81,15 @@
 						<li><a href="about.html">Chi siamo</a></li>
 					</ul>
 					<ul id="maps_categories">
-						<li><a href="../cgi-bin/products.cgi?category=Calcio">Calcio</a></li>
-						<li><a href="../cgi-bin/products.cgi?category=Basket"><span xml:lang="en">Basket</span></a></li>
-						<li><a href="../cgi-bin/products.cgi?category=Volley"><span xml:lang="en">Volley</span></a></li>
-						<li><a href="../cgi-bin/products.cgi?category=Tennistavolo">Tennistavolo</a></li>
-						<li><a href="../cgi-bin/products.cgi?category=Nuoto">Nuoto</a></li>
-						<li><a href="../cgi-bin/products.cgi?category=Minigolf">Minigolf</a></li>
-						<li><a href="../cgi-bin/products.cgi?category=Calciobalilla">Calciobalilla</a></li>
-						<li><a href="../cgi-bin/products.cgi?category=Protezioni">Protezioni</a></li>
-						<li><a href="../cgi-bin/products.cgi?category=Accessori">Accessori</a></li>
+						<li><a href="../cgi-bin/products.cgi?category=calcio">Calcio</a></li>
+						<li><a href="../cgi-bin/products.cgi?category=basket"><span xml:lang="en">Basket</span></a></li>
+						<li><a href="../cgi-bin/products.cgi?category=volley"><span xml:lang="en">Volley</span></a></li>
+						<li><a href="../cgi-bin/products.cgi?category=tennistavolo">Tennistavolo</a></li>
+						<li><a href="../cgi-bin/products.cgi?category=nuoto">Nuoto</a></li>
+						<li><a href="../cgi-bin/products.cgi?category=minigolf">Minigolf</a></li>
+						<li><a href="../cgi-bin/products.cgi?category=calciobalilla">Calciobalilla</a></li>
+						<li><a href="../cgi-bin/products.cgi?category=protezioni">Protezioni</a></li>
+						<li><a href="../cgi-bin/products.cgi?category=accessori">Accessori</a></li>
 					</ul>
 				</div>
 				<div id="admin_form_panel">
@@ -100,3 +120,5 @@
 		</div>
 	</body>
 </html>
+
+EOF

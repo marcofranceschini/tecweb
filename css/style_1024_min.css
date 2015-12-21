@@ -236,6 +236,10 @@
 	#breadcrumb i {
 		vertical-align: middle;
 	}
+    
+    #breadcrumb a {             /* ------------------- NEW ------------------------------------------- */
+        text-decoration: none;
+    }
 	
 	/*NEW*/
 	#pane_1 {
