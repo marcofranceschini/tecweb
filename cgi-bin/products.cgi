@@ -20,10 +20,10 @@ print <<EOF;
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 EOF
 print "<title>".$category." - Ju Rapida</title>";
+print "<meta name=\"title\" content=\"".$category." - Ju Rapida S.N.C.\" />";
+print "<meta name=\"description\" content=\"Pagina dei prodotti nel mondo ".$category."\" di JU RAPIDA />";
+print "<meta name=\"keywords\" content=\"".$category.", ju rapida, articoli sportivi, prodotti, sport;\" />";
 print <<EOF;
-		<meta name="title" content="Prodotti - Ju Rapida S.N.C." />
-		<meta name="description" content="Vendiamo una vasta gamma di articoli per ogni genere sportivo" />
-		<meta name="keywords" content="ju rapida, articoli sportivi, prodotti, sport;" />
 		<meta name="author" content="Fabiano Tavallini, Marco Franceschini, Daniele Favaro" />
 		<meta name="copyright" content="Ju Rapida S.N.C." />
 		<meta name="viewport" content="width=device-width">
@@ -57,18 +57,47 @@ print <<EOF;
 			</div>
 		</div>
 				
-		<div id="content_products">
-			<ul id="categories" class="fadeInDown">
-				<li><a id="cat_calcio" class="linked_box" href="../cgi-bin/products.cgi?category=calcio"><span class="cat_label">Calcio</span></a></li>	<!-- Compresi parastinchi -->
-				<li><a id="cat_basket" class="linked_box" href="../cgi-bin/products.cgi?category=basket"><span class="cat_label">Basket</span></a></li>
-				<li><a id="cat_volley" class="linked_box" href="../cgi-bin/products.cgi?category=volley"><span class="cat_label">Volley</span></a></li>
-				<li><a id="cat_tennistavolo" class="linked_box" href="../cgi-bin/products.cgi?category=tennistavolo"><span class="cat_label">Tennistavolo</span></a></li>
-				<li><a id="cat_nuoto" class="linked_box" href="../cgi-bin/products.cgi?category=nuoto"><span class="cat_label">Nuoto</span></a></li>
-				<li><a id="cat_minigolf" class="linked_box" href="../cgi-bin/products.cgi?category=minigolf"><span class="cat_label">Minigolf</span></a></li>
-				<li><a id="cat_calciobalilla" class="linked_box" href="../cgi-bin/products.cgi?category=calciobalilla"><span class="cat_label">Calciobalilla</span></a></li>
-				<li><a id="cat_protezioni" class="linked_box" href="../cgi-bin/products.cgi?category=protezioni"><span class="cat_label">Protezioni</span></a></li>
-				<li><a id="cat_accessori" class="linked_box" href="../cgi-bin/products.cgi?category=accessori"><span class="cat_label">Accessori</span></a></li>	<!-- Cronometri, Fischi, Paradenti -->
-			</ul>
+		<div id="content_products_cgi">
+EOF
+
+#lettura da file XML
+my $file = '../xml/db.xml';
+my $parser = XML::LibXML->new();
+$parser->keep_blanks(0);
+my $doc = $parser->parse_file($file) or die "Errore nel parsing";
+my $radice = $doc->getDocumentElement or die "Errore elemento radice";
+#my @prodotti = $radice->getElementsByTagName('product') or die "Errore prodotti\n";
+my $query = "/products/product[category=\"".$category."\"]";
+my @prodotti = $doc->findnodes($query) or die "<p>Non &egrave; stato possibile reperire la lista dei prodotti</p>";
+	
+#stampa le card dei prodotti
+print "<div id=\"products_displayer\">";
+for(my $i=0; $i < scalar @prodotti; $i++)
+{
+    my $codice = $prodotti[$i]->findnodes("code/text()");
+    my $nome = $prodotti[$i]->findnodes("name/text()");
+    my $categoria = $prodotti[$i]->findnodes("category/text()");
+    my $immagine = $prodotti[$i]->findnodes("img/text()");
+    my $descrizione = $prodotti[$i]->findnodes("description/text()");
+    my $descrizione_corta = $prodotti[$i]->findnodes("shortDescription/text()");
+    print "<div class=\"product_card\">";
+    print "<span class=\"product_code\">".$codice."</span>";
+    print "<span class=\"product_name\">".$nome."</span>";
+    print "<span class=\"product_category\">".$categoria."</span>";
+    #print "<img src=\"../res/images/products/".$immagine."\" alt=\"".$descrizione_corta."\"/>";
+    print "<p class=\"product_short_description\">".$descrizione_corta."</p>";
+    print
+    "<div id=\"product_buttons\">
+        <form id=\"form_modify\" action=\"product_displayer.cgi\" method=\"post\">
+               <input type=\"hidden\" name=\"modify\" value=\"".$codice."\" />
+               <input class=\"button\" type=\"submit\" value=\"Apri\" />
+        </form>
+    </div>";
+    print "</div>";
+}
+print "</div>";
+    
+print <<EOF;	
 		</div>
 		
 		<div id="footer">
@@ -81,15 +110,15 @@ print <<EOF;
 						<li><a href="about.html">Chi siamo</a></li>
 					</ul>
 					<ul id="maps_categories">
-						<li><a href="../cgi-bin/products.cgi?category=calcio">Calcio</a></li>
-						<li><a href="../cgi-bin/products.cgi?category=basket"><span xml:lang="en">Basket</span></a></li>
-						<li><a href="../cgi-bin/products.cgi?category=volley"><span xml:lang="en">Volley</span></a></li>
-						<li><a href="../cgi-bin/products.cgi?category=tennistavolo">Tennistavolo</a></li>
-						<li><a href="../cgi-bin/products.cgi?category=nuoto">Nuoto</a></li>
-						<li><a href="../cgi-bin/products.cgi?category=minigolf">Minigolf</a></li>
-						<li><a href="../cgi-bin/products.cgi?category=calciobalilla">Calciobalilla</a></li>
-						<li><a href="../cgi-bin/products.cgi?category=protezioni">Protezioni</a></li>
-						<li><a href="../cgi-bin/products.cgi?category=accessori">Accessori</a></li>
+						<li><a href="../cgi-bin/products.cgi?category=Calcio">Calcio</a></li>
+						<li><a href="../cgi-bin/products.cgi?category=Basket"><span xml:lang="en">Basket</span></a></li>
+						<li><a href="../cgi-bin/products.cgi?category=Volley"><span xml:lang="en">Volley</span></a></li>
+						<li><a href="../cgi-bin/products.cgi?category=Tennistavolo">Tennistavolo</a></li>
+						<li><a href="../cgi-bin/products.cgi?category=Nuoto">Nuoto</a></li>
+						<li><a href="../cgi-bin/products.cgi?category=Minigolf">Minigolf</a></li>
+						<li><a href="../cgi-bin/products.cgi?category=Calciobalilla">Calciobalilla</a></li>
+						<li><a href="../cgi-bin/products.cgi?category=Protezioni">Protezioni</a></li>
+						<li><a href="../cgi-bin/products.cgi?category=Accessori">Accessori</a></li>
 					</ul>
 				</div>
 				<div id="admin_form_panel">
@@ -120,5 +149,4 @@ print <<EOF;
 		</div>
 	</body>
 </html>
-
 EOF
