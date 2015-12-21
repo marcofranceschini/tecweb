@@ -491,6 +491,61 @@
 	
 	/*--------- END NEW -------------------------------------------------- */
 	
+    /* ------------------- NEW PRODUCTS.CGI ------------------------------------------- */
+    #content_products_cgi {
+        
+    }
+    
+    #products_displayer {
+        width: 70%;
+        margin: auto;
+    }
+    
+    #products_displayer .product_card {
+        display: inline-block;
+        width: 12em;
+        margin: 2em;
+        background: #ddd;
+        border-radius: 5px;
+        box-shadow: gray 1px 1px 3px;
+    }
+    
+    #products_displayer .product_card img {
+        display: block;
+        width: 8em;
+        min-height: 8em; 
+        margin: auto; 
+        padding-top: 0.6em;
+        padding-bottom: 0.6em;   
+    }
+    
+    #products_displayer .product_card:hover {
+        box-shadow: #d00 1px 1px 3px, gray -1px -1px 3px, gray 1px -1px 3px, #d00 -1px 1px 3px;
+    }
+    
+    #products_displayer .product_card span {
+        display: block;
+        width: 100%;
+        margin: auto;
+        text-align: center;
+        padding-bottom: 0.4em;
+    }
+    
+    #products_displayer .product_card .product_short_description {
+        width: 100%;
+        margin: auto;
+        text-align: justify;
+        padding-bottom: 1em;
+    }
+    
+    #products_displayer .product_display_button {
+        display: block;
+        width: 4em;
+        margin: auto;
+    }
+    
+    /* ------------------- END NEW PRODUCTS.CGI ------------------------------------------- */
+    
 	#content_contacts {
 		width: 80%;
 		margin: auto;
@@ -663,7 +718,7 @@
         text-align: left;
     }
     
-    #product_buttons { /* new */
+    .product_buttons { /* new */
         float: right;
         margin-right: 1em;
         width: 10em;
@@ -672,11 +727,11 @@
         padding-bottom: 0.6em;
     }
     
-    #product_buttons form { /* new */
+    .product_buttons form { /* new */
         display: inline-block;
     }
     
-    #product_buttons .button { /* new */
+    .product_buttons .button { /* new */
         background: #A00;
 		border: none;
         padding: 0.4em;
@@ -687,25 +742,11 @@
 		color: #FFF;
     }
     
-    #product_buttons .button:hover { /* new */
+    .product_buttons .button:hover { /* new */
 		background: rgba(200, 0, 0, 1);
 	}
-	
-	#product_buttons a { /*---------------------NEW-------------------*/
-		background: #A00;
-		border: none;
-        padding: 0.4em;
-		box-shadow: 1px 1px 5px #B6B6B6;
-		border-radius: 3px;
-		font-size: 1em;
-		text-shadow: 1px 1px 1px #9E3F3F;
-		color: #FFF;
-		text-decoration: none;
-	}
-	
-	#product_buttons :hover { /*---------------------NEW-------------------*/
-		background: rgba(200, 0, 0, 1);
-	}
+
+
     
     #form_remove {
         float: right;
