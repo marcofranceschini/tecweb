@@ -844,6 +844,38 @@
 	#submit_modal:hover {
 		background: rgba(200, 0, 0, 1);
 	}
+	
+	#submit_modal_modify {
+		background: #A00;
+		border: none;
+		padding: 0.8em 1.2em 0.8em 1.2em;
+		box-shadow: 1px 1px 5px #B6B6B6;
+		border-radius: 3px;
+		font-size: 1em;
+		text-shadow: 1px 1px 1px #9E3F3F;
+		color: #FFF;
+		margin-top: 1em;
+        margin-left: 30%;
+	}
+	
+	#submit_modal_modify:hover {
+		background: rgba(200, 0, 0, 1);
+	}
+	
+	#openModify textarea {
+		border: none;
+		box-shadow: 1px 1px 5px #3D3D3D;
+		border-radius: 3px;	
+	}
+	
+	#openModify .form_item {
+		width: 97%;
+		margin-top: 0.5em;
+		font-size: 1em;
+		padding: 0.2em;
+		resize: none;
+	}
+	
 	/*NEW END*/
 
 	#admin_panel {	/* NEW --------------------------------------*/
