@@ -132,54 +132,61 @@ EOF
     my $doc = $parser->parse_file($file) or die "Errore nel parsing";
     my $radice = $doc->getDocumentElement or die "Errore elemento radice";
     
-    # Modal di modifica    
-	my $code = $INPUT{'modify'};
-    my $query = "/products/product [code=\"".$code."\"]";
-    my $prodotto = $doc->findnodes($query)->get_node(1) or die "Prodotto non trovato";
-    my $name = $prodotto->findnodes("name/text()");
-    my $category = $prodotto->findnodes("category/text()");
-	print <<EOF;
-            <div id="openModify" class="modalDialog">
-                <div>
-                    <a href="#close" title="Close" class="close">X</a>
-                    <p>Modifica un prodotto</p>
-                    <form action="admin_products.cgi" method="post">
-                        <label class="form_item" for="product_category">Categoria</label>
-                        <select class="form_item" id="product_category" name="product_category">
-                            <option value="Calcio">Calcio</option>
-                            <option value="Basket"><span lang="en">Basket</span></option>
-                            <option value="Volley"><span lang="en">Volley</span></option>
-                            <option value="Tennistavolo">Tennistavolo</option>
-                            <option value="Nuoto">Nuoto</option>
-                            <option value="Minigolf">Minigolf</option>
-                            <option value="Calciobalilla">Calciobalilla</option>
-                            <option value="Protezioni">Protezioni</option>
-                            <option value="Accessori">Accessori</option>
-                        </select>
-                        <label class="form_item" for="product_code">Codice</label>
-EOF
-            print "<input class=\"form_item\" id=\"product_code\" type=\"text\"  name=\"product_code\" value=\"".$code."\" />";
-            print "<label class=\"form_item\" for=\"product_name\">Nome</label>";
-            print "<input class=\"form_item\" id=\"product_name\" type=\"text\" name=\"product_name\" value=\"".$name."\" />";
-            print "<label class=\"form_item\" for=\"product_desc\">Descrizione</label>";
-            print "<textarea class=\"form_item\" id=\"product_desc\"  name=\"product_desc\" >".."</textarea>";
-            print "<label class=\"form_item\" for=\"thumbnail_desc\">Descrizione breve</label>";
-            print "<textarea class=\"form_item\" id=\"thumbnail_desc\"  name=\"thumbnail_desc\" >".."</textarea>";
-            print <<EOF;
-                    <label class="form_item" for="product_image">Carica <span lang="en">thumbnail</span></label>
-                    <input class="form_item" id="product_image" type="file" name="image" />
-                    <input type="hidden" name="modify" value="true" />
-                    <input id="submit_modal_modify" type="submit" value="Modifica" />
-                </form>
-            </div>
-        </div>
-EOF
-    
 	if (%INPUT) {  #se riceve dati in input
+        if(%INPUT{'modify_request'}) {
+            # Modal di modifica    
+            my $code = $INPUT{'modify_request'};
+            my $query = "/products/product [code=\"".$code."\"]";
+            my $prodotto = $doc->findnodes($query)->get_node(1) or die "Prodotto non trovato";
+            my $name = $prodotto->findnodes("name/text()");
+            my $category = $prodotto->findnodes("category/text()");
+            my $description = $prodotto->findnodes("description/text()");
+            my $shortDescription = $prodotto->findnodes("shortDescription/text()");
+            print <<EOF;
+                    <div id="openModify" class="modalDialog">
+                        <div>
+                            <a href="#close" title="Close" class="close">X</a>
+                            <p>Modifica un prodotto</p>
+                            <form action="admin_products.cgi" method="post">
+                                <label class="form_item" for="product_category">Categoria</label>
+                                <select class="form_item" id="product_category" name="product_category">
+                                    <option value="Calcio">Calcio</option>
+                                    <option value="Basket"><span lang="en">Basket</span></option>
+                                    <option value="Volley"><span lang="en">Volley</span></option>
+                                    <option value="Tennistavolo">Tennistavolo</option>
+                                    <option value="Nuoto">Nuoto</option>
+                                    <option value="Minigolf">Minigolf</option>
+                                    <option value="Calciobalilla">Calciobalilla</option>
+                                    <option value="Protezioni">Protezioni</option>
+                                    <option value="Accessori">Accessori</option>
+                                </select>
+                                <label class="form_item" for="product_code">Codice</label>
+EOF
+                    print "<input class=\"form_item\" id=\"product_code\" type=\"text\"  name=\"product_code\" value=\"".$code."\" />";
+                    print "<label class=\"form_item\" for=\"product_name\">Nome</label>";
+                    print "<input class=\"form_item\" id=\"product_name\" type=\"text\" name=\"product_name\" value=\"".$name."\" />";
+                    print "<label class=\"form_item\" for=\"product_desc\">Descrizione</label>";
+                    print "<textarea class=\"form_item\" id=\"product_desc\"  name=\"product_desc\" >".$description."</textarea>";
+                    print "<label class=\"form_item\" for=\"thumbnail_desc\">Descrizione breve</label>";
+                    print "<textarea class=\"form_item\" id=\"thumbnail_desc\"  name=\"thumbnail_desc\" >".$shortDescription."</textarea>";
+                    print <<EOF;
+                            <label class="form_item" for="product_image">Carica <span lang="en">thumbnail</span></label>
+                            <input class="form_item" id="product_image" type="file" name="image" />
+                            <input type="hidden" name="modify" value="true" />
+                            <input id="submit_modal_modify" type="submit" value="Modifica" />
+                        </form>
+                    </div>
+                </div>
+EOF
+        }
         if($INPUT{'modify'}) {
       		# Modifica del database
-			
-            #my $codice_prodotto = $INPUT{'modify'};
+			print "modifica selezionata";
+            my $category = $INPUT{'product_category'};
+            my $code = $INPUT{'product_code'};
+            my $name = $INPUT{'product_name'};
+            my $desc = $INPUT{'product_desc'};
+            my $thumbnail_desc = $INPUT{'thumbnail_desc'};
         }
         if($INPUT{'remove'}) {
             #rimozione dal database
@@ -265,6 +272,7 @@ EOF
 		  
 			print "<div id=\"product_buttons\">
                  <form id=\"form_modify\" action=\"admin_products.cgi#openModify\" method=\"post\">
+                        <input type=\"hidden\" name=\"modify_request\" value=\"".$codice."\" />
                         <input class=\"button\" type=\"submit\" value=\"Modifica\" />
                 </form>
                 <form id=\"form_remove\" action=\"admin_products.cgi\" method=\"post\">
