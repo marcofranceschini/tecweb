@@ -114,7 +114,7 @@ if ($logout) { # LOGOUT - E' stato premuto il link per uscire
 						<label class="form_item" for="product_image">Carica <span lang="en">thumbnail</span></label>
 						<input class="form_item" id="product_image" type="file" name="image" />
 						<input type="hidden" name="insert" value="true" />
-						<input id="submit_modal" type="submit" value="Inserisci" />
+						<input class="submit_modal" id="submit_modal" type="submit" value="Inserisci" />
 					</form>
 				</div>
 			</div>
@@ -176,7 +176,7 @@ EOF
                             <label class="form_item" for="product_image">Nuova <span lang="en">thumbnail</span></label>
                             <input class="form_item" id="product_image" type="file" name="image" />
                             <input type="hidden" name="modify" value="true" />
-                            <input id="submit_modal_modify" type="submit" value="Modifica" />
+                            <input class="submit_modal" id="submit_modal_modify" type="submit" value="Modifica" />
                         </form>
                     </div>
                 </div>
