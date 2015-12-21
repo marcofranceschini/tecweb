@@ -273,12 +273,12 @@ EOF
             print "<span class=\"product_category\">".$categoria."</span>";
            #<a id=\"action_add\" href=\"#openModify?value=\"".$codice."\">Modifica</a> 
 		  
-			print "<div id=\"product_buttons\">
-                 <form id=\"form_modify\" action=\"admin_products.cgi#openModify\" method=\"post\">
+			print "<div class=\"product_buttons\">
+                 <form class=\"form_modify\" action=\"admin_products.cgi#openModify\" method=\"post\">
                         <input type=\"hidden\" name=\"modify_request\" value=\"".$codice."\" />
                         <input class=\"button\" type=\"submit\" value=\"Modifica\" />
                 </form>
-                <form id=\"form_remove\" action=\"admin_products.cgi\" method=\"post\">
+                <form class=\"form_remove\" action=\"admin_products.cgi\" method=\"post\">
                         <input type=\"hidden\" name=\"remove\" value=\"".$codice."\" />
                         <input class=\"button\" type=\"submit\" value=\"Rimuovi\" />
                 </form>

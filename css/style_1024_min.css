@@ -718,7 +718,7 @@
         text-align: left;
     }
     
-    #product_buttons { /* new */
+    .product_buttons { /* new */
         float: right;
         margin-right: 1em;
         width: 10em;
@@ -727,7 +727,7 @@
         padding-bottom: 0.6em;
     }
     
-    #product_buttons form { /* new */
+    .product_buttons form { /* new */
         display: inline-block;
     }
     
