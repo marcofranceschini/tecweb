@@ -690,6 +690,22 @@
     #product_buttons .button:hover {
 		background: rgba(200, 0, 0, 1);
 	}
+	
+	#product_buttons a { /*---------------------NEW-------------------*/
+		background: #A00;
+		border: none;
+        padding: 0.4em;
+		box-shadow: 1px 1px 5px #B6B6B6;
+		border-radius: 3px;
+		font-size: 1em;
+		text-shadow: 1px 1px 1px #9E3F3F;
+		color: #FFF;
+		text-decoration: none;
+	}
+	
+	#product_buttons :hover { /*---------------------NEW-------------------*/
+		background: rgba(200, 0, 0, 1);
+	}
     
     #form_remove {
         float: right;
