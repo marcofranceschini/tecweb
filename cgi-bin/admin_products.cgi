@@ -1,5 +1,5 @@
-#!C:/Perl64/bin/perl.exe -T
-#!/usr/bin/perl -T
+#!C:/Perl64/bin/perl.exe
+#!/usr/bin/perl
 
 
 use CGI;
@@ -191,19 +191,14 @@ EOF
             
             #upload dell'immagine
             if ( !$image ) {
-                #print $cgi->header( );
-                print "There was a problem uploading your photo (try a smaller file).";
-                exit;
+                die "There was a problem uploading your photo (try a smaller file).";
             } else {
                 my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
                 $image = $name.$extension;
                 $image =~ tr/ /_/;
                 $image =~ s/[^$safe_filename_characters]//g;
-                if ( !($filename =~ /^([$safe_filename_characters]+)$/) ) {
-                    die "Filename contains invalid characters";
-                }
                 my $upload_file_handle = $cgi->upload("image");
-                open ( UPLOADFILE, ">$upload_dir/$filename" ) or die "$!";
+                open ( UPLOADFILE, ">$upload_dir/$image" ) or die "$!";
                 binmode UPLOADFILE;
                 while ( <$upload_filehandle> ) {
                     print UPLOADFILE;

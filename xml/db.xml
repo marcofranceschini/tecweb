@@ -27,4 +27,14 @@
     <backgroundImg/>
     <inEvidence>false</inEvidence>
   </product>
+  <product>
+    <category>Calcio</category>
+    <code>11111111111</code>
+    <name>immagine</name>
+    <description>prova</description>
+    <shortDescription/>
+    <img>polsiera.png</img>
+    <backgroundImg/>
+    <inEvidence>false</inEvidence>
+  </product>
 </products>
