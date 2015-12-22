@@ -362,8 +362,6 @@ sub rimuovi () {
     my $doc = $parser->parse_file($file) or die "Errore nel parsing";
     my $radice = $doc->getDocumentElement or die "Errore elemento radice";
     
-    print $codice_prodotto;
-    
     my $query = "/products/product [code=\"".$codice_prodotto."\"]";
     my $prodotto = $doc->findnodes($query)->get_node(1) or die "Prodotto non trovato";
     my $padre = $prodotto->parentNode;
