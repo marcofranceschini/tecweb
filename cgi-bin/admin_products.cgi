@@ -172,6 +172,7 @@ EOF
                     print "<textarea class=\"form_item\" id=\"product_desc\"  name=\"product_desc\" >".$description."</textarea>";
                     print "<label class=\"form_item\" for=\"thumbnail_desc\">Descrizione breve</label>";
                     print "<textarea class=\"form_item\" id=\"thumbnail_desc\"  name=\"thumbnail_desc\" >".$shortDescription."</textarea>";
+                    print "<input type=\"hidden\" name=\"codice_modifica\" value=\"".$code."\" />";
                     print <<EOF;
                             <label class="form_item" for="product_image">Nuova <span lang="en">thumbnail</span></label>
                             <input class="form_item" id="product_image" type="file" name="image" />
@@ -183,31 +184,48 @@ EOF
 EOF
         }
         if($INPUT{'modify'}) { # Inserisco i dati o verifico che siano stati modificati e poi inserisco quelli opportuni?
-      		# Modifica del database
-			print "modifica selezionata";
-            my $category = $INPUT{'product_category'};
-            my $code = $INPUT{'product_code'};
-            my $name = $INPUT{'product_name'};
-            my $desc = $INPUT{'product_desc'};
-            my $thumbnail_desc = $INPUT{'thumbnail_desc'};
-			my $image = $cgi->param("image");
+      		# Modifica del database 
+            
+            
+            $codice_prodotto = $INPUT{'codice_modifica'};
+            $category = $INPUT{'product_category'};
+            $code = $INPUT{'product_code'};
+            $name = $INPUT{'product_name'};
+            $desc = $INPUT{'product_desc'};
+            $thumbnail_desc = $INPUT{'thumbnail_desc'};
+			$image = $cgi->param("image");
 			
+            rimuovi();
+            inserisci();
+            #my $query = "/products/product [code=\"".$old_code."\"]";
+            #my $prodotto = $doc->findnodes($query)->get_node(1) or die "Prodotto non trovato";
+            #my $old_name = $prodotto->findnodes("name/text()");
+            #my $old_category = $prodotto->findnodes("category/text()");
+            #my $old_description = $prodotto->findnodes("description/text()");
+            #my $old_shortDescription = $prodotto->findnodes("shortDescription/text()");
+            #$prodotto->setAttribute( "name", $name );
+
+            
+            #setNodeText($query, "prova");
+            
 			#upload dell'immagine
-            if ( !$image ) {
-                die "There was a problem uploading your photo (try a smaller file).";
-            } else {
-                my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
-                $image = $name.$extension;
-                $image =~ tr/ /_/;
-                $image =~ s/[^$safe_filename_characters]//g;
-                my $upload_file_handle = $cgi->upload("image");
-                open ( UPLOADFILE, ">$upload_dir/$image" ) or die "$!";
-                binmode UPLOADFILE;
-                while ( <$upload_file_handle> ) {
-                    print UPLOADFILE;
-                }
-                close UPLOADFILE;
-            }  
+            #if ( !$image ) {
+            #    die "There was a problem uploading your photo (try a smaller file).";
+            #} else {
+             #   my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
+            #    $image = $name.$extension;
+            #    $image =~ tr/ /_/;
+            #    $image =~ s/[^$safe_filename_characters]//g;
+            #    my $upload_file_handle = $cgi->upload("image");
+             #   open ( UPLOADFILE, ">$upload_dir/$image" ) or die "$!";
+            #    binmode UPLOADFILE;
+             #   while ( <$upload_file_handle> ) {
+             #       print UPLOADFILE;
+             #   }
+              #  close UPLOADFILE;
+            #}
+
+
         }
         if($INPUT{'remove'}) {
             #rimozione dal database
@@ -332,4 +350,71 @@ EOF
 		</body>
 	</html>
 EOF
+}
+
+
+sub rimuovi () {
+     #rimozione dal database
+     
+    my $file = '../xml/db.xml';
+    my $parser = XML::LibXML->new();
+    $parser->keep_blanks(0);
+    my $doc = $parser->parse_file($file) or die "Errore nel parsing";
+    my $radice = $doc->getDocumentElement or die "Errore elemento radice";
+    
+    print $codice_prodotto;
+    
+    my $query = "/products/product [code=\"".$codice_prodotto."\"]";
+    my $prodotto = $doc->findnodes($query)->get_node(1) or die "Prodotto non trovato";
+    my $padre = $prodotto->parentNode;
+    $padre->removeChild($prodotto);
+}
+
+sub inserisci () {
+    #scrittura su file XML
+    my $file = '../xml/db.xml';
+    my $parser = XML::LibXML->new();
+    $parser->keep_blanks(0);
+    my $doc = $parser->parse_file($file) or die "Errore nel parsing";
+    my $radice = $doc->getDocumentElement or die "Errore elemento radice";
+            
+            #upload dell'immagine
+            #if ( !$image ) {
+               # die "There was a problem uploading your photo (try a smaller file).";
+            #} else {
+               # my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
+               # $image = $name.$extension;
+               # $image =~ tr/ /_/;
+               # $image =~ s/[^$safe_filename_characters]//g;
+               # my $upload_file_handle = $cgi->upload("image");
+               # open ( UPLOADFILE, ">$upload_dir/$image" ) or die "$!";
+               # binmode UPLOADFILE;
+               # while ( <$upload_file_handle> ) {
+               #     print UPLOADFILE;
+               # }
+               # close UPLOADFILE;
+           # }
+            
+            $new_product =
+            "<product>".
+            "<category>".$category."</category>".
+            "<code>".$code."</code>".
+            "<name>".$name."</name>".
+            "<description>".$desc."</description>".
+            "<shortDescription>".$thumbnail_desc."</shortDescription>".
+            "<img>".$image."</img>".
+            "<backgroundImg></backgroundImg>".
+            "<inEvidence>false</inEvidence>".
+            "</product>";
+            $nodo = $parser->parse_balanced_chunk($new_product) or die "Frammento non ben formato\n";
+            $padre = $doc->findnodes("/products")->get_node(1) or die "Errore nel padre\n";
+            if($padre){
+                $padre->appendChild($nodo);
+            } else {
+                print "<p>Database mal formato</p>";
+            }
+        #serializzazione e chiusura del file
+        open(OUT, ">$file");
+        print OUT $doc->toString(2);    #2: indenta correttamente
+        close(OUT);
 }
