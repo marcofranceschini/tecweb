@@ -86,7 +86,9 @@ for(my $i=0; $i < scalar @prodotti; $i++)
     my $descrizione = $prodotti[$i]->findnodes("description/text()");
     my $descrizione_corta = $prodotti[$i]->findnodes("shortDescription/text()");
     print "<div class=\"product_card\">";
-    print "<img src=\"../res/images/products/".$immagine."\" alt=\"".$descrizione_corta."\"/>";
+    print "<div class=\"product_image\">";
+    print " <img src=\"../res/images/products/".$immagine."\" alt=\"".$descrizione_corta."\"/>";
+    print "</div>";
     print "<span class=\"product_name\">".$nome."</span>";
     print "<span class=\"product_code\">Codice ".$codice."</span>";
     print "<p class=\"product_short_description\">".$descrizione_corta."</p>";

@@ -525,13 +525,19 @@
         box-shadow: gray 1px 1px 3px;
     }
     
-    #products_displayer .product_card img {
+    #products_displayer .product_image {
+        background: white;
+        border-radius: 10em;
+        margin: 1em;
+        height: 10em;
+    }
+    
+    
+    #products_displayer .product_image img {
         display: block;
-        width: 70%;
-        min-height: ;
-        margin: auto; 
-        padding-top: 0.6em;
-        padding-bottom: 0.6em;   
+        width: 80%;
+        margin: auto;
+        padding-top: 5%;
     }
     
     #products_displayer .product_name {
