@@ -47,12 +47,35 @@ sub printPlaceholder() {
 	return $placeholder;
 }
 
-getSession(); # Verifico che la sessione ci sia
+# Verifica della sessione
+getSession();
 
 my $cgi = CGI->new();
 my $error = $cgi->cgi_error();
+
+# Recupero i dati dall'input
+my %INPUT = Vars();
+    
+# Apertura file XML
+$file = '../xml/db.xml';
+$parser = XML::LibXML->new();
+$parser->keep_blanks(0);
+$doc = $parser->parse_file($file) or die "Errore nel parsing";
+$radice = $doc->getDocumentElement or die "Errore elemento radice";
+
+my $cat = "Calcio";
+if(%INPUT{'display_category'}) {
+    print "prova";
+    $cat = %INPUT{'display_category'};
+}
+
+# Lettura da file XML
+my $query = "/products/product [category=\"".$cat."\"]";
+my @prodotti = $doc->findnodes($query);
+
+# Controllo logout e creazione pagina
 my $logout = $cgi->param('logout');
-if ($logout) { # LOGOUT - E' stato premuto il link per uscire
+if ($logout) {
 	destroySession();
 } else {
 	print "Content-Type: text/html\n\n";
@@ -83,55 +106,36 @@ if ($logout) { # LOGOUT - E' stato premuto il link per uscire
 					<p><a id="admin_back" href="../cgi-bin/admin.cgi?logout=1">Torna al sito</a></p>
 					<p>Gestione Prodotti</p>
 				</div>
-			</div> 
-			
-			<div id="openModal" class="modalDialog">
-				<div>
-					<a href="#close" title="Close" class="close">X</a>
-					<p>Inserisci un nuovo prodotto</p>
-					<form action="admin_products.cgi" method="post" enctype="multipart/form-data">
-						<label class="form_item" for="product_category">Categoria</label>
-						<select class="form_item" id="product_category" name="product_category">
-							<option value="Calcio">Calcio</option>
-							<option value="Basket"><span lang="en">Basket</span></option>
-							<option value="Volley"><span lang="en">Volley</span></option>
-							<option value="Tennistavolo">Tennistavolo</option>
-							<option value="Nuoto">Nuoto</option>
-							<option value="Minigolf">Minigolf</option>
-							<option value="Calciobalilla">Calciobalilla</option>
-							<option value="Protezioni">Protezioni</option>
-							<option value="Accessori">Accessori</option>
-						</select>
-						<label class="form_item" for="product_code">Codice</label>
-						<input class="form_item" id="product_code" type="text"  name="product_code" />
-						<label class="form_item" for="product_name">Nome</label>
-						<input class="form_item" id="product_name" type="text" name="product_name" />
-						<label class="form_item" for="product_desc">Descrizione</label>
-						<textarea class="form_item" id="product_desc"  name="product_desc" ></textarea>
-						<label class="form_item" for="thumbnail_desc">Descrizione breve</label>
-						<textarea class="form_item" id="thumbnail_desc"  name="thumbnail_desc" ></textarea>
-						<label class="form_item" for="product_image">Carica <span lang="en">thumbnail</span></label>
-						<input class="form_item" id="product_image" type="file" name="image" />
-						<input type="hidden" name="insert" value="true" />
-						<input class="submit_modal" id="submit_modal" type="submit" value="Inserisci" />
-					</form>
-				</div>
+                <div id="admin_dashboard">
+EOF
+print "<span id=\"products_number\">Sono presenti ".scalar @prodotti." prodotti</span>";
+print <<EOF;
+                    <form id="dashboard_form" action="admin_products.cgi" method="post">
+                        <div class="form_item">
+                            <span>nella</span>
+                            <label for="display_category">categoria</label>
+                        </div>
+                        <select class="form_item" name="display_category">
+EOF
+print "<option value=\"".$cat."\">".$cat."</option>";
+print <<EOF;
+                            <option value="Calcio">Calcio</option>
+                            <option value="Basket"><span lang="en">Basket</span></option>
+                            <option value="Volley"><span lang="en">Volley</span></option>
+                            <option value="Tennistavolo">Tennistavolo</option>
+                            <option value="Nuoto">Nuoto</option>
+                            <option value="Minigolf">Minigolf</option>
+                            <option value="Calciobalilla">Calciobalilla</option>
+                            <option value="Protezioni">Protezioni</option>
+                            <option value="Accessori">Accessori</option>
+                        </select>
+                        <input id="submit_dashboard" type="submit" value="Aggiorna" />
+                </div>
 			</div>
-			
 			<div id="content_admin">	
 EOF
 
-	#recupero i dati dall'input
-	my %INPUT = Vars();
-    
-    #apertura file XML
-    $file = '../xml/db.xml';
-    $parser = XML::LibXML->new();
-    $parser->keep_blanks(0);
-    $doc = $parser->parse_file($file) or die "Errore nel parsing";
-    $radice = $doc->getDocumentElement or die "Errore elemento radice";
-	if (%INPUT or $error) {  #se riceve dati in input
-    
+	if(%INPUT or $error) {  #se riceve dati in input o errori
         if(%INPUT{'modify_request'}) {
             # Modal di modifica    
             my $code = $INPUT{'modify_request'};
@@ -291,16 +295,11 @@ EOF
         print OUT $doc->toString(2);    #2: indenta correttamente
         close(OUT);
 	}
-    
-	#lettura da file XML
-	#my @prodotti = $radice->getElementsByTagName('product') or die "Errore prodotti\n";
-    my @prodotti = $doc->findnodes("/products/product");
 	
 	if (!@prodotti) {
 	   	print printPlaceholder();
     } else {
         #stampa le card dei prodotti
-        print "<p id=\"products_number\">Sono presenti ".scalar @prodotti." prodotti</p>";
         print "<div id=\"products_container\">";
         print "<div id=\"products_label\"><span>Codice</span><span id=\"product_name_label\">Nome</span><span>Categoria</span></div>";
         for(my $i=0; $i < scalar @prodotti; $i++)
@@ -316,6 +315,7 @@ EOF
 		  
 			print "<div class=\"product_buttons\">
                  <form class=\"form_modify\" action=\"admin_products.cgi#openModify\" method=\"post\">
+                        <input type=\"hidden\" name=\"display_category\" value=\"".$cat."\" />
                         <input type=\"hidden\" name=\"modify_request\" value=\"".$codice."\" />
                         <input class=\"button\" type=\"submit\" value=\"Modifica\" />
                 </form>
@@ -330,8 +330,40 @@ EOF
     }
     
 	print <<EOF;
+            <div id="openModal" class="modalDialog">
+				<div>
+					<a href="#close" title="Close" class="close">X</a>
+					<p>Inserisci un nuovo prodotto</p>
+					<form action="admin_products.cgi" method="post" enctype="multipart/form-data">
+						<label class="form_item" for="product_category">Categoria</label>
+						<select class="form_item" id="product_category" name="product_category">
+							<option value="Calcio">Calcio</option>
+							<option value="Basket"><span lang="en">Basket</span></option>
+							<option value="Volley"><span lang="en">Volley</span></option>
+							<option value="Tennistavolo">Tennistavolo</option>
+							<option value="Nuoto">Nuoto</option>
+							<option value="Minigolf">Minigolf</option>
+							<option value="Calciobalilla">Calciobalilla</option>
+							<option value="Protezioni">Protezioni</option>
+							<option value="Accessori">Accessori</option>
+						</select>
+						<label class="form_item" for="product_code">Codice</label>
+						<input class="form_item" id="product_code" type="text"  name="product_code" />
+						<label class="form_item" for="product_name">Nome</label>
+						<input class="form_item" id="product_name" type="text" name="product_name" />
+						<label class="form_item" for="product_desc">Descrizione</label>
+						<textarea class="form_item" id="product_desc"  name="product_desc" ></textarea>
+						<label class="form_item" for="thumbnail_desc">Descrizione breve</label>
+						<textarea class="form_item" id="thumbnail_desc"  name="thumbnail_desc" ></textarea>
+						<label class="form_item" for="product_image">Carica <span lang="en">thumbnail</span></label>
+						<input class="form_item" id="product_image" type="file" name="image" />
+						<input type="hidden" name="insert" value="true" />
+						<input class="submit_modal" id="submit_modal" type="submit" value="Inserisci" />
+					</form>
+				</div>
 			</div>
-			
+			</div>
+            
 			<div id="action_bar">
 				<div id="action_box">
 					<a id="action_back" class="linked_box" href="admin.cgi">Indietro</a>

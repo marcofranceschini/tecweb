@@ -10,7 +10,7 @@
     <inEvidence>false</inEvidence>
   </product>
   <product>
-    <category>Volley</category>
+    <category>Calcio</category>
     <code>VL022</code>
     <name>COMPETITION</name>
     <description>Pallone da Volley misura 5 in pelle sintetica morbida</description>
@@ -28,7 +28,7 @@
     <inEvidence>false</inEvidence>
   </product>
   <product>
-    <category>Calcio</category>
+    <category>Volley</category>
     <code>2222</code>
     <name>Prova IMG</name>
     <description>Prova dell'immagine di un prodotto calcioProva dell'immagine di un prodotto calcioProva dell'immagine di un prodotto calcioProva dell'immagine di un prodotto calcioProva dell'immagine di un prodotto calcio</description>
@@ -38,7 +38,7 @@
     <inEvidence>false</inEvidence>
   </product>
   <product>
-    <category>Volley</category>
+    <category>Accessori</category>
     <code>1111111</code>
     <name>Prova IMG 2</name>
     <description>Descrizione lungaDescrizione lungaDescrizione lungaDescrizione lungaDescrizione lunga</description>

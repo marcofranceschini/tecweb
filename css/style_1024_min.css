@@ -723,6 +723,48 @@
 	}
 	
 	/*NEW START*/
+    #admin_dashboard {
+        background: darkred;        
+        text-align: center;
+        padding-top: 1.4em;
+        padding-bottom: 1.4em;
+        font-size: 1.1em;
+        font-weight: bold; 
+    }
+    
+    #dashboard_form {
+        display: inline;
+    }
+    
+    #dashboard_form select {
+        font-size: 1em;
+        border: none;
+		box-shadow: 1px 1px 5px #3D3D3D;
+		border-radius: 3px;	
+        vertical-align: middle;
+    }
+    
+    #dashboard_form .form_item {
+        display: inline;
+        padding-right: 0.5em;
+	}
+    
+    #submit_dashboard {
+        font-size: 0.9em;
+        background: lightgray;
+		border: none;
+		padding: 0.4em 0.8em 0.4em 0.8em;
+		box-shadow: 1px 1px 3px #3D3D3D;
+		border-radius: 3px;
+		cursor: pointer;
+		color: black;
+        margin-left: 2em;
+	}
+	
+	#submit_dashboard:hover{	/* NEW --------------------------------------*/
+		background: #9d9d9d;
+	}
+    
     #error_msg {
         display: block;
         width: 60%;
@@ -734,10 +776,6 @@
         margin-bottom: 1em;
         color: #D00;
         box-shadow: gray 1px 1px 5px;
-    }
-    #products_number {  /* new */
-        font-weight: bold;
-        padding-bottom: 2em;
     }
     
     #products_container { /* new */
@@ -989,7 +1027,9 @@
 	}
 	
 	#action_bar {
-		height: 6em;
+		height: 5em;
+        
+        padding-top: 1em;
 	}	
 	
 	#action_box {
