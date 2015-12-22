@@ -50,6 +50,7 @@ sub printPlaceholder() {
 getSession(); # Verifico che la sessione ci sia
 
 my $cgi = CGI->new();
+my $error = $cgi->cgi_error();
 my $logout = $cgi->param('logout');
 if ($logout) { # LOGOUT - E' stato premuto il link per uscire
 	destroySession();
@@ -129,8 +130,8 @@ EOF
     $parser->keep_blanks(0);
     $doc = $parser->parse_file($file) or die "Errore nel parsing";
     $radice = $doc->getDocumentElement or die "Errore elemento radice";
+	if (%INPUT or $error) {  #se riceve dati in input
     
-	if (%INPUT) {  #se riceve dati in input
         if(%INPUT{'modify_request'}) {
             # Modal di modifica    
             my $code = $INPUT{'modify_request'};
@@ -179,6 +180,11 @@ EOF
                     </div>
                 </div>
 EOF
+        }
+        if($error) {
+            if($error =~ /413/) {     #errore: 413 Request entity too large
+                print "<span id=\"error_msg\">L'immagine selezionata &egrave; troppo grande!</span>";
+            }
         }
         if($INPUT{'modify'}) { # Inserisco i dati o verifico che siano stati modificati e poi inserisco quelli opportuni?
       		# Modifica del database 
@@ -244,10 +250,9 @@ EOF
             my $desc = $INPUT{'product_desc'};
             my $thumbnail_desc = $INPUT{'thumbnail_desc'};
             my $image = $cgi->param("image");  
-            
             #upload dell'immagine
             if ( !$image ) {
-                print "<p>Nessuna immagine carcata! &Egrave; possibile che superasse la dimensione massima</p>";
+                die $!;
             } else {
                 my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
                 $image = $name.$extension;
