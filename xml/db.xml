@@ -47,4 +47,14 @@
     <backgroundImg/>
     <inEvidence>false</inEvidence>
   </product>
+  <product>
+    <category>Calcio</category>
+    <code>333</code>
+    <name/>
+    <description/>
+    <shortDescription/>
+    <img>calcio-balilla.jpg</img>
+    <backgroundImg/>
+    <inEvidence>false</inEvidence>
+  </product>
 </products>
