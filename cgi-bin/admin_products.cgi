@@ -1,7 +1,5 @@
-#!C:/Perl64/bin/perl.exe
 #!/usr/bin/perl
-
-
+#!C:/Perl64/bin/perl.exe
 
 
 use CGI;
@@ -127,11 +125,11 @@ EOF
 	my %INPUT = Vars();
     
     #apertura file XML
-    my $file = '../xml/db.xml';
-    my $parser = XML::LibXML->new();
+    $file = '../xml/db.xml';
+    $parser = XML::LibXML->new();
     $parser->keep_blanks(0);
-    my $doc = $parser->parse_file($file) or die "Errore nel parsing";
-    my $radice = $doc->getDocumentElement or die "Errore elemento radice";
+    $doc = $parser->parse_file($file) or die "Errore nel parsing";
+    $radice = $doc->getDocumentElement or die "Errore elemento radice";
     
 	if (%INPUT) {  #se riceve dati in input
         if(%INPUT{'modify_request'}) {
@@ -356,14 +354,7 @@ EOF
 
 sub rimuovi () {
      #rimozione dal database
-     
-    my $file = '../xml/db.xml';
-    my $parser = XML::LibXML->new();
-    $parser->keep_blanks(0);
-    my $doc = $parser->parse_file($file) or die "Errore nel parsing";
-    my $radice = $doc->getDocumentElement or die "Errore elemento radice";
-    
-    print $codice_prodotto;
+  
     
     my $query = "/products/product [code=\"".$codice_prodotto."\"]";
     my $prodotto = $doc->findnodes($query)->get_node(1) or die "Prodotto non trovato";
@@ -373,11 +364,7 @@ sub rimuovi () {
 
 sub inserisci () {
     #scrittura su file XML
-    my $file = '../xml/db.xml';
-    my $parser = XML::LibXML->new();
-    $parser->keep_blanks(0);
-    my $doc = $parser->parse_file($file) or die "Errore nel parsing";
-    my $radice = $doc->getDocumentElement or die "Errore elemento radice";
+    
             
             #upload dell'immagine
             #if ( !$image ) {
