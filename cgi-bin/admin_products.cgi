@@ -354,12 +354,7 @@ EOF
 
 sub rimuovi () {
      #rimozione dal database
-     
-    my $file = '../xml/db.xml';
-    my $parser = XML::LibXML->new();
-    $parser->keep_blanks(0);
-    my $doc = $parser->parse_file($file) or die "Errore nel parsing";
-    my $radice = $doc->getDocumentElement or die "Errore elemento radice";
+  
     
     my $query = "/products/product [code=\"".$codice_prodotto."\"]";
     my $prodotto = $doc->findnodes($query)->get_node(1) or die "Prodotto non trovato";
@@ -369,11 +364,7 @@ sub rimuovi () {
 
 sub inserisci () {
     #scrittura su file XML
-    my $file = '../xml/db.xml';
-    my $parser = XML::LibXML->new();
-    $parser->keep_blanks(0);
-    my $doc = $parser->parse_file($file) or die "Errore nel parsing";
-    my $radice = $doc->getDocumentElement or die "Errore elemento radice";
+    
             
             #upload dell'immagine
             #if ( !$image ) {
