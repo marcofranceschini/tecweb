@@ -76,6 +76,7 @@ my @prodotti = $doc->findnodes($query) or die "<p>Non &egrave; stato possibile r
 	
 #stampa le card dei prodotti
 print "<div id=\"products_displayer\">";
+print " <div id=\"products_displayer_frame\">";
 for(my $i=0; $i < scalar @prodotti; $i++)
 {
     my $codice = $prodotti[$i]->findnodes("code/text()");
@@ -86,8 +87,8 @@ for(my $i=0; $i < scalar @prodotti; $i++)
     my $descrizione_corta = $prodotti[$i]->findnodes("shortDescription/text()");
     print "<div class=\"product_card\">";
     print "<img src=\"../res/images/products/".$immagine."\" alt=\"".$descrizione_corta."\"/>";
-    print "<span class=\"product_code\">".$codice."</span>";
     print "<span class=\"product_name\">".$nome."</span>";
+    print "<span class=\"product_code\">Codice ".$codice."</span>";
     print "<p class=\"product_short_description\">".$descrizione_corta."</p>";
     print
     "<div class=\"product_display_button\">
@@ -98,6 +99,7 @@ for(my $i=0; $i < scalar @prodotti; $i++)
     </div>";
     print "</div>";
 }
+print " </div>";
 print "</div>";
     
 print <<EOF;	
