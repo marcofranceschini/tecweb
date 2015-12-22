@@ -1,5 +1,6 @@
-#!/usr/bin/perl
 #!C:/Perl64/bin/perl.exe
+#!/usr/bin/perl
+
 
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
@@ -33,7 +34,6 @@ sub destroySession() {
 	$session->flush();
 	#print redirect(-url=>'../'); # Torno in home
 	print "Content-Type: text/html\n\n";
-	print "prova";
 	$sessione = CGI::Session->load() or die $!; #CGI::Session->errstr
 	print $session->param('pass');
 }
@@ -65,7 +65,6 @@ $radice = $doc->getDocumentElement or die "Errore elemento radice";
 
 my $cat = "Calcio";
 if(%INPUT{'display_category'}) {
-    print "prova";
     $cat = %INPUT{'display_category'};
 }
 
