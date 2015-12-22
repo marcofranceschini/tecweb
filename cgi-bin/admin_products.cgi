@@ -1,6 +1,5 @@
-#!/usr/bin/perl
 #!C:/Perl64/bin/perl.exe
-
+#!/usr/bin/perl
 
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
@@ -164,18 +163,17 @@ EOF
                                 </select>
                                 <label class="form_item" for="product_code">Codice</label>
 EOF
-                    print "<input class=\"form_item\" id=\"product_code\" type=\"text\"  name=\"product_code\" value=\"".$code."\" />";
+                    print "<input class=\"form_item\" id=\"product_code\" type=\"text\"  name=\"product_code\" value=\"".$code."\" disabled />";
                     print "<label class=\"form_item\" for=\"product_name\">Nome</label>";
                     print "<input class=\"form_item\" id=\"product_name\" type=\"text\" name=\"product_name\" value=\"".$name."\" />";
                     print "<label class=\"form_item\" for=\"product_desc\">Descrizione</label>";
                     print "<textarea class=\"form_item\" id=\"product_desc\"  name=\"product_desc\" >".$description."</textarea>";
                     print "<label class=\"form_item\" for=\"thumbnail_desc\">Descrizione breve</label>";
                     print "<textarea class=\"form_item\" id=\"thumbnail_desc\"  name=\"thumbnail_desc\" >".$shortDescription."</textarea>";
-                    print "<input type=\"hidden\" name=\"codice_modifica\" value=\"".$code."\" />";
+                    print "<input type=\"hidden\" name=\"modify\" value=\"".$code."\" />";
                     print <<EOF;
                             <label class="form_item" for="product_image">Nuova <span lang="en">thumbnail</span></label>
                             <input class="form_item" id="product_image" type="file" name="image" />
-                            <input type="hidden" name="modify" value="true" />
                             <input class="submit_modal" id="submit_modal_modify" type="submit" value="Modifica" />
                         </form>
                     </div>
@@ -184,50 +182,54 @@ EOF
         }
         if($INPUT{'modify'}) { # Inserisco i dati o verifico che siano stati modificati e poi inserisco quelli opportuni?
       		# Modifica del database 
-            
-            
-            $codice_prodotto = $INPUT{'codice_modifica'};
+            $codice_prodotto = $INPUT{'modify'};
             $category = $INPUT{'product_category'};
-            $code = $INPUT{'product_code'};
+            #$code = $INPUT{'product_code'};
             $name = $INPUT{'product_name'};
             $desc = $INPUT{'product_desc'};
             $thumbnail_desc = $INPUT{'thumbnail_desc'};
-			$image = $cgi->param("image");
-			
-            rimuovi();
-            inserisci();
-            #my $query = "/products/product [code=\"".$old_code."\"]";
-            #my $prodotto = $doc->findnodes($query)->get_node(1) or die "Prodotto non trovato";
-            #my $old_name = $prodotto->findnodes("name/text()");
-            #my $old_category = $prodotto->findnodes("category/text()");
-            #my $old_description = $prodotto->findnodes("description/text()");
-            #my $old_shortDescription = $prodotto->findnodes("shortDescription/text()");
-            #$prodotto->setAttribute( "name", $name );
-
+			$image = $cgi->param("image");   
+                     
+            my $query = "/products/product [code=\"".$codice_prodotto."\"]";
+            my $prodotto = $doc->findnodes($query)->get_node(1) or die "Prodotto non trovato";
+            my $old_category = $prodotto->findnodes("category/text()")->get_node(1);
+            my $old_name = $prodotto->findnodes("name/text()")->get_node(1);            
+            my $old_description = $prodotto->findnodes("description/text()")->get_node(1);
+            my $old_shortDescription = $prodotto->findnodes("shortDescription/text()")->get_node(1);
+            my $old_image = $prodotto->findnodes("img/text()")->get_node(1);
             
-            #setNodeText($query, "prova");
-            
-			#upload dell'immagine
-            #if ( !$image ) {
-            #    die "There was a problem uploading your photo (try a smaller file).";
-            #} else {
-             #   my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
-            #    $image = $name.$extension;
-            #    $image =~ tr/ /_/;
-            #    $image =~ s/[^$safe_filename_characters]//g;
-            #    my $upload_file_handle = $cgi->upload("image");
-             #   open ( UPLOADFILE, ">$upload_dir/$image" ) or die "$!";
-            #    binmode UPLOADFILE;
-             #   while ( <$upload_file_handle> ) {
-             #       print UPLOADFILE;
-             #   }
-              #  close UPLOADFILE;
-            #}
-
-
+            if($old_category ne $category) {
+                $old_category->setData($category);
+            }
+            if($old_name ne $name) {
+                $old_name->setData($name);
+            }
+            if($old_description ne $desc) {
+                $old_description->setData($desc);
+            }
+            if($old_shortDescription ne $thumbnail_desc) {
+                $old_shortDescription->setData($thumbnail_desc);
+            }
+            if ( $image ) {
+                if($old_image ne $image) {
+                    print "le immagini sono diverse";
+                    my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
+                    $image = $name.$extension;
+                    $image =~ tr/ /_/;
+                    $image =~ s/[^$safe_filename_characters]//g;
+                    my $upload_file_handle = $cgi->upload("image");
+                    open ( UPLOADFILE, ">$upload_dir/$image" ) or die "$!";
+                    binmode UPLOADFILE;
+                    while ( <$upload_file_handle> ) {
+                        print UPLOADFILE;
+                    }
+                    close UPLOADFILE;
+                    $old_image->setData($image);
+                }
+            }
         }
         if($INPUT{'remove'}) {
-            #rimozione dal database
+            # Rimozione dal database
             my $codice_prodotto = $INPUT{'remove'};
             my $query = "/products/product [code=\"".$codice_prodotto."\"]";
             my $prodotto = $doc->findnodes($query)->get_node(1) or die "Prodotto non trovato";
@@ -235,18 +237,17 @@ EOF
             $padre->removeChild($prodotto);
         }
         if($INPUT{'insert'}) {
-            #scrittura su file XML	
+            # Scrittura su file XML	
             my $category = $INPUT{'product_category'};
             my $code = $INPUT{'product_code'};
             my $name = $INPUT{'product_name'};
             my $desc = $INPUT{'product_desc'};
             my $thumbnail_desc = $INPUT{'thumbnail_desc'};
-            #my image =  = $INPUT{'product_image'};
             my $image = $cgi->param("image");  
             
             #upload dell'immagine
             if ( !$image ) {
-                die "There was a problem uploading your photo (try a smaller file).";
+                print "<p>Nessuna immagine carcata! &Egrave; possibile che superasse la dimensione massima</p>";
             } else {
                 my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
                 $image = $name.$extension;
@@ -349,60 +350,4 @@ EOF
 		</body>
 	</html>
 EOF
-}
-
-
-sub rimuovi () {
-     #rimozione dal database
-  
-    
-    my $query = "/products/product [code=\"".$codice_prodotto."\"]";
-    my $prodotto = $doc->findnodes($query)->get_node(1) or die "Prodotto non trovato";
-    my $padre = $prodotto->parentNode;
-    $padre->removeChild($prodotto);
-}
-
-sub inserisci () {
-    #scrittura su file XML
-    
-            
-            #upload dell'immagine
-            #if ( !$image ) {
-               # die "There was a problem uploading your photo (try a smaller file).";
-            #} else {
-               # my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
-               # $image = $name.$extension;
-               # $image =~ tr/ /_/;
-               # $image =~ s/[^$safe_filename_characters]//g;
-               # my $upload_file_handle = $cgi->upload("image");
-               # open ( UPLOADFILE, ">$upload_dir/$image" ) or die "$!";
-               # binmode UPLOADFILE;
-               # while ( <$upload_file_handle> ) {
-               #     print UPLOADFILE;
-               # }
-               # close UPLOADFILE;
-           # }
-            
-            $new_product =
-            "<product>".
-            "<category>".$category."</category>".
-            "<code>".$code."</code>".
-            "<name>".$name."</name>".
-            "<description>".$desc."</description>".
-            "<shortDescription>".$thumbnail_desc."</shortDescription>".
-            "<img>".$image."</img>".
-            "<backgroundImg></backgroundImg>".
-            "<inEvidence>false</inEvidence>".
-            "</product>";
-            $nodo = $parser->parse_balanced_chunk($new_product) or die "Frammento non ben formato\n";
-            $padre = $doc->findnodes("/products")->get_node(1) or die "Errore nel padre\n";
-            if($padre){
-                $padre->appendChild($nodo);
-            } else {
-                print "<p>Database mal formato</p>";
-            }
-        #serializzazione e chiusura del file
-        open(OUT, ">$file");
-        print OUT $doc->toString(2);    #2: indenta correttamente
-        close(OUT);
 }

@@ -38,11 +38,11 @@
     <inEvidence>false</inEvidence>
   </product>
   <product>
-    <category>Calcio</category>
+    <category>Volley</category>
     <code>1111111</code>
     <name>Prova IMG 2</name>
-    <description>Prova dell'immagine di un prodotto calcioProva dell'immagine di un prodotto calcioProva dell'immagine di un prodotto calcioProva dell'immagine di un prodotto calcio</description>
-    <shortDescription>Prova dell'immagine di un prodotto calcio 2</shortDescription>
+    <description>Descrizione lungaDescrizione lungaDescrizione lungaDescrizione lungaDescrizione lunga</description>
+    <shortDescription>Descrizione breve del prodotto</shortDescription>
     <img>CRONOMETRO_10_M.png</img>
     <backgroundImg/>
     <inEvidence>false</inEvidence>
