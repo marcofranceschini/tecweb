@@ -3,27 +3,9 @@
   <product>
     <category>Calcio</category>
     <code>C0011</code>
-    <name>Evolution</name>
-    <description>Pallone da calcio bla bla blab lab lab alb alb a</description>
+    <name>Evolution PES</name>
+    <description>Pallone da calcio tunz tunz </description>
     <shortDescription>Pallone da calcio</shortDescription>
-    <backgroundImg/>
-    <inEvidence>false</inEvidence>
-  </product>
-  <product>
-    <category>Calcio</category>
-    <code>VL022</code>
-    <name>COMPETITION</name>
-    <description>Pallone da Volley misura 5 in pelle sintetica morbida</description>
-    <shortDescription>Pallone da Volley</shortDescription>
-    <backgroundImg/>
-    <inEvidence>false</inEvidence>
-  </product>
-  <product>
-    <category>Basket</category>
-    <code>B0010</code>
-    <name>Pallone Minibasket</name>
-    <description>Pallone da basket bla bla bla bla bla bla bla bla bla bla bla bla bla</description>
-    <shortDescription>Pallone da basket</shortDescription>
     <backgroundImg/>
     <inEvidence>false</inEvidence>
   </product>

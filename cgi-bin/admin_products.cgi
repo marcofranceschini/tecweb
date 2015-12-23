@@ -1,6 +1,5 @@
-#!C:/Perl64/bin/perl.exe
 #!/usr/bin/perl
-
+#!C:/Perl64/bin/perl.exe
 
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
@@ -66,14 +65,14 @@ $doc = $parser->parse_file($file) or die "Errore nel parsing";
 $radice = $doc->getDocumentElement or die "Errore elemento radice";
 
 my $display_category = "Tutte";
-if(%INPUT{'display_category'}) {
-    $display_category = %INPUT{'display_category'};
+if($INPUT{'display_category'}) {
+    $display_category = $INPUT{'display_category'};
 }
-if(%INPUT{'display_category_modify'}) {
-    $display_category = %INPUT{'display_category_modify'};
+if($INPUT{'display_category_modify'}) {
+    $display_category = $INPUT{'display_category_modify'};
 }
-if(%INPUT{'display_category_remove'}) {
-    $display_category = %INPUT{'display_category_remove'};
+if($INPUT{'display_category_remove'}) {
+    $display_category = $INPUT{'display_category_remove'};
 }
 
 # Controllo logout e creazione pagina
@@ -162,7 +161,7 @@ print "							<option value=\"Accessori\"";
 EOF
 
 	if(%INPUT or $error) {  #se riceve dati in input o errori
-        if(%INPUT{'modify_request'}) {
+        if($INPUT{'modify_request'}) {
             # Modal di modifica    
             my $code = $INPUT{'modify_request_code'};
             my $query = "/products/product [code=\"".$code."\"]";
