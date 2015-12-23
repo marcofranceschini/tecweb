@@ -29,14 +29,4 @@
     <backgroundImg/>
     <inEvidence>false</inEvidence>
   </product>
-  <product>
-    <category>Protezioni</category>
-    <code>M4MM4</code>
-    <name>Mamma di Cesco</name>
-    <description>Cesco's Mommy </description>
-    <shortDescription>Cesco's Mommy </shortDescription>
-    <img>TR_2_NAVY.png</img>
-    <backgroundImg/>
-    <inEvidence>false</inEvidence>
-  </product>
 </products>
