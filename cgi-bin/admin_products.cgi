@@ -40,10 +40,12 @@ sub destroySession() {
 
 sub printPlaceholder() {
 	# Da usare in lab: ../tecwebproject/res/images/empty_list.png
-	$placeholder = "<div id=\"placeholder\">
-						<p>Nessun prodotto ancora inserito</p>
-						<img src=\"../res/images/empty_list.png\" alt=\"Immagina lista prodotti vuota\" \>
-					</div>";
+	$placeholder = 
+"				<div id=\"placeholder\">
+					<p>Nessun prodotto ancora inserito</p>
+					<img src=\"../res/images/empty_list.png\" alt=\"Immagina lista prodotti vuota\" \>
+				</div>
+			</div>\n";   #</content_admin>
 	return $placeholder;
 }
 
@@ -116,48 +118,49 @@ if ($logout) {
 					<p><a id="admin_back" href="../cgi-bin/admin.cgi?logout=1">Torna al sito</a></p>
 					<p>Gestione Prodotti</p>
 				</div>
-                <div id="admin_dashboard">
+				<div id="admin_dashboard">
 EOF
-print "<span id=\"products_number\">Sono presenti ".scalar @prodotti." prodotti</span>";
+print "					<span id=\"products_number\">Sono presenti ".scalar @prodotti." prodotti</span>\n";
 print <<EOF;
-                    <form id="dashboard_form" action="admin_products.cgi" method="post" enctype="multipart/form-data">
-                        <div class="form_item">
-                            <span>nella</span>
-                            <label for="display_category">categoria</label>
-                        </div>
-                        <select class="form_item" name="display_category">
+					<form name="dashboard_form" id="dashboard_form" action="admin_products.cgi" method="post" enctype="multipart/form-data">
+						<div class="form_item">
+							<span>nella</span>
+							<label for="display_category">categoria</label>
+						</div>
+						<select class="form_item" name="display_category">
 EOF
-                            print "<option value=\"Calcio\"";
+print "							<option value=\"Calcio\"";
                             if($display_category eq "Calcio"){ print " selected ";}
-                            print ">Calcio</option>";
-                            print "<option value=\"Basket\"";
+                            print ">Calcio</option>\n";
+print "							<option value=\"Basket\"";
                             if($display_category eq "Basket"){ print " selected ";}
-                            print "><span lang=\"en\">Basket</span></option>";
-                            print "<option value=\"Volley\"";
+                            print "><span lang=\"en\">Basket</span></option>\n";
+print "							<option value=\"Volley\"";
                             if($display_category eq "Volley"){ print " selected ";}
-                            print "><span lang=\"en\">Volley</span></option>";
-                            print "<option value=\"Tennistavolo\"";
+                            print "><span lang=\"en\">Volley</span></option>\n";
+print "							<option value=\"Tennistavolo\"";
                             if($display_category eq "Tennistavolo"){ print " selected ";}
-                            print">Tennistavolo</option>";
-                            print "<option value=\"Nuoto\"";
+                            print">Tennistavolo</option>\n";
+print "							<option value=\"Nuoto\"";
                             if($display_category eq "Nuoto"){ print " selected ";}
-                            print ">Nuoto</option>";
-                            print "<option value=\"Minigolf\"";
+                            print ">Nuoto</option>\n";
+print "							<option value=\"Minigolf\"";
                             if($display_category eq "Minigolf"){ print " selected ";}
-                            print ">Minigolf</option>";
-                            print "<option value=\"Calciobalilla\"";
+                            print ">Minigolf</option>\n";
+print "							<option value=\"Calciobalilla\"";
                             if($display_category eq "Calciobalilla"){ print " selected ";}
-                            print ">Calciobalilla</option>";
-                            print "<option value=\"Protezioni\"";
+                            print ">Calciobalilla</option>\n";
+print "							<option value=\"Protezioni\"";
                             if($display_category eq "Protezioni" ){ print " selected ";}
-                            print ">Protezioni</option>";
-                            print "<option value=\"Accessori\"";
+                            print ">Protezioni</option>\n";
+print "							<option value=\"Accessori\"";
                             if($display_category eq "Accessori"){ print " selected ";}
-                            print ">Accessori</option>";
+                            print ">Accessori</option>\n";
                         print <<EOF;
-                        </select>
-                        <input id="submit_dashboard" type="submit" value="Aggiorna" />
-                </div>
+						</select>
+						<input id="submit_dashboard" type="submit" value="Aggiorna" />
+					</form>
+				</div>
 			</div>
 			<div id="content_admin">	
 EOF
@@ -177,7 +180,7 @@ EOF
                         <div>
                             <a href="#close" title="Close" class="close">X</a>
                             <p>Modifica un prodotto</p>
-                            <form id=\"form_modal_modify\" action="admin_products.cgi" method="post" enctype="multipart/form-data">
+                            <form name="form_modal_modify" id="form_modal_modify" action="admin_products.cgi" method="post" enctype="multipart/form-data">
                                 <label class="form_item" for="product_category">Categoria</label>
                                 <select class="form_item" id="product_category" name="product_category">
 EOF
@@ -332,7 +335,7 @@ EOF
             if($padre){
                 $padre->appendChild($nodo);
             } else {
-                print "<p>Database mal formato</p>";
+                print "<span id=\"error_msg\">Database mal formato</span>";
             }
         }
         #serializzazione e chiusura del file
@@ -345,40 +348,45 @@ EOF
 	   	print printPlaceholder();
     } else {
         #stampa le card dei prodotti
-        print "<div id=\"products_container\">";
-        print "<div id=\"products_label\"><span>Codice</span><span id=\"product_name_label\">Nome</span><span>Categoria</span></div>";
+        print <<EOF;
+				<div id="products_container">
+					<div id="products_label">
+						<span>Codice</span><span id="product_name_label">Nome</span><span>Categoria</span>
+					</div>
+EOF
         for(my $i=0; $i < scalar @prodotti; $i++)
         {
             my $codice = $prodotti[$i]->findnodes("code/text()");
             my $nome = $prodotti[$i]->findnodes("name/text()");
             my $categoria = $prodotti[$i]->findnodes("category/text()");
-            print "<div class=\"product_card\">";
-            print "<span class=\"product_code\">".$codice."</span>";
-            print "<span class=\"product_name\">".$nome."</span>";
-            print "<span class=\"product_category\">".$categoria."</span>";
-			print "<div class=\"product_buttons\">
-                 <form id=\"form_modify\" class=\"form_modify\" action=\"admin_products.cgi#openModify\" method=\"post\" enctype=\"multipart/form-data\">
-                        <input type=\"hidden\" name=\"display_category_modify\" value=\"".$display_category."\" />
-                        <input type=\"hidden\" name=\"modify_request_code\" value=\"".$codice."\" />
-                        <input class=\"button\" type=\"submit\" name=\"modify_request\" value=\"Modifica\" />
-                </form>
-                <form id=\"form_remove\" class=\"form_remove\" action=\"admin_products.cgi\" method=\"post\" enctype=\"multipart/form-data\">
-                        <input type=\"hidden\" name=\"display_category_remove\" value=\"".$display_category."\" />
-                        <input type=\"hidden\" name=\"remove_code\" value=\"".$codice."\" />
-                        <input class=\"button\" type=\"submit\" name=\"remove\" value=\"Rimuovi\" />
-                </form>
-            </div>";
-            print "</div>";
+            print "					<div class=\"product_card\">\n";
+            print "						<span class=\"product_code\">".$codice."</span>\n";
+            print "						<span class=\"product_name\">".$nome."</span>\n";
+            print "						<span class=\"product_category\">".$categoria."</span>\n";
+			print "						<div class=\"product_buttons\">\n";
+            print "							<form name=\"form_modify\" id=\"form_modify\" class=\"form_modify\" action=\"admin_products.cgi#openModify\" method=\"post\" enctype=\"multipart/form-data\">\n";
+            print "								<input type=\"hidden\" name=\"display_category_modify\" value=\"".$display_category."\" />\n";
+            print "								<input type=\"hidden\" name=\"modify_request_code\" value=\"".$codice."\" />\n";
+            print "								<input class=\"button\" type=\"submit\" name=\"modify_request\" value=\"Modifica\" />\n";
+            print "							</form>\n";
+            print "							<form name=\"form_remove\" id=\"form_remove\" class=\"form_remove\" action=\"admin_products.cgi\" method=\"post\" enctype=\"multipart/form-data\">\n";
+            print "								<input type=\"hidden\" name=\"display_category_remove\" value=\"".$display_category."\" />\n";
+            print "								<input type=\"hidden\" name=\"remove_code\" value=\"".$codice."\" />\n";
+            print "								<input class=\"button\" type=\"submit\" name=\"remove\" value=\"Rimuovi\" />\n";
+            print "							</form>\n";
+            print "						</div>\n";
+            print "					</div>\n";
         }
-        print "</div>";
+        print "				</div>\n";
+        print "			</div>\n";    # </content_admin>
     }
     
 	print <<EOF;
-            <div id="openModal" class="modalDialog">
+			<div id="openModal" class="modalDialog">
 				<div>
 					<a href="#close" title="Close" class="close">X</a>
 					<p>Inserisci un nuovo prodotto</p>
-					<form id=\"form_modal_insert\" action="admin_products.cgi" method="post" enctype="multipart/form-data">
+					<form name="form_modal_insert" id="form_modal_insert" action="admin_products.cgi" method="post" enctype="multipart/form-data">
 						<label class="form_item" for="product_category">Categoria</label>
 						<select class="form_item" id="product_category" name="product_category">
 							<option value="Calcio">Calcio</option>
@@ -404,7 +412,6 @@ EOF
 						<input class="submit_modal" id="submit_modal" type="submit" name="insert" value="Inserisci" />
 					</form>
 				</div>
-			</div>
 			</div>
             
 			<div id="action_bar">
