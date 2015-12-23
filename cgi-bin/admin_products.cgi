@@ -65,7 +65,7 @@ $parser->keep_blanks(0);
 $doc = $parser->parse_file($file) or die "Errore nel parsing";
 $radice = $doc->getDocumentElement or die "Errore elemento radice";
 
-my $display_category = "Volley";
+my $display_category = "Tutte";
 if(%INPUT{'display_category'}) {
     $display_category = %INPUT{'display_category'};
 }
@@ -76,21 +76,17 @@ if(%INPUT{'display_category_remove'}) {
     $display_category = %INPUT{'display_category_remove'};
 }
 
-# Lettura da file XML
-my $query = "/products/product [category=\"".$display_category."\"]";
-my @prodotti = $doc->findnodes($query);
-
 # Controllo logout e creazione pagina
 my $logout = $cgi->param('logout');
 if ($logout) {
 	destroySession();
 } else {
 	print "Content-Type: text/html\n\n";
-    
-    foreach $key (keys %INPUT)
-{
-  print "$key: $INPUT{$key}\n";
-}
+    # Stampa l'hash ricevuto
+    #foreach $key (keys %INPUT)
+    #{
+    #    print "$key: $INPUT{$key}\n";
+    #}
 	print <<EOF;
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
@@ -120,15 +116,15 @@ if ($logout) {
 				</div>
 				<div id="admin_dashboard">
 EOF
-print "					<span id=\"products_number\">Sono presenti ".scalar @prodotti." prodotti</span>\n";
+#print "					<span id=\"products_number\">Sono presenti ".scalar @prodotti." prodotti</span>\n";
 print <<EOF;
 					<form name="dashboard_form" id="dashboard_form" action="admin_products.cgi" method="post" enctype="multipart/form-data">
-						<div class="form_item">
-							<span>nella</span>
-							<label for="display_category">categoria</label>
-						</div>
+						<label class="form_item" for="display_category">Categoria:</label>
 						<select class="form_item" name="display_category">
 EOF
+print "							<option value=\"Tutte\"";
+                            if($display_category eq "Tutte"){ print " selected ";}
+                            print ">Tutte</option>\n";
 print "							<option value=\"Calcio\"";
                             if($display_category eq "Calcio"){ print " selected ";}
                             print ">Calcio</option>\n";
@@ -223,6 +219,7 @@ EOF
                     print "<label class=\"form_item\" for=\"thumbnail_desc\">Descrizione breve</label>";
                     print "<textarea class=\"form_item\" id=\"thumbnail_desc\"  name=\"thumbnail_desc\" >".$shortDescription."</textarea>";
                     print "<input type=\"hidden\" name=\"modify_code\" value=\"".$code."\" />";
+                    print "<input type=\"hidden\" name=\"display_category_modify\" value=\"".$display_category."\" />\n";
                     print <<EOF;
                             <label class="form_item" for="product_image">Nuova <span lang="en">thumbnail</span></label>
                             <input class="form_item" id="product_image" type="file" name="image" />
@@ -234,7 +231,7 @@ EOF
         }
         if($error) {
             if($error =~ /413/) {     #errore: 413 Request entity too large
-                print "<span id=\"error_msg\">L'immagine selezionata &egrave; troppo grande!</span>";
+                print "<span id=\"error_msg\" class=\"admin_message\">L'immagine selezionata &egrave; troppo grande!</span>";
             }
         }
         if($INPUT{'modify'}) { # Inserisco i dati o verifico che siano stati modificati e poi inserisco quelli opportuni?
@@ -248,50 +245,60 @@ EOF
 			$image = $cgi->param("image");   
                      
             my $query = "/products/product [code=\"".$codice_prodotto."\"]";
-            my $prodotto = $doc->findnodes($query)->get_node(1) or die "Prodotto non trovato";
-            my $old_category = $prodotto->findnodes("category/text()")->get_node(1);
-            my $old_name = $prodotto->findnodes("name/text()")->get_node(1);            
-            my $old_description = $prodotto->findnodes("description/text()")->get_node(1);
-            my $old_shortDescription = $prodotto->findnodes("shortDescription/text()")->get_node(1);
-            my $old_image = $prodotto->findnodes("img/text()")->get_node(1);
-            
-            if($old_category ne $category) {
-                $old_category->setData($category);
-            }
-            if($old_name ne $name) {
-                $old_name->setData($name);
-            }
-            if($old_description ne $desc) {
-                $old_description->setData($desc);
-            }
-            if($old_shortDescription ne $thumbnail_desc) {
-                $old_shortDescription->setData($thumbnail_desc);
-            }
-            if ( $image ) {
-                if($old_image ne $image) {
-                    print "le immagini sono diverse";
-                    my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
-                    $image = $name.$extension;
-                    $image =~ tr/ /_/;
-                    $image =~ s/[^$safe_filename_characters]//g;
-                    my $upload_file_handle = $cgi->upload("image");
-                    open ( UPLOADFILE, ">$upload_dir/$image" ) or die "$!";
-                    binmode UPLOADFILE;
-                    while ( <$upload_file_handle> ) {
-                        print UPLOADFILE;
-                    }
-                    close UPLOADFILE;
-                    $old_image->setData($image);
+            my $prodotto = $doc->findnodes($query)->get_node(1);
+            if(!$prodotto){                
+                print "<span id=\"error_msg\" class=\"admin_message\">Prodotto ".$codice_prodotto." non trovato, &egrave; possibile che sia stato rimosso</span>";
+            } else {
+                my $old_category = $prodotto->findnodes("category/text()")->get_node(1);
+                my $old_name = $prodotto->findnodes("name/text()")->get_node(1);            
+                my $old_description = $prodotto->findnodes("description/text()")->get_node(1);
+                my $old_shortDescription = $prodotto->findnodes("shortDescription/text()")->get_node(1);
+                my $old_image = $prodotto->findnodes("img/text()")->get_node(1);
+                
+                if($old_category ne $category) {
+                    $old_category->setData($category);
                 }
+                if($old_name ne $name) {
+                    $old_name->setData($name);
+                }
+                if($old_description ne $desc) {
+                    $old_description->setData($desc);
+                }
+                if($old_shortDescription ne $thumbnail_desc) {
+                    $old_shortDescription->setData($thumbnail_desc);
+                }
+                if ( $image ) {
+                    if($old_image ne $image) {
+                        print "le immagini sono diverse";
+                        my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
+                        $image = $name.$extension;
+                        $image =~ tr/ /_/;
+                        $image =~ s/[^$safe_filename_characters]//g;
+                        my $upload_file_handle = $cgi->upload("image");
+                        open ( UPLOADFILE, ">$upload_dir/$image" ) or die "$!";
+                        binmode UPLOADFILE;
+                        while ( <$upload_file_handle> ) {
+                            print UPLOADFILE;
+                        }
+                        close UPLOADFILE;
+                        $old_image->setData($image);
+                    }
+                }
+                print "<span id=\"info_msg\" class=\"admin_message\">Prodotto ".$codice_prodotto." modificato correttamente</span>";
             }
         }
         if($INPUT{'remove'}) {
             # Rimozione dal database
             my $codice_prodotto = $INPUT{'remove_code'};
             my $query = "/products/product [code=\"".$codice_prodotto."\"]";
-            my $prodotto = $doc->findnodes($query)->get_node(1) or die "Prodotto non trovato";
-            my $padre = $prodotto->parentNode;
-            $padre->removeChild($prodotto);
+            my $prodotto = $doc->findnodes($query)->get_node(1);
+            if(!$prodotto) {
+                print "<span id=\"error_msg\" class=\"admin_message\">Prodotto ".$codice_prodotto." non trovato, &egrave; possibile che sia stato rimosso</span>";
+            } else {
+                my $padre = $prodotto->parentNode;
+                $padre->removeChild($prodotto);
+                print "<span id=\"info_msg\" class=\"admin_message\">Prodotto ".$codice_prodotto." rimosso correttamente</span>";
+            }
         }
         if($INPUT{'insert'}) {
             # Scrittura su file XML	
@@ -303,7 +310,7 @@ EOF
             my $image = $cgi->param("image");  
             #upload dell'immagine
             if ( !$image ) {
-                print "<span id=\"error_msg\">Immagine non caricata!</span>";
+                print "<span id=\"error_msg\" class=\"admin_message\">Immagine non caricata!</span>";
                 exit;
             } else {
                 my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
@@ -343,8 +350,14 @@ EOF
         print OUT $doc->toString(2);    #2: indenta correttamente
         close(OUT);
 	}
+	# Lettura da file XML
+    my $query = "/products/product [category=\"".$display_category."\"]";
+    if($display_category eq "Tutte") {
+        $query = "/products/product";
+    }
+    my @prodotti = $doc->findnodes($query);
 	
-	if (!@prodotti) {
+    if (!@prodotti) {
 	   	print printPlaceholder();
     } else {
         #stampa le card dei prodotti
