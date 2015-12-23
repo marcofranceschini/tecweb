@@ -93,7 +93,7 @@ if ($logout) {
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 			<title>Gestione Prodotti - Amministrazione - Ju Rapida</title>
 			<meta name="title" content="Ju Rapida S.N.C." />
-			<meta name="description" content="Pagina di amministrazione dei prodotti del sito Ju Rapida." />
+			<meta name="description" content="Pagina di amministrazione delle novit&agrave; del sito Ju Rapida." />
 			<!-- meta name="keywords" content="ju rapida, ammin, articoli sportivi, calcio, tennistavolo, volley, carlo tavallini, vendita;" -->
 			<meta name="author" content="Fabiano Tavallini, Marco Franceschini, Daniele Favaro" />
 			<meta name="copyright" content="Ju Rapida S.N.C." />
@@ -111,13 +111,13 @@ if ($logout) {
 				<div id="navbar_admin">
 					<a id="admin_back_icon" href="../cgi-bin/admin.cgi?logout=1"><i class="material-icons md-24">&#xE88A;</i></a>
 					<p><a id="admin_back" href="../cgi-bin/admin.cgi?logout=1">Torna al sito</a></p>
-					<p>Gestione Prodotti</p>
+					<p>Gestione Novit&agrave;</p>
 				</div>
 				<div id="admin_dashboard">
 EOF
 #print "					<span id=\"products_number\">Sono presenti ".scalar @prodotti." prodotti</span>\n";
 print <<EOF;
-					<form name="dashboard_form" id="dashboard_form" action="admin_products.cgi" method="post" enctype="multipart/form-data">
+					<form name="dashboard_form" id="dashboard_form" action="admin_news.cgi" method="post" enctype="multipart/form-data">
 						<label class="form_item" for="display_category">Categoria:</label>
 						<select class="form_item" name="display_category">
 EOF
@@ -175,7 +175,7 @@ EOF
                         <div>
                             <a href="#close" title="Close" class="close">X</a>
                             <p>Modifica un prodotto</p>
-                            <form name="form_modal_modify" id="form_modal_modify" action="admin_products.cgi" method="post" enctype="multipart/form-data">
+                            <form name="form_modal_modify" id="form_modal_modify" action="admin_news.cgi" method="post" enctype="multipart/form-data">
                                 <label class="form_item" for="product_category">Categoria</label>
                                 <select class="form_item" id="product_category" name="product_category">
 EOF
@@ -376,7 +376,7 @@ EOF
             print "						<span class=\"product_name\">".$nome."</span>\n";
             print "						<span class=\"product_category\">".$categoria."</span>\n";
 			print "						<div class=\"product_buttons\">\n";
-            print "							<form name=\"form_modify\" id=\"form_modify\" class=\"form_modify\" action=\"admin_products.cgi#openModify\" method=\"post\" enctype=\"multipart/form-data\">\n";
+            print "							<form name=\"form_modify\" id=\"form_modify\" class=\"form_modify\" action=\"admin_news.cgi#openModify\" method=\"post\" enctype=\"multipart/form-data\">\n";
             print "								<input type=\"hidden\" name=\"display_category_modify\" value=\"".$display_category."\" />\n";
             print "								<input type=\"hidden\" name=\"modify_request_code\" value=\"".$codice."\" />\n";
             print "								<input class=\"button\" type=\"submit\" name=\"modify_request\" value=\"Modifica\" />\n";
@@ -398,7 +398,7 @@ EOF
 				<div>
 					<a href="#close" title="Close" class="close">X</a>
 					<p>Inserisci un nuovo prodotto</p>
-					<form name="form_modal_insert" id="form_modal_insert" action="admin_products.cgi" method="post" enctype="multipart/form-data">
+					<form name="form_modal_insert" id="form_modal_insert" action="admin_news.cgi" method="post" enctype="multipart/form-data">
 						<label class="form_item" for="product_category">Categoria</label>
 						<select class="form_item" id="product_category" name="product_category">
 							<option value="Calcio">Calcio</option>
