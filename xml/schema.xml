@@ -35,6 +35,7 @@
                     <xs:element name="description" type="xs:string"/>
                     <xs:element name="shortDescription" type="xs:string"/>
                     <xs:element name="img" type="xs:string"/>
+                    <xs:element name="thumbnail" type="xs:string"/>
                     <xs:element name="backgroundImg" type="xs:string"/>
                     <xs:element name="inEvidence" type="xs:boolean"/>
                 </xs:sequence>

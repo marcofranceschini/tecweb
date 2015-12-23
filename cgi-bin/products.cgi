@@ -1,5 +1,6 @@
-#!/usr/bin/perl
 #!C:/Perl64/bin/perl.exe
+#!/usr/bin/perl
+
 
 
 use CGI;
@@ -10,7 +11,6 @@ use warnings;
 
 my $cgi = CGI->new();
 my $category = $cgi->param('category');
-print $category;
 
 print "Content-Type: text/html\n\n";
 print <<EOF;
@@ -63,17 +63,16 @@ print <<EOF;
             </div>
 EOF
 
-#lettura da file XML
+# Lettura da file XML
 my $file = '../xml/db.xml';
 my $parser = XML::LibXML->new();
 $parser->keep_blanks(0);
 my $doc = $parser->parse_file($file) or die "Errore nel parsing";
 my $radice = $doc->getDocumentElement or die "Errore elemento radice";
-#my @prodotti = $radice->getElementsByTagName('product') or die "Errore prodotti\n";
 my $query = "/products/product[category=\"".$category."\"]";
-my @prodotti = $doc->findnodes($query) or die "<p>Non &egrave; stato possibile reperire la lista dei prodotti</p>";
+my @prodotti = $doc->findnodes($query) or die "<span id=\"error_msg\" class=\"admin_message\">Non &egrave; stato possibile reperire la lista dei prodotti</span>";
 	
-#stampa le card dei prodotti
+# Stampa le card dei prodotti
 print "<div id=\"products_displayer\">";
 print " <div id=\"products_displayer_frame\">";
 for(my $i=0; $i < scalar @prodotti; $i++)
@@ -81,12 +80,12 @@ for(my $i=0; $i < scalar @prodotti; $i++)
     my $codice = $prodotti[$i]->findnodes("code/text()");
     my $nome = $prodotti[$i]->findnodes("name/text()");
     my $categoria = $prodotti[$i]->findnodes("category/text()");
-    my $immagine = $prodotti[$i]->findnodes("img/text()");
+    my $thumbnail = $prodotti[$i]->findnodes("thumbnail/text()");
     my $descrizione = $prodotti[$i]->findnodes("description/text()");
     my $descrizione_corta = $prodotti[$i]->findnodes("shortDescription/text()");
     print "<div class=\"product_card\">";
     print "<div class=\"product_image\">";
-    print " <img src=\"../res/images/products/".$immagine."\" alt=\"".$descrizione_corta."\"/>";
+    print " <img src=\"../res/images/products/thumbnails/".$thumbnail."\" alt=\"".$descrizione_corta."\"/>";
     print "</div>";
     print "<span class=\"product_name\">".$nome."</span>";
     print "<span class=\"product_code\">Codice ".$codice."</span>";

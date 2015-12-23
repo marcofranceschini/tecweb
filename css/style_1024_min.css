@@ -770,11 +770,13 @@
         width: 60%;
         margin: auto;
         text-align: center;
+        text-shadow: lightgray 1px 1px 0.1em;
         font-size: 1.2em;
         font-weight: bold;
         padding: 1em;
         margin-bottom: 1em;
         box-shadow: gray 1px 1px 5px;
+        border-radius: 0.4em;
     }
     
     #error_msg {
@@ -796,6 +798,7 @@
         margin-bottom: 1em;
         background: #ddd;
         box-shadow: 1px 1px 3px;
+        border-radius: 0.2em;
     }
     
     #products_container span { /* new */
@@ -810,15 +813,17 @@
     #products_label span{ /* new */
         font-weight: bold;
         text-transform: uppercase;
-        padding-bottom: 0em;
     }
     
     #products_label #product_name_label { /* new */
+        padding-left: 1em;
+        width: 11em;
         text-align: left;
     }
     
     #products_container .product_name { /* new */
         text-align: left;
+        width: 11em;
     }
     
     .product_buttons { /* new */
@@ -893,9 +898,12 @@
 		width: 25em;
 		position: relative;
 		margin: auto;
-		margin-top: 2em;
+		margin-top: 1em;
 		margin-bottom: 2em;
-		padding: 1.5em;
+        padding-top: 1em;
+        padding-bottom: 1em;
+		padding-left: 1.5em;
+        padding-right: 1.5em;
 		border-radius: 0.5em;
 		background: #fff;
 	}
@@ -932,11 +940,8 @@
 	.modalDialog select {
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
-		border-radius: 3px;	
-	}
-	
-	.modalDialog label {
-		padding-top: 0.5em;
+		border-radius: 3px;
+        padding: 0.2em;	
 	}
     
     .modalDialog form {
@@ -947,27 +952,33 @@
 	#product_code {
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
-		border-radius: 3px;	
+		border-radius: 3px;
+        padding: 0.2em;	
 	}
 	
 	#product_name {
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
 		border-radius: 3px;	
+        padding: 0.2em;
 	}
 	
 	.modalDialog textarea {
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
 		border-radius: 3px;	
+        padding: 0.2em;
 	}
 	
 	.modalDialog .form_item {
 		width: 97%;
-		margin-top: 0.5em;
+		margin-top: 0.4em;
 		font-size: 1em;
-		padding: 0.2em;
 		resize: none;
+	}
+    
+    .modalDialog label {
+		padding-top: 0.5em;
 	}
 	
 	.submit_modal {
