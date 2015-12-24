@@ -86,7 +86,19 @@ for(my $i=0; $i < scalar @prodotti; $i++)
     print "<div class=\"product_card\">";
     print "<div class=\"product_image\">";
     print " <img src=\"../res/images/products/thumbnails/".$thumbnail."\" alt=\"".$descrizione_corta."\"/>";
-    print "</div>";
+    print "</div>"; 
+    # Stampo abbreviate le parole dopo la prima se il nome e' troppo lungo
+    if(length($nome) > 14) {
+        @parole = split / /, $nome;
+        $nome = $parole[0];
+        if($parole[1]) {
+            $nome = $nome." ";
+        }
+        for(my $i=1; $i < scalar @parole; $i++) {
+            my @lettere = split //, $parole[$i];
+            $nome = $nome.$lettere[0].".";
+        }
+    }
     print "<span class=\"product_name\">".$nome."</span>";
     print "<span class=\"product_code\">Codice ".$codice."</span>";
     print "<p class=\"product_short_description\">".$descrizione_corta."</p>";

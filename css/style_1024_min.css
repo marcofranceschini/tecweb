@@ -498,7 +498,7 @@
     
     #products_navigator {
         width: 25%;
-        min-height: 50em;
+        min-height: 60em;
         float: left;
         box-shadow: gray 1px 0px 5px;
     }
@@ -518,11 +518,15 @@
     #products_displayer .product_card {
         display: inline-block;
         width: 12em;
-        height: 20em;
+        height: 22em;
         margin: 1em;
         background: #ddd;
-        border-radius: 5px;
+        border-radius: 0.4em;
         box-shadow: gray 1px 1px 3px;
+    }
+    
+    #products_displayer .product_card:hover {
+        box-shadow: #d00 1px 1px 3px, gray -1px -1px 3px, gray 1px -1px 3px, #d00 -1px 1px 3px;
     }
     
     #products_displayer .product_image {    /* image container */
@@ -537,16 +541,7 @@
         display: block;
         width: 8em;
         margin: auto;
-        padding-top: 10%;
-    }
-    
-    #products_displayer .product_name {
-        font-weight: bold;
-        font-size: 1.2em;
-    }
-    
-    #products_displayer .product_card:hover {
-        box-shadow: #d00 1px 1px 3px, gray -1px -1px 3px, gray 1px -1px 3px, #d00 -1px 1px 3px;
+        padding-top: 1em;
     }
     
     #products_displayer .product_card span {
@@ -557,24 +552,32 @@
         padding-bottom: 0.4em;
     }
     
+    #products_displayer .product_name {
+        font-weight: bold;
+        font-size: 1.2em;
+        text-transform: uppercase;
+        height: 1.2em;
+    }
+    
     #products_displayer .product_card .product_short_description {
-        width: 100%;
+        width: 11em;
         margin: auto;
-        text-align: justify;
+        text-align: center;
         padding-bottom: 1em;
-        padding-left: 1em;
-        padding-right: 1em;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        height: 3em;
     }
     
     #products_displayer .product_display_button {
         display: block;
-        width: 4em;
+        width: 5em;
         margin: auto;
         padding-bottom: 1em;
     }
     
     #products_displayer .product_display_button .button {
-        width: 4em;
+        width: 5em;
         background: #A00;
 		border: none;
         padding: 0.4em;
