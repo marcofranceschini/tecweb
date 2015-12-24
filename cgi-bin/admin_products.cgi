@@ -1,5 +1,6 @@
-#!/usr/bin/perl
 #!C:/Perl64/bin/perl.exe
+#!/usr/bin/perl
+
 
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
@@ -8,9 +9,10 @@ use CGI::Session;
 use XML::LibXML;
 use File::Basename;
 use warnings;
-$CGI::POST_MAX = 1024 * 5000;   #massimo upload
+$CGI::POST_MAX = 1024 * 5000;   #massimo upload 5MB
 my $safe_filename_characters = "a-zA-Z0-9_.-";  #caratteri sicuri
 my $upload_dir = "../res/images/products";
+my $upload_dir_thumbnails = "../res/images/products/thumbnails";
 
 #Da usare il lab
 #<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
@@ -220,8 +222,10 @@ EOF
                     print "<input type=\"hidden\" name=\"modify_code\" value=\"".$code."\" />";
                     print "<input type=\"hidden\" name=\"display_category_modify\" value=\"".$display_category."\" />\n";
                     print <<EOF;
-                            <label class="form_item" for="product_image">Nuova <span lang="en">thumbnail</span></label>
+                            <label class="form_item" for="product_image">Nuova immagine principale (massimo 5MB)</label>
                             <input class="form_item" id="product_image" type="file" name="image" />
+                            <label class="form_item" for="product_thumbnail">Nuova thumbnail (massimo 500KB)</label>
+                            <input class="form_item" id="product_thumbnail" type="file" name="thumbnail" />
                             <input class="submit_modal" id="submit_modal_modify" name="modify" type="submit" value="Modifica" />
                         </form>
                     </div>
@@ -235,13 +239,14 @@ EOF
         }
         if($INPUT{'modify'}) { # Inserisco i dati o verifico che siano stati modificati e poi inserisco quelli opportuni?
       		# Modifica del database 
-            $codice_prodotto = $INPUT{'modify_code'};
-            $category = $INPUT{'product_category'};
+            my $codice_prodotto = $INPUT{'modify_code'};
+            my $category = $INPUT{'product_category'};
             #$code = $INPUT{'product_code'};
-            $name = $INPUT{'product_name'};
-            $desc = $INPUT{'product_desc'};
-            $thumbnail_desc = $INPUT{'thumbnail_desc'};
-			$image = $cgi->param("image");   
+            my $name = $INPUT{'product_name'};
+            my $desc = $INPUT{'product_desc'};
+            my $thumbnail_desc = $INPUT{'thumbnail_desc'};
+			my $image = $cgi->param("image");
+            my $thumbnail = $cgi->param("thumbnail");
                      
             my $query = "/products/product [code=\"".$codice_prodotto."\"]";
             my $prodotto = $doc->findnodes($query)->get_node(1);
@@ -253,22 +258,22 @@ EOF
                 my $old_description = $prodotto->findnodes("description/text()")->get_node(1);
                 my $old_shortDescription = $prodotto->findnodes("shortDescription/text()")->get_node(1);
                 my $old_image = $prodotto->findnodes("img/text()")->get_node(1);
+                my $old_thumbnail = $prodotto->findnodes("thumbnail/text()")->get_node(1);
                 
-                if($old_category ne $category) {
+                if(($old_category) and ($old_category ne $category)) {
                     $old_category->setData($category);
                 }
-                if($old_name ne $name) {
+                if(($old_name) and ($old_name ne $name)) {
                     $old_name->setData($name);
                 }
-                if($old_description ne $desc) {
+                if(($old_description) and ($old_description ne $desc)) {
                     $old_description->setData($desc);
                 }
-                if($old_shortDescription ne $thumbnail_desc) {
+                if(($old_shortDescription) and ($old_shortDescription ne $thumbnail_desc)) {
                     $old_shortDescription->setData($thumbnail_desc);
                 }
                 if ( $image ) {
                     if($old_image ne $image) {
-                        print "le immagini sono diverse";
                         my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
                         $image = $name.$extension;
                         $image =~ tr/ /_/;
@@ -281,6 +286,22 @@ EOF
                         }
                         close UPLOADFILE;
                         $old_image->setData($image);
+                    }
+                }
+                if ( $thumbnail ) {
+                    if($old_thumbnail ne $thumbnail) {
+                        my ( $name, $path, $extension ) = fileparse ( $thumbnail, '..*' );
+                        $thumbnail = $name.$extension;
+                        $thumbnail =~ tr/ /_/;
+                        $thumbnail =~ s/[^$safe_filename_characters]//g;
+                        my $upload_file_handle = $cgi->upload("thumbnail");
+                        open ( UPLOADFILE, ">$upload_dir_thumbnails/$thumbnail" ) or die "$!";
+                        binmode UPLOADFILE;
+                        while ( <$upload_file_handle> ) {
+                            print UPLOADFILE;
+                        }
+                        close UPLOADFILE;
+                        $old_thumbnail->setData($thumbnail);
                     }
                 }
                 print "<span id=\"info_msg\" class=\"admin_message\">Prodotto ".$codice_prodotto." modificato correttamente</span>";
@@ -303,45 +324,73 @@ EOF
             # Scrittura su file XML	
             my $category = $INPUT{'product_category'};
             my $code = $INPUT{'product_code'};
-            my $name = $INPUT{'product_name'};
-            my $desc = $INPUT{'product_desc'};
-            my $thumbnail_desc = $INPUT{'thumbnail_desc'};
-            my $image = $cgi->param("image");  
-            #upload dell'immagine
-            if ( !$image ) {
-                print "<span id=\"error_msg\" class=\"admin_message\">Immagine non caricata!</span>";
-                exit;
-            } else {
-                my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
-                $image = $name.$extension;
-                $image =~ tr/ /_/;
-                $image =~ s/[^$safe_filename_characters]//g;
-                my $upload_file_handle = $cgi->upload("image");
-                open ( UPLOADFILE, ">$upload_dir/$image" ) or die "$!";
-                binmode UPLOADFILE;
-                while ( <$upload_file_handle> ) {
-                    print UPLOADFILE;
+            # Controllo codice
+            my $query = "/products/product/code/text()";
+            my @codici = $doc->findnodes($query);
+            my $codice_non_usato = "true";
+            for(my $i=0; $i < scalar @codici; $i++){
+                if($codici[$i] eq $code){
+                    print "<span id=\"error_msg\" class=\"admin_message\">Prodotto non inserito! Codice ".$code." gi&agrave; esistente </span>";
+                    $codice_non_usato = "false";
                 }
-                close UPLOADFILE;
             }
-            
-            $new_product =
-            "<product>".
-            "<category>".$category."</category>".
-            "<code>".$code."</code>".
-            "<name>".$name."</name>".
-            "<description>".$desc."</description>".
-            "<shortDescription>".$thumbnail_desc."</shortDescription>".
-            "<img>".$image."</img>".
-            "<backgroundImg></backgroundImg>".
-            "<inEvidence>false</inEvidence>".
-            "</product>";
-            $nodo = $parser->parse_balanced_chunk($new_product) or die "Frammento non ben formato\n";
-            $padre = $doc->findnodes("/products")->get_node(1) or die "Errore nel padre\n";
-            if($padre){
-                $padre->appendChild($nodo);
-            } else {
-                print "<span id=\"error_msg\">Database mal formato</span>";
+            if($codice_non_usato eq "true") {
+                my $name = $INPUT{'product_name'};
+                my $desc = $INPUT{'product_desc'};
+                my $thumbnail_desc = $INPUT{'thumbnail_desc'};
+                my $image = $cgi->param("image"); 
+                my $thumbnail = $cgi->param("thumbnail"); 
+                #upload delle immagini
+                if ( !$image ) {
+                    print "<span id=\"error_msg\" class=\"admin_message\">Immagine principale non caricata!</span>";
+                } else {
+                    my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
+                    $image = $name.$extension;
+                    $image =~ tr/ /_/;
+                    $image =~ s/[^$safe_filename_characters]//g;
+                    my $upload_file_handle = $cgi->upload("image");
+                    open ( UPLOADFILE, ">$upload_dir/$image" ) or die "$!";
+                    binmode UPLOADFILE;
+                    while ( <$upload_file_handle> ) {
+                        print UPLOADFILE;
+                    }
+                    close UPLOADFILE;
+                }
+                if ( !$thumbnail ) {
+                    print "<span id=\"error_msg\" class=\"admin_message\">Thumbnail non caricata!</span>";
+                } else {
+                    my ( $name, $path, $extension ) = fileparse ( $thumbnail, '..*' );
+                    $thumbnail = $name.$extension;
+                    $thumbnail =~ tr/ /_/;
+                    $thumbnail =~ s/[^$safe_filename_characters]//g;
+                    my $upload_file_handle = $cgi->upload("thumbnail");
+                    open ( UPLOADFILE, ">$upload_dir_thumbnails/$thumbnail" ) or die "$!";
+                    binmode UPLOADFILE;
+                    while ( <$upload_file_handle> ) {
+                        print UPLOADFILE;
+                    }
+                    close UPLOADFILE;
+                }
+                
+                $new_product =
+                "<product>".
+                "<category>".$category."</category>".
+                "<code>".$code."</code>".
+                "<name>".$name."</name>".
+                "<description>".$desc."</description>".
+                "<shortDescription>".$thumbnail_desc."</shortDescription>".
+                "<img>".$image."</img>".
+                "<thumbnail>".$thumbnail."</thumbnail>".
+                "<backgroundImg></backgroundImg>".
+                "<inEvidence>false</inEvidence>".
+                "</product>";
+                $nodo = $parser->parse_balanced_chunk($new_product) or die "Frammento non ben formato\n";
+                $padre = $doc->findnodes("/products")->get_node(1) or die "Errore nel padre\n";
+                if($padre){
+                    $padre->appendChild($nodo);
+                } else {
+                    print "<span id=\"error_msg\" class=\"admin_message\">Database mal formato</span>";
+                }
             }
         }
         #serializzazione e chiusura del file
@@ -419,8 +468,10 @@ EOF
 						<textarea class="form_item" id="product_desc" name="product_desc" required ></textarea>
 						<label class="form_item" for="thumbnail_desc">Descrizione breve</label>
 						<textarea class="form_item" id="thumbnail_desc"  name="thumbnail_desc" required ></textarea>
-						<label class="form_item" for="product_image">Carica <span lang="en">thumbnail</span></label>
+						<label class="form_item" for="product_image">Immagine principale (massimo 5MB)</label>
 						<input class="form_item" id="product_image" type="file" name="image" required />
+						<label class="form_item" for="product_thumbnail">Thumbnail (massimo 500KB)</label>
+						<input class="form_item" id="product_thumbnail" type="file" name="thumbnail" required />
 						<input class="submit_modal" id="submit_modal" type="submit" name="insert" value="Inserisci" />
 					</form>
 				</div>
