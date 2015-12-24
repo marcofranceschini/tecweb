@@ -540,6 +540,7 @@
     #products_displayer .product_image img {
         display: block;
         width: 8em;
+        min-width: 8em;
         margin: auto;
         padding-top: 1em;
     }
