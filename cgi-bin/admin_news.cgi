@@ -366,11 +366,11 @@ EOF
 						<span>Codice</span><span id="product_name_label">Nome</span><span>Categoria</span>
 					</div>
 EOF
-        for(my $i=0; $i < scalar @prodotti; $i++)
-        {
+        for(my $i=0; $i < scalar @prodotti; $i++) {
             my $codice = $prodotti[$i]->findnodes("code/text()");
             my $nome = $prodotti[$i]->findnodes("name/text()");
             my $categoria = $prodotti[$i]->findnodes("category/text()");
+            my $sfondo = $prodotti[$i]->findnodes("backgroundImg/text()");
             my $evidenza = $prodotti[$i]->findnodes("inEvidence/text()");
             print "					<div class=\"product_card\">\n";
             print "						<span class=\"product_code\">".$codice."</span>\n";
@@ -380,9 +380,13 @@ EOF
             print "							<form name=\"form_modify\" id=\"form_modify\" class=\"form_modify\" action=\"admin_news.cgi#openModify\" method=\"post\" enctype=\"multipart/form-data\">\n";
             print "								<input type=\"hidden\" name=\"display_category_modify\" value=\"".$display_category."\" />\n";
             print "								<input type=\"hidden\" name=\"modify_request_code\" value=\"".$codice."\" />\n";
-            print "								<input class=\"button\" type=\"submit\" name=\"modify_request\" value=\"Modifica\" />\n";
+            if(!$sfondo) { # Manca lo sfondo
+                print "							<input class=\"button\" type=\"submit\" name=\"add_wallpaper\" value=\"Aggiungi sfondo\" />\n";              
+            }else{
+                print "							<input class=\"button\" type=\"submit\" name=\"remove_wallpaper\" value=\"Rimuovi sfondo\" />\n";
+            }
             print "							</form>\n";
-            print "							<form name=\"form_remove\" id=\"form_remove\" class=\"form_remove\" action=\"admin_products.cgi\" method=\"post\" enctype=\"multipart/form-data\">\n";
+            print "							<form name=\"form_remove\" id=\"form_remove\" class=\"form_remove\" action=\"admin_news.cgi\" method=\"post\" enctype=\"multipart/form-data\">\n";
             print "								<input type=\"hidden\" name=\"display_category_remove\" value=\"".$display_category."\" />\n";
             print "								<input type=\"hidden\" name=\"remove_code\" value=\"".$codice."\" />\n";
             if($evidenza eq "false") {
