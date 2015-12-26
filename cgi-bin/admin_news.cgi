@@ -371,6 +371,7 @@ EOF
             my $codice = $prodotti[$i]->findnodes("code/text()");
             my $nome = $prodotti[$i]->findnodes("name/text()");
             my $categoria = $prodotti[$i]->findnodes("category/text()");
+            my $evidenza = $prodotti[$i]->findnodes("inEvidence/text()");
             print "					<div class=\"product_card\">\n";
             print "						<span class=\"product_code\">".$codice."</span>\n";
             print "						<span class=\"product_name\">".$nome."</span>\n";
@@ -384,7 +385,11 @@ EOF
             print "							<form name=\"form_remove\" id=\"form_remove\" class=\"form_remove\" action=\"admin_products.cgi\" method=\"post\" enctype=\"multipart/form-data\">\n";
             print "								<input type=\"hidden\" name=\"display_category_remove\" value=\"".$display_category."\" />\n";
             print "								<input type=\"hidden\" name=\"remove_code\" value=\"".$codice."\" />\n";
-            print "								<input class=\"button\" type=\"submit\" name=\"remove\" value=\"Rimuovi\" />\n";
+            if($evidenza eq "false") {
+                print "							<input class=\"button\" type=\"submit\" name=\"avidence\" value=\"Evidenzia\" />\n";
+            }else{
+                print "							<input class=\"button\" type=\"submit\" name=\"hide_evidence\" value=\"Nascondi\" />\n";
+            }
             print "							</form>\n";
             print "						</div>\n";
             print "					</div>\n";
