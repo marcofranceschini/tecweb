@@ -181,7 +181,7 @@ EOF
 EOF
                     print"      <input class=\"form_item\" id=\"product_category\" name=\"product_category\" value=\"".$category."\" disabled>";
                     print "<label class=\"form_item\" for=\"wallpaper_desc\">Descrizione dello sfondo</label>";
-                    print "<textarea class=\"form_item\" id=\"wallpaper_desc\"  name=\"wallpaper_desc\" >DESCRIZIONE DELLO SFONDO PER NON VEDENTI</textarea>";
+                    print "<textarea class=\"form_item\" id=\"wallpaper_desc\" name=\"wallpaper_desc\" >DESCRIZIONE DELLO SFONDO PER NON VEDENTI</textarea>";
                     print "<label class=\"form_item\" for=\"wallpaper_img\">Sfondo</label>";
                     print "<img src=\"../cgi-bin/".$sfondo."\" class=\"form_item\" id=\"wallpaper_img\" name\"wallpaper_img\" alt=\"Immagine di sfondo\" height=\"31\" width=\"88\" />";
                     print "<input type=\"hidden\" name=\"wallpaper_code\" value=\"".$code."\" />";
@@ -199,14 +199,13 @@ EOF
                 print "<span id=\"error_msg\" class=\"admin_message\">L'immagine selezionata &egrave; troppo grande!</span>";
             }
         }
-        if($INPUT{'modify'}) { # Inserisco i dati o verifico che siano stati modificati e poi inserisco quelli opportuni?
+        if($INPUT{'modal_wallpaper'}) { # Inserisco i dati o verifico che siano stati modificati e poi inserisco quelli opportuni?
       		# Modifica del database 
-            $codice_prodotto = $INPUT{'modify_code'};
-            $category = $INPUT{'product_category'};
+            $codice_prodotto = $INPUT{'wallpaper_code'};
             #$code = $INPUT{'product_code'};
             $name = $INPUT{'product_name'};
             $desc = $INPUT{'product_desc'};
-            $thumbnail_desc = $INPUT{'thumbnail_desc'};
+            $wallpaper_desc = $INPUT{'wallpaper_desc'};
 			$image = $cgi->param("image");   
                      
             my $query = "/products/product [code=\"".$codice_prodotto."\"]";
@@ -214,27 +213,15 @@ EOF
             if(!$prodotto){                
                 print "<span id=\"error_msg\" class=\"admin_message\">Prodotto ".$codice_prodotto." non trovato, &egrave; possibile che sia stato rimosso</span>";
             } else {
-                my $old_category = $prodotto->findnodes("category/text()")->get_node(1);
-                my $old_name = $prodotto->findnodes("name/text()")->get_node(1);            
-                my $old_description = $prodotto->findnodes("description/text()")->get_node(1);
-                my $old_shortDescription = $prodotto->findnodes("shortDescription/text()")->get_node(1);
-                my $old_image = $prodotto->findnodes("img/text()")->get_node(1);
-                
-                if($old_category ne $category) {
-                    $old_category->setData($category);
-                }
-                if($old_name ne $name) {
-                    $old_name->setData($name);
-                }
-                if($old_description ne $desc) {
-                    $old_description->setData($desc);
-                }
-                if($old_shortDescription ne $thumbnail_desc) {
-                    $old_shortDescription->setData($thumbnail_desc);
-                }
+                #my $old_description = $prodotto->findnodes("AAAA/text()")->get_node(1); # Descr per non vedenti
+                my $old_image = $prodotto->findnodes("backgroundImg/text()")->get_node(1);
+                # Modifica/Inserimento della descrizione
+                #if($old_description ne $desc) {
+                #    $old_description->setData($desc);
+                #}
+                # Modifica/Inserimento dello sfondo
                 if ( $image ) {
                     if($old_image ne $image) {
-                        print "le immagini sono diverse";
                         my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
                         $image = $name.$extension;
                         $image =~ tr/ /_/;
@@ -252,63 +239,38 @@ EOF
                 print "<span id=\"info_msg\" class=\"admin_message\">Prodotto ".$codice_prodotto." modificato correttamente</span>";
             }
         }
-        if($INPUT{'remove'}) {
-            # Rimozione dal database
-            my $codice_prodotto = $INPUT{'remove_code'};
+        if($INPUT{'hide_evidence'}) {
+            # Rimozione "evidenza"
+            my $codice_prodotto = $INPUT{'evidence_code'};
             my $query = "/products/product [code=\"".$codice_prodotto."\"]";
             my $prodotto = $doc->findnodes($query)->get_node(1);
             if(!$prodotto) {
                 print "<span id=\"error_msg\" class=\"admin_message\">Prodotto ".$codice_prodotto." non trovato, &egrave; possibile che sia stato rimosso</span>";
             } else {
-                my $padre = $prodotto->parentNode;
-                $padre->removeChild($prodotto);
-                print "<span id=\"info_msg\" class=\"admin_message\">Prodotto ".$codice_prodotto." rimosso correttamente</span>";
+                my $evidenza = $prodotto->findnodes("inEvidence/text()")->get_node(1);
+                $evidenza->setData("false");
+                print "<span id=\"info_msg\" class=\"admin_message\">Prodotto ".$codice_prodotto." \"nascosto\" correttamente</span>";
             }
         }
-        if($INPUT{'insert'}) {
+        if($INPUT{'evidence'}) {
             # Scrittura su file XML	
-            my $category = $INPUT{'product_category'};
-            my $code = $INPUT{'product_code'};
-            my $name = $INPUT{'product_name'};
-            my $desc = $INPUT{'product_desc'};
-            my $thumbnail_desc = $INPUT{'thumbnail_desc'};
-            my $image = $cgi->param("image");  
-            #upload dell'immagine
-            if ( !$image ) {
-                print "<span id=\"error_msg\" class=\"admin_message\">Immagine non caricata!</span>";
-                exit;
-            } else {
-                my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
-                $image = $name.$extension;
-                $image =~ tr/ /_/;
-                $image =~ s/[^$safe_filename_characters]//g;
-                my $upload_file_handle = $cgi->upload("image");
-                open ( UPLOADFILE, ">$upload_dir/$image" ) or die "$!";
-                binmode UPLOADFILE;
-                while ( <$upload_file_handle> ) {
-                    print UPLOADFILE;
+            my $code = $INPUT{'evidence_code'};
+            # Verifico che l'immagine di sfondo ci sia
+            my $query = "/products/product [code=\"".$code."\"]";
+            my $prodotto = $doc->findnodes($query)->get_node(1);
+            if(!$prodotto){                
+                print "<span id=\"error_msg\" class=\"admin_message\">Prodotto ".$code." non trovato, &egrave; possibile che sia stato rimosso</span>";
+            }else{
+                my $image = $prodotto->findnodes("backgroundImg/text()")->get_node(1);
+                if($image eq "") {
+                    print "<span id=\"error_msg\" class=\"admin_message\">Prodotto ".$code." senza sfondo, inserirne uno</span>";
+                }else{
+                    my $evidenza = $prodotto->findnodes("inEvidence/text()")->get_node(1);
+                    $evidenza->setData("true");
+                    print "<span id=\"info_msg\" class=\"admin_message\">Prodotto ".$code." evidenziato correttamente</span>";
                 }
-                close UPLOADFILE;
             }
             
-            $new_product =
-            "<product>".
-            "<category>".$category."</category>".
-            "<code>".$code."</code>".
-            "<name>".$name."</name>".
-            "<description>".$desc."</description>".
-            "<shortDescription>".$thumbnail_desc."</shortDescription>".
-            "<img>".$image."</img>".
-            "<backgroundImg></backgroundImg>".
-            "<inEvidence>false</inEvidence>".
-            "</product>";
-            $nodo = $parser->parse_balanced_chunk($new_product) or die "Frammento non ben formato\n";
-            $padre = $doc->findnodes("/products")->get_node(1) or die "Errore nel padre\n";
-            if($padre){
-                $padre->appendChild($nodo);
-            } else {
-                print "<span id=\"error_msg\">Database mal formato</span>";
-            }
         }
         #serializzazione e chiusura del file
         open(OUT, ">$file");
@@ -351,7 +313,7 @@ EOF
             print "								<input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
             print "								<input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
             if($evidenza eq "false") {
-                print "							<input class=\"button\" type=\"submit\" name=\"avidence\" value=\"Evidenzia\" />\n";
+                print "							<input class=\"button\" type=\"submit\" name=\"evidence\" value=\"Evidenzia\" />\n";
             }else{
                 print "							<input class=\"button\" type=\"submit\" name=\"hide_evidence\" value=\"Nascondi\" />\n";
             }
