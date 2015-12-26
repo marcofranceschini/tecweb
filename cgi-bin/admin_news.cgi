@@ -161,68 +161,34 @@ print "							<option value=\"Accessori\"";
 EOF
 
 	if(%INPUT or $error) {  #se riceve dati in input o errori
-        if($INPUT{'modify_request'}) {
+        if($INPUT{'modify_wallpaper'}) {
             # Modal di modifica    
-            my $code = $INPUT{'modify_request_code'};
+            my $code = $INPUT{'wallpaper_code'};
             my $query = "/products/product [code=\"".$code."\"]";
             my $prodotto = $doc->findnodes($query)->get_node(1) or die "Prodotto non trovato";
-            my $name = $prodotto->findnodes("name/text()");
             my $category = $prodotto->findnodes("category/text()");
             my $description = $prodotto->findnodes("description/text()");
             my $shortDescription = $prodotto->findnodes("shortDescription/text()");
+            my $sfondo = $prodotto->findnodes("backgroundImg/text()");
+            print $sfondo;
             print <<EOF;
-                    <div id="openModify" class="modalDialog">
+                    <div id="openWallpaper" class="modalDialog">
                         <div>
                             <a href="#close" title="Close" class="close">X</a>
-                            <p>Modifica un prodotto</p>
-                            <form name="form_modal_modify" id="form_modal_modify" action="admin_news.cgi" method="post" enctype="multipart/form-data">
+                            <p>Modifica dello sfondo</p>
+                            <form name="form_modal_wallpaper" id="form_modal_modify" action="admin_news.cgi" method="post" enctype="multipart/form-data">
                                 <label class="form_item" for="product_category">Categoria</label>
-                                <select class="form_item" id="product_category" name="product_category">
 EOF
-                                    print "<option value=\"Calcio\"";
-                                    if($category eq "Calcio"){ print " selected ";}
-                                    print ">Calcio</option>";
-                                    print "<option value=\"Basket\"";
-                                    if($category eq "Basket"){ print " selected ";}
-                                    print "><span lang=\"en\">Basket</span></option>";
-                                    print "<option value=\"Volley\"";
-                                    if($category eq "Volley"){ print " selected ";}
-                                    print "><span lang=\"en\">Volley</span></option>";
-                                    print "<option value=\"Tennistavolo\"";
-                                    if($category eq "Tennistavolo"){ print " selected ";}
-                                    print">Tennistavolo</option>";
-                                    print "<option value=\"Nuoto\"";
-                                    if($category eq "Nuoto"){ print " selected ";}
-                                    print ">Nuoto</option>";
-                                    print "<option value=\"Minigolf\"";
-                                    if($category eq "Minigolf"){ print " selected ";}
-                                    print ">Minigolf</option>";
-                                    print "<option value=\"Calciobalilla\"";
-                                    if($category eq "Calciobalilla"){ print " selected ";}
-                                    print ">Calciobalilla</option>";
-                                    print "<option value=\"Protezioni\"";
-                                    if($category eq "Protezioni" ){ print " selected ";}
-                                    print ">Protezioni</option>";
-                                    print "<option value=\"Accessori\"";
-                                    if($category eq "Accessori"){ print " selected ";}
-                                    print ">Accessori</option>";
+                    print"      <input class=\"form_item\" id=\"product_category\" name=\"product_category\" value=\"".$category."\" disabled>";
+                    print "<label class=\"form_item\" for=\"wallpaper_desc\">Descrizione dello sfondo</label>";
+                    print "<textarea class=\"form_item\" id=\"wallpaper_desc\"  name=\"wallpaper_desc\" >DESCRIZIONE DELLO SFONDO PER NON VEDENTI</textarea>";
+                    print "<label class=\"form_item\" for=\"wallpaper_img\">Sfondo</label>";
+                    print "<img src=\"../cgi-bin/".$sfondo."\" class=\"form_item\" id=\"wallpaper_img\" name\"wallpaper_img\" alt=\"Immagine di sfondo\" height=\"31\" width=\"88\" />";
+                    print "<input type=\"hidden\" name=\"wallpaper_code\" value=\"".$code."\" />";
                     print <<EOF;
-                                </select>
-                                <label class="form_item" for="product_code">Codice</label>
-EOF
-                    print "<input class=\"form_item\" id=\"product_code\" type=\"text\"  name=\"product_code\" value=\"".$code."\" disabled />";
-                    print "<label class=\"form_item\" for=\"product_name\">Nome</label>";
-                    print "<input class=\"form_item\" id=\"product_name\" type=\"text\" name=\"product_name\" value=\"".$name."\" />";
-                    print "<label class=\"form_item\" for=\"product_desc\">Descrizione</label>";
-                    print "<textarea class=\"form_item\" id=\"product_desc\"  name=\"product_desc\" >".$description."</textarea>";
-                    print "<label class=\"form_item\" for=\"thumbnail_desc\">Descrizione breve</label>";
-                    print "<textarea class=\"form_item\" id=\"thumbnail_desc\"  name=\"thumbnail_desc\" >".$shortDescription."</textarea>";
-                    print "<input type=\"hidden\" name=\"modify_code\" value=\"".$code."\" />";
-                    print "<input type=\"hidden\" name=\"display_category_modify\" value=\"".$display_category."\" />\n";
-                    print <<EOF;
-                            <label class="form_item" for="product_image">Nuova <span lang="en">thumbnail</span></label>
-                            <input class="form_item" id="product_image" type="file" name="image" />
-                            <input class="submit_modal" id="submit_modal_modify" name="modify" type="submit" value="Modifica" />
+                            <label class="form_item" for="product_image">Nuovo sfondo</label>
+                            <input class="form_item" id="wallpaper_new_img" type="file" name="image" />
+                            <input class="submit_modal" id="submit_modal_wallpaper" name="modal_wallpaper" type="submit" value="Modifica" />
                         </form>
                     </div>
                 </div>
@@ -370,25 +336,20 @@ EOF
             my $codice = $prodotti[$i]->findnodes("code/text()");
             my $nome = $prodotti[$i]->findnodes("name/text()");
             my $categoria = $prodotti[$i]->findnodes("category/text()");
-            my $sfondo = $prodotti[$i]->findnodes("backgroundImg/text()");
             my $evidenza = $prodotti[$i]->findnodes("inEvidence/text()");
             print "					<div class=\"product_card\">\n";
             print "						<span class=\"product_code\">".$codice."</span>\n";
             print "						<span class=\"product_name\">".$nome."</span>\n";
             print "						<span class=\"product_category\">".$categoria."</span>\n";
 			print "						<div class=\"product_buttons\">\n";
-            print "							<form name=\"form_modify\" id=\"form_modify\" class=\"form_modify\" action=\"admin_news.cgi#openModify\" method=\"post\" enctype=\"multipart/form-data\">\n";
-            print "								<input type=\"hidden\" name=\"display_category_modify\" value=\"".$display_category."\" />\n";
-            print "								<input type=\"hidden\" name=\"modify_request_code\" value=\"".$codice."\" />\n";
-            if(!$sfondo) { # Manca lo sfondo
-                print "							<input class=\"button\" type=\"submit\" name=\"add_wallpaper\" value=\"Aggiungi sfondo\" />\n";              
-            }else{
-                print "							<input class=\"button\" type=\"submit\" name=\"remove_wallpaper\" value=\"Rimuovi sfondo\" />\n";
-            }
+            print "							<form name=\"form_wallpaper\" id=\"form_modify\" class=\"form_modify\" action=\"admin_news.cgi#openWallpaper\" method=\"post\" enctype=\"multipart/form-data\">\n";
+            print "								<input type=\"hidden\" name=\"wallpaper_display_category\" value=\"".$display_category."\" />\n";
+            print "								<input type=\"hidden\" name=\"wallpaper_code\" value=\"".$codice."\" />\n";
+            print "							    <input class=\"button\" type=\"submit\" name=\"modify_wallpaper\" value=\"Sfondo\" />\n";
             print "							</form>\n";
-            print "							<form name=\"form_remove\" id=\"form_remove\" class=\"form_remove\" action=\"admin_news.cgi\" method=\"post\" enctype=\"multipart/form-data\">\n";
-            print "								<input type=\"hidden\" name=\"display_category_remove\" value=\"".$display_category."\" />\n";
-            print "								<input type=\"hidden\" name=\"remove_code\" value=\"".$codice."\" />\n";
+            print "							<form name=\"form_evidence\" id=\"form_remove\" class=\"form_remove\" action=\"admin_news.cgi\" method=\"post\" enctype=\"multipart/form-data\">\n";
+            print "								<input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
+            print "								<input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
             if($evidenza eq "false") {
                 print "							<input class=\"button\" type=\"submit\" name=\"avidence\" value=\"Evidenzia\" />\n";
             }else{
