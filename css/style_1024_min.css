@@ -985,6 +985,11 @@
 		padding-top: 0.5em;
 	}
 	
+	.modalDialog img {
+        width: 90%;
+		height: 30%;
+    }
+	
 	.submit_modal {
 		background: #A00;
 		border: none;

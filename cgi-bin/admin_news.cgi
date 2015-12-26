@@ -170,7 +170,6 @@ EOF
             my $description = $prodotto->findnodes("description/text()");
             my $shortDescription = $prodotto->findnodes("shortDescription/text()");
             my $sfondo = $prodotto->findnodes("backgroundImg/text()");
-            print $sfondo;
             print <<EOF;
                     <div id="openWallpaper" class="modalDialog">
                         <div>
@@ -183,7 +182,7 @@ EOF
                     print "<label class=\"form_item\" for=\"wallpaper_desc\">Descrizione dello sfondo</label>";
                     print "<textarea class=\"form_item\" id=\"wallpaper_desc\" name=\"wallpaper_desc\" >DESCRIZIONE DELLO SFONDO PER NON VEDENTI</textarea>";
                     print "<label class=\"form_item\" for=\"wallpaper_img\">Sfondo</label>";
-                    print "<img src=\"../cgi-bin/".$sfondo."\" class=\"form_item\" id=\"wallpaper_img\" name\"wallpaper_img\" alt=\"Immagine di sfondo\" height=\"31\" width=\"88\" />";
+                    print "<img src=\"../cgi-bin/".$sfondo."\" class=\"form_item\" id=\"wallpaper_img\" name\"wallpaper_img\" alt=\"Immagine di sfondo\" height=\"50\" width=\"90\" />";
                     print "<input type=\"hidden\" name=\"wallpaper_code\" value=\"".$code."\" />";
                     print <<EOF;
                             <label class="form_item" for="product_image">Nuovo sfondo</label>
