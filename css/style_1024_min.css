@@ -985,7 +985,7 @@
 		padding-top: 0.5em;
 	}
 	
-	.modalDialog img {
+	.modalDialog img { /*---------------------NEW-----------------------*/
         width: 90%;
 		height: 30%;
     }
