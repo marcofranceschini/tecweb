@@ -624,6 +624,13 @@
         margin: auto;
     }
 	
+	#product_category { /*-----new----*/
+		border: none;
+		box-shadow: 1px 1px 5px #3D3D3D;
+		border-radius: 3px;
+        padding: 0.2em;	
+	}
+	
 	#product_code {
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;

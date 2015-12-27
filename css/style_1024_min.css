@@ -1085,18 +1085,18 @@
 		font-size: 1.6em;
 		font-weight: bold;
 	}
-	
-	.modalDialog select {
-		border: none;
-		box-shadow: 1px 1px 5px #3D3D3D;
-		border-radius: 3px;
-        padding: 0.2em;	
-	}
     
     .modalDialog form {
         width: 90%;
         margin: auto;
     }
+	
+	#product_category { /*-----new----*/
+		border: none;
+		box-shadow: 1px 1px 5px #3D3D3D;
+		border-radius: 3px;
+        padding: 0.2em;	
+	}
 	
 	#product_code {
 		border: none;
@@ -1129,6 +1129,11 @@
     .modalDialog label {
 		padding-top: 0.5em;
 	}
+	
+	.modalDialog img { /*---------------------NEW-----------------------*/
+        width: 90%;
+		height: 30%;
+    }
 	
 	.submit_modal {
 		background: #A00;
