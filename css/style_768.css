@@ -72,8 +72,9 @@
 	}
 	
 	#navbar_admin p {
-		padding-right: 2em;	/*Soluzione responsive per centrare*/
+		padding-right: 4em;	/*Soluzione responsive per centrare*/
 		font-weight: bold;
+        font-size: 1.1em;
 	}
 	
 	#navbar_admin a {
@@ -523,16 +524,162 @@
 	}
 	
 	/*NEW START*/
+	#admin_dashboard {
+        background: darkred;        
+        text-align: center;
+        padding-top: 1.4em;
+        padding-bottom: 1.4em;
+        font-size: 1.1em;
+        font-weight: bold; 
+    }
+    
+    #dashboard_form {
+        display: inline;
+    }
+    
+    #dashboard_form select {
+        font-size: 1em;
+        border: none;
+		box-shadow: 1px 1px 5px #3D3D3D;
+		border-radius: 3px;	
+    }
+    
+    #dashboard_form .form_item {
+        display: inline;
+        padding-right: 0.5em;
+	}
+    
+    #submit_dashboard {
+        font-size: 0.9em;
+        background: lightgray;
+		border: none;
+		padding: 0.4em 0.8em 0.4em 0.8em;
+		box-shadow: 1px 1px 3px #3D3D3D;
+		border-radius: 3px;
+		cursor: pointer;
+		color: black;
+        margin-left: 2em;
+	}
+	
+	#submit_dashboard:hover{	/* NEW --------------------------------------*/
+		background: #9d9d9d;
+	}
+    
+    .admin_message {
+        display: block;
+        width: 60%;
+        margin: auto;
+        text-align: center;
+        text-shadow: lightgray 1px 1px 0.1em;
+        font-size: 1.2em;
+        font-weight: bold;
+        padding: 1em;
+        margin-bottom: 1em;
+        box-shadow: gray 1px 1px 5px;
+        border-radius: 0.4em;
+    }
+    
+    #error_msg {
+        color: #D00;
+    }
+    
+    #info_msg {
+        color: #0A0;
+    }
+    
+    #products_container { /* new */
+        width: 100%;
+        margin: auto;
+        min-width: 3em;
+    }
+    
+    #products_container .product_card{ /* new */
+        margin-top: 1em;
+        margin-bottom: 1em;
+        background: #ddd;
+        box-shadow: 1px 1px 3px;
+        border-radius: 0.2em;
+    }
+    
+    #products_container span { /* new */
+        display: inline-block;
+        width: 15%;        
+        padding-top: 1em;
+        padding-bottom: 1em;
+        margin-right: 2%;
+        text-align: center;        
+        vertical-align: middle;
+    }
+    
+    #products_label span{ /* new */
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    
+    #products_label #product_name_label { /* new */
+        padding-left: 1em;
+        width: 20%;
+        text-align: left;
+    }
+    
+    #products_container .product_code { /* new */
+        padding-left: 0.5em;
+    }
+    
+    #products_container .product_name { /* new */
+        text-align: left;
+        width: 20%;
+        padding-top: 0em;
+        padding-bottom: 0em;
+    }
+    
+    .product_buttons { /* new */
+        display: inline-block;
+        float: right;
+        margin-right: 0.5em;
+        width: 9.9em;
+        padding-top: 0.6em;
+        padding-bottom: 0.6em;  
+        vertical-align: middle;
+        line-height: normal;
+    }
+    
+    .product_buttons form { /* new */
+        display: inline-block;
+    }
+    
+    .product_buttons .button { /* new */
+        display: inline-block;
+        background: #A00;
+		border: none;
+        padding: 0.4em;
+		box-shadow: 1px 1px 5px #B6B6B6;
+		border-radius: 3px;
+		font-size: 1em;
+		text-shadow: 1px 1px 1px #9E3F3F;
+		color: #FFF;
+    }
+    
+    .product_buttons .button:hover { /* new */
+		background: rgba(200, 0, 0, 1);
+	}
+
+
+    
+    #form_remove {
+        float: right;
+    }
+    
 	#content_admin #placeholder {
 		text-align: center;
 	}
 	
 	#content_admin #placeholder > img {
 		width: 15em;
-	}
+	}	
 	
 	#content_admin #placeholder > p {
-		font-size: 1.4em;
+		font-size: 2em;
 		font-weight: bold;
 	}
 	
@@ -558,12 +705,15 @@
 	}
 	
 	.modalDialog > div {
-		width: 20em;
+		width: 25em;
 		position: relative;
 		margin: auto;
-		margin-top: 2em;
+		margin-top: 1em;
 		margin-bottom: 2em;
-		padding: 1.5em;
+        padding-top: 1em;
+        padding-bottom: 1em;
+		padding-left: 1.5em;
+        padding-right: 1.5em;
 		border-radius: 0.5em;
 		background: #fff;
 	}
@@ -592,32 +742,24 @@
 	}
 	
 	.modalDialog p {
-		font-size: 1.2em;
+        text-align: center;
+		font-size: 1.6em;
 		font-weight: bold;
-	}
-	
-	.modalDialog select {
-		border: none;
-		box-shadow: 1px 1px 5px #3D3D3D;
-		border-radius: 3px;	
-	}
-	
-	.modalDialogl label {
-		padding-top: 0.5em;
 	}
     
     .modalDialog form {
-        width: 90%;
+        width: 95%;
         margin: auto;
     }
 	
-	#product_code {
+	#product_category { /*-----new----*/
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
-		border-radius: 3px;	
+		border-radius: 3px;
+        padding: 0.2em;	
 	}
 	
-	#product_category { /*-----new----*/
+	#product_code {
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
 		border-radius: 3px;
@@ -628,21 +770,31 @@
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
 		border-radius: 3px;	
+        padding: 0.2em;
 	}
 	
 	.modalDialog textarea {
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
 		border-radius: 3px;	
+        padding: 0.2em;
 	}
 	
 	.modalDialog .form_item {
 		width: 97%;
-		margin-top: 0.5em;
+		margin-top: 0.2em;
 		font-size: 1em;
-		padding: 0.2em;
 		resize: none;
 	}
+    
+    .modalDialog label {
+		padding-top: 0.1em;
+	}
+	
+	.modalDialog img { /*---------------------NEW-----------------------*/
+        width: 90%;
+		height: 30%;
+    }
 	
 	.submit_modal {
 		background: #A00;
@@ -654,12 +806,12 @@
 		text-shadow: 1px 1px 1px #9E3F3F;
 		color: #FFF;
 		margin-top: 1em;
-		margin-left: 30%;
+        margin-left: 30%;
 	}
 	
 	.submit_modal:hover {
 		background: rgba(200, 0, 0, 1);
-	}
+	}	
 	/*NEW END*/
 
 	#admin_panel {

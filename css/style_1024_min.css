@@ -871,7 +871,7 @@
 		font-size: 1.1em;
 	}
 	
-	/*NEW START*/
+	/*NEW START ----------------------------- admin_products.cgi ------ */
     #admin_dashboard {
         background: darkred;        
         text-align: center;
@@ -1151,7 +1151,7 @@
 	.submit_modal:hover {
 		background: rgba(200, 0, 0, 1);
 	}	
-	/*NEW END*/
+	/*NEW END ----------------------------- admin_products.cgi ------ */
 
 	#admin_panel {	/* NEW --------------------------------------*/
 		width: 30em;
