@@ -47,6 +47,7 @@ print <<EOF;
 				<ul id="menu"> 
 					<li><a href="../index.html"><span xml:lang="en">Home</span></a></li>
 					<li><a href="../pages/products.html">Prodotti</a></li>
+                    <li><a href="../Catalogo.pdf" target="_blank">Catalogo</a></li>
 					<li><a href="../cgi-bin/contacts.cgi">Contatti</a></li>
 					<li><a href="../pages/about.html">Chi siamo</a></li>
 				</ul>
@@ -201,6 +202,7 @@ print <<EOF;
 					<ul id="maps_menu">
 						<li><a href="../index.html"><span xml:lang="en">Home</span></a></li>
 						<li><a href="products.html">Prodotti</a></li>
+                        <li><a href="../Catalogo.pdf" target="_blank">Catalogo</a></li>
 						<li><a href="../cgi-bin/contacts.cgi">Contatti</a></li>
 						<li><a href="about.html">Chi siamo</a></li>
 					</ul>
