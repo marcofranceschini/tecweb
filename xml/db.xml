@@ -132,4 +132,26 @@
     <backgroundImg/>
     <inEvidence>false</inEvidence>
   </product>
+  <product>
+    <category>Basket</category>
+    <code>B0011</code>
+    <name>Aero Soft 7</name>
+    <description>Pallone da basket misura 7, gomma nylon "Aero Soft"</description>
+    <shortDescription>Pallone da basket misura 7</shortDescription>
+    <img>AERO_SOFT__7.png</img>
+    <thumbnail>AERO_SOFT__7.png</thumbnail>
+    <backgroundImg/>
+    <inEvidence>false</inEvidence>
+  </product>
+  <product>
+    <category>Basket</category>
+    <code>B0009</code>
+    <name>Aero Soft 5</name>
+    <description>Pallone minibasket misura 5, gomma nylon "Aero Soft"</description>
+    <shortDescription>Pallone minibasket misura 5</shortDescription>
+    <img>B0005_aero_soft_copia.png</img>
+    <thumbnail>B0005_aero_soft_copia.png</thumbnail>
+    <backgroundImg/>
+    <inEvidence>false</inEvidence>
+  </product>
 </products>

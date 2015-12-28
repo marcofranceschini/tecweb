@@ -1,5 +1,6 @@
-#!/usr/bin/perl
 #!C:/Perl64/bin/perl.exe
+#!/usr/bin/perl
+
 
 
 
@@ -66,52 +67,51 @@ EOF
 if($category ne "Calcio") {
     print "						<li><a href=\"products.cgi?category=Calcio\">Calcio</a></li>\n";
 } else {
-    print "						<li class=\"navigator_current\">Calcio</li>\n";
+    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Calcio</li>\n";
 }
 if($category ne "Basket") {
     print "						<li><a href=\"products.cgi?category=Basket\"><span xml:lang=\"en\">Basket</span></a></li>\n";
 } else {
-    print "						<li class=\"navigator_current\"><span xml:lang=\"en\">Basket</span></li>\n";
+    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i><span xml:lang=\"en\">Basket</span></li>\n";
 }
 if($category ne "Volley") {
     print "						<li><a href=\"products.cgi?category=Volley\"><span xml:lang=\"en\">Volley</span></a></li>\n";
 } else {
-    print "						<li class=\"navigator_current\"><span xml:lang=\"en\">Volley</span></li>\n";
+    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i><span xml:lang=\"en\">Volley</span></li>\n";
 }
 if($category ne "Tennistavolo") {
     print "						<li><a href=\"products.cgi?category=Tennistavolo\">Tennistavolo</a></li>\n";
 } else {
-    print "						<li class=\"navigator_current\">Tennistavolo</li>\n";
+    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Tennistavolo</li>\n";
 }
 if($category ne "Nuoto") {
     print "						<li><a href=\"products.cgi?category=Nuoto\">Nuoto</a></li>\n";
 } else {
-    print "						<li class=\"navigator_current\">Nuoto</li>\n";
+    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Nuoto</li>\n";
 }
 if($category ne "Minigolf") {
     print "						<li><a href=\"products.cgi?category=Minigolf\">Minigolf</a></li>\n";
 } else {
-    print "						<li class=\"navigator_current\">Minigolf</li>\n";
+    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Minigolf</li>\n";
 }
 if($category ne "Calciobalilla") {
     print "						<li><a href=\"products.cgi?category=Calciobalilla\">Calciobalilla</a></li>\n";
 } else {
-    print "						<li class=\"navigator_current\">Calciobalilla</li>\n";
+    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Calciobalilla</li>\n";
 }
 if($category ne "Protezioni") {
     print "						<li><a href=\"products.cgi?category=Protezioni\">Protezioni</a></li>\n";
 } else {
-    print "						<li class=\"navigator_current\">Protezioni</li>\n";
+    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Protezioni</li>\n";
 }
 if($category ne "Accessori") {
     print "						<li><a href=\"products.cgi?category=Accessori\">Accessori</a></li>\n";
 } else {
-    print "						<li class=\"navigator_current\">Accessori</li>\n";
+    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Accessori</li>\n";
 }
 print <<EOF;
 					</ul>
 				</div>
-            </div>
 EOF
 
 # Lettura da file XML
@@ -122,12 +122,19 @@ my $doc = $parser->parse_file($file) or die "Errore nel parsing";
 my $radice = $doc->getDocumentElement or die "Errore elemento radice";
 my $query = "/products/product[category=\"".$category."\"]";
 my @prodotti = $doc->findnodes($query);
+
+# Stampo i placeholder del menu
+for(my $i=0; $i < scalar @prodotti; $i++) {
+    print "<div class=\"navigator_placeholder\"></div>";
+}
+print "            </div>\n";
+print "<div id=\"products_displayer\">";
+print " <div id=\"products_displayer_frame\">";
+
 if(!@prodotti) {
-    print "<span id=\"error_msg\" class=\"client_message\">Non &egrave; stato possibile reperire la lista dei prodotti</span>";
+    print "<span id=\"error_msg\" class=\"client_message\">Nessun prodotto da visualizzare</span>";
 } else {
     # Stampa le card dei prodotti
-    print "<div id=\"products_displayer\">";
-    print " <div id=\"products_displayer_frame\">";
     for(my $i=0; $i < scalar @prodotti; $i++)
     {
         my $codice = $prodotti[$i]->findnodes("code/text()");
@@ -171,9 +178,9 @@ if(!@prodotti) {
         </div>";
         print "</div>";
     }
-    print " </div>";
-    print "</div>";
 }
+print " </div>";
+print "</div>";
 print <<EOF;	
 		</div>
 		
