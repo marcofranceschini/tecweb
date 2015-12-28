@@ -274,7 +274,6 @@ EOF
                     $old_shortDescription->setData($thumbnail_desc);
                 }
                 if ( $image ) {
-                    if($old_image ne $image) {
                         my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
                         $image = $name.$extension;
                         $image =~ tr/ /_/;
@@ -287,10 +286,8 @@ EOF
                         }
                         close UPLOADFILE;
                         $old_image->setData($image);
-                    }
                 }
                 if ( $thumbnail ) {
-                    if($old_thumbnail ne $thumbnail) {
                         my ( $name, $path, $extension ) = fileparse ( $thumbnail, '..*' );
                         $thumbnail = $name.$extension;
                         $thumbnail =~ tr/ /_/;
@@ -303,7 +300,6 @@ EOF
                         }
                         close UPLOADFILE;
                         $old_thumbnail->setData($thumbnail);
-                    }
                 }
                 print "<span id=\"info_msg\" class=\"admin_message\">Prodotto ".$codice_prodotto." modificato correttamente</span>";
             }
