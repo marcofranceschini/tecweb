@@ -137,7 +137,7 @@
 	#logo {
 		float: left;
 		padding-top: 1em;
-		
+		max-width: 30%;
 	}
 	
 	#navbar {
@@ -190,7 +190,7 @@
 	#menu {		/*NEW -------------------------------------*/
 		height: 2em;
 		text-transform: uppercase;
-		margin-left: 25em;
+		margin-left: 35%;
 		padding-top: 2em;
 		padding-bottom: 2em;
 		letter-spacing: 0.2em;
@@ -198,7 +198,7 @@
 	
 	#menu li {	/*NEW -------------------------------------*/
 		display: inline-block;
-		margin-left: 5%;
+		margin-left: 2%;
 		margin-bottom: 2%;
 		list-style: none;
 	}

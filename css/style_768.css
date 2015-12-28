@@ -95,18 +95,19 @@
 	}
 		
 	#menu {
-		width: 27em;
+		width: 90%;
 		margin: auto;
+        text-align: center;
 		text-transform: uppercase;
 		padding-top: 2em;
-		padding-bottom: 1em;
+		padding-bottom: 0.5em;
 		letter-spacing: 0.2em;
 	}
 	
 	#menu li {	/*NEW -------------------------------------*/
 		display: inline-block;
 		margin-left: 2%;
-		margin-bottom: 2%;
+		margin-bottom: 4%;
 		list-style: none;
 	}
 	

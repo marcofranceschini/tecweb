@@ -1,5 +1,6 @@
-#!/usr/bin/perl
 #!C:/Perl64/bin/perl.exe
+#!/usr/bin/perl
+
 
 
 use CGI;
@@ -53,7 +54,8 @@ print <<EOF;
 				<a href="../index.html"><img id="logo" src="../res/images/logo_bianco.png" alt="Logo Ju Rapida" /></a>
 				<ul id="menu"> 
 					<li><a href="../index.html"><span xml:lang="en">Home</span></a></li>
-					<li><a href="../pages/products.html">Prodotti</a></li> <!--Comprese le offerte-->
+					<li><a href="../pages/products.html">Prodotti</a></li>
+                    <li><a href="../Catalogo.pdf" target="_blank">Catalogo</a></li>
 					<li><span id="current">Contatti</span></li>
 					<li><a href="../pages/about.html">Chi siamo</a></li>
 				</ul>
@@ -173,6 +175,7 @@ print <<EOF;
 					<ul id="maps_menu">
 						<li><a href="../index.html"><span xml:lang="en">Home</span></a></li>
 						<li><a href="../pages/products.html">Prodotti</a></li>
+                        <li><a href="../Catalogo.pdf" target="_blank">Catalogo</a></li>
 						<li><a href="contacts.cgi">Contatti</a></li>
 						<li><a href="../pages/about.html">Chi siamo</a></li>
 					</ul>
