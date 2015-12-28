@@ -516,10 +516,25 @@
         height: 100%;
         float: left;
         box-shadow: gray 1px 0px 5px;
+        padding-bottom: 2em;
     }
     
-    #products_navigator .navigator_placeholder {
-        height: 4.3em;   
+    @media screen and (min-width: 1180px) {
+        #products_navigator .navigator_placeholder_block4 {
+            display: inline-block;
+            width: 80%;
+            height: 22em;
+            margin: 1em;          
+        }
+    }
+    
+    @media screen and (max-width: 1179px) {
+        #products_navigator .navigator_placeholder_block3 {
+            display: inline-block;
+            width: 80%;
+            height: 22em;
+            margin: 1em;            
+        }
     }
     
     #category_navigator {
@@ -527,6 +542,7 @@
         margin: auto;
         margin-top: 3em;
         height: 22em;
+        margin-bottom: 1em;
     }
     
     #category_navigator .navigator_title {

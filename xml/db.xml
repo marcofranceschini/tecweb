@@ -154,4 +154,37 @@
     <backgroundImg/>
     <inEvidence>false</inEvidence>
   </product>
+  <product>
+    <category>Basket</category>
+    <code>B0010</code>
+    <name>Minibasket Multicolor</name>
+    <description>Pallone minibasket misura 5 multicolor, gomma nylon "Aero Soft"</description>
+    <shortDescription>Pallone minibasket misura 5 multicolor</shortDescription>
+    <img>MULTI_DI_LATO_2_eps.png</img>
+    <thumbnail>MULTI_DI_LATO_2_eps.png</thumbnail>
+    <backgroundImg/>
+    <inEvidence>false</inEvidence>
+  </product>
+  <product>
+    <category>Basket</category>
+    <code>BM001</code>
+    <name>Molten GG7</name>
+    <description>Pallone da basket misura 7, in pelle sintetica poliuretano (PU). Approvato FIBA per campionati Serie A1 e A2 Maschili</description>
+    <shortDescription>Pallone da basket misura 7, approvato FIBA</shortDescription>
+    <img>BGG7.png</img>
+    <thumbnail>BGG7.png</thumbnail>
+    <backgroundImg/>
+    <inEvidence>false</inEvidence>
+  </product>
+  <product>
+    <category>Basket</category>
+    <code>BM002</code>
+    <name>Molten GG6</name>
+    <description>Pallone da basket misura 6</description>
+    <shortDescription>Pallone da basket misura 6, approvato FIBA</shortDescription>
+    <img>BGG6-.png</img>
+    <thumbnail>BGG6-.png</thumbnail>
+    <backgroundImg/>
+    <inEvidence>false</inEvidence>
+  </product>
 </products>

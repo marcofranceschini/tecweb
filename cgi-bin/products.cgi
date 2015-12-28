@@ -125,7 +125,18 @@ my @prodotti = $doc->findnodes($query);
 
 # Stampo i placeholder del menu
 for(my $i=0; $i < scalar @prodotti; $i++) {
-    print "<div class=\"navigator_placeholder\"></div>";
+    print "<div class=\"navigator_placeholder";
+    if(!($i % 2) && $i gt 1) {
+        print " navigator_placeholder_block2";
+    }
+    if(!($i % 3) && $i gt 1) {
+        print " navigator_placeholder_block3";
+    }
+    if(!($i % 4) && $i gt 1) {
+        print " navigator_placeholder_block4";
+    }
+    print "\">";
+    print "</div>";
 }
 print "            </div>\n";
 print "<div id=\"products_displayer\">";
