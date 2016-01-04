@@ -1,7 +1,6 @@
 #!/usr/bin/perl
 #!C:/Perl64/bin/perl.exe
 
-
 # ATTENZIONE! IN BASE AL TUO O.S. CAMBIA LE RIGHE QUI SOPRA
  
 use CGI;
@@ -24,8 +23,8 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 	my $sessione = createSession();
 	print $sessione->header(-location=>"admin.cgi");
 
- } else {	# Login errato
-	print "Content-Type: text/html\n\n";
+} else {	# Login errato
+    print "Content-Type: text/html\n\n";
 	# Da usare in lab
 	#<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
 	#<link href="../tecwebproject/css/style_768.css" rel="stylesheet" type="text/css" />
