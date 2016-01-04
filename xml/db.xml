@@ -4,19 +4,19 @@
     <category>Calcio</category>
     <code>C0121</code>
     <name>Trident 4</name>
-    <description>Pallone da calcio misura 4 in pelle sintetica poliuretano (PU), con spugha EVA 2,7 mm, molto morbido</description>
-    <shortDescription>Pallone da calcio misura 4</shortDescription>
+    <description>Pallone calcio da gara misura 4 in pelle sintetica poliuretano (PU), con spugna EVA 2,7 mm. Camera d'aria e valvola in "Butyl". Cucito a mano.</description>
+    <shortDescription>Pallone calcio da gara misura 4</shortDescription>
     <img>TRIDENT_4.png</img>
     <thumbnail>TRIDENT_4.png</thumbnail>
-    <backgroundImg/>
+    <backgroundImg>prova.jpg</backgroundImg>
     <inEvidence>false</inEvidence>
   </product>
   <product>
     <category>Calcio</category>
     <code>C0122</code>
     <name>Trident 5</name>
-    <description>Pallone da calcio misura 5 in pelle sintetica poliuretano (PU), con spugha EVA 2,7 mm, molto morbido</description>
-    <shortDescription>Pallone da calcio misura 5</shortDescription>
+    <description>Pallone calcio da gara misura 5 in pelle sintetica poliuretano (PU), con spugna EVA 2,7 mm. Camera d'aria e valvola in "Butyl". Cucito a mano.</description>
+    <shortDescription>Pallone calcio da gara misura 5</shortDescription>
     <img>TRIDENT_5.png</img>
     <thumbnail>TRIDENT_5.png</thumbnail>
     <backgroundImg/>
@@ -26,8 +26,8 @@
     <category>Calcio</category>
     <code>C0001</code>
     <name>X-TREME</name>
-    <description>Pallone da calcio da gara misura 5 in pelle sintetica poliuretano (PU) in microfibra</description>
-    <shortDescription>Pallone da gara misura 5</shortDescription>
+    <description>Pallone calcio da gara misura 5 in pelle sintetica poliuretano (PU) in microfibra. Camera d'aria e valvola in "Butyl". Cucito a mano.</description>
+    <shortDescription>Pallone calcio da gara misura 5</shortDescription>
     <img>X-TREME.png</img>
     <thumbnail>X-TREME.png</thumbnail>
     <backgroundImg/>
@@ -37,8 +37,8 @@
     <category>Calcio</category>
     <code>C0116</code>
     <name>Spirit 5</name>
-    <description>Pallone da calcio da gara misura 5 in pelle sintetica poliuretano (PU) in microfibra, molto morbida</description>
-    <shortDescription>Pallone da gara misura 5 morbido</shortDescription>
+    <description>Pallone calcio da gara misura 5 in pelle sintetica poliuretano (PU) in microfibra. Camera d'aria e valvola in "Butyl". Cucito a mano.</description>
+    <shortDescription>Pallone calcio da gara misura 5</shortDescription>
     <img>C0116_SPIRIT_5.png</img>
     <thumbnail>C0116_SPIRIT_5.png</thumbnail>
     <backgroundImg/>
@@ -48,8 +48,8 @@
     <category>Calcio</category>
     <code>C0117</code>
     <name>Spirit 4</name>
-    <description>Pallone da calcio da gara misura 4 in pelle sintetica poliuretano (PU) in microfibra, molto morbida</description>
-    <shortDescription>Pallone da gara misura 4 morbido</shortDescription>
+    <description>Pallone calcio da gara misura 4 in pelle sintetica poliuretano (PU) in microfibra. Camera d'aria e valvola in "Butyl". Cucito a mano.</description>
+    <shortDescription>Pallone calcio da gara misura 4</shortDescription>
     <img>C0117_SPIRIT_4.png</img>
     <thumbnail>C0117_SPIRIT_4.png</thumbnail>
     <backgroundImg/>
@@ -59,7 +59,7 @@
     <category>Calcio</category>
     <code>C0110</code>
     <name>Evolution 5</name>
-    <description>Pallone da calcio misura 5 particolarmente adatto per erba sintetica</description>
+    <description>Pallone calcio misura 5 in pelle sintetica poliuretano (PU). Camera d'aria e valvola in "Butyl". Cucito a mano. Molto resistente, particolarmente adatto per erba sintetica.</description>
     <shortDescription>Pallone da calcio misura 5 per l'erba sintetica</shortDescription>
     <img>7_EVOLUTION_5.png</img>
     <thumbnail>7_EVOLUTION_5.png</thumbnail>
@@ -70,7 +70,7 @@
     <category>Calcio</category>
     <code>C0111</code>
     <name>Evolution 4</name>
-    <description>Pallone da calcio misura 4 particolarmente adatto per erba sintetica</description>
+    <description>Pallone calcio misura 4 in pelle sintetica poliuretano (PU). Camera d'aria e valvola in "Butyl". Cucito a mano. Molto resistente, particolarmente adatto per erba sintetica.</description>
     <shortDescription>Pallone da calcio misura 4 per l'erba sintetica</shortDescription>
     <img>6_EVOLUTION_4.png</img>
     <thumbnail>6_EVOLUTION_4.png</thumbnail>
@@ -81,10 +81,109 @@
     <category>Calcio</category>
     <code>C0118</code>
     <name>Evolution Low Bounce</name>
-    <description>Pallone da calcetto misura 4 a rimbalzo controllato. Particolarmente adatto per erba sintetica</description>
-    <shortDescription>Pallone da calcetto misura 4</shortDescription>
+    <description>Pallone da calcetto misura 4 a rimbalzo controllato. Pelle sintetica poliuretano (PU). Camera d'aria e valvola in "Butyl". Cucito a mano. Particolarmente adatto per erba sintetica</description>
+    <shortDescription>Pallone da calcetto misura 4 a rimbalzo controllato</shortDescription>
     <img>C0118_EVOLUTION_L_B.png</img>
     <thumbnail>C0118_EVOLUTION_L_B.png</thumbnail>
+    <backgroundImg/>
+    <inEvidence>false</inEvidence>
+  </product>
+  <product>
+    <category>Calcio</category>
+    <code>C0103</code>
+    <name>TRAINING 3</name>
+    <description>Pallone da calcio misura 3 in pelle sintetica (PVC). Cucito a mano. Ideale per le scuole calcio.</description>
+    <shortDescription>Pallone da calcio misura 3</shortDescription>
+    <img>12_TRAINING_3.png</img>
+    <thumbnail>12_TRAINING_3.png</thumbnail>
+    <backgroundImg/>
+    <inEvidence>false</inEvidence>
+  </product>
+  <product>
+    <category>Calcio</category>
+    <code>C0093</code>
+    <name>TRAINING 4</name>
+    <description>Pallone da calcio misura 4 in pelle sintetica (PVC). Cucito a mano. Ideale per le scuole calcio.</description>
+    <shortDescription>Pallone da calcio misura 4</shortDescription>
+    <img>C0092OFFICIAL_TRAINING_4.png</img>
+    <thumbnail>C0092OFFICIAL_TRAINING_4.png</thumbnail>
+    <backgroundImg/>
+    <inEvidence>false</inEvidence>
+  </product>
+  <product>
+    <category>Calcio</category>
+    <code>C0092</code>
+    <name>TRAINING 5</name>
+    <description>Pallone da calcio misura 5 in pelle sintetica (PVC). Cucito a mano. Ideale per le scuole calcio.</description>
+    <shortDescription>Pallone da calcio misura 5</shortDescription>
+    <img>C0093OFFICIAL_TRAINING_N.5.png</img>
+    <thumbnail>C0093OFFICIAL_TRAINING_N.5.png</thumbnail>
+    <backgroundImg/>
+    <inEvidence>false</inEvidence>
+  </product>
+  <product>
+    <category>Calcio</category>
+    <code>C0119</code>
+    <name>Spirit con Gancio</name>
+    <description>aa</description>
+    <shortDescription>a</shortDescription>
+    <img>C0117_SPIRIT_4_CON_GANCIO.png</img>
+    <thumbnail>C0117_SPIRIT_4_CON_GANCIO.png</thumbnail>
+    <backgroundImg/>
+    <inEvidence>false</inEvidence>
+  </product>
+  <product>
+    <category>Basket</category>
+    <code>B0011</code>
+    <name>Aero Soft 7</name>
+    <description>Pallone da basket misura 7, gomma nylon "Aero Soft"</description>
+    <shortDescription>Pallone da basket misura 7</shortDescription>
+    <img>AERO_SOFT__7.png</img>
+    <thumbnail>AERO_SOFT__7.png</thumbnail>
+    <backgroundImg/>
+    <inEvidence>false</inEvidence>
+  </product>
+  <product>
+    <category>Basket</category>
+    <code>B0009</code>
+    <name>Aero Soft 5</name>
+    <description>Pallone minibasket misura 5, gomma nylon "Aero Soft"</description>
+    <shortDescription>Pallone minibasket misura 5</shortDescription>
+    <img>B0005_aero_soft_copia.png</img>
+    <thumbnail>B0005_aero_soft_copia.png</thumbnail>
+    <backgroundImg/>
+    <inEvidence>false</inEvidence>
+  </product>
+  <product>
+    <category>Basket</category>
+    <code>B0010</code>
+    <name>Minibasket Multicolor</name>
+    <description>Pallone minibasket misura 5 multicolor, gomma nylon "Aero Soft"</description>
+    <shortDescription>Pallone minibasket misura 5 multicolor</shortDescription>
+    <img>MULTI_DI_LATO_2_eps.png</img>
+    <thumbnail>MULTI_DI_LATO_2_eps.png</thumbnail>
+    <backgroundImg/>
+    <inEvidence>false</inEvidence>
+  </product>
+  <product>
+    <category>Basket</category>
+    <code>BM001</code>
+    <name>Molten GG7</name>
+    <description>Pallone da basket misura 7, in pelle sintetica poliuretano (PU). Approvato FIBA per campionati Serie A1 e A2 Maschili</description>
+    <shortDescription>Pallone da basket misura 7, approvato FIBA</shortDescription>
+    <img>BGG7.png</img>
+    <thumbnail>BGG7.png</thumbnail>
+    <backgroundImg/>
+    <inEvidence>false</inEvidence>
+  </product>
+  <product>
+    <category>Basket</category>
+    <code>BM002</code>
+    <name>Molten GG6</name>
+    <description>Pallone da basket misura 6</description>
+    <shortDescription>Pallone da basket misura 6, approvato FIBA</shortDescription>
+    <img>BGG6-.png</img>
+    <thumbnail>BGG6-.png</thumbnail>
     <backgroundImg/>
     <inEvidence>false</inEvidence>
   </product>

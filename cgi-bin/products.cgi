@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 #!C:/Perl64/bin/perl.exe
 
+
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
 use CGI qw(:standard Vars);
@@ -43,9 +44,9 @@ print <<EOF;
 				<a href="../index.html"><img id="logo" src="../res/images/logo_bianco.png" alt="Logo Ju Rapida" /></a>
 				<ul id="menu"> 
 					<li><a href="../index.html"><span xml:lang="en">Home</span></a></li>
-					<li><span id="current">Prodotti</span></li> <!--Comprese le offerte-->
+					<li><a href="../pages/products.html">Prodotti</a></li>
 					<li><a href="../cgi-bin/contacts.cgi">Contatti</a></li>
-					<li><a href="about.html">Chi siamo</a></li>
+					<li><a href="../pages/about.html">Chi siamo</a></li>
 				</ul>
 			</div>
 			<div id="breadcrumb">
@@ -56,9 +57,59 @@ print <<EOF;
 		</div>
 				
 		<div id="content_products_cgi">
-            <div id="products_navigator">
-                <!-- selettore di categorie e filtri per i prodotti -->
-            </div>
+			<div id="products_navigator">
+				<div id="category_navigator">
+					<p class="navigator_title">Categoria</p>
+					<ul class=\"navigator_list\">
+EOF
+if($category ne "Calcio") {
+    print "						<li><a href=\"products.cgi?category=Calcio\">Calcio</a></li>\n";
+} else {
+    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Calcio</li>\n";
+}
+if($category ne "Basket") {
+    print "						<li><a href=\"products.cgi?category=Basket\"><span xml:lang=\"en\">Basket</span></a></li>\n";
+} else {
+    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i><span xml:lang=\"en\">Basket</span></li>\n";
+}
+if($category ne "Volley") {
+    print "						<li><a href=\"products.cgi?category=Volley\"><span xml:lang=\"en\">Volley</span></a></li>\n";
+} else {
+    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i><span xml:lang=\"en\">Volley</span></li>\n";
+}
+if($category ne "Tennistavolo") {
+    print "						<li><a href=\"products.cgi?category=Tennistavolo\">Tennistavolo</a></li>\n";
+} else {
+    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Tennistavolo</li>\n";
+}
+if($category ne "Nuoto") {
+    print "						<li><a href=\"products.cgi?category=Nuoto\">Nuoto</a></li>\n";
+} else {
+    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Nuoto</li>\n";
+}
+if($category ne "Minigolf") {
+    print "						<li><a href=\"products.cgi?category=Minigolf\">Minigolf</a></li>\n";
+} else {
+    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Minigolf</li>\n";
+}
+if($category ne "Calciobalilla") {
+    print "						<li><a href=\"products.cgi?category=Calciobalilla\">Calciobalilla</a></li>\n";
+} else {
+    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Calciobalilla</li>\n";
+}
+if($category ne "Protezioni") {
+    print "						<li><a href=\"products.cgi?category=Protezioni\">Protezioni</a></li>\n";
+} else {
+    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Protezioni</li>\n";
+}
+if($category ne "Accessori") {
+    print "						<li><a href=\"products.cgi?category=Accessori\">Accessori</a></li>\n";
+} else {
+    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Accessori</li>\n";
+}
+print <<EOF;
+					</ul>
+				</div>
 EOF
 
 # Lettura da file XML
@@ -68,50 +119,77 @@ $parser->keep_blanks(0);
 my $doc = $parser->parse_file($file) or die "Errore nel parsing";
 my $radice = $doc->getDocumentElement or die "Errore elemento radice";
 my $query = "/products/product[category=\"".$category."\"]";
-my @prodotti = $doc->findnodes($query) or die "<span id=\"error_msg\" class=\"admin_message\">Non &egrave; stato possibile reperire la lista dei prodotti</span>";
-	
-# Stampa le card dei prodotti
+my @prodotti = $doc->findnodes($query);
+
+# Stampo i placeholder del menu
+for(my $i=0; $i < scalar @prodotti; $i++) {
+    print "<div class=\"navigator_placeholder";
+    if(!($i % 2) && $i gt 1) {
+        print " navigator_placeholder_block2";
+    }
+    if(!($i % 3) && $i gt 1) {
+        print " navigator_placeholder_block3";
+    }
+    if(!($i % 4) && $i gt 1) {
+        print " navigator_placeholder_block4";
+    }
+    print "\">";
+    print "</div>";
+}
+print "            </div>\n";
 print "<div id=\"products_displayer\">";
 print " <div id=\"products_displayer_frame\">";
-for(my $i=0; $i < scalar @prodotti; $i++)
-{
-    my $codice = $prodotti[$i]->findnodes("code/text()");
-    my $nome = $prodotti[$i]->findnodes("name/text()");
-    my $categoria = $prodotti[$i]->findnodes("category/text()");
-    my $thumbnail = $prodotti[$i]->findnodes("thumbnail/text()");
-    my $descrizione = $prodotti[$i]->findnodes("description/text()");
-    my $descrizione_corta = $prodotti[$i]->findnodes("shortDescription/text()");
-    print "<div class=\"product_card\">";
-    print "<div class=\"product_image\">";
-    print " <img src=\"../res/images/products/thumbnails/".$thumbnail."\" alt=\"".$descrizione_corta."\"/>";
-    print "</div>"; 
-    # Stampo abbreviate le parole dopo la prima se il nome e' troppo lungo
-    if(length($nome) > 14) {
-        @parole = split / /, $nome;
-        $nome = $parole[0];
-        if($parole[1]) {
-            $nome = $nome." ";
+
+if(!@prodotti) {
+    print "<span id=\"error_msg\" class=\"client_message\">Nessun prodotto da visualizzare</span>";
+} else {
+    # Stampa le card dei prodotti
+    for(my $i=0; $i < scalar @prodotti; $i++)
+    {
+        my $codice = $prodotti[$i]->findnodes("code/text()");
+        my $nome = $prodotti[$i]->findnodes("name/text()");
+        my $thumbnail = $prodotti[$i]->findnodes("thumbnail/text()");
+        my $descrizione_corta = $prodotti[$i]->findnodes("shortDescription/text()");
+        print "<div class=\"product_card\">";
+        print "<div class=\"product_image\">";
+        print " <img src=\"../res/images/products/thumbnails/".$thumbnail."\" alt=\"".$descrizione_corta."\"/>";
+        print "</div>"; 
+        # Stampo abbreviate le parole dopo la prima se il nome e' troppo lungo
+        my $nome_originale = $nome;
+        if(length($nome) > 15) {
+            @parole = split / /, $nome;
+            $nome = $parole[0];
+            if($parole[1]) {
+                $nome = $nome." ";
+            }
+            for(my $i=1; $i < scalar @parole; $i++) {
+                # Se contiene "con" stampo la prossima parola per intera
+                if(($parole[$i] eq "con") or ($parole[$i] eq "Con")){
+                    $nome = $nome.$parole[$i+1];
+                    $i++;
+                } else {
+                    my @lettere = split //, $parole[$i];
+                    $nome = $nome.$lettere[0].".";
+                }
+            }
         }
-        for(my $i=1; $i < scalar @parole; $i++) {
-            my @lettere = split //, $parole[$i];
-            $nome = $nome.$lettere[0].".";
-        }
+        print "<span class=\"product_name\">".$nome."</span>";
+        print "<span class=\"product_code\">Codice ".$codice."</span>";
+        print "<p class=\"product_short_description\">".$descrizione_corta."</p>";
+        print
+        "<div class=\"product_display_button\">
+            <form class=\"form_display\" action=\"product_displayer.cgi#content_products_displayer_cgi\" method=\"post\">
+                <input type=\"hidden\" name=\"display_code\" value=\"".$codice."\" />
+                <input type=\"hidden\" name=\"display_name\" value=\"".$nome_originale."\" />
+                <input type=\"hidden\" name=\"display_category\" value=\"".$category."\" />
+                <input class=\"button\" type=\"submit\" value=\"Apri\" />
+            </form>
+        </div>";
+        print "</div>";
     }
-    print "<span class=\"product_name\">".$nome."</span>";
-    print "<span class=\"product_code\">Codice ".$codice."</span>";
-    print "<p class=\"product_short_description\">".$descrizione_corta."</p>";
-    print
-    "<div class=\"product_display_button\">
-        <form class=\"form_display\" action=\"product_displayer.cgi\" method=\"post\">
-               <input type=\"hidden\" name=\"display\" value=\"".$codice."\" />
-               <input class=\"button\" type=\"submit\" value=\"Apri\" />
-        </form>
-    </div>";
-    print "</div>";
 }
 print " </div>";
 print "</div>";
-    
 print <<EOF;	
 		</div>
 		

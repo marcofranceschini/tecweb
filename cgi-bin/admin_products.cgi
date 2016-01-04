@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 #!C:/Perl64/bin/perl.exe
 
+
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
 use CGI qw(:standard Vars);
@@ -272,7 +273,6 @@ EOF
                     $old_shortDescription->setData($thumbnail_desc);
                 }
                 if ( $image ) {
-                    if($old_image ne $image) {
                         my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
                         $image = $name.$extension;
                         $image =~ tr/ /_/;
@@ -285,10 +285,8 @@ EOF
                         }
                         close UPLOADFILE;
                         $old_image->setData($image);
-                    }
                 }
                 if ( $thumbnail ) {
-                    if($old_thumbnail ne $thumbnail) {
                         my ( $name, $path, $extension ) = fileparse ( $thumbnail, '..*' );
                         $thumbnail = $name.$extension;
                         $thumbnail =~ tr/ /_/;
@@ -301,7 +299,6 @@ EOF
                         }
                         close UPLOADFILE;
                         $old_thumbnail->setData($thumbnail);
-                    }
                 }
                 print "<span id=\"info_msg\" class=\"admin_message\">Prodotto ".$codice_prodotto." modificato correttamente</span>";
             }
@@ -449,15 +446,35 @@ EOF
 					<form name="form_modal_insert" id="form_modal_insert" action="admin_products.cgi" method="post" enctype="multipart/form-data">
 						<label class="form_item" for="product_category">Categoria</label>
 						<select class="form_item" id="product_category" name="product_category">
-							<option value="Calcio">Calcio</option>
-							<option value="Basket"><span lang="en">Basket</span></option>
-							<option value="Volley"><span lang="en">Volley</span></option>
-							<option value="Tennistavolo">Tennistavolo</option>
-							<option value="Nuoto">Nuoto</option>
-							<option value="Minigolf">Minigolf</option>
-							<option value="Calciobalilla">Calciobalilla</option>
-							<option value="Protezioni">Protezioni</option>
-							<option value="Accessori">Accessori</option>
+EOF
+print "							<option value=\"Calcio\"";
+                            if($display_category eq "Calcio"){ print " selected ";}
+                            print ">Calcio</option>\n";
+print "							<option value=\"Basket\"";
+                            if($display_category eq "Basket"){ print " selected ";}
+                            print "><span lang=\"en\">Basket</span></option>\n";
+print "							<option value=\"Volley\"";
+                            if($display_category eq "Volley"){ print " selected ";}
+                            print "><span lang=\"en\">Volley</span></option>\n";
+print "							<option value=\"Tennistavolo\"";
+                            if($display_category eq "Tennistavolo"){ print " selected ";}
+                            print">Tennistavolo</option>\n";
+print "							<option value=\"Nuoto\"";
+                            if($display_category eq "Nuoto"){ print " selected ";}
+                            print ">Nuoto</option>\n";
+print "							<option value=\"Minigolf\"";
+                            if($display_category eq "Minigolf"){ print " selected ";}
+                            print ">Minigolf</option>\n";
+print "							<option value=\"Calciobalilla\"";
+                            if($display_category eq "Calciobalilla"){ print " selected ";}
+                            print ">Calciobalilla</option>\n";
+print "							<option value=\"Protezioni\"";
+                            if($display_category eq "Protezioni" ){ print " selected ";}
+                            print ">Protezioni</option>\n";
+print "							<option value=\"Accessori\"";
+                            if($display_category eq "Accessori"){ print " selected ";}
+                            print ">Accessori</option>\n";
+print <<EOF;
 						</select>
 						<label class="form_item" for="product_code">Codice</label>
 						<input class="form_item" id="product_code" type="text"  name="product_code" required />
@@ -471,6 +488,9 @@ EOF
 						<input class="form_item" id="product_image" type="file" name="image" required />
 						<label class="form_item" for="product_thumbnail">Thumbnail (massimo 500KB)</label>
 						<input class="form_item" id="product_thumbnail" type="file" name="thumbnail" required />
+EOF
+print "						<input type=\"hidden\" name=\"display_category\" value=\"".$display_category."\" />\n";
+print <<EOF;
 						<input class="submit_modal" id="submit_modal" type="submit" name="insert" value="Inserisci" />
 					</form>
 				</div>
