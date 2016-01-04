@@ -87,7 +87,8 @@ if(!$prodotto) {
     print "						<p class=\"product_description\">".$descrizione."</p>\n";
     print
 "						<div class=\"product_back_button\">
-							<form action=\"product_displayer.cgi?=".$categoria."\" method=\"post\">
+							<form action=\"products.cgi?\" method=\"post\">
+								<input type=\"hidden\" name=\"category\" value=\"".$categoria."\" />
 								<input class=\"button\" type=\"submit\" value=\"Torna ai prodotti\" />
 							</form>
 						</div>\n";
