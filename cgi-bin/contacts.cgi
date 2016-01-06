@@ -2,7 +2,6 @@
 #!/usr/bin/perl
 
 
-
 use CGI;
 use Net::SMTP::TLS;
 use CGI qw(:standard Vars);
