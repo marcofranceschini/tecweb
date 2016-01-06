@@ -1169,8 +1169,8 @@
 		-moz-transition: all 0.5s ;
 	}
 	
-	#content_about{
-		width: 90%;
+	#content_about {
+		max-width: 90%;
 		margin: auto;
 		padding: 2em;
 	}
