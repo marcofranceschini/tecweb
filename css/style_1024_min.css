@@ -224,7 +224,7 @@
 	
 	#breadcrumb {	
 		clear: both;
-		padding-left: 12%;
+		padding-left: 6%;
 		padding-top: 0.7em;
 		padding-bottom: 0.7em;
 		font-weight: bold;
@@ -538,7 +538,7 @@
     }
     
     #category_navigator {
-        width: 15em;
+        width: 100%;
         margin: auto;
         margin-top: 3em;
         height: 22em;
@@ -555,8 +555,8 @@
     
     #category_navigator .navigator_list {
         list-style-type: none;
-        width: 10em;
-        margin-left: 3.5em;
+        width: 100%;
+        padding-left: 25%;
         font-size: 1.2em;
     }
     
@@ -596,7 +596,8 @@
     #products_displayer_frame {
         padding-top: 2em;
         padding-left: 3em;
-        padding-bottom: 2em;
+        padding-bottom: 2em;        
+        text-align: center;
     }
     
     #products_displayer .product_card {
@@ -685,6 +686,7 @@
     #product_card_displayer .product_card {
         display: block;
         width: 65em;
+        max-width: 98%;
         margin: auto;
         margin-bottom: 4em;
         background: #ddd;
