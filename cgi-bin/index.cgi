@@ -3,7 +3,6 @@
  
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
-use CGI qw(:standard Vars);
 use XML::LibXML;
 use warnings;
 
@@ -53,31 +52,41 @@ print <<EOF;
 		</div>
 		
 		<div id="content_home">
+            <div id="panes">
 EOF
+$parser = XML::LibXML->new();
+my $doc = $parser->parse_file("../xml/db.xml");
+
+foreach my $item ($doc->findnodes('/products/product')) {
+    print " <div class=\"pane\">
+                <div class=\"pane_content\">
+		          <img src=\"../res/images/products/".$item->findnodes('./img')."\" alt=\"".$item->findnodes('./shortDescription')."\"/>
+                  <h3>".$item->findnodes('./shortDescription')."</h3>
+                </div>
+            </div>";
+}
+#print <<EOF;
+#				<div class="pane">
+#					<div class="pane_content">
+#						<img src="res/images/chronometer.png" alt="Cronometri"/>
+#						<h3>NUOVO CRONOMETRO DIGITALE 10 MEMORIE</h3>
+#					</div>
+#				</div>
+#				<div class="pane">
+#					<div class="pane_content">
+#						<img src="res/images/cuffie.png" alt="Cuffie piscina"/>
+#						<h3>VASTA GAMMA DI CUFFIE POLYESTER</h3>
+#					</div>
+#				</div>				
+#				<div class="pane">
+#					<div class="pane_content">
+#						<img src="res/images/volley_ball.png" alt="Palla da pallavolo"/>
+#						<h3>SCOPRI IL PALLONE VOLLEY "COMPETITION" IN PELLE SINTETICA MORBIDA</h3>
+#					</div>
+#				</div>
+#EOF
 print <<EOF;
-			<div id="panes">
-				<div id="pane_1">
-					<div class="pane_content">
-						<img src="res/images/chronometer.png" alt="Cronometri"/>
-						<h3>NUOVO CRONOMETRO DIGITALE 10 MEMORIE</h3>
-					</div>
-				</div>
-				
-				<div id="pane_2">
-					<div class="pane_content">
-						<img src="res/images/cuffie.png" alt="Cuffie piscina"/>
-						<h3>VASTA GAMMA DI CUFFIE POLYESTER</h3>
-					</div>
-				</div>
-				
-				<div id="pane_3">
-					<div class="pane_content">
-						<img src="res/images/volley_ball.png" alt="Palla da pallavolo"/>
-						<h3>SCOPRI IL PALLONE VOLLEY "COMPETITION" IN PELLE SINTETICA MORBIDA</h3>
-					</div>
-				</div>
-EOF
-print <<EOF;
+                </div>
 			</div>	
 			<a id="backTop" href="">
 				<i class="material-icons">&#xE316;</i>
