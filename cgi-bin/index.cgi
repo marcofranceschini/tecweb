@@ -58,12 +58,14 @@ $parser = XML::LibXML->new();
 my $doc = $parser->parse_file("../xml/db.xml");
 
 foreach my $item ($doc->findnodes('/products/product')) {
-    print " <div class=\"pane\">
-                <div class=\"pane_content\">
-		          <img src=\"../res/images/products/".$item->findnodes('./img')."\" alt=\"".$item->findnodes('./shortDescription')."\"/>
-                  <h3>".$item->findnodes('./shortDescription')."</h3>
-                </div>
-            </div>";
+    if ($item->findnodes('./inEvidence') eq "true") {
+        print " <div class=\"pane\" style=\"background-image: url('../res/images/".$item->findnodes('./backgroundImg')."')\">
+                    <div class=\"pane_content\">
+                        <img src=\"../res/images/products/".$item->findnodes('./img')."\" alt=\"".$item->findnodes('./shortDescription')."\"/>
+                        <p>".$item->findnodes('./shortDescription')."</p>
+                    </div>
+                </div>";
+    }
 }
 #print <<EOF;
 #				<div class="pane">

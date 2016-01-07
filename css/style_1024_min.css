@@ -245,7 +245,7 @@
 	.pane {
 		position: relative;
 		height: 30em;
-		background-image: url("../res/images/running_wall.jpg");
+        /*background-image: url("../res/images/running_wall.jpg");*/
 	}
 	
 	.pane_content {
@@ -259,9 +259,12 @@
 		width: 20em;
 	}
 	
-	.pane_content h3 {
+	.pane_content p {
 		padding: 2em;
 		color: white;
+        font-weight: bold;
+        font-size: 1.2em;
+        text-transform: uppercase;
 		background-color: rgba(0, 0, 0, 0.3);
 	}
 	
