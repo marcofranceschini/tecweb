@@ -73,7 +73,30 @@ print <<EOF;
 					<li>Email: <span class="contact"><i class="material-icons md-24">&#xE0BE;</i>jurapida\@gmail.com</span></li>
 				</ul>
 			</div>
-			<div id="form_email">
+EOF
+if (%FORM && $name =~ /[a-zA-Z0-9]/ && $from =~ /[a-zA-Z0-9]/ && index($from, '@') != -1 && $body =~ /[a-zA-Z0-9]/) {
+    my $smtp = new Net::SMTP::TLS(
+        'smtp.gmail.com',
+		Port    =>  587,
+		User    => 	'request.jurapida',
+        Password=> 	'bellabella.12') or die "die";
+		
+    $smtp->mail();
+	$smtp->to('request.jurapida@gmail.com');
+	$smtp->data();
+	$smtp->datasend("From: ".$from."\n");
+	$smtp->datasend("To: request.jurapida\@gmail.com\n");
+	$smtp->datasend("Reply-To: ".$from."\n");
+	$smtp->datasend("Subject: Richiesta da ".$from."\n\n");
+	$smtp->datasend($body."\n");
+	$smtp->dataend;
+	$smtp->quit;
+		
+	print " </div>
+            <p id=\"mail_sent\">Grazie! La ricontatteremo al pi&ugrave; presto!</p>";	
+} else {
+    print <<EOF;
+		    <div id="form_email">
 				<p>Oppure contattaci ora via <span lang="en">Email</span></p>
 				<form id="contacts_form" action="../cgi-bin/contacts.cgi" method="post">
 					<div class="form_email_element">
@@ -118,33 +141,6 @@ print <<EOF;
 		</div>
 		
 EOF
-if (%FORM) {
-	if ($name =~ /[a-zA-Z0-9]/ && $from =~ /[a-zA-Z0-9]/ && index($from, '@') != -1 && $body =~ /[a-zA-Z0-9]/) {
-		my $smtp = new Net::SMTP::TLS(
-        	'smtp.gmail.com',
-			Port    =>  587,
-			User    => 	'request.jurapida',
-			Password=> 	'bellabella.12') or die "die";
-		
-		$smtp->mail();
-		$smtp->to('request.jurapida@gmail.com');
-		$smtp->data();
-		$smtp->datasend("From: ".$from."\n");
-		$smtp->datasend("To: request.jurapida\@gmail.com\n");
-		$smtp->datasend("Reply-To: ".$from."\n");
-		$smtp->datasend("Subject: Richiesta da ".$from."\n\n");
-		$smtp->datasend($body."\n");
-		$smtp->dataend;
-		$smtp->quit;
-		
-		print <<EOF;
-		<script type="text/javascript">
-			document.getElementById('form_email').style.display = "none";
-			location.hash = "#mail_sent";
-		</script>
-		<p id="mail_sent">Grazie! La ricontatteremo al pi&ugrave; presto!</p>		
-EOF
-	}
 }
 print <<EOF;
 		<div id="footer">
