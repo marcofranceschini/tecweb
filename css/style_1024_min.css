@@ -245,7 +245,6 @@
 	.pane {
 		position: relative;
 		height: 30em;
-        /*background-image: url("../res/images/running_wall.jpg");*/
 	}
 	
 	.pane_content {
@@ -877,8 +876,6 @@
 	
 	.mail_form_error {
 		color: red;
-        font-size: 0.8em;
-        font-weight: bold;
 	}
 	
 	#mail_sent {

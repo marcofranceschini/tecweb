@@ -151,31 +151,9 @@
 	}
 	
 	/*NEW*/
-	#pane_1 {
+	.pane {
 		position: relative;
-		height: 25em;
-		width: auto;
-		background-image: url("../res/images/running_wall.jpg");
-		
-		background-position: 22% 7%; /*PERCENTUALE, ALTRIMENTI L' IMMAGINE VIENE TAGLIATA*/
-	}
-	
-	#pane_2 {
-		position: relative;
-		height: 25em;
-		width: auto;
-		background-image: url("../res/images/nuoto_wall.jpg");
-		
-		background-position: 22% 7%; /*PERCENTUALE, ALTRIMENTI L' IMMAGINE VIENE TAGLIATA*/
-	}
-	
-	#pane_3 {
-		position: relative;
-		height: 25em;
-		width: auto;
-		background-image: url("../res/images/volley_wall.jpg");
-		
-		background-position: 22% 7%; /*PERCENTUALE, ALTRIMENTI L' IMMAGINE VIENE TAGLIATA*/
+		height: 30em;
 	}
 	
 	.pane_content {
@@ -800,7 +778,6 @@
 	
 	.mail_form_error {
 		color: red;
-		display: none;
 	}
 	
 	#mail_sent {

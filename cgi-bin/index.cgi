@@ -28,7 +28,7 @@ print <<EOF;
 		<link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css' />
 		<link rel="icon" type="image/png" href="res/images/icon.png" />
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-		<script type="text/javascript" src="../js/script.js"></script>
+		<script type="text/javascript" src="../js/index.js"></script>
 	</head>
 	<body>
 		<div id="header">
@@ -67,26 +67,6 @@ foreach my $item ($doc->findnodes('/products/product')) {
                 </div>";
     }
 }
-#print <<EOF;
-#				<div class="pane">
-#					<div class="pane_content">
-#						<img src="res/images/chronometer.png" alt="Cronometri"/>
-#						<h3>NUOVO CRONOMETRO DIGITALE 10 MEMORIE</h3>
-#					</div>
-#				</div>
-#				<div class="pane">
-#					<div class="pane_content">
-#						<img src="res/images/cuffie.png" alt="Cuffie piscina"/>
-#						<h3>VASTA GAMMA DI CUFFIE POLYESTER</h3>
-#					</div>
-#				</div>				
-#				<div class="pane">
-#					<div class="pane_content">
-#						<img src="res/images/volley_ball.png" alt="Palla da pallavolo"/>
-#						<h3>SCOPRI IL PALLONE VOLLEY "COMPETITION" IN PELLE SINTETICA MORBIDA</h3>
-#					</div>
-#				</div>
-#EOF
 print <<EOF;
                 </div>
 			</div>	
