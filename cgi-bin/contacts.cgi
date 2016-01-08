@@ -41,6 +41,7 @@ print <<EOF;
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css' />
 		<link rel="icon" type="image/png" href="../res/images/icon.png" />
+   		<script type="text/javascript" src="../js/contacts.js"></script>
 	</head>
 	<body>
 		<div id="header">
@@ -77,7 +78,7 @@ print <<EOF;
 				<form id="contacts_form" action="../cgi-bin/contacts.cgi" method="post">
 					<div class="form_email_element">
 						<label for="form_email_name">Nome &#47; Societ&agrave;</label>
-						<input type="text" name="name" id="form_email_name"
+						<input type="text" placeholder="Nome &#47; Societ&agrave; richiedente" name="name" id="form_email_name"
 EOF
 if ($FORM{'name'}) {
 	print "value=\"".$FORM{'name'}."\"";
@@ -88,7 +89,7 @@ print <<EOF;
 					</div>
 					<div class="form_email_element">
 						<label for="form_email_mail"><span lang="en">Email</span></label>
-						<input type="text" name="mail" id="form_email_mail"
+						<input type="text" placeholder="Email richiedente" name="mail" id="form_email_mail"
 EOF
 if ($FORM{'mail'}) {
 	print "value=\"".$FORM{'mail'}."\"";
@@ -99,14 +100,14 @@ print <<EOF;
 					</div>
 					<div class="form_email_element">
 						<label for="form_email_mex">Messaggio</label>
-						<textarea name="mex" id="form_email_mex" rows="5" cols="5">
+						<textarea placeholder="Messaggio richiedente" name="mex" id="form_email_mex" rows="5" cols="5">
 EOF
 print $FORM{'mex'}."</textarea>";
 print <<EOF;
 						<h5 class="mail_form_error" id="error_mex">Inserisci un messaggio</h5>
 					</div>
 					<div class="form_email_element">
-						<input type="submit" value="Invia" id="form_email_submit" />
+						<input type="submit" value="Invia" id="form_email_submit" onClick="printA()"/>
 					</div>
 				</form>
 			</div>
