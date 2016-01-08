@@ -19,8 +19,8 @@
     <shortDescription>Pallone calcio da gara misura 5</shortDescription>
     <img>TRIDENT_5.png</img>
     <thumbnail>TRIDENT_5.png</thumbnail>
-    <backgroundImg/>
-    <inEvidence>false</inEvidence>
+    <backgroundImg>nuoto_wall.jpg</backgroundImg>
+    <inEvidence>true</inEvidence>
   </product>
   <product>
     <category>Calcio</category>
