@@ -35,7 +35,7 @@ sub destroySession() {
 my $session = getSession(); # Verifico che la sessione ci sia
 
 my $cgi = CGI->new();
-my $app = $cgi->param('appoggio');
+my $app = $cgi->param('logout');
 if ($app) { # LOGOUT - E' stato premuto il link per uscire
 	destroySession();
 } else {
@@ -62,8 +62,8 @@ if ($app) { # LOGOUT - E' stato premuto il link per uscire
 			<body>
 				<div id="header" class="fadeInDown">
 					<div id="navbar_admin">
-						<a id="admin_back_icon" href="../cgi-bin/admin.cgi?appoggio=1"><i class="material-icons md-24">&#xE88A;</i></a>
-						<p><a id="admin_back" href="../cgi-bin/admin.cgi?appoggio=1">Torna al sito</a></p>
+						<a id="admin_back_icon" href="../cgi-bin/admin.cgi?logout=1"><i class="material-icons md-24">&#xE88A;</i></a>
+						<p><a id="admin_back" href="../cgi-bin/admin.cgi?logout=1">Torna al sito</a></p>
 						<p>Area Amministrativa</p>
 					</div>
 				</div>
