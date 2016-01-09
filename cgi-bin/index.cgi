@@ -58,12 +58,14 @@ my $doc = $parser->parse_file("../xml/db.xml");
 
 foreach my $item ($doc->findnodes('/products/product')) {
     if ($item->findnodes('./inEvidence') eq "true") {
-        print " <div class=\"pane\" style=\"background-image: url('../res/images/".$item->findnodes('./backgroundImg')."')\">
-                    <div class=\"pane_content\">
-                        <img src=\"../res/images/products/thumbnails/".$item->findnodes('./thumbnail')."\" alt=\"".$item->findnodes('./shortDescription')."\"/>
-                        <p>".$item->findnodes('./shortDescription')."</p>
+        print " <a href=\"product_displayer.cgi?display_code=".$item->findnodes('./code')."&display_name=".$item->findnodes('./name')."&display_category=".$item->findnodes('./category')."\">
+                    <div class=\"pane\" style=\"background-image: url('../res/images/".$item->findnodes('./backgroundImg')."')\">
+                        <div class=\"pane_content\">
+                            <img src=\"../res/images/products/thumbnails/".$item->findnodes('./thumbnail')."\" alt=\"".$item->findnodes('./shortDescription')."\"/>
+                            <p>".$item->findnodes('./shortDescription')."</p>
+                        </div>
                     </div>
-                </div>";
+                </a>";
     }
 }
 print <<EOF;
