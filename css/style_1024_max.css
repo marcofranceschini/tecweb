@@ -164,13 +164,15 @@
 	}
 	
 	.pane_content img {
-		/*width: 34%; ???? USO PERCENTUALE, ALMENO VIENE DECENTEMENTE ANCHE RIDUCENDO LA DIMENSIONE DELLA PAGINA ???*/
 		width: 18em;
 	}
 	
-	.pane_content h3 {
-		padding: 1em;
+	.pane_content p {
+		padding: 2em;
 		color: white;
+        font-weight: bold;
+        font-size: 1.2em;
+        text-transform: uppercase;
 		background-color: rgba(0, 0, 0, 0.3);
 	}
 	
