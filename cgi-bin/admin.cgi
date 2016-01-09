@@ -1,7 +1,6 @@
 #!/usr/bin/perl
 #!C:/Perl64/bin/perl.exe
 
-
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
 use CGI qw(:standard Vars);
@@ -39,7 +38,7 @@ my $cgi = CGI->new();
 my $app = $cgi->param('appoggio');
 if ($app) { # LOGOUT - E' stato premuto il link per uscire
 	destroySession();
-}else{
+} else {
 	print "Content-Type: text/html\n\n";
 	print <<EOF;
 		<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">

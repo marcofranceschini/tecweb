@@ -1,7 +1,6 @@
 #!/usr/bin/perl
 #!C:/Perl64/bin/perl.exe
 
-
 use CGI;
 use Net::SMTP::TLS;
 use CGI qw(:standard Vars);
@@ -42,6 +41,7 @@ print <<EOF;
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css' />
 		<link rel="icon" type="image/png" href="../res/images/icon.png" />
+   		<script type="text/javascript" src="../js/contacts.js"></script>
 	</head>
 	<body>
 		<div id="header">
@@ -53,7 +53,8 @@ print <<EOF;
 				<a href="../index.html"><img id="logo" src="../res/images/logo_bianco.png" alt="Logo Ju Rapida" /></a>
 				<ul id="menu"> 
 					<li><a href="../index.html"><span xml:lang="en">Home</span></a></li>
-					<li><a href="../pages/products.html">Prodotti</a></li> <!--Comprese le offerte-->
+					<li><a href="../pages/products.html">Prodotti</a></li>
+                    <li><a href="../Catalogo.pdf" target="_blank">Catalogo</a></li>
 					<li><span id="current">Contatti</span></li>
 					<li><a href="../pages/about.html">Chi siamo</a></li>
 				</ul>
@@ -72,99 +73,74 @@ print <<EOF;
 					<li>Email: <span class="contact"><i class="material-icons md-24">&#xE0BE;</i>jurapida\@gmail.com</span></li>
 				</ul>
 			</div>
-			<div id="form_email">
+EOF
+if (%FORM && $name =~ /[a-zA-Z0-9]/ && $from =~ /[a-zA-Z0-9]/ && index($from, '@') != -1 && $body =~ /[a-zA-Z0-9]/) {
+    my $smtp = new Net::SMTP::TLS(
+        'smtp.gmail.com',
+		Port    =>  587,
+		User    => 	'request.jurapida',
+        Password=> 	'bellabella.12') or die "die";
+		
+    $smtp->mail();
+	$smtp->to('request.jurapida@gmail.com');
+	$smtp->data();
+	$smtp->datasend("From: ".$from."\n");
+	$smtp->datasend("To: request.jurapida\@gmail.com\n");
+	$smtp->datasend("Reply-To: ".$from."\n");
+	$smtp->datasend("Subject: Richiesta da ".$from."\n\n");
+	$smtp->datasend($body."\n");
+	$smtp->dataend;
+	$smtp->quit;
+		
+	print " </div>
+            <p id=\"mail_sent\">Grazie! La ricontatteremo al pi&ugrave; presto!</p>";	
+} else {
+    print <<EOF;
+		    <div id="form_email">
 				<p>Oppure contattaci ora via <span lang="en">Email</span></p>
 				<form id="contacts_form" action="../cgi-bin/contacts.cgi" method="post">
 					<div class="form_email_element">
 						<label for="form_email_name">Nome &#47; Societ&agrave;</label>
-						<input type="text" name="name" id="form_email_name"
+						<input type="text" placeholder="Nome &#47; Societ&agrave; richiedente" name="name" id="form_email_name" onblur="checkName()"
 EOF
-if ($FORM{'name'}) {
-	print "value=\"".$FORM{'name'}."\"";
-} 
-print "/>";
+print "value=\"".$name."\"/>";
+if (%FORM && !($name =~ /[a-zA-Z0-9]/)) {
+    print "<h5 class=\"mail_form_error\">Inserisci Nome &#47; Societ&agrave;</h5>";
+}
 print <<EOF;
-						<h5 class="mail_form_error" id="error_name">Inserire Nome &#47; Societ&agrave;</h5>
 					</div>
 					<div class="form_email_element">
 						<label for="form_email_mail"><span lang="en">Email</span></label>
-						<input type="text" name="mail" id="form_email_mail"
+						<input type="text" placeholder="Email richiedente" name="mail" id="form_email_mail" onblur="checkEmail()"
 EOF
-if ($FORM{'mail'}) {
-	print "value=\"".$FORM{'mail'}."\"";
+print "value=\"".$from."\"/>";
+if (%FORM && !($from =~ /[a-zA-Z0-9]/)) {
+    print "<h5 class=\"mail_form_error\">Inserisci la tua email</h5>";
+} else {
+    if (%FORM && $from =~ /[a-zA-Z0-9]/ && index($from, '@') == -1) {
+        print "<h5 class=\"mail_form_error\">Email inserita non valida</h5>";
+    }
 }
-print "/>";
 print <<EOF;
-						<h5 class="mail_form_error" id="error_mail">Inserisci la tua email</h5>
 					</div>
 					<div class="form_email_element">
 						<label for="form_email_mex">Messaggio</label>
-						<textarea name="mex" id="form_email_mex" rows="5" cols="5">
+						<textarea placeholder="Messaggio richiedente" name="mex" id="form_email_mex" rows="5" cols="5" onblur="checkMex()">
 EOF
-print $FORM{'mex'}."</textarea>";
+print $body."</textarea>";
+if (%FORM && !($body =~ /[a-zA-Z0-9]/)) {
+    print "<h5 class=\"mail_form_error\">Inserisci un messaggio</h5>";
+}
 print <<EOF;
-						<h5 class="mail_form_error" id="error_mex">Inserisci un messaggio</h5>
 					</div>
 					<div class="form_email_element">
-						<input type="submit" value="Invia" id="form_email_submit" />
+						<input type="submit" value="Invia" id="form_email_submit"/>
 					</div>
 				</form>
 			</div>
 		</div>
 		
 EOF
-if (%FORM) {
-	if ($name ne '' && $from ne '' && index($from, '@') != -1 && $body ne '') {
-		my $smtp = new Net::SMTP::TLS(
-        	'smtp.gmail.com',
-			Port    =>  587,
-			User    => 	'request.jurapida',
-			Password=> 	'bellabella.12') or die "die";
-		
-		$smtp->mail();
-		$smtp->to('request.jurapida@gmail.com');
-		$smtp->data();
-		$smtp->datasend("From: ".$from."\n");
-		$smtp->datasend("To: request.jurapida\@gmail.com\n");
-		$smtp->datasend("Reply-To: ".$from."\n");
-		$smtp->datasend("Subject: Richiesta da ".$from."\n\n");
-		$smtp->datasend($body."\n");
-		$smtp->dataend;
-		$smtp->quit;
-		
-		print <<EOF;
-		<script type="text/javascript">
-			document.getElementById('form_email').style.display = "none";
-			location.hash = "#mail_sent";
-		</script>
-		<p id="mail_sent">Grazie! La ricontatteremo al pi&ugrave; presto!</p>		
-EOF
-	} else {
-		if ($name eq '') {
-			print "	<script type=\"text/javascript\">
-						document.getElementById(\"error_name\").style.display = \"block\";
-						location.hash = \"#contacts_form\";
-					</script>";
-		} 
-		if ($from eq '') {
-			print "	<script type=\"text/javascript\">
-						document.getElementById(\"error_mail\").style.display = \"block\";
-						location.hash = \"#contacts_form\";
-					</script>";
-		} elsif (index($from, '@') == -1) {
-			print "	<script type=\"text/javascript\">
-						document.getElementById(\"error_mail\").style.display = \"block\";
-						document.getElementById(\"error_mail\").innerHTML = \"Email inserita non valida\";
-						location.hash = \"#contacts_form\";
-					</script>";
-		}
-		if ($body eq '') {
-			print "	<script type=\"text/javascript\">
-						document.getElementById(\"error_mex\").style.display = \"block\";
-						location.hash = \"#contacts_form\";
-					</script>";
-		}
-	}	
 }
 print <<EOF;
 		<div id="footer">
@@ -173,6 +149,7 @@ print <<EOF;
 					<ul id="maps_menu">
 						<li><a href="../index.html"><span xml:lang="en">Home</span></a></li>
 						<li><a href="../pages/products.html">Prodotti</a></li>
+                        <li><a href="../Catalogo.pdf" target="_blank">Catalogo</a></li>
 						<li><a href="contacts.cgi">Contatti</a></li>
 						<li><a href="../pages/about.html">Chi siamo</a></li>
 					</ul>

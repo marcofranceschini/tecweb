@@ -137,7 +137,7 @@
 	#logo {
 		float: left;
 		padding-top: 1em;
-		
+		max-width: 30%;
 	}
 	
 	#navbar {
@@ -190,7 +190,7 @@
 	#menu {		/*NEW -------------------------------------*/
 		height: 2em;
 		text-transform: uppercase;
-		margin-left: 25em;
+		margin-left: 35%;
 		padding-top: 2em;
 		padding-bottom: 2em;
 		letter-spacing: 0.2em;
@@ -198,7 +198,7 @@
 	
 	#menu li {	/*NEW -------------------------------------*/
 		display: inline-block;
-		margin-left: 5%;
+		margin-left: 2%;
 		margin-bottom: 2%;
 		list-style: none;
 	}
@@ -224,7 +224,7 @@
 	
 	#breadcrumb {	
 		clear: both;
-		padding-left: 12%;
+		padding-left: 6%;
 		padding-top: 0.7em;
 		padding-bottom: 0.7em;
 		font-weight: bold;
@@ -242,22 +242,9 @@
     }
 	
 	/*NEW*/
-	#pane_1 {
+	.pane {
 		position: relative;
 		height: 30em;
-		background-image: url("../res/images/running_wall.jpg");
-	}
-	
-	#pane_2 {
-		position: relative;
-		height: 30em;
-		background-image: url("../res/images/nuoto_wall.jpg");
-	}
-	
-	#pane_3 {
-		position: relative;
-		height: 30em;
-		background-image: url("../res/images/volley_wall.jpg");
 	}
 	
 	.pane_content {
@@ -271,9 +258,12 @@
 		width: 20em;
 	}
 	
-	.pane_content h3 {
+	.pane_content p {
 		padding: 2em;
 		color: white;
+        font-weight: bold;
+        font-size: 1.2em;
+        text-transform: uppercase;
 		background-color: rgba(0, 0, 0, 0.3);
 	}
 	
@@ -538,7 +528,7 @@
     }
     
     #category_navigator {
-        width: 15em;
+        width: 100%;
         margin: auto;
         margin-top: 3em;
         height: 22em;
@@ -555,8 +545,8 @@
     
     #category_navigator .navigator_list {
         list-style-type: none;
-        width: 10em;
-        margin-left: 3.5em;
+        width: 100%;
+        padding-left: 25%;
         font-size: 1.2em;
     }
     
@@ -596,7 +586,8 @@
     #products_displayer_frame {
         padding-top: 2em;
         padding-left: 3em;
-        padding-bottom: 2em;
+        padding-bottom: 2em;        
+        text-align: center;
     }
     
     #products_displayer .product_card {
@@ -609,8 +600,9 @@
         box-shadow: gray 1px 1px 3px;
     }
     
-    #products_displayer .product_card:hover {
+    #products_displayer .product_image:hover {
         box-shadow: #d00 1px 1px 3px, gray -1px -1px 3px, gray 1px -1px 3px, #d00 -1px 1px 3px;
+        
     }
     
     #products_displayer .product_image {    /* image container */
@@ -620,13 +612,11 @@
         height: 10em;
     }
     
-    
     #products_displayer .product_image img {
         display: block;
         width: 8em;
         min-width: 8em;
-        margin: auto;
-        padding-top: 1em;
+        padding: 1em;
     }
     
     #products_displayer .product_card span {
@@ -686,6 +676,7 @@
     #product_card_displayer .product_card {
         display: block;
         width: 65em;
+        max-width: 98%;
         margin: auto;
         margin-bottom: 4em;
         background: #ddd;
@@ -703,6 +694,7 @@
         margin-left: 1em;
         margin-right: 2em;
         margin-bottom: 1em;
+        box-shadow: #d00 1px 1px 3px, gray -1px -1px 3px, gray 1px -1px 3px, #d00 -1px 1px 3px;
     }
     
     
@@ -875,7 +867,7 @@
 		border-radius: 3px;
 		text-shadow: 1px 1px 1px #9E3F3F;
 		cursor: pointer;
-		 color: #FFF;
+		color: #FFF;
 	}
 	
 	#form_email_submit:hover {	/* NEW --------------------------------------*/
@@ -884,7 +876,6 @@
 	
 	.mail_form_error {
 		color: red;
-		display: none;
 	}
 	
 	#mail_sent {

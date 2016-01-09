@@ -1,13 +1,11 @@
 #!/usr/bin/perl
 #!C:/Perl64/bin/perl.exe
-
-
-# ATTENZIONE! IN BASE AL TUO O.S. CAMBIA LE RIGHE QUI SOPRA
  
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
 use CGI qw(:standard Vars);
 use CGI::Session;
+use XML::LibXML;
 use warnings;
 	
 $username = "";	# Per il messaggio con user vuoto
@@ -18,14 +16,21 @@ my %data = Vars();
 $username = $data{"username"};
 $password = $data{"password"};
 $page = $data{"page"};
- 
-if ($username eq "admin" && $password eq "admin") {	# Login corretto
+
+# Leggo dati login da db
+my $parser = XML::LibXML->new();
+my $doc = $parser->parse_file("../xml/admin_db.xml");
+
+my @admins = $doc->findnodes('/administrators/user');
+my $admin = $admins[0]; # In questo progetto esiste un solo amministratore
+
+if ($username eq $admin->findnodes('./username')->to_literal && $password eq $admin->findnodes('./password')->to_literal) {	# Login corretto
 	
 	my $sessione = createSession();
 	print $sessione->header(-location=>"admin.cgi");
 
- } else {	# Login errato
-	print "Content-Type: text/html\n\n";
+} else {	# Login errato
+    print "Content-Type: text/html\n\n";
 	# Da usare in lab
 	#<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
 	#<link href="../tecwebproject/css/style_768.css" rel="stylesheet" type="text/css" />
@@ -62,7 +67,6 @@ if ($username eq "admin" && $password eq "admin") {	# Login corretto
 			<div id="content_error">
 				<img src="../res/images/error.png" alt="Immagine di errore" />
 EOF
-
 	if (!%data) {
 		print "<h3>Riprova ad eseguire il login!</h3>";
 		$page = "../index.html";
