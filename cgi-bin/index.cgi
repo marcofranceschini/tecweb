@@ -60,7 +60,7 @@ foreach my $item ($doc->findnodes('/products/product')) {
     if ($item->findnodes('./inEvidence') eq "true") {
         print " <div class=\"pane\" style=\"background-image: url('../res/images/".$item->findnodes('./backgroundImg')."')\">
                     <div class=\"pane_content\">
-                        <img src=\"../res/images/products/".$item->findnodes('./img')."\" alt=\"".$item->findnodes('./shortDescription')."\"/>
+                        <img src=\"../res/images/products/thumbnails/".$item->findnodes('./thumbnail')."\" alt=\"".$item->findnodes('./shortDescription')."\"/>
                         <p>".$item->findnodes('./shortDescription')."</p>
                     </div>
                 </div>";
