@@ -198,7 +198,7 @@
 	
 	#menu li {	/*NEW -------------------------------------*/
 		display: inline-block;
-		margin-left: 2%;
+		margin-left: 5%;
 		margin-bottom: 2%;
 		list-style: none;
 	}
