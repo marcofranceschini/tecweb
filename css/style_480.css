@@ -424,11 +424,6 @@
         box-shadow: gray 1px 1px 3px;
     }
     
-    #products_displayer .product_image:hover {
-        box-shadow: #d00 1px 1px 3px, gray -1px -1px 3px, gray 1px -1px 3px, #d00 -1px 1px 3px;
-        
-    }
-    
     #products_displayer .product_image {    /* image container */
         background: white;
         border-radius: 10em;
@@ -512,8 +507,8 @@
         display: inline-block;
         background: white;
         border-radius: 100%;
-        width: 25em;
-        height: 25em;
+        width: 85%;
+        /*height: 10%;*/
         margin-top: 1em;
         margin-left: 1.5em;
         margin-right: 1.5em;
@@ -523,11 +518,11 @@
     
     
     #product_card_displayer .product_image img {
-        display: block;
-        width: 22em;
-        min-width: 22em;
+        display: block;        
+        width: 85%;
         margin: auto;
-        padding-top: 1.5em;
+        padding-top: 7%;
+        padding-bottom: 7%;
     }
     
     #product_card_displayer .product_data{

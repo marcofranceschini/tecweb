@@ -600,11 +600,6 @@
         box-shadow: gray 1px 1px 3px;
     }
     
-    #products_displayer .product_image:hover {
-        box-shadow: #d00 1px 1px 3px, gray -1px -1px 3px, gray 1px -1px 3px, #d00 -1px 1px 3px;
-        
-    }
-    
     #products_displayer .product_image {    /* image container */
         background: white;
         border-radius: 10em;
