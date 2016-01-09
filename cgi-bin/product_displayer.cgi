@@ -108,15 +108,15 @@ print <<EOF;
 						<li><a href="about.html">Chi siamo</a></li>
 					</ul>
 					<ul id="maps_categories">
-						<li><a href="../cgi-bin/products.cgi?category=Calcio">Calcio</a></li>
-						<li><a href="../cgi-bin/products.cgi?category=Basket"><span xml:lang="en">Basket</span></a></li>
-						<li><a href="../cgi-bin/products.cgi?category=Volley"><span xml:lang="en">Volley</span></a></li>
-						<li><a href="../cgi-bin/products.cgi?category=Tennistavolo">Tennistavolo</a></li>
-						<li><a href="../cgi-bin/products.cgi?category=Nuoto">Nuoto</a></li>
-						<li><a href="../cgi-bin/products.cgi?category=Minigolf">Minigolf</a></li>
-						<li><a href="../cgi-bin/products.cgi?category=Calciobalilla">Calciobalilla</a></li>
-						<li><a href="../cgi-bin/products.cgi?category=Protezioni">Protezioni</a></li>
-						<li><a href="../cgi-bin/products.cgi?category=Accessori">Accessori</a></li>
+						<li><a href="products.cgi?category=Calcio">Calcio</a></li>
+						<li><a href="products.cgi?category=Basket"><span xml:lang="en">Basket</span></a></li>
+						<li><a href="products.cgi?category=Volley"><span xml:lang="en">Volley</span></a></li>
+						<li><a href="products.cgi?category=Tennistavolo">Tennistavolo</a></li>
+						<li><a href="products.cgi?category=Nuoto">Nuoto</a></li>
+						<li><a href="products.cgi?category=Minigolf">Minigolf</a></li>
+						<li><a href="products.cgi?category=Calciobalilla">Calciobalilla</a></li>
+						<li><a href="products.cgi?category=Protezioni">Protezioni</a></li>
+						<li><a href="products.cgi?category=Accessori">Accessori</a></li>
 					</ul>
 				</div>
 				<div id="admin_form_panel">

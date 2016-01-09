@@ -86,15 +86,15 @@ print <<EOF;
 						<li><a href="../pages/about.html">Chi siamo</a></li>
 					</ul>
 					<ul id="maps_categories">
-						<li><a href="">Calcio</a></li>
-						<li><a href=""><span xml:lang="en">Basket</span></a></li>
-						<li><a href=""><span xml:lang="en">Volley</span></a></li>
-						<li><a href="">Tennistavolo</a></li>
-						<li><a href="">Nuoto</a></li>
-						<li><a href="">Minigolf</a></li>
-						<li><a href="">Calciobalilla</a></li>
-						<li><a href="">Protezioni</a></li>
-						<li><a href="">Accessori</a></li>
+						<li><a href="products.cgi?category=Calcio">Calcio</a></li>
+						<li><a href="products.cgi?category=Basket"><span xml:lang="en">Basket</span></a></li>
+						<li><a href="products.cgi?category=Volley"><span xml:lang="en">Volley</span></a></li>
+						<li><a href="products.cgi?category=Tennistavolo">Tennistavolo</a></li>
+						<li><a href="products.cgi?category=Nuoto">Nuoto</a></li>
+						<li><a href="products.cgi?category=Minigolf">Minigolf</a></li>
+						<li><a href="products.cgi?category=Calciobalilla">Calciobalilla</a></li>
+						<li><a href="products.cgi?category=Protezioni">Protezioni</a></li>
+						<li><a href="products.cgi?category=Accessori">Accessori</a></li>
 					</ul>
 				</div>
 				<div id="admin_form_panel">
