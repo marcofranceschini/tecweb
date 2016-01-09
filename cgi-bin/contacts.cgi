@@ -54,7 +54,6 @@ print <<EOF;
 				<ul id="menu"> 
 					<li><a href="../index.html"><span xml:lang="en">Home</span></a></li>
 					<li><a href="../pages/products.html">Prodotti</a></li>
-                    <li><a href="../Catalogo.pdf" target="_blank">Catalogo</a></li>
 					<li><span id="current">Contatti</span></li>
 					<li><a href="../pages/about.html">Chi siamo</a></li>
 				</ul>
@@ -149,7 +148,6 @@ print <<EOF;
 					<ul id="maps_menu">
 						<li><a href="../index.html"><span xml:lang="en">Home</span></a></li>
 						<li><a href="../pages/products.html">Prodotti</a></li>
-                        <li><a href="../Catalogo.pdf" target="_blank">Catalogo</a></li>
 						<li><a href="contacts.cgi">Contatti</a></li>
 						<li><a href="../pages/about.html">Chi siamo</a></li>
 					</ul>
@@ -170,10 +168,10 @@ print <<EOF;
 						<fieldset>
 							<legend><i class="material-icons md-18">&#xE853;</i>Area Riservata</legend>
 							<label class="form_item" for="username">Username</label>
-							<input class="form_item" id="username" type="text" name="username"/>
+							<input class="form_item" id="username" type="text" name="username" placeholder="Inserire username"/>
 							<label class="form_item" for="password">Password</label>
-							<input class="form_item" id="password" type="password" name="password"/>
-							<input type="hidden" name="page" value="../pages/contacts.html" />
+							<input class="form_item" id="password" type="password" name="password" placeholder="Inserire password"/>
+							<input type="hidden" name="page" value="../index.html" />
 							<input id="submit" type="submit" value="Login" />
 						</fieldset>
 					</form>

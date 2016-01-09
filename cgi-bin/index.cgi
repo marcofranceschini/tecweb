@@ -41,7 +41,6 @@ print <<EOF;
 				<ul id="menu"> 
 					<li><span id="current" xml:lang="en">Home</span></li>
 					<li><a href="../pages/products.html">Prodotti</a></li>
-                    <li><a href="../Catalogo.pdf" target="_blank">Catalogo</a></li>
 					<li><a href="contacts.cgi">Contatti</a></li>
 					<li id="menu_last"><a href="../pages/about.html">Chi siamo</a></li>
 				</ul>
@@ -61,7 +60,7 @@ foreach my $item ($doc->findnodes('/products/product')) {
     if ($item->findnodes('./inEvidence') eq "true") {
         print " <div class=\"pane\" style=\"background-image: url('../res/images/".$item->findnodes('./backgroundImg')."')\">
                     <div class=\"pane_content\">
-                        <img src=\"../res/images/products/".$item->findnodes('./img')."\" alt=\"".$item->findnodes('./shortDescription')."\"/>
+                        <img src=\"../res/images/products/thumbnails/".$item->findnodes('./thumbnail')."\" alt=\"".$item->findnodes('./shortDescription')."\"/>
                         <p>".$item->findnodes('./shortDescription')."</p>
                     </div>
                 </div>";
@@ -83,7 +82,6 @@ print <<EOF;
 					<ul id="maps_menu">
 						<li><a href="index.cgi"><span xml:lang="en">Home</span></a></li>
 						<li><a href="../pages/products.html">Prodotti</a></li>
-                        <li><a href="../Catalogo.pdf" target="_blank">Catalogo</a></li>
 						<li><a href="contacts.cgi">Contatti</a></li>
 						<li><a href="../pages/about.html">Chi siamo</a></li>
 					</ul>
@@ -105,9 +103,9 @@ print <<EOF;
 						<fieldset>
 							<legend><i class="material-icons md-18">&#xE853;</i>Area Riservata</legend>
 							<label class="form_item" for="username">Username</label>
-							<input class="form_item" id="username" type="text" name="username"/>
+							<input class="form_item" id="username" type="text" name="username" placeholder="Inserire username"/>
 							<label class="form_item" for="password">Password</label>
-							<input class="form_item" id="password" type="password" name="password"/>
+							<input class="form_item" id="password" type="password" name="password" placeholder="Inserire password"/>
 							<input type="hidden" name="page" value="../index.html" />
 							<input id="submit" type="submit" value="Login" />
 						</fieldset>

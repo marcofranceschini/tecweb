@@ -198,7 +198,7 @@
 	
 	#menu li {	/*NEW -------------------------------------*/
 		display: inline-block;
-		margin-left: 2%;
+		margin-left: 5%;
 		margin-bottom: 2%;
 		list-style: none;
 	}
@@ -598,11 +598,6 @@
         background: #ddd;
         border-radius: 0.4em;
         box-shadow: gray 1px 1px 3px;
-    }
-    
-    #products_displayer .product_image:hover {
-        box-shadow: #d00 1px 1px 3px, gray -1px -1px 3px, gray 1px -1px 3px, #d00 -1px 1px 3px;
-        
     }
     
     #products_displayer .product_image {    /* image container */

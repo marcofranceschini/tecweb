@@ -156,9 +156,12 @@
 		width: 20em;
 	}
 	
-	.pane_content h3 {
+	.pane_content p {
 		padding: 2em;
 		color: white;
+        font-weight: bold;
+        font-size: 1.2em;
+        text-transform: uppercase;
 		background-color: rgba(0, 0, 0, 0.3);
 	}
 	
@@ -471,11 +474,6 @@
         background: #ddd;
         border-radius: 0.4em;
         box-shadow: gray 1px 1px 3px;
-    }
-    
-    #products_displayer .product_image:hover {
-        box-shadow: #d00 1px 1px 3px, gray -1px -1px 3px, gray 1px -1px 3px, #d00 -1px 1px 3px;
-        
     }
     
     #products_displayer .product_image {    /* image container */
