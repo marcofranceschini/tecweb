@@ -1,7 +1,6 @@
 #!/usr/bin/perl
 #!C:/Perl64/bin/perl.exe
 
-
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
 use CGI qw(:standard Vars);
@@ -294,36 +293,115 @@ EOF
 						<span>Codice</span><span id="product_name_label">Nome</span><span>Categoria</span>
 					</div>
 EOF
-        for(my $i=0; $i < scalar @prodotti; $i++) {
-            my $codice = $prodotti[$i]->findnodes("code/text()");
-            my $nome = $prodotti[$i]->findnodes("name/text()");
-            my $categoria = $prodotti[$i]->findnodes("category/text()");
-            my $evidenza = $prodotti[$i]->findnodes("inEvidence/text()");
-            print "					<div class=\"product_card\">\n";
-            print "						<span class=\"product_code\">".$codice."</span>\n";
-            print "						<span class=\"product_name\">".$nome."</span>\n";
-            print "						<span class=\"product_category\">".$categoria."</span>\n";
-			print "						<div class=\"product_buttons\">\n";
-            print "							<form name=\"form_wallpaper\" id=\"form_modify\" class=\"form_modify\" action=\"admin_news.cgi#openWallpaper\" method=\"post\" enctype=\"multipart/form-data\">\n";
-            print "								<input type=\"hidden\" name=\"wallpaper_display_category\" value=\"".$display_category."\" />\n";
-            print "								<input type=\"hidden\" name=\"wallpaper_code\" value=\"".$codice."\" />\n";
-            print "							    <input class=\"button\" type=\"submit\" name=\"modify_wallpaper\" value=\"Sfondo\" />\n";
-            print "							</form>\n";
-            print "							<form name=\"form_evidence\" id=\"form_remove\" class=\"form_remove\" action=\"admin_news.cgi\" method=\"post\" enctype=\"multipart/form-data\">\n";
-            print "								<input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
-            print "								<input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
-            if($evidenza eq "false") {
-                print "							<input class=\"button\" type=\"submit\" name=\"evidence\" value=\"Evidenzia\" />\n";
-            }else{
-                print "							<input class=\"button\" type=\"submit\" name=\"hide_evidence\" value=\"Nascondi\" />\n";
+        for(my $i=0; $i < scalar @prodotti; $i++) { # Per i prodotti che sono in evidenza
+            my $evidenza = $prodotti[$i]->findnodes("./inEvidence");
+            #print $evidenza;
+            if($evidenza eq "true") {
+
+            	my $codice = $prodotti[$i]->findnodes("code/text()");
+            	my $nome = $prodotti[$i]->findnodes("name/text()");
+            	my $categoria = $prodotti[$i]->findnodes("category/text()");
+		print "					<div class=\"product_card\">\n";
+		print "						<span class=\"product_code\">".$codice."</span>\n";
+		print "						<span class=\"product_name\">".$nome."</span>\n";
+		print "						<span class=\"product_category\">".$categoria."</span>\n";
+				print "						<div class=\"product_buttons\">\n";
+		#print "							<form name=\"form_wallpaper\" class=\"form_modify\" action=\"admin_news.cgi#openWallpaper\" method=\"post\" enctype=\"multipart/form-data\">\n";
+		#print "								<input type=\"hidden\" name=\"wallpaper_display_category\" value=\"".$display_category."\" />\n";
+		#print "								<input type=\"hidden\" name=\"wallpaper_code\" value=\"".$codice."\" />\n";
+		#print "							    <input class=\"button\" type=\"submit\" name=\"modify_wallpaper\" value=\"Sfondo\" />\n";
+		#print "							</form>\n";
+		print "							<form name=\"form_evidence\" id=\"form_remove\" class=\"form_remove\" action=\"admin_news.cgi\" method=\"post\" enctype=\"multipart/form-data\">\n";
+		    print "								<input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
+		print "								<input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
+		    #if($evidenza eq "false") {
+		     #   print "							<input class=\"button\" type=\"submit\" name=\"evidence\" value=\"Evidenzia\" />\n";
+		    #}else{
+		print "							<input class=\"button\" type=\"submit\" name=\"hide_evidence\" value=\"Rimuovi\" />\n";
+		    #}
+		print "							</form>\n";
+		print "						</div>\n";
+		print "					</div>\n";
             }
-            print "							</form>\n";
-            print "						</div>\n";
-            print "					</div>\n";
         }
         print "				</div>\n";
         print "			</div>\n";    # </content_admin>
+        print "<hr />";
     }
+    
+    print <<EOF;
+					<form name="dashboard_form_news" id="dashboard_form_news" action="admin_news.cgi" method="post" enctype="multipart/form-data">
+						<label class="form_item_news" for="display_category_news">Categoria:</label>
+						<select class="form_item_news" name="display_category_mews">
+EOF
+print "							<option value=\"Tutte\"";
+                            if($display_category eq "Tutte"){ print " selected ";}
+                            print ">Tutte</option>\n";
+print "							<option value=\"Calcio\"";
+                            if($display_category eq "Calcio"){ print " selected ";}
+                            print ">Calcio</option>\n";
+print "							<option value=\"Basket\"";
+                            if($display_category eq "Basket"){ print " selected ";}
+                            print "><span lang=\"en\">Basket</span></option>\n";
+print "							<option value=\"Volley\"";
+                            if($display_category eq "Volley"){ print " selected ";}
+                            print "><span lang=\"en\">Volley</span></option>\n";
+print "							<option value=\"Tennistavolo\"";
+                            if($display_category eq "Tennistavolo"){ print " selected ";}
+                            print">Tennistavolo</option>\n";
+print "							<option value=\"Nuoto\"";
+                            if($display_category eq "Nuoto"){ print " selected ";}
+                            print ">Nuoto</option>\n";
+print "							<option value=\"Minigolf\"";
+                            if($display_category eq "Minigolf"){ print " selected ";}
+                            print ">Minigolf</option>\n";
+print "							<option value=\"Calciobalilla\"";
+                            if($display_category eq "Calciobalilla"){ print " selected ";}
+                            print ">Calciobalilla</option>\n";
+print "							<option value=\"Protezioni\"";
+                            if($display_category eq "Protezioni" ){ print " selected ";}
+                            print ">Protezioni</option>\n";
+print "							<option value=\"Accessori\"";
+                            if($display_category eq "Accessori"){ print " selected ";}
+                            print ">Accessori</option>\n";
+                        print <<EOF;
+						</select>
+						<input id="submit_dashboard_news" type="submit" value="Aggiorna" />
+					</form>
+				</div>
+EOF
+        for(my $i=0; $i < scalar @prodotti; $i++) { # Per i prodotti che non sono in evidenza
+            my $evidenza = $prodotti[$i]->findnodes("./inEvidence");
+            #print $evidenza;
+            if($evidenza ne "true") {
+
+            	my $codice = $prodotti[$i]->findnodes("code/text()");
+            	my $nome = $prodotti[$i]->findnodes("name/text()");
+            	my $categoria = $prodotti[$i]->findnodes("category/text()");
+		print "					<div class=\"product_card_hide\">\n";
+		print "						<span class=\"product_code\">".$codice."</span>\n";
+		print "						<span class=\"product_name\">".$nome."</span>\n";
+		print "						<span class=\"product_category\">".$categoria."</span>\n";
+		print "						<div class=\"product_buttons\">\n";
+		print "							<form name=\"form_wallpaper\" class=\"form_modify\" action=\"admin_news.cgi#openWallpaper\" method=\"post\" enctype=\"multipart/form-data\">\n";
+		print "								<input type=\"hidden\" name=\"wallpaper_display_category\" value=\"".$display_category."\" />\n";
+		print "								<input type=\"hidden\" name=\"wallpaper_code\" value=\"".$codice."\" />\n";
+		print "							    <input class=\"button\" type=\"submit\" name=\"modify_wallpaper\" value=\"Aggiungi\" />\n";
+		print "							</form>\n";
+		#print "							<form name=\"form_evidence\" id=\"form_remove\" class=\"form_remove\" action=\"admin_news.cgi\" method=\"post\" enctype=\"multipart/form-data\">\n";
+		    #print "								<input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
+		#print "								<input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
+		    #if($evidenza eq "false") {
+		     #   print "							<input class=\"button\" type=\"submit\" name=\"evidence\" value=\"Evidenzia\" />\n";
+		    #}else{
+		#print "							<input class=\"button\" type=\"submit\" name=\"hide_evidence\" value=\"Rimuovi\" />\n";
+		    #}
+		#print "							</form>\n";
+		print "						</div>\n";
+		print "					</div>\n";
+            }
+        }
+    
     
 	print <<EOF;
 			<div id="openModal" class="modalDialog">

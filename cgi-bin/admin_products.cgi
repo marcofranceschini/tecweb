@@ -1,7 +1,6 @@
 #!/usr/bin/perl
 #!C:/Perl64/bin/perl.exe
 
-
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
 use CGI qw(:standard Vars);
