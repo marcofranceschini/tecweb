@@ -1,5 +1,6 @@
-#!/usr/bin/perl
 #!C:/Perl64/bin/perl.exe
+#!/usr/bin/perl
+
  
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
@@ -55,9 +56,10 @@ print <<EOF;
 EOF
 $parser = XML::LibXML->new();
 my $doc = $parser->parse_file("../xml/db.xml");
-
+my $home_vuota = "true";
 foreach my $item ($doc->findnodes('/products/product')) {
     if ($item->findnodes('./inEvidence') eq "true") {
+        $home_vuota = "false";
         print " <a href=\"product_displayer.cgi?display_code=".$item->findnodes('./code')."&display_name=".$item->findnodes('./name')."&display_category=".$item->findnodes('./category')."\">
                     <div class=\"pane\" style=\"background-image: url('../res/images/".$item->findnodes('./backgroundImg')."')\">
                         <div class=\"pane_content\">
@@ -68,6 +70,17 @@ foreach my $item ($doc->findnodes('/products/product')) {
                 </a>";
     }
 }
+if($home_vuota eq "true") {
+    print <<EOF;
+			<div id="home_placeholder">
+                <p id="welcome">Benvenuto in Ju Rapida</p>
+                <p>Qui puoi trovare subito i prodotti che stai cercando!</p>
+                <p>Inizia subito un tour</p>
+                <a href="../pages/products.html">Vai ai prodotti</a>
+            </div>
+EOF
+}
+
 print <<EOF;
                 </div>
 			</div>	
