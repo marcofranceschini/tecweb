@@ -950,12 +950,13 @@
 		color: white;*/
 	}
 	
-	hr {
+	hr {		/*-------------------------NEW--------------*/
 		width: 65em;
 		height: 0.2em;
 		margin-left: 10em;
 		background-color: darkred;
 		border: none;
+		margin-bottom: 1em;
 	}
 	
 	#submit_dashboard_news {		/*-------------------------NEW--------------*/
@@ -967,7 +968,8 @@
 		border-radius: 3px;
 		cursor: pointer;
 		color: black;
-        margin-left: 2em;      
+        margin-bottom: 2em;
+		margin-left: 2em;    
 	}
 	
 	#submit_dashboard_news:hover{		/*-------------------------NEW--------------*/
