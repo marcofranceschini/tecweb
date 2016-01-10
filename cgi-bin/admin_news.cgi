@@ -289,8 +289,8 @@ EOF
     }
     
     print <<EOF;
+                    <hr />
 					<form name="dashboard_form_news" id="dashboard_form_news" action="admin_news.cgi" method="post" enctype="multipart/form-data">
-						<hr />
                         <label class="form_item_news" for="display_category_news">Categoria:</label>
 						<select class="form_item_news" name="display_category_mews">
 EOF
