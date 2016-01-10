@@ -103,7 +103,7 @@ if (%FORM && $name =~ /[a-zA-Z0-9]/ && length($name) > 1 && $from =~ /[a-zA-Z0-9
 						<input type="text" name="name" id="form_email_name"
 EOF
 print "value=\"".$name."\"/>";
-if (%FORM && (!($name =~ /[a-zA-Z0-9]/) || length($body) < 2 || $name eq "Inserire Nome o Societ&agrave;")) {
+if (%FORM && (!($name =~ /[a-zA-Z0-9]/) || length($name) < 2 || $name eq "Inserire Nome o Societ&agrave;")) {
     print "<h5 class=\"mail_form_error\">Inserisci Nome &#47; Societ&agrave;</h5>";
 }
 print <<EOF;
@@ -113,7 +113,7 @@ print <<EOF;
 						<input type="text" name="mail" id="form_email_mail"
 EOF
 print "value=\"".$from."\"/>";
-if (%FORM && (!($from =~ /[a-zA-Z0-9]/) || length($body) < 4 || $from eq "Inserire propria Email")) {
+if (%FORM && (!($from =~ /[a-zA-Z0-9]/) || length($from) < 4 || $from eq "Inserire propria Email")) {
     print "<h5 class=\"mail_form_error\">Inserisci la tua email</h5>";
 } else {
     if (%FORM && $from =~ /[a-zA-Z0-9]/ && index($from, '@') == -1) {
