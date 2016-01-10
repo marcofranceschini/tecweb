@@ -287,12 +287,12 @@ EOF
         }
         print "				</div>\n";
         print "			</div>\n";    # </content_admin>
-        print "<hr />";
     }
     
     print <<EOF;
 					<form name="dashboard_form_news" id="dashboard_form_news" action="admin_news.cgi" method="post" enctype="multipart/form-data">
-						<label class="form_item_news" for="display_category_news">Categoria:</label>
+						<hr />
+                        <label class="form_item_news" for="display_category_news">Categoria:</label>
 						<select class="form_item_news" name="display_category_mews">
 EOF
 print "							<option value=\"Tutte\"";
