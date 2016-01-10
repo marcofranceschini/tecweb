@@ -1,6 +1,5 @@
-var regexp = /\w{2,}/;
-var nameHint = "Inserire Nome o Società";
-var nameError = "Inserisci Nome &#47; Societ&agrave;";
+var nameHint = "Inserire Nome o Societ\340";
+var nameError = "Inserisci Nome &#47; Societ\340";
 var mailHint = "Inserire propria Email";
 var mailError1 = "Inserisci la tua Email";
 var mailError2 = "Email inserita non valida";
@@ -22,8 +21,8 @@ function setMailHint() {
 }
 
 function setMexHint() {
-    if (document.getElementById("form_email_mex").innerHTML == "") {
-        document.getElementById("form_email_mex").innerHTML = mexHint;
+    if (document.getElementById("form_email_mex").value == "") {
+        document.getElementById("form_email_mex").value = mexHint;
         document.getElementById("form_email_mex").style.color = "grey";
     }
 }
@@ -47,14 +46,15 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }, true);
     document.getElementById("form_email_mex").addEventListener("focus", function() {
-        if (document.getElementById("form_email_mex").innerHTML == mexHint) {
-            document.getElementById("form_email_mex").innerHTML = "";
+        if (document.getElementById("form_email_mex").value == mexHint) {
+            document.getElementById("form_email_mex").value = "";
             document.getElementById("form_email_mex").style.color = "black";
         }
     }, true);
     
     //Inizializzo errori
     document.getElementById("form_email_name").addEventListener("blur", function() {
+        var regexp = /\w{2,}/;
         var tag = document.getElementById("form_email_name");
         var parent = tag.parentNode;
         if (parent.children.length == 2 && tag.value.search(regexp) == -1) {
@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }, true);
     
     document.getElementById("form_email_mail").addEventListener("blur", function() {
+        var regexp = /\w{4,}/;
         var tag = document.getElementById("form_email_mail");
         var parent = tag.parentNode;
         var error = document.createElement("h5");
@@ -89,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }, true);
     
     document.getElementById("form_email_mex").addEventListener("blur", function() {
-        
+        var regexp = /\w{4,}/;
         var tag = document.getElementById("form_email_mex");
         var parent = tag.parentNode;
         if (parent.children.length == 2 && tag.value.search(regexp) == -1) {
