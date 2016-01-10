@@ -1031,7 +1031,14 @@
         padding-right: 0.5em;
     }
 	
+	#form_add {
+		float: right;
+	}
 	
+	
+	#action_back_new {
+		margin-left: 2em;
+	}
     
     .admin_message {
         display: block;
@@ -1319,7 +1326,6 @@
 	
 	#action_bar {
 		height: 5em;
-        
         padding-top: 1em;
 	}	
 	

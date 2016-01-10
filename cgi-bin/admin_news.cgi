@@ -135,7 +135,7 @@ EOF
                     <div id="openWallpaper" class="modalDialog">
                         <div>
                             <a href="#close" title="Close" class="close">X</a>
-                            <p>Modifica dello sfondo</p>
+                            <p>Aggiungi uno sfondo</p>
                             <form name="form_modal_wallpaper" id="form_modal_modify" action="admin_news.cgi" method="post" enctype="multipart/form-data">
                                 <label class="form_item" for="product_category">Categoria</label>
 EOF
@@ -247,16 +247,15 @@ EOF
     if (!@prodotti) {
 	   	print printPlaceholder();
     } else {
-        #stampa le card dei prodotti
+        # Stampa le card dei prodotti
         print <<EOF;
 				<div id="products_container">
 					<div id="products_label">
 						<span>Codice</span><span id="product_name_label">Nome</span><span>Categoria</span>
 					</div>
 EOF
-        for(my $i=0; $i < scalar @prodotti; $i++) { # Per i prodotti che sono in evidenza
+        for(my $i=0; $i < scalar @prodotti; $i++) { # Stampo i prodotti che sono in evidenza
             my $evidenza = $prodotti[$i]->findnodes("./inEvidence");
-            #print $evidenza;
             if($evidenza eq "true") {
 
             	my $codice = $prodotti[$i]->findnodes("code/text()");
@@ -266,9 +265,9 @@ EOF
 		print "						<span class=\"product_code\">".$codice."</span>\n";
 		print "						<span class=\"product_name\">".$nome."</span>\n";
 		print "						<span class=\"product_category\">".$categoria."</span>\n";
-				print "				<div class=\"product_buttons\">\n";
+        print "				        <div class=\"product_buttons\">\n";
 		print "							<form name=\"form_evidence\" id=\"form_remove\" class=\"form_remove\" action=\"admin_news.cgi\" method=\"post\" enctype=\"multipart/form-data\">\n";
-		    print "								<input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
+		print "								<input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
 		print "								<input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
 		print "							    <input class=\"button\" type=\"submit\" name=\"hide_evidence\" value=\"Rimuovi\" />\n";
 		print "							</form>\n";
@@ -322,15 +321,14 @@ print "							<option value=\"Accessori\"";
 EOF
 
     my $cont=0;
-    for(my $i=0; $i < scalar @prodotti && $cont!=1; $i++) { # Per i prodotti che non sono in evidenza
+    for(my $i=0; $i < scalar @prodotti && $cont!=1; $i++) { # Verifico se ci sono prodotti che non sono in evidenza
         my $evidenza = $prodotti[$i]->findnodes("./inEvidence");
-        #print $evidenza;
         if($evidenza ne "true") {
             $cont=1;
         }
     }
     if($cont!=0) { # Ho almeno 1 prodotto non in evidenza
-        #stampa le card dei prodotti
+        # Stampa le card dei prodotti
         print <<EOF;
                 <div id="products_container">
                     <div id="products_label">
@@ -338,23 +336,21 @@ EOF
                     </div>
 EOF
     
-        for(my $i=0; $i < scalar @prodotti; $i++) { # Per i prodotti che non sono in evidenza
+        for(my $i=0; $i < scalar @prodotti; $i++) { # Stampo i prodotti che non sono in evidenza
             my $evidenza = $prodotti[$i]->findnodes("./inEvidence");
-            #print $evidenza;
             if($evidenza ne "true") {
-    
                 my $codice = $prodotti[$i]->findnodes("code/text()");
                 my $nome = $prodotti[$i]->findnodes("name/text()");
-                my $categoria = $prodotti[$i]->findnodes("category/text()");
+                my $categoria = $prodotti[$i]->findnodes("category/text()");        
                 print "					<div class=\"product_card\">\n";
                 print "						<span class=\"product_code\">".$codice."</span>\n";
                 print "						<span class=\"product_name\">".$nome."</span>\n";
                 print "						<span class=\"product_category\">".$categoria."</span>\n";
-                print "						<div class=\"product_buttons\">\n";
-                print "							<form name=\"form_wallpaper\" class=\"form_modify\" action=\"admin_news.cgi#openWallpaper\" method=\"post\" enctype=\"multipart/form-data\">\n";
-                print "								<input type=\"hidden\" name=\"wallpaper_display_category\" value=\"".$display_category."\" />\n";
-                print "								<input type=\"hidden\" name=\"wallpaper_code\" value=\"".$codice."\" />\n";
-                print "							    <input class=\"button\" type=\"submit\" name=\"modify_wallpaper\" value=\"Aggiungi\" />\n";
+                print "				        <div class=\"product_buttons\">\n";
+                print "							<form name=\"form_wallpaper\" id=\"form_add\" class=\"form_add\" action=\"admin_news.cgi#openWallpaper\" method=\"post\" enctype=\"multipart/form-data\">\n";
+                print "								<input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
+                print "								<input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
+                print "							    <input class=\"button\" type=\"submit\" name=\"add_wallpaper\" value=\"Aggiungi\" />\n";
                 print "							</form>\n";
                 print "						</div>\n";
                 print "					</div>\n";
@@ -397,7 +393,7 @@ EOF
             
 			<div id="action_bar">
 				<div id="action_box">
-					<a id="action_back" class="linked_box" href="admin.cgi">Indietro</a>
+					<a id="action_back_news" class="linked_box" href="admin.cgi">Indietro</a>
 				</div>
 			</div>
 					
