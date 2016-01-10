@@ -113,49 +113,10 @@ if ($logout) {
 					<p><a id="admin_back" href="../cgi-bin/admin.cgi?logout=1">Torna al sito</a></p>
 					<p>Gestione Novit&agrave;</p>
 				</div>
-				<div id="admin_dashboard">
 EOF
 #print "					<span id=\"products_number\">Sono presenti ".scalar @prodotti." prodotti</span>\n";
-print <<EOF;
-					<form name="dashboard_form" id="dashboard_form" action="admin_news.cgi" method="post" enctype="multipart/form-data">
-						<label class="form_item" for="display_category">Categoria:</label>
-						<select class="form_item" name="display_category">
-EOF
-print "							<option value=\"Tutte\"";
-                            if($display_category eq "Tutte"){ print " selected ";}
-                            print ">Tutte</option>\n";
-print "							<option value=\"Calcio\"";
-                            if($display_category eq "Calcio"){ print " selected ";}
-                            print ">Calcio</option>\n";
-print "							<option value=\"Basket\"";
-                            if($display_category eq "Basket"){ print " selected ";}
-                            print "><span lang=\"en\">Basket</span></option>\n";
-print "							<option value=\"Volley\"";
-                            if($display_category eq "Volley"){ print " selected ";}
-                            print "><span lang=\"en\">Volley</span></option>\n";
-print "							<option value=\"Tennistavolo\"";
-                            if($display_category eq "Tennistavolo"){ print " selected ";}
-                            print">Tennistavolo</option>\n";
-print "							<option value=\"Nuoto\"";
-                            if($display_category eq "Nuoto"){ print " selected ";}
-                            print ">Nuoto</option>\n";
-print "							<option value=\"Minigolf\"";
-                            if($display_category eq "Minigolf"){ print " selected ";}
-                            print ">Minigolf</option>\n";
-print "							<option value=\"Calciobalilla\"";
-                            if($display_category eq "Calciobalilla"){ print " selected ";}
-                            print ">Calciobalilla</option>\n";
-print "							<option value=\"Protezioni\"";
-                            if($display_category eq "Protezioni" ){ print " selected ";}
-                            print ">Protezioni</option>\n";
-print "							<option value=\"Accessori\"";
-                            if($display_category eq "Accessori"){ print " selected ";}
-                            print ">Accessori</option>\n";
-                        print <<EOF;
-						</select>
-						<input id="submit_dashboard" type="submit" value="Aggiorna" />
-					</form>
-				</div>
+
+     print <<EOF;
 			</div>
 			<div id="content_admin">	
 EOF
@@ -368,8 +329,8 @@ print "							<option value=\"Accessori\"";
 						</select>
 						<input id="submit_dashboard_news" type="submit" value="Aggiorna" />
 					</form>
-				</div>
 EOF
+
         for(my $i=0; $i < scalar @prodotti; $i++) { # Per i prodotti che non sono in evidenza
             my $evidenza = $prodotti[$i]->findnodes("./inEvidence");
             #print $evidenza;
