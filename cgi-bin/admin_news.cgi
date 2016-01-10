@@ -238,11 +238,11 @@ EOF
         close(OUT);
 	}
 	# Lettura da file XML
-    my $query = "/products/product [category=\"".$display_category."\"]";
-    if($display_category eq "Tutte") {
-        $query = "/products/product";
-    }
+    my $queryLimitata = "/products/product [category=\"".$display_category."\"]"; # Query per i prodotti selezionati
+    my @prodottiLimitati = $doc->findnodes($queryLimitata);
+    my $query = "/products/product"; # Query per tutti i prodotti
     my @prodotti = $doc->findnodes($query);
+    
 	
     if (!@prodotti) {
 	   	print printPlaceholder();
@@ -281,8 +281,8 @@ EOF
     print <<EOF;
                     <hr />
 					<form name="dashboard_form_news" id="dashboard_form_news" action="admin_news.cgi" method="post" enctype="multipart/form-data">
-                        <label class="form_item_news" for="display_category_news">Categoria:</label>
-						<select class="form_item_news" name="display_category_mews">
+                        <label class="form_item_news" for="display_category">Categoria:</label>
+						<select class="form_item_news" name="display_category">
 EOF
 print "							<option value=\"Tutte\"";
                             if($display_category eq "Tutte"){ print " selected ";}
@@ -321,8 +321,8 @@ print "							<option value=\"Accessori\"";
 EOF
 
     my $cont=0;
-    for(my $i=0; $i < scalar @prodotti && $cont!=1; $i++) { # Verifico se ci sono prodotti che non sono in evidenza
-        my $evidenza = $prodotti[$i]->findnodes("./inEvidence");
+    for(my $i=0; $i < scalar @prodottiLimitati && $cont!=1; $i++) { # Verifico se ci sono prodotti che non sono in evidenza
+        my $evidenza = $prodottiLimitati[$i]->findnodes("./inEvidence");
         if($evidenza ne "true") {
             $cont=1;
         }
@@ -336,12 +336,12 @@ EOF
                     </div>
 EOF
     
-        for(my $i=0; $i < scalar @prodotti; $i++) { # Stampo i prodotti che non sono in evidenza
-            my $evidenza = $prodotti[$i]->findnodes("./inEvidence");
+        for(my $i=0; $i < scalar @prodottiLimitati; $i++) { # Stampo i prodotti che non sono in evidenza
+            my $evidenza = $prodottiLimitati[$i]->findnodes("./inEvidence");
             if($evidenza ne "true") {
-                my $codice = $prodotti[$i]->findnodes("code/text()");
-                my $nome = $prodotti[$i]->findnodes("name/text()");
-                my $categoria = $prodotti[$i]->findnodes("category/text()");        
+                my $codice = $prodottiLimitati[$i]->findnodes("code/text()");
+                my $nome = $prodottiLimitati[$i]->findnodes("name/text()");
+                my $categoria = $prodottiLimitati[$i]->findnodes("category/text()");        
                 print "					<div class=\"product_card\">\n";
                 print "						<span class=\"product_code\">".$codice."</span>\n";
                 print "						<span class=\"product_name\">".$nome."</span>\n";
