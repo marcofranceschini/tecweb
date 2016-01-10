@@ -266,7 +266,7 @@ EOF
 		print "						<span class=\"product_code\">".$codice."</span>\n";
 		print "						<span class=\"product_name\">".$nome."</span>\n";
 		print "						<span class=\"product_category\">".$categoria."</span>\n";
-				print "						<div class=\"product_buttons\">\n";
+				print "				<div class=\"product_buttons\">\n";
 		#print "							<form name=\"form_wallpaper\" class=\"form_modify\" action=\"admin_news.cgi#openWallpaper\" method=\"post\" enctype=\"multipart/form-data\">\n";
 		#print "								<input type=\"hidden\" name=\"wallpaper_display_category\" value=\"".$display_category."\" />\n";
 		#print "								<input type=\"hidden\" name=\"wallpaper_code\" value=\"".$codice."\" />\n";
@@ -278,21 +278,20 @@ EOF
 		    #if($evidenza eq "false") {
 		     #   print "							<input class=\"button\" type=\"submit\" name=\"evidence\" value=\"Evidenzia\" />\n";
 		    #}else{
-		print "							<input class=\"button\" type=\"submit\" name=\"hide_evidence\" value=\"Rimuovi\" />\n";
+		print "							    <input class=\"button\" type=\"submit\" name=\"hide_evidence\" value=\"Rimuovi\" />\n";
 		    #}
 		print "							</form>\n";
 		print "						</div>\n";
 		print "					</div>\n";
             }
         }
-        print "				</div>\n";
-        print "			</div>\n";    # </content_admin>
-        print "<hr />";
+         print "			</div>\n"; # products_container
     }
     
     print <<EOF;
 					<form name="dashboard_form_news" id="dashboard_form_news" action="admin_news.cgi" method="post" enctype="multipart/form-data">
-						<label class="form_item_news" for="display_category_news">Categoria:</label>
+						<hr />
+                        <label class="form_item_news" for="display_category_news">Categoria:</label>
 						<select class="form_item_news" name="display_category_mews">
 EOF
 print "							<option value=\"Tutte\"";
@@ -331,6 +330,14 @@ print "							<option value=\"Accessori\"";
 					</form>
 EOF
 
+        #stampa le card dei prodotti
+        print <<EOF;
+				<div id="products_container">
+					<div id="products_label">
+						<span>Codice</span><span id="product_name_label">Nome</span><span>Categoria</span>
+					</div>
+EOF
+
         for(my $i=0; $i < scalar @prodotti; $i++) { # Per i prodotti che non sono in evidenza
             my $evidenza = $prodotti[$i]->findnodes("./inEvidence");
             #print $evidenza;
@@ -339,7 +346,7 @@ EOF
             	my $codice = $prodotti[$i]->findnodes("code/text()");
             	my $nome = $prodotti[$i]->findnodes("name/text()");
             	my $categoria = $prodotti[$i]->findnodes("category/text()");
-		print "					<div class=\"product_card_hide\">\n";
+		print "					<div class=\"product_card\">\n";
 		print "						<span class=\"product_code\">".$codice."</span>\n";
 		print "						<span class=\"product_name\">".$nome."</span>\n";
 		print "						<span class=\"product_category\">".$categoria."</span>\n";
@@ -362,7 +369,7 @@ EOF
 		print "					</div>\n";
             }
         }
-    
+        print "			</div>\n"; # products_container
     
 	print <<EOF;
 			<div id="openModal" class="modalDialog">
