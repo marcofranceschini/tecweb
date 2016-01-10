@@ -239,7 +239,11 @@ EOF
 	}
 	# Lettura da file XML
     my $queryLimitata = "/products/product [category=\"".$display_category."\"]"; # Query per i prodotti selezionati
+    if($display_category eq "Tutte") {
+        $queryLimitata = "/products/product";
+    }
     my @prodottiLimitati = $doc->findnodes($queryLimitata);
+    
     my $query = "/products/product"; # Query per tutti i prodotti
     my @prodotti = $doc->findnodes($query);
     
