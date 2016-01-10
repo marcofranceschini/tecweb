@@ -100,7 +100,7 @@ if (%FORM && $name =~ /[a-zA-Z0-9]/ && $from =~ /[a-zA-Z0-9]/ && index($from, '@
 				<form id="contacts_form" action="../cgi-bin/contacts.cgi" method="post">
 					<div class="form_email_element">
 						<label for="form_email_name">Nome &#47; Societ&agrave;</label>
-						<input type="text" placeholder="Nome &#47; Societ&agrave; richiedente" name="name" id="form_email_name"
+						<input type="text" name="name" id="form_email_name"
 EOF
 print "value=\"".$name."\"/>";
 if (%FORM && !($name =~ /[a-zA-Z0-9]/)) {
@@ -110,7 +110,7 @@ print <<EOF;
 					</div>
 					<div class="form_email_element">
 						<label for="form_email_mail"><span lang="en">Email</span></label>
-						<input type="text" placeholder="Email richiedente" name="mail" id="form_email_mail"
+						<input type="text" name="mail" id="form_email_mail"
 EOF
 print "value=\"".$from."\"/>";
 if (%FORM && !($from =~ /[a-zA-Z0-9]/)) {
@@ -124,7 +124,7 @@ print <<EOF;
 					</div>
 					<div class="form_email_element">
 						<label for="form_email_mex">Messaggio</label>
-						<textarea placeholder="Messaggio richiedente" name="mex" id="form_email_mex" rows="5" cols="5">
+						<textarea name="mex" id="form_email_mex" rows="5" cols="5">
 EOF
 print $body."</textarea>";
 if (%FORM && !($body =~ /[a-zA-Z0-9]/)) {
