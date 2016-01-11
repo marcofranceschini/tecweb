@@ -1,4 +1,4 @@
-var nameHint = "Inserire Nome o Societ\340";
+var nameHint = "Inserire Nome o Societ &agrave;";
 var nameError = "Inserisci Nome &#47; Societ\340";
 var mailHint = "Inserire propria Email";
 var mailError1 = "Inserisci la tua Email";

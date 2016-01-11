@@ -12,7 +12,18 @@ my $codice = $cgi->param('display_code');
 my $nome = $cgi->param('display_name');
 my $categoria = $cgi->param('display_category');
 
-print "Content-Type: text/html\n\n";
+# Lettura da file XML
+my $file = '../xml/db.xml';
+my $parser = XML::LibXML->new();
+$parser->keep_blanks(0);
+my $doc = $parser->parse_file($file) or die "Errore nel parsing";
+my $radice = $doc->getDocumentElement or die "Errore elemento radice";
+my $query = "/products/product[code=\"".$codice."\"]";
+my $prodotto = $doc->findnodes($query)->get_node(1);
+if (!$prodotto) {
+    print redirect(-url=>'../pages/products.html'); 
+}
+print CGI->header;
 print <<EOF;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
@@ -61,41 +72,28 @@ print <<EOF;
 		<div id="content_products_displayer_cgi">
 EOF
 
-# Lettura da file XML
-my $file = '../xml/db.xml';
-my $parser = XML::LibXML->new();
-$parser->keep_blanks(0);
-my $doc = $parser->parse_file($file) or die "Errore nel parsing";
-my $radice = $doc->getDocumentElement or die "Errore elemento radice";
-my $query = "/products/product[code=\"".$codice."\"]";
-my $prodotto = $doc->findnodes($query)->get_node(1);
-if(!$prodotto) {
-    print "<span id=\"error_msg\" class=\"client_message\">Nessun prodotto selezionato, ritorna alla pagina dei prodotti</span>";
-} else {	
-    # Stampa la scheda del prodotto
-    print "			<div id=\"product_card_displayer\">\n";
-    my $immagine = $prodotto->findnodes("img/text()");
-    my $descrizione = $prodotto->findnodes("description/text()");
-    print "				<div class=\"product_card\">\n";
-    print "					<div class=\"product_image\">\n";
-    print "						<img src=\"../res/images/products/".$immagine."\" alt=\"".$descrizione_corta."\"/>\n";
-    print "					</div>\n";
-    print "					<div class=\"product_data\">\n";
-    print "						<span class=\"product_name\">".$nome."</span>\n";
-    print "						<span class=\"product_code\">Codice ".$codice."</span>\n";
-    print "						<p class=\"product_description\">".$descrizione."</p>\n";
-    print
-"						<div class=\"product_back_button\">
-							<form action=\"products.cgi?\" method=\"post\">
-								<input type=\"hidden\" name=\"category\" value=\"".$categoria."\" />
-								<input class=\"button\" type=\"submit\" value=\"Torna ai prodotti\" />
-							</form>
-						</div>\n";
-    print "					</div>\n";
+# Stampa la scheda del prodotto
+print "		<div id=\"product_card_displayer\">\n";
+my $immagine = $prodotto->findnodes("img/text()");
+my $descrizione = $prodotto->findnodes("description/text()");
+print "			<div class=\"product_card\">\n";
+print "				<div class=\"product_image\">\n";
+print "					<img src=\"../res/images/products/".$immagine."\" alt=\"".$descrizione_corta."\"/>\n";
+print "				</div>\n";
+print "				<div class=\"product_data\">\n";
+print "		      		<span class=\"product_name\">".$nome."</span>\n";
+print "			      	<span class=\"product_code\">Codice ".$codice."</span>\n";
+print "		           	<p class=\"product_description\">".$descrizione."</p>\n";
+print "                 <div class=\"product_back_button\">
+                            <form action=\"products.cgi?\" method=\"post\">
+                                <input type=\"hidden\" name=\"category\" value=\"".$categoria."\" />
+                                <input class=\"button\" type=\"submit\" value=\"Torna ai prodotti\" />
+                            </form>
+                        </div>\n";
+print "		       </div>\n";  
+print "         </div>\n";
+print "     </div>\n";
     
-    print "				</div>\n";
-    print "			</div>\n";
-}
 print <<EOF;	
 		</div>
 		
