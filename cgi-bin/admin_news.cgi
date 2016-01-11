@@ -10,7 +10,8 @@ use File::Basename;
 use warnings;
 $CGI::POST_MAX = 1024 * 5000;   #massimo upload
 my $safe_filename_characters = "a-zA-Z0-9_.-";  #caratteri sicuri
-my $upload_dir = "../tecwebproject/res/images/products";
+my $upload_dir = "../res/images/products";
+my $file = '../xml/db.xml';
 
 #Da usare il lab
 #<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
@@ -58,7 +59,6 @@ my $error = $cgi->cgi_error();
 my %INPUT = Vars();
     
 # Apertura file XML
-$file = '../public_html/tecwebproject/xml/db.xml';
 $parser = XML::LibXML->new();
 $parser->keep_blanks(0);
 $doc = $parser->parse_file($file) or die "Errore nel parsing";
@@ -98,10 +98,10 @@ if ($logout) {
 			<meta name="author" content="Fabiano Tavallini, Marco Franceschini, Daniele Favaro" />
 			<meta name="copyright" content="Ju Rapida S.N.C." />
 			<meta name="viewport" content="width=device-width">
-			<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
-			<link href="../tecwebproject/css/style_768.css" rel="stylesheet" type="text/css" />
-			<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
-			<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
+			<link href="../css/style_1024_max.css" rel="stylesheet" type="text/css" />
+			<link href="../css/style_768.css" rel="stylesheet" type="text/css" />
+			<link href="../css/style_480.css" rel="stylesheet" type="text/css" />
+			<link href="../css/style_1024_min.css" rel="stylesheet" type="text/css" />
 			<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 			<link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css' />
 			<link rel="icon" type="image/png" href="../res/images/icon.png" />
