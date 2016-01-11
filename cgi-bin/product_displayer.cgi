@@ -124,9 +124,9 @@ print <<EOF;
 						<fieldset>
 							<legend><i class="material-icons md-18">&#xE853;</i>Area Riservata</legend>
 							<label class="form_item" for="username">Username</label>
-							<input class="form_item" id="username" type="text" name="username" placeholder="Inserire username"/>
+							<input class="form_item" id="username" type="text" name="username"/>
 							<label class="form_item" for="password">Password</label>
-							<input class="form_item" id="password" type="password" name="password" placeholder="Inserire password"/>
+							<input class="form_item" id="password" type="password" name="password"/>
 							<input type="hidden" name="page" value="../index.html" />
 							<input id="submit" type="submit" value="Login" />
 						</fieldset>
