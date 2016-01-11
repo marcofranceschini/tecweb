@@ -29,6 +29,7 @@ print <<EOF;
 		<link href="../css/style_768.css" rel="stylesheet" type="text/css" />
 		<link href="../css/style_480.css" rel="stylesheet" type="text/css" />
 		<link href="../css/style_1024_min.css" rel="stylesheet" type="text/css" />
+        <link href="../css/style_print.css" rel="stylesheet" type="text/css" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css' />
 		<link rel="icon" type="image/png" href="../res/images/icon.png" />

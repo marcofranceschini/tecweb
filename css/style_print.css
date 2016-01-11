@@ -117,6 +117,10 @@
 		border-bottom-style: solid;
 	}
 	
+    #breadcrumb {
+        display: none;    
+    }
+    
 	#breadcrumb_home {
 		display: none;
 	}
@@ -515,30 +519,15 @@
         width: 28em;
         max-width: 98%;
         margin: auto;
-        margin-bottom: 3em;
         background: #ddd;
         border-radius: 0.4em;
         box-shadow: gray 1px 1px 3px;
     }
     
-    #product_card_displayer .product_image {    /* image container */
-        display: inline-block;
-        background: white;
-        border-radius: 100%;
-        width: 25em;
-        height: 25em;
-        margin-top: 1em;
-        margin-left: 1.5em;
-        margin-right: 1.5em;
-        margin-bottom: 1em;
-        box-shadow: #d00 1px 1px 3px, gray -1px -1px 3px, gray 1px -1px 3px, #d00 -1px 1px 3px;
-    }
-    
-    
     #product_card_displayer .product_image img {
         display: block;
-        width: 22em;
-        min-width: 22em;
+        width: 12em;
+        min-width: 12em;
         margin: auto;
         padding-top: 1.5em;
     }
@@ -564,8 +553,6 @@
         font-weight: bold;
         font-size: 2em;
         text-transform: uppercase;
-        box-shadow: 1px 1px 0.2em;
-        border-radius: 0.1em;
         padding-top: 0.2em;
         padding-bottom: 0.2em;
     }
@@ -584,36 +571,15 @@
     }
     
     #product_card_displayer .product_back_button {
-        display: inline-block;
-        vertical-align: bottom;
-        width: 100%;
-        padding-top: 1em;
-        padding-bottom: 2em;
+        display: none;
     }
-    
-    #product_card_displayer .product_back_button .button {
-        display: block;
-        width: 10em;
-        margin: auto;
-        background: #A00;
-		border: none;
-        padding: 0.4em;
-		box-shadow: 1px 1px 5px #B6B6B6;
-		border-radius: 3px;
-		font-size: 1em;
-		text-shadow: 1px 1px 1px #9E3F3F;
-		color: #FFF;
-    }
-    
-    #product_card_displayer .product_back_button .button:hover {
-		background: rgba(200, 0, 0, 1);
-	}
 	/* ------------------- END NEW PRODUCTS.CGI & PRODUCTS_DISPLAYER.CGI------------------------------------------- */
 	
 	#content_contacts {
 		width: 80%;
 		margin: auto;
-		padding: 2em;
+		padding-left: 2em;
+        padding-right: 2em;
 	}
 	
 	#content_contacts p {
@@ -646,9 +612,7 @@
 	}
 	
 	#form_email {
-		padding-top: 1em;
-		margin: auto;
-		width: 26em;
+		display: none;
 	}
 	
 	#form_email p {
@@ -883,8 +847,6 @@
     .product_buttons .button:hover { /* new */
 		background: rgba(200, 0, 0, 1);
 	}
-
-
     
     #form_remove {
         float: right;
@@ -988,8 +950,6 @@
 	
 	#product_name {
 		border: none;
-		box-shadow: 1px 1px 5px #3D3D3D;
-		border-radius: 3px;	
         padding: 0.2em;
 	}
 	
@@ -1122,7 +1082,8 @@
 	#content_about {
 		max-width: 90%;
 		margin: auto;
-		padding: 2em;
+		padding-left: 2em;
+        padding-right: 2em;
 	}
 	
 	#content_about p {
