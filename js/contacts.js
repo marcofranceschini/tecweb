@@ -1,5 +1,5 @@
-var nameHint = "Inserire Nome o Societ &agrave;";
-var nameError = "Inserisci Nome &#47; Societ\340";
+var nameHint = "Inserire Nome o Azienda";
+var nameError = "Inserisci Nome &#47; Azienda";
 var mailHint = "Inserire propria Email";
 var mailError1 = "Inserisci la tua Email";
 var mailError2 = "Email inserita non valida";
@@ -7,7 +7,7 @@ var mexHint = "Inserire messaggio";
 var mexError = "Inserisci un messaggio";
 
 function setNameHint() {
-    if (document.getElementById("form_email_name").value == "") { //manca or ... (vedi esempi sotto)
+    if (document.getElementById("form_email_name").value == "" || document.getElementById("form_email_name").value == nameHint) {
         document.getElementById("form_email_name").value = nameHint;
         document.getElementById("form_email_name").style.color = "grey";
     }

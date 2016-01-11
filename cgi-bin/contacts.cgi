@@ -100,12 +100,12 @@ if (%FORM && $name =~ /[a-zA-Z0-9]/ && length($name) > 1 && $from =~ /[a-zA-Z0-9
 				<p>Oppure contattaci ora via <span lang="en">Email</span></p>
 				<form id="contacts_form" action="../cgi-bin/contacts.cgi" method="post">
 					<div class="form_email_element">
-						<label for="form_email_name">Nome &#47; Societ&agrave;</label>
+						<label for="form_email_name">Nome &#47; Azienda</label>
 						<input type="text" name="name" id="form_email_name"
 EOF
 print "value=\"".$name."\"/>";
-if (%FORM && (!($name =~ /[a-zA-Z0-9]/) || length($name) < 2 || $name eq "Inserire Nome o Societ&agrave;")) { #da sistemare l'eq
-    print "<h5 class=\"mail_form_error\">Inserisci Nome &#47; Societ&agrave;</h5>";
+if (%FORM && (!($name =~ /[a-zA-Z0-9]/) || length($name) < 2 || $name eq "Inserire Nome o Azienda")) {
+    print "<h5 class=\"mail_form_error\">Inserisci Nome &#47; Azienda</h5>";
 }
 print <<EOF;
 					</div>
