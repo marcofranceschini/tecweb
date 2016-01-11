@@ -390,7 +390,7 @@ EOF
         }
         #serializzazione e chiusura del file
         open(OUT, ">$file");
-        print OUT $doc->toString(2);    #2: indenta correttamente
+        print OUT $doc->toString(1);    #2: indenta correttamente
         close(OUT);
 	}
 	# Lettura da file XML
