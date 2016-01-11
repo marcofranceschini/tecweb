@@ -10,7 +10,7 @@ use File::Basename;
 use warnings;
 $CGI::POST_MAX = 1024 * 5000;   #massimo upload
 my $safe_filename_characters = "a-zA-Z0-9_.-";  #caratteri sicuri
-my $upload_dir = "../res/images/products";
+my $upload_dir = "../res/images/";
 my $file = '../xml/db.xml';
 
 #Da usare il lab
@@ -122,9 +122,9 @@ EOF
 EOF
 
 	if(%INPUT or $error) {  #se riceve dati in input o errori
-        if($INPUT{'modify_wallpaper'}) {
+        if($INPUT{'add_wallpaper'}) {
             # Modal di modifica    
-            my $code = $INPUT{'wallpaper_code'};
+            my $code = $INPUT{'evidence_code'};
             my $query = "/products/product [code=\"".$code."\"]";
             my $prodotto = $doc->findnodes($query)->get_node(1) or die "Prodotto non trovato";
             my $category = $prodotto->findnodes("category/text()");
@@ -135,20 +135,19 @@ EOF
                     <div id="openWallpaper" class="modalDialog">
                         <div>
                             <a href="#close" title="Close" class="close">X</a>
-                            <p>Aggiungi uno sfondo</p>
+                            <p>Evidenzia prodotto</p>
                             <form name="form_modal_wallpaper" id="form_modal_modify" action="admin_news.cgi" method="post" enctype="multipart/form-data">
-                            	<label class="form_item" for="product_category">Categoria</label>
 EOF
-				print"      <input class=\"form_item\" id=\"product_category\" name=\"product_category\" value=\"".$category."\" disabled>";
-				print "<label class=\"form_item\" for=\"wallpaper_desc\">Descrizione dello sfondo</label>";
-				print "<textarea class=\"form_item\" id=\"wallpaper_desc\" name=\"wallpaper_desc\" >DESCRIZIONE DELLO SFONDO PER NON VEDENTI</textarea>";
-				print "<label class=\"form_item\" for=\"wallpaper_img\">Sfondo</label>";
-				print "<img src=\"../cgi-bin/".$sfondo."\" class=\"form_item\" id=\"wallpaper_img\" name\"wallpaper_img\" alt=\"Immagine di sfondo\" height=\"50\" width=\"90\" />";
-				print "<input type=\"hidden\" name=\"wallpaper_code\" value=\"".$code."\" />";
+                print "<label class=\"form_item\" for=\"product_category\">Categoria: ".$category."</label>";
+				if ($sfondo ne "none") {
+       				print "<label class=\"form_item\" for=\"wallpaper_img\">Sfondo</label>";
+                    print "<img src=\"../res/images/".$sfondo."\" class=\"form_item\" id=\"wallpaper_img\" name\"wallpaper_img\" height=\"50\" width=\"90\" />";
+                }
+                print "<input type=\"hidden\" name=\"evidence_code\" value=\"".$code."\" />";
 				print <<EOF;
-				<label class="form_item" for="product_image">Nuovo sfondo</label>
-				<input class="form_item" id="wallpaper_new_img" type="file" name="image" />
-				<input class="submit_modal" id="submit_modal_wallpaper" name="modal_wallpaper" type="submit" value="Modifica" />
+				                <label class="form_item" for="product_image">Nuovo sfondo</label>
+				                <input class="form_item" id="wallpaper_new_img" type="file" name="image" />
+				                <input class="submit_modal" id="submit_modal_wallpaper" name="add_evidence" type="submit" value="Aggiungi" />
                             </form>
                         </div>
                    </div>
@@ -159,44 +158,43 @@ EOF
                 print "<span id=\"error_msg\" class=\"admin_message\">L'immagine selezionata &egrave; troppo grande!</span>";
             }
         }
-        if($INPUT{'modal_wallpaper'}) { # Inserisco i dati o verifico che siano stati modificati e poi inserisco quelli opportuni?
-      		# Modifica del database 
-            $codice_prodotto = $INPUT{'wallpaper_code'};
-            #$code = $INPUT{'product_code'};
+        if($INPUT{'add_evidence'}) { # Inserisco i dati o verifico che siano stati modificati e poi inserisco quelli opportuni?
+            $codice_prodotto = $INPUT{'evidence_code'};
             $name = $INPUT{'product_name'};
             $desc = $INPUT{'product_desc'};
             $wallpaper_desc = $INPUT{'wallpaper_desc'};
-			$image = $cgi->param("image");   
-                     
             my $query = "/products/product [code=\"".$codice_prodotto."\"]";
             my $prodotto = $doc->findnodes($query)->get_node(1);
             if(!$prodotto){                
                 print "<span id=\"error_msg\" class=\"admin_message\">Prodotto ".$codice_prodotto." non trovato, &egrave; possibile che sia stato rimosso</span>";
             } else {
-                #my $old_description = $prodotto->findnodes("AAAA/text()")->get_node(1); # Descr per non vedenti
-                my $old_image = $prodotto->findnodes("backgroundImg/text()")->get_node(1);
-                # Modifica/Inserimento della descrizione
-                #if($old_description ne $desc) {
-                #    $old_description->setData($desc);
-                #}
-                # Modifica/Inserimento dello sfondo
-                if ( $image ) {
-                    if($old_image ne $image) {
-                        my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
-                        $image = $name.$extension;
-                        $image =~ tr/ /_/;
-                        $image =~ s/[^$safe_filename_characters]//g;
-                        my $upload_file_handle = $cgi->upload("image");
-                        open ( UPLOADFILE, ">$upload_dir/$image" ) or die "$!";
-                        binmode UPLOADFILE;
-                        while ( <$upload_file_handle> ) {
-                            print UPLOADFILE;
-                        }
-                        close UPLOADFILE;
-                        $old_image->setData($image);
+                $image = $cgi->param("image");
+                my $old_image = $prodotto->findnodes("./backgroundImg");
+                if (!$image) {
+                    if ($old_image eq "none") {
+                        print "<span id=\"error_msg\" class=\"admin_message\">Immagine di sfondo non inserita</span>";
+                    } else {
+                        my $evidenza = $prodotto->findnodes("inEvidence/text()")->get_node(1);
+                        $evidenza->setData("true");
+                        print "<span id=\"info_msg\" class=\"admin_message\">Prodotto ".$code." evidenziato correttamente</span>";
                     }
+                } else {
+                    my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
+                    $image = $name.$extension;
+                    $image =~ tr/ /_/;
+                    $image =~ s/[^$safe_filename_characters]//g;
+                    my $upload_file_handle = $cgi->upload("image");
+                    open ( UPLOADFILE, ">$upload_dir/$image" ) or die "$!";
+                    binmode UPLOADFILE;
+                    while ( <$upload_file_handle> ) {
+                        print UPLOADFILE;
+                    }
+                    close UPLOADFILE;
+                    $old_image->setData($image);
+                    my $evidenza = $prodotto->findnodes("inEvidence/text()")->get_node(1);
+                    $evidenza->setData("true");
+                    print "<span id=\"info_msg\" class=\"admin_message\">Prodotto ".$code." evidenziato correttamente</span>";
                 }
-                print "<span id=\"info_msg\" class=\"admin_message\">Prodotto ".$codice_prodotto." modificato correttamente</span>";
             }
         }
         if($INPUT{'hide_evidence'}) {
@@ -211,26 +209,6 @@ EOF
                 $evidenza->setData("false");
                 print "<span id=\"info_msg\" class=\"admin_message\">Prodotto ".$codice_prodotto." \"nascosto\" correttamente</span>";
             }
-        }
-        if($INPUT{'evidence'}) {
-            # Scrittura su file XML	
-            my $code = $INPUT{'evidence_code'};
-            # Verifico che l'immagine di sfondo ci sia
-            my $query = "/products/product [code=\"".$code."\"]";
-            my $prodotto = $doc->findnodes($query)->get_node(1);
-            if(!$prodotto){                
-                print "<span id=\"error_msg\" class=\"admin_message\">Prodotto ".$code." non trovato, &egrave; possibile che sia stato rimosso</span>";
-            }else{
-                my $image = $prodotto->findnodes("backgroundImg/text()")->get_node(1);
-                if($image eq "") {
-                    print "<span id=\"error_msg\" class=\"admin_message\">Prodotto ".$code." senza sfondo, inserirne uno</span>";
-                }else{
-                    my $evidenza = $prodotto->findnodes("inEvidence/text()")->get_node(1);
-                    $evidenza->setData("true");
-                    print "<span id=\"info_msg\" class=\"admin_message\">Prodotto ".$code." evidenziato correttamente</span>";
-                }
-            }
-            
         }
         #serializzazione e chiusura del file
         open(OUT, ">$file");
@@ -251,39 +229,47 @@ EOF
     if (!@prodotti) {
 	   	print printPlaceholder();
     } else {
-        # Stampa le card dei prodotti
-        print <<EOF;
-				<div id="products_container_news">
-					<div id="products_label">
-						<span>Codice</span><span id="product_name_label">Nome</span><span>Categoria</span>
-					</div>
-EOF
-        for(my $i=0; $i < scalar @prodotti; $i++) { # Stampo i prodotti che sono in evidenza
-            my $evidenza = $prodotti[$i]->findnodes("./inEvidence");
-            if($evidenza eq "true") {
-
-            	my $codice = $prodotti[$i]->findnodes("code/text()");
-            	my $nome = $prodotti[$i]->findnodes("name/text()");
-            	my $categoria = $prodotti[$i]->findnodes("category/text()");
-		print "					<div class=\"product_card\">\n";
-		print "						<span class=\"product_code\">".$codice."</span>\n";
-		print "						<span class=\"product_name\">".$nome."</span>\n";
-		print "						<span class=\"product_category\">".$categoria."</span>\n";
-        print "				        <div class=\"product_buttons\">\n";
-		print "							<form name=\"form_evidence\" id=\"form_remove\" class=\"form_remove\" action=\"admin_news.cgi\" method=\"post\" enctype=\"multipart/form-data\">\n";
-		print "								<input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
-		print "								<input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
-		print "							    <input class=\"button\" type=\"submit\" name=\"hide_evidence\" value=\"Rimuovi\" />\n";
-		print "							</form>\n";
-		print "						</div>\n";
-		print "					</div>\n";
+        my $flag = 0;
+        for (my $i=0; $i < scalar @prodottiLimitati && $cont!=1; $i++) { # Verifico se ci sono prodotti che non sono in evidenza
+            my $evidenza = $prodottiLimitati[$i]->findnodes("./inEvidence");
+            if ($evidenza eq "true") {
+                $flag = 1;
             }
         }
-         print "			</div>\n"; # products_container
+        if ($flag == 1) {
+            # Stampa le card dei prodotti
+            print <<EOF;
+                    <div id="products_container_news">
+                        <div id="products_label">
+                            <span>Codice</span><span id="product_name_label">Nome</span><span>Categoria</span>
+                        </div>
+EOF
+            foreach my $product (@prodotti) { # Stampo i prodotti che sono in evidenza
+                my $evidenza = $product->findnodes("./inEvidence");
+                if($evidenza eq "true") {
+                    my $codice = $product->findnodes("code/text()");
+                    my $nome = $product->findnodes("name/text()");
+                    my $categoria = $product->findnodes("category/text()");
+                    print "					<div class=\"product_card\">\n";
+                    print "						<span class=\"product_code\">".$codice."</span>\n";
+                    print "						<span class=\"product_name\">".$nome."</span>\n";
+                    print "						<span class=\"product_category\">".$categoria."</span>\n";
+                    print "				        <div class=\"product_buttons\">\n";
+                    print "							<form name=\"form_evidence\" id=\"form_remove\" class=\"form_remove\" action=\"admin_news.cgi\" method=\"post\" enctype=\"multipart/form-data\">\n";
+                    print "								<input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
+                    print "								<input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
+                    print "								<input type=\"hidden\" name=\"add_wallpaper\" />\n";
+                    print "							    <input class=\"button\" type=\"submit\" name=\"hide_evidence\" value=\"Rimuovi\" />\n";
+                    print "							</form>\n";
+                    print "						</div>\n";
+                    print "					</div>\n";
+                }
+            }
+            print "</div>\n<hr />"; # products_container
+        }
     }
     
     print <<EOF;
-                    <hr />
 					<form name="dashboard_form_news" id="dashboard_form_news" action="admin_news.cgi" method="post" enctype="multipart/form-data">
                         <label class="form_item_news" for="display_category">Categoria:</label>
 						<select class="form_item_news" name="display_category">
@@ -354,7 +340,7 @@ EOF
                 print "							<form name=\"form_wallpaper\" id=\"form_add\" class=\"form_add\" action=\"admin_news.cgi#openWallpaper\" method=\"post\" enctype=\"multipart/form-data\">\n";
                 print "								<input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
                 print "								<input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
-                print "							    <input class=\"button\" type=\"submit\" name=\"add_wallpaper\" value=\"Aggiungi\" />\n";
+                print "							    <input class=\"button\" type=\"submit\" name=\"add_wallpaper\" value=\"Evidenzia\" />\n";
                 print "							</form>\n";
                 print "						</div>\n";
                 print "					</div>\n";
@@ -364,38 +350,6 @@ EOF
     }
     print "	</div>\n"; # products_container
 	print <<EOF;
-			<div id="openModal" class="modalDialog">
-				<div>
-					<a href="#close" title="Close" class="close">X</a>
-					<p>Inserisci un nuovo prodotto</p>
-					<form name="form_modal_insert" id="form_modal_insert" action="admin_news.cgi" method="post" enctype="multipart/form-data">
-						<label class="form_item" for="product_category">Categoria</label>
-						<select class="form_item" id="product_category" name="product_category">
-							<option value="Calcio">Calcio</option>
-							<option value="Basket"><span lang="en">Basket</span></option>
-							<option value="Volley"><span lang="en">Volley</span></option>
-							<option value="Tennistavolo">Tennistavolo</option>
-							<option value="Nuoto">Nuoto</option>
-							<option value="Minigolf">Minigolf</option>
-							<option value="Calciobalilla">Calciobalilla</option>
-							<option value="Protezioni">Protezioni</option>
-							<option value="Accessori">Accessori</option>
-						</select>
-						<label class="form_item" for="product_code">Codice</label>
-						<input class="form_item" id="product_code" type="text"  name="product_code" required />
-						<label class="form_item" for="product_name">Nome</label>
-						<input class="form_item" id="product_name" type="text" name="product_name" required />
-						<label class="form_item" for="product_desc">Descrizione</label>
-						<textarea class="form_item" id="product_desc" name="product_desc" required ></textarea>
-						<label class="form_item" for="thumbnail_desc">Descrizione breve</label>
-						<textarea class="form_item" id="thumbnail_desc"  name="thumbnail_desc" required ></textarea>
-						<label class="form_item" for="product_image">Carica <span lang="en">thumbnail</span></label>
-						<input class="form_item" id="product_image" type="file" name="image" required />
-						<input class="submit_modal" id="submit_modal" type="submit" name="insert" value="Inserisci" />
-					</form>
-				</div>
-			</div>
-            
 			<div id="action_bar">
 				<div id="action_box_news">
 					<a id="action_back_news" class="linked_box" href="admin.cgi">Indietro</a>

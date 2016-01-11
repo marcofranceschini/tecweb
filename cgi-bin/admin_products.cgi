@@ -376,7 +376,7 @@ EOF
                 "<shortDescription>".$thumbnail_desc."</shortDescription>".
                 "<img>".$image."</img>".
                 "<thumbnail>".$thumbnail."</thumbnail>".
-                "<backgroundImg></backgroundImg>".
+                "<backgroundImg>none</backgroundImg>".
                 "<inEvidence>false</inEvidence>".
                 "</product>";
                 $nodo = $parser->parse_balanced_chunk($new_product) or die "Frammento non ben formato\n";
@@ -410,8 +410,7 @@ EOF
 						<span>Codice</span><span id="product_name_label">Nome</span><span>Categoria</span>
 					</div>
 EOF
-        for(my $i=0; $i < scalar @prodotti; $i++)
-        {
+        for(my $i=0; $i < scalar @prodotti; $i++) {
             my $codice = $prodotti[$i]->findnodes("code/text()");
             my $nome = $prodotti[$i]->findnodes("name/text()");
             my $categoria = $prodotti[$i]->findnodes("category/text()");
@@ -476,17 +475,17 @@ print "							<option value=\"Accessori\"";
 print <<EOF;
 						</select>
 						<label class="form_item" for="product_code">Codice</label>
-						<input class="form_item" id="product_code" type="text"  name="product_code" required />
+						<input class="form_item" id="product_code" type="text"  name="product_code" />
 						<label class="form_item" for="product_name">Nome</label>
-						<input class="form_item" id="product_name" type="text" name="product_name" required />
+						<input class="form_item" id="product_name" type="text" name="product_name" />
 						<label class="form_item" for="product_desc">Descrizione</label>
-						<textarea class="form_item" id="product_desc" name="product_desc" required ></textarea>
+						<textarea class="form_item" id="product_desc" name="product_desc"></textarea>
 						<label class="form_item" for="thumbnail_desc">Descrizione breve</label>
-						<textarea class="form_item" id="thumbnail_desc"  name="thumbnail_desc" required ></textarea>
+						<textarea class="form_item" id="thumbnail_desc"  name="thumbnail_desc"></textarea>
 						<label class="form_item" for="product_image">Immagine principale (massimo 5MB)</label>
-						<input class="form_item" id="product_image" type="file" name="image" required />
+						<input class="form_item" id="product_image" type="file" name="image"/>
 						<label class="form_item" for="product_thumbnail">Thumbnail (massimo 500KB)</label>
-						<input class="form_item" id="product_thumbnail" type="file" name="thumbnail" required />
+						<input class="form_item" id="product_thumbnail" type="file" name="thumbnail"/>
 EOF
 print "						<input type=\"hidden\" name=\"display_category\" value=\"".$display_category."\" />\n";
 print <<EOF;

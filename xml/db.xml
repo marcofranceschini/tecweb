@@ -19,8 +19,8 @@
     <shortDescription>Pallone calcio da gara misura 5</shortDescription>
     <img>X-TREME.png</img>
     <thumbnail>X-TREME.png</thumbnail>
-    <backgroundImg/>
-    <inEvidence>false</inEvidence>
+    <backgroundImg>volley_wall.jpg</backgroundImg>
+    <inEvidence>true</inEvidence>
   </product>
   <product>
     <category>Calcio</category>
@@ -30,8 +30,8 @@
     <shortDescription>Pallone da calcetto misura 4 a rimbalzo controllato</shortDescription>
     <img>C0118_EVOLUTION_L_B.png</img>
     <thumbnail>C0118_EVOLUTION_L_B.png</thumbnail>
-    <backgroundImg/>
-    <inEvidence>false</inEvidence>
+    <backgroundImg>nuoto_wall.jpg</backgroundImg>
+    <inEvidence>true</inEvidence>
   </product>
   <product>
     <category>Calcio</category>
@@ -41,7 +41,7 @@
     <shortDescription>Pallone da calcio misura 3</shortDescription>
     <img>12_TRAINING_3.png</img>
     <thumbnail>12_TRAINING_3.png</thumbnail>
-    <backgroundImg/>
+    <backgroundImg>none</backgroundImg>
     <inEvidence>false</inEvidence>
   </product>
   <product>
@@ -52,7 +52,7 @@
     <shortDescription>Pallone da basket misura 7</shortDescription>
     <img>AERO_SOFT__7.png</img>
     <thumbnail>AERO_SOFT__7.png</thumbnail>
-    <backgroundImg/>
+    <backgroundImg>none</backgroundImg>
     <inEvidence>false</inEvidence>
   </product>
   <product>
@@ -63,7 +63,7 @@
     <shortDescription>Pallone da basket misura 6, approvato FIBA</shortDescription>
     <img>BGG6-.png</img>
     <thumbnail>BGG6-.png</thumbnail>
-    <backgroundImg/>
+    <backgroundImg>none</backgroundImg>
     <inEvidence>false</inEvidence>
   </product>
 </products>
