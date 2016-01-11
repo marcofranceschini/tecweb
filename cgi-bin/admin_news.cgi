@@ -265,9 +265,25 @@ EOF
                     print "					</div>\n";
                 }
             }
-            print "</div>\n<hr />"; # products_container
+            print "</div>"; # products_container
         }
     }
+    
+    #Due cicli for utili solo alla stampa della linea di separazione
+    foreach my $product (@prodotti) {
+        if ($product->findnodes("./inEvidence") eq "false") {
+            push @notInEvidence, $product;
+        }
+    }
+    foreach my $product (@prodotti) {
+        if ($product->findnodes("./inEvidence") eq "true") {
+            push @inEvidence, $product;
+        }
+    }
+    if (@notInEvidence && @inEvidence) {
+        print "<hr \>";
+    }
+    
     
     print <<EOF;
 					<form name="dashboard_form_news" id="dashboard_form_news" action="admin_news.cgi" method="post" enctype="multipart/form-data">
