@@ -7,21 +7,21 @@ var mexHint = "Inserire messaggio";
 var mexError = "Inserisci un messaggio";
 
 function setNameHint() {
-    if (document.getElementById("form_email_name").value == "") {
+    if (document.getElementById("form_email_name").value == "") { //manca or ... (vedi esempi sotto)
         document.getElementById("form_email_name").value = nameHint;
         document.getElementById("form_email_name").style.color = "grey";
-    }  
+    }
 }
 
 function setMailHint() {
-    if (document.getElementById("form_email_mail").value == "") {
+    if (document.getElementById("form_email_mail").value == "" || document.getElementById("form_email_mail").value == mailHint) {
         document.getElementById("form_email_mail").value = mailHint;
         document.getElementById("form_email_mail").style.color = "grey";
     }  
 }
 
 function setMexHint() {
-    if (document.getElementById("form_email_mex").value == "") {
+    if (document.getElementById("form_email_mex").value == "" || document.getElementById("form_email_mex").value == mexHint) {
         document.getElementById("form_email_mex").value = mexHint;
         document.getElementById("form_email_mex").style.color = "grey";
     }
