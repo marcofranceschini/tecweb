@@ -22,7 +22,7 @@ my $file = '../xml/db.xml';
 sub getSession() {
 	$sessione = CGI::Session->load() or die $!; #CGI::Session->errstr
 	if ($sessione->is_expired || $sessione->is_empty) { # Se manca la sessione torno in home
-		#print redirect(-url=>'../');
+		print redirect(-url=>'../cgi-bin/index.cgi');
 	}
 }
 

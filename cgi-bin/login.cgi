@@ -69,7 +69,7 @@ if ($username eq $admin->findnodes('./username')->to_literal && $password eq $ad
 EOF
 	if (!%data) {
 		print "<h3>Riprova ad eseguire il login!</h3>";
-		$page = "../index.html";
+		$page = "../cgi-bin/index.cgi";
 	}elsif ($username eq "" and $password eq "") { # Username e password vuoti
 		print "<h3>Username e password non inseriti!</h3>";
 	} elsif ($username eq "") {	# Username vuoto

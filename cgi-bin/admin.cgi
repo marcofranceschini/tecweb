@@ -29,7 +29,7 @@ sub destroySession() {
 	$session->close() or die "errore close";
 	$session->delete() or die "errore delete";
 	$session->flush() or die "errore flush";
-	print redirect(-url=>'../'); # Torno in home
+	print redirect(-url=>'../cgi-bin/index.cgi'); # Torno in home
 }
 	
 my $session = getSession(); # Verifico che la sessione ci sia

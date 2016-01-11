@@ -121,7 +121,7 @@ print <<EOF;
 							<input class="form_item" id="username" type="text" name="username"/>
 							<label class="form_item" for="password">Password</label>
 							<input class="form_item" id="password" type="password" name="password"/>
-							<input type="hidden" name="page" value="../index.html" />
+							<input type="hidden" name="page" value="index.cgi" />
 							<input id="submit" type="submit" value="Login" />
 						</fieldset>
 					</form>

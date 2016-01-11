@@ -54,9 +54,9 @@ print <<EOF;
 				<p><i class="material-icons md-18">&#xE0BE;</i> jurapida@gmail.com</p>
 			</div>
 			<div id="navbar">
-				<a href="../index.html"><img id="logo" src="../res/images/logo_bianco.png" alt="Logo Ju Rapida" /></a>
+				<a href="../cgi-bin/index.cgi"><img id="logo" src="../res/images/logo_bianco.png" alt="Logo Ju Rapida" /></a>
 				<ul id="menu"> 
-					<li><a href="../index.html"><span xml:lang="en">Home</span></a></li>
+					<li><a href="../cgi-bin/index.cgi"><span xml:lang="en">Home</span></a></li>
 					<li><a href="../pages/products.html">Prodotti</a></li>
 					<li><a href="../cgi-bin/contacts.cgi">Contatti</a></li>
 					<li><a href="../pages/about.html">Chi siamo</a></li>
@@ -64,7 +64,7 @@ print <<EOF;
 			</div>
 			<div id="breadcrumb">
 EOF
-print "				<a href=\"../index.html\"><i class=\"material-icons md-18\" >&#xE88A;</i></a> &gt; <a href=\"../pages/products.html\">Prodotti</a> &gt; <a href=\"products.cgi?category=".$categoria."\">".$categoria."</a> &gt; ".$nome."\n";
+print "				<a href=\"../cgi-bin/index.cgi\"><i class=\"material-icons md-18\" >&#xE88A;</i></a> &gt; <a href=\"../pages/products.html\">Prodotti</a> &gt; <a href=\"products.cgi?category=".$categoria."\">".$categoria."</a> &gt; ".$nome."\n";
 print <<EOF;
 			</div>
 		</div>
@@ -101,7 +101,7 @@ print <<EOF;
 			<div id="footer_top">
 				<div id="maps">
 					<ul id="maps_menu">
-						<li><a href="../index.html"><span xml:lang="en">Home</span></a></li>
+						<li><a href="../cgi-bin/index.cgi"><span xml:lang="en">Home</span></a></li>
 						<li><a href="products.html">Prodotti</a></li>                        
 						<li><a href="../cgi-bin/contacts.cgi">Contatti</a></li>
 						<li><a href="about.html">Chi siamo</a></li>
@@ -126,7 +126,7 @@ print <<EOF;
 							<input class="form_item" id="username" type="text" name="username"/>
 							<label class="form_item" for="password">Password</label>
 							<input class="form_item" id="password" type="password" name="password"/>
-							<input type="hidden" name="page" value="../index.html" />
+							<input type="hidden" name="page" value="../cgi-bin/index.cgi" />
 							<input id="submit" type="submit" value="Login" />
 						</fieldset>
 					</form>
