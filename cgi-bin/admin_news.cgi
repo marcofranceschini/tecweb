@@ -234,11 +234,7 @@ EOF
         }
         #serializzazione e chiusura del file
         open(OUT, ">$file");
-<<<<<<< HEAD
         print OUT $doc->toString(1);    #1: indenta correttamente
-=======
-        print OUT $doc->toString(1);    #2: indenta correttamente
->>>>>>> ca965452e9ecb56221ddee881d571f224abe9093
         close(OUT);
 	}
 	# Lettura da file XML
