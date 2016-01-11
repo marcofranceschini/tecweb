@@ -110,8 +110,8 @@ if ($logout) {
 		<body>
 			<div id="header">
 				<div id="navbar_admin">
-					<a id="admin_back_icon" href="../cgi-bin/admin_products.cgi?logout=1"><i class="material-icons md-24">&#xE88A;</i></a>
-					<p><a id="admin_back" href="../cgi-bin/admin_products.cgi?logout=1">Torna al sito</a></p>
+					<a id="admin_back_icon" href="../cgi-bin/admin.cgi?logout=1"><i class="material-icons md-24">&#xE88A;</i></a>
+					<p><a id="admin_back" href="../cgi-bin/admin.cgi?logout=1">Torna al sito</a></p>
 					<p>Gestione Prodotti</p>
 				</div>
 				<div id="admin_dashboard">
