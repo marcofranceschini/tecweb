@@ -10,7 +10,7 @@ use File::Basename;
 use warnings;
 $CGI::POST_MAX = 1024 * 5000;   #massimo upload
 my $safe_filename_characters = "a-zA-Z0-9_.-";  #caratteri sicuri
-my $upload_dir = "../res/images/products";
+my $upload_dir = "../tecwebproject/res/images/products";
 
 #Da usare il lab
 #<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
@@ -58,7 +58,7 @@ my $error = $cgi->cgi_error();
 my %INPUT = Vars();
     
 # Apertura file XML
-$file = '../xml/db.xml';
+$file = '../public_html/tecwebproject/xml/db.xml';
 $parser = XML::LibXML->new();
 $parser->keep_blanks(0);
 $doc = $parser->parse_file($file) or die "Errore nel parsing";
@@ -98,10 +98,10 @@ if ($logout) {
 			<meta name="author" content="Fabiano Tavallini, Marco Franceschini, Daniele Favaro" />
 			<meta name="copyright" content="Ju Rapida S.N.C." />
 			<meta name="viewport" content="width=device-width">
-			<link href="../css/style_1024_max.css" rel="stylesheet" type="text/css" />
-			<link href="../css/style_768.css" rel="stylesheet" type="text/css" />
-			<link href="../css/style_480.css" rel="stylesheet" type="text/css" />
-			<link href="../css/style_1024_min.css" rel="stylesheet" type="text/css" />
+			<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
+			<link href="../tecwebproject/css/style_768.css" rel="stylesheet" type="text/css" />
+			<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
+			<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
 			<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 			<link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css' />
 			<link rel="icon" type="image/png" href="../res/images/icon.png" />
@@ -137,21 +137,21 @@ EOF
                             <a href="#close" title="Close" class="close">X</a>
                             <p>Aggiungi uno sfondo</p>
                             <form name="form_modal_wallpaper" id="form_modal_modify" action="admin_news.cgi" method="post" enctype="multipart/form-data">
-                                <label class="form_item" for="product_category">Categoria</label>
+                            	<label class="form_item" for="product_category">Categoria</label>
 EOF
-                    print"      <input class=\"form_item\" id=\"product_category\" name=\"product_category\" value=\"".$category."\" disabled>";
-                    print "<label class=\"form_item\" for=\"wallpaper_desc\">Descrizione dello sfondo</label>";
-                    print "<textarea class=\"form_item\" id=\"wallpaper_desc\" name=\"wallpaper_desc\" >DESCRIZIONE DELLO SFONDO PER NON VEDENTI</textarea>";
-                    print "<label class=\"form_item\" for=\"wallpaper_img\">Sfondo</label>";
-                    print "<img src=\"../cgi-bin/".$sfondo."\" class=\"form_item\" id=\"wallpaper_img\" name\"wallpaper_img\" alt=\"Immagine di sfondo\" height=\"50\" width=\"90\" />";
-                    print "<input type=\"hidden\" name=\"wallpaper_code\" value=\"".$code."\" />";
-                    print <<EOF;
-                            <label class="form_item" for="product_image">Nuovo sfondo</label>
-                            <input class="form_item" id="wallpaper_new_img" type="file" name="image" />
-                            <input class="submit_modal" id="submit_modal_wallpaper" name="modal_wallpaper" type="submit" value="Modifica" />
-                        </form>
-                    </div>
-                </div>
+				print"      <input class=\"form_item\" id=\"product_category\" name=\"product_category\" value=\"".$category."\" disabled>";
+				print "<label class=\"form_item\" for=\"wallpaper_desc\">Descrizione dello sfondo</label>";
+				print "<textarea class=\"form_item\" id=\"wallpaper_desc\" name=\"wallpaper_desc\" >DESCRIZIONE DELLO SFONDO PER NON VEDENTI</textarea>";
+				print "<label class=\"form_item\" for=\"wallpaper_img\">Sfondo</label>";
+				print "<img src=\"../cgi-bin/".$sfondo."\" class=\"form_item\" id=\"wallpaper_img\" name\"wallpaper_img\" alt=\"Immagine di sfondo\" height=\"50\" width=\"90\" />";
+				print "<input type=\"hidden\" name=\"wallpaper_code\" value=\"".$code."\" />";
+				print <<EOF;
+				<label class="form_item" for="product_image">Nuovo sfondo</label>
+				<input class="form_item" id="wallpaper_new_img" type="file" name="image" />
+				<input class="submit_modal" id="submit_modal_wallpaper" name="modal_wallpaper" type="submit" value="Modifica" />
+                            </form>
+                        </div>
+                   </div>
 EOF
         }
         if($error) {
@@ -234,7 +234,7 @@ EOF
         }
         #serializzazione e chiusura del file
         open(OUT, ">$file");
-        print OUT $doc->toString(2);    #2: indenta correttamente
+        print OUT $doc->toString(1);    #1: indenta correttamente
         close(OUT);
 	}
 	# Lettura da file XML
@@ -253,7 +253,7 @@ EOF
     } else {
         # Stampa le card dei prodotti
         print <<EOF;
-				<div id="products_container">
+				<div id="products_container_news">
 					<div id="products_label">
 						<span>Codice</span><span id="product_name_label">Nome</span><span>Categoria</span>
 					</div>
@@ -322,6 +322,7 @@ print "							<option value=\"Accessori\"";
 						</select>
 						<input id="submit_dashboard_news" type="submit" value="Aggiorna" />
 					</form>
+					<div id="products_container">
 EOF
 
     my $cont=0;
@@ -334,7 +335,6 @@ EOF
     if($cont!=0) { # Ho almeno 1 prodotto non in evidenza
         # Stampa le card dei prodotti
         print <<EOF;
-                <div id="products_container">
                     <div id="products_label">
                         <span>Codice</span><span id="product_name_label">Nome</span><span>Categoria</span>
                     </div>
@@ -360,8 +360,9 @@ EOF
                 print "					</div>\n";
             }
         }
-        print "	</div>\n"; # products_container
+        
     }
+    print "	</div>\n"; # products_container
 	print <<EOF;
 			<div id="openModal" class="modalDialog">
 				<div>
@@ -396,11 +397,11 @@ EOF
 			</div>
             
 			<div id="action_bar">
-				<div id="action_box">
+				<div id="action_box_news">
 					<a id="action_back_news" class="linked_box" href="admin.cgi">Indietro</a>
 				</div>
 			</div>
-					
+		</div>		
 			<div id="footer">
 				<div id="copy_panel">
 					<p id="copy">Copyright &copy; 2016 - All right reserved. Ju Rapida SNC - VIA F. PETRARCA, 14/31100 TREVISO ITALY - P. IVA: 01836040269</p>
