@@ -1214,12 +1214,10 @@
 		-webkit-transition: opacity 200ms ease-in;
 		-moz-transition: opacity 200ms ease-in;
 		transition: opacity 200ms ease-in;
-		pointer-events: none;
 	}
 	
 	.modalDialog:target {
 		opacity: 1;
-		pointer-events: auto;
 	}
 	
 	.modalDialog > div {
