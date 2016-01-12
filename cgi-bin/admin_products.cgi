@@ -237,7 +237,7 @@ EOF
                 print "<span id=\"error_msg\" class=\"admin_message\">L'immagine selezionata &egrave; troppo grande!</span>";
             }
         }
-        if($INPUT{'modify'}) { # Inserisco i dati o verifico che siano stati modificati e poi inserisco quelli opportuni?
+        if($INPUT{'modify'}) { # Inserisco i dati o verifico che siano stati modificati e poi inserisco quelli opportuni
       		# Modifica del database 
             my $codice_prodotto = $INPUT{'modify_code'};
             my $category = $INPUT{'product_category'};
