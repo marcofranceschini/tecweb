@@ -1,5 +1,6 @@
-#!/usr/bin/perl
 #!C:/Perl64/bin/perl.exe
+#!/usr/bin/perl
+
 
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
@@ -318,55 +319,82 @@ EOF
         if($INPUT{'insert'}) {
             # Scrittura su file XML	
             my $category = $INPUT{'product_category'};
-            my $code = $INPUT{'product_code'};
+            my $code = $INPUT{'product_code'};            
+            my $name = $INPUT{'product_name'};
+            my $desc = $INPUT{'product_desc'};
+            my $thumbnail_desc = $INPUT{'thumbnail_desc'};
+            my $image = $cgi->param("image");
+            my $thumbnail = $cgi->param("thumbnail");
+            # Variabile controllo errori
+            my $errors = "false";
             # Controllo codice
-            my $query = "/products/product/code/text()";
-            my @codici = $doc->findnodes($query);
-            my $codice_non_usato = "true";
-            for(my $i=0; $i < scalar @codici; $i++){
-                if($codici[$i] eq $code){
-                    print "<span id=\"error_msg\" class=\"admin_message\">Prodotto non inserito! Codice ".$code." gi&agrave; esistente </span>";
-                    $codice_non_usato = "false";
+            if(!$code) {
+                print "<span id=\"error_msg\" class=\"admin_message\">Codice non inserito!</span>";
+                $errors = "true";
+            } else {
+                my $query = "/products/product/code/text()";
+                my @codici = $doc->findnodes($query);
+                my $codice_non_usato = "true";
+                for(my $i=0; $i < scalar @codici; $i++){
+                    if($codici[$i] eq $code){
+                        print "<span id=\"error_msg\" class=\"admin_message\">Prodotto non inserito! Codice ".$code." gi&agrave; esistente </span>";
+                        $codice_non_usato = "false";
+                        $errors = "true";
+                    }
+                }
+                if($codice_non_usato eq "true") {
+                    if(!$name) {
+                        print "<span id=\"error_msg\" class=\"admin_message\">Nome non inserito!</span>";
+                        $errors = "true";
+                    } else {
+                        if(!$desc) {
+                            print "<span id=\"error_msg\" class=\"admin_message\">Descrizione non inserita!</span>";
+                            $errors = "true";
+                        } else {
+                            if(!$thumbnail_desc) {
+                                print "<span id=\"error_msg\" class=\"admin_message\">Descrizione breve non inserita!</span>";
+                                $errors = "true";
+                            } else {                               
+                                # Upload delle immagini
+                                if ( !$image ) {
+                                    print "<span id=\"error_msg\" class=\"admin_message\">Immagine principale non caricata!</span>";
+                                    $errors = "true";
+                                } else {
+                                    my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
+                                    $image = $name.$extension;
+                                    $image =~ tr/ /_/;
+                                    $image =~ s/[^$safe_filename_characters]//g;
+                                    my $upload_file_handle = $cgi->upload("image");
+                                    open ( UPLOADFILE, ">$upload_dir/$image" ) or die "$!";
+                                    binmode UPLOADFILE;
+                                    while ( <$upload_file_handle> ) {
+                                        print UPLOADFILE;
+                                    }
+                                    close UPLOADFILE;
+                                    
+                                    if ( !$thumbnail ) {
+                                        print "<span id=\"error_msg\" class=\"admin_message\">Thumbnail non caricata!</span>";
+                                        $errors = "true";
+                                    } else {
+                                        my ( $name, $path, $extension ) = fileparse ( $thumbnail, '..*' );
+                                        $thumbnail = $name.$extension;
+                                        $thumbnail =~ tr/ /_/;
+                                        $thumbnail =~ s/[^$safe_filename_characters]//g;
+                                        my $upload_file_handle = $cgi->upload("thumbnail");
+                                        open ( UPLOADFILE, ">$upload_dir_thumbnails/$thumbnail" ) or die "$!";
+                                        binmode UPLOADFILE;
+                                        while ( <$upload_file_handle> ) {
+                                            print UPLOADFILE;
+                                        }
+                                        close UPLOADFILE;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
-            if($codice_non_usato eq "true") {
-                my $name = $INPUT{'product_name'};
-                my $desc = $INPUT{'product_desc'};
-                my $thumbnail_desc = $INPUT{'thumbnail_desc'};
-                my $image = $cgi->param("image"); 
-                my $thumbnail = $cgi->param("thumbnail"); 
-                #upload delle immagini
-                if ( !$image ) {
-                    print "<span id=\"error_msg\" class=\"admin_message\">Immagine principale non caricata!</span>";
-                } else {
-                    my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
-                    $image = $name.$extension;
-                    $image =~ tr/ /_/;
-                    $image =~ s/[^$safe_filename_characters]//g;
-                    my $upload_file_handle = $cgi->upload("image");
-                    open ( UPLOADFILE, ">$upload_dir/$image" ) or die "$!";
-                    binmode UPLOADFILE;
-                    while ( <$upload_file_handle> ) {
-                        print UPLOADFILE;
-                    }
-                    close UPLOADFILE;
-                }
-                if ( !$thumbnail ) {
-                    print "<span id=\"error_msg\" class=\"admin_message\">Thumbnail non caricata!</span>";
-                } else {
-                    my ( $name, $path, $extension ) = fileparse ( $thumbnail, '..*' );
-                    $thumbnail = $name.$extension;
-                    $thumbnail =~ tr/ /_/;
-                    $thumbnail =~ s/[^$safe_filename_characters]//g;
-                    my $upload_file_handle = $cgi->upload("thumbnail");
-                    open ( UPLOADFILE, ">$upload_dir_thumbnails/$thumbnail" ) or die "$!";
-                    binmode UPLOADFILE;
-                    while ( <$upload_file_handle> ) {
-                        print UPLOADFILE;
-                    }
-                    close UPLOADFILE;
-                }
-                
+            if($errors eq "false") {            
                 $new_product =
                 "<product>".
                 "<category>".$category."</category>".
@@ -386,11 +414,12 @@ EOF
                 } else {
                     print "<span id=\"error_msg\" class=\"admin_message\">Database mal formato</span>";
                 }
+                print "<span id=\"info_msg\" class=\"admin_message\">Prodotto ".$code." inserito correttamente</span>";
             }
         }
         #serializzazione e chiusura del file
         open(OUT, ">$file");
-        print OUT $doc->toString(1);    #2: indenta correttamente
+        print OUT $doc->toString(1);    #1: indenta correttamente su Linux 2: indenta correttamente su windows
         close(OUT);
 	}
 	# Lettura da file XML
