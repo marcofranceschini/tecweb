@@ -7,44 +7,14 @@
 	font-family: sansation_bold;
 	src: url('../res/fonts/Sansation_Bold.ttf');
 }
-
-@-moz-keyframes fadeInDown {	
-	0% { opacity: 0; -moz-transform: translateY(-2em); }
-	100% { opacity: 1; transform: translateY(0); } 
-}
-	
-@-webkit-keyframes fadeInDown {
-	0% { opacity: 0; -webkit-transform: translateY(-2em); }
-	100% { opacity: 1; transform: translateY(0); }
-}
 	
 @keyframes fadeInDown {
 	0% { opacity: 0; transform: translateY(-2em); }
 	100% { opacity: 1; transform: translateY(0); }
 }
-
-@-moz-keyframes fadeInLeft {	
-	0% { opacity: 0; -moz-transform: translateX(-10em); }
-	100% { opacity: 1; transform: translateX(0); } 
-}
-	
-@-webkit-keyframes fadeInLeft {
-	0% { opacity: 0.5; -webkit-transform: translateX(-10em); }
-	100% { opacity: 1; transform: translateX(0); }
-}
 	
 @keyframes fadeInLeft {
 	0% { opacity: 0; transform: translateX(-10em); }
-	100% { opacity: 1; transform: translateX(0); }
-}
-
-@-moz-keyframes fadeInRight {	
-	0% { opacity: 0; -moz-transform: translateX(10em); }
-	100% { opacity: 1; transform: translateX(0); } 
-}
-	
-@-webkit-keyframes fadeInRight {
-	0% { opacity: 0; -webkit-transform: translateX(10em); }
 	100% { opacity: 1; transform: translateX(0); }
 }
 	
