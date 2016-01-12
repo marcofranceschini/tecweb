@@ -902,12 +902,11 @@
 		left: 0;
 		overflow: scroll;
 		background: rgba(0,0,0,0.8);
-		z-index: 100;
+		z-index: -1;
 		opacity:0;
 		-webkit-transition: opacity 200ms ease-in;
 		-moz-transition: opacity 200ms ease-in;
 		transition: opacity 200ms ease-in;
-		pointer-events: none;
         padding-top: 1em;
         padding-left: 0.5em;
         padding-right: 0.5em;
@@ -915,7 +914,7 @@
 	
 	.modalDialog:target {
 		opacity: 1;
-		pointer-events: auto;
+        z-index: 100;
 	}
 	
 	.modalDialog > div {
