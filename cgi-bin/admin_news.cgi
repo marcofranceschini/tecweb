@@ -121,7 +121,7 @@ EOF
 			<div id="content_admin">	
 EOF
 
-	if(%INPUT or $error) {  #se riceve dati in input o errori
+	if(%INPUT or $error) {  # Se riceve dati in input o errori
         if($INPUT{'add_wallpaper'}) {
             # Modal di modifica    
             my $code = $INPUT{'evidence_code'};
@@ -154,7 +154,7 @@ EOF
 EOF
         }
         if($error) {
-            if($error =~ /413/) {     #errore: 413 Request entity too large
+            if($error =~ /413/) {     # Errore: 413 Request entity too large
                 print "<span id=\"error_msg\" class=\"admin_message\">L'immagine selezionata &egrave; troppo grande!</span>";
             }
         }
@@ -210,9 +210,9 @@ EOF
                 print "<span id=\"info_msg\" class=\"admin_message\">Prodotto ".$codice_prodotto." nascosto correttamente</span>";
             }
         }
-        #serializzazione e chiusura del file
+        # Serializzazione e chiusura del file
         open(OUT, ">$file");
-        print OUT $doc->toString(1);    #1: indenta correttamente
+        print OUT $doc->toString(1);    # 1: indenta correttamente
         close(OUT);
 	}
 	# Lettura da file XML
@@ -265,11 +265,11 @@ EOF
                     print "					</div>\n";
                 }
             }
-            print "</div>"; # products_container
+            print "</div>"; # products_container_news
         }
     }
     
-    #Due cicli for utili solo alla stampa della linea di separazione
+    # Due cicli for utili solo alla stampa della linea di separazione
     foreach my $product (@prodotti) {
         if ($product->findnodes("./inEvidence") eq "false") {
             push @notInEvidence, $product;
@@ -366,7 +366,7 @@ EOF
     }
     print "	</div>\n"; # products_container
 	print <<EOF;
-			<div id="action_bar">
+			<div id="action_bar_news">
 				<div id="action_box_news">
 					<a id="action_back_news" class="linked_box" href="admin.cgi">Indietro</a>
 				</div>
