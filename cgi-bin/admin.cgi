@@ -7,7 +7,7 @@ use CGI qw(:standard Vars);
 use CGI::Session;
 use warnings;
 use HTTP::BrowserDetect;
-
+use XML::LibXML;
 
 #Da usare il lab
 #<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
@@ -67,7 +67,8 @@ EOF
         my $bd = new HTTP::BrowserDetect($cgi->user_agent());
         my $browserName = $bd->browser_string();
         my $browserVersion = $bd->public_version();
-        if (($browserName eq "Chrome" && $browserVersion < 48) || 
+        print $browserName;
+        if (($browserName eq "Chrome" && $browserVersion < 45) || 
         ($browserName eq "Safari" && $browserVersion < 9) || 
         ($browserName eq "IE" && $browserVersion < 9) || 
         ($browserName eq "Firefox" && $browserVersion < 42) || 
@@ -82,7 +83,8 @@ EOF
                             <input type=\"submit\" class=\"button\" value=\"Ho capito\"/>
                     </div>";
         }  
-    }  
+    }
+     
     print <<EOF;
 				<div id="header" class="fadeInDown">
 					<div id="navbar_admin">
@@ -98,6 +100,20 @@ EOF
 						<a id="news" class="linked_box fadeInLeft" href="admin_news.cgi"><span class="admin_label">Novit&agrave;</span></a>	
 						<a id="products" class="linked_box fadeInRight" href="admin_products.cgi"><span class="admin_label">Prodotti</span></a>
 					</div>
+EOF
+    
+    #Verifica XSD
+    my $parser = XML::LibXML->new;
+    my $schema = XML::LibXML::Schema->new(location => "../xml/db_schema.xml");
+    my $doc = $parser->parse_file("../xml/db.xml");
+    my $result = eval { $schema->validate($doc); };
+    if ($result == 0) {
+        print "<span id=\"info_msg\" class=\"admin_message\">Database XML valido =D</span>";
+    } else {
+        print "<span id=\"error_msg\" class=\"admin_message\">Database XML non valido =(</span>";
+    }
+    
+    print <<EOF;
 				</div>
 						
 				<div id="footer">
