@@ -366,7 +366,7 @@ EOF
     }
     print "	</div>\n"; # products_container
 	print <<EOF;
-			<div id="action_bar_news">
+			<div id="action_bar">
 				<div id="action_box_news">
 					<a id="action_back_news" class="linked_box" href="admin.cgi">Indietro</a>
 				</div>

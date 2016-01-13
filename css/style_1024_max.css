@@ -964,11 +964,6 @@
 		float: right;
 	}
 	
-	#action_bar_news {		/*-------------------------NEW--------------*/
-		height: 5em;
-        padding-top: 1.5em;
-	}
-	
 	#action_box_news {		/*-------------------------NEW--------------*/
 		width: 6em;
 		margin: auto;
