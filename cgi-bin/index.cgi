@@ -70,22 +70,19 @@ foreach my $item ($doc->findnodes('/products/product')) {
                     </a>";
     }
 }
+print "     </div>";
 if($home_vuota eq "true") {
     print <<EOF;
-                    <div id="home_placeholder">
-                        <div id="welcome_message">
-                            <p id="welcome_title">Benvenuto in <span class="ju_rapida">Ju Rapida</span></p>
-                            <p>Qui puoi trovare subito i prodotti che stai cercando!</p>
-                            <p>Inizia subito un tour</p>
-                            <a href="../pages/products.html">Vai ai prodotti</a>
-                        </div>
-                    </div>
+            <div id="home_placeholder">
+                <div id="welcome_message">
+                    <p id="welcome_title">Benvenuto in <span class="ju_rapida">Ju Rapida</span></p>
+                    <p>Qui puoi trovare subito i prodotti che stai cercando!</p>
+                    <p>Inizia subito un tour</p>
+                    <a href="../pages/products.html">Vai ai prodotti</a>
+                </div>
+            </div>
 EOF
-}
-
-print "         </div>
-            </div>";
-if ($home_vuota eq "true") {	
+} else {	
     print " <a id=\"backTop\" href=\"\">
 				<i class=\"material-icons\">&#xE316;</i>
 				Torna in alto alla pagina
