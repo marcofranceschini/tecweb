@@ -82,7 +82,7 @@ EOF
                             <input type=\"hidden\" name=\"compatibilityRead\" value=\"read\"/>  
                             <input type=\"submit\" class=\"button\" value=\"Ho capito\"/>
                     </div>";
-        }  
+        }
     }
      
     print <<EOF;
