@@ -68,12 +68,12 @@ EOF
         my $browserName = $bd->browser_string();
         my $browserVersion = $bd->public_version();
         print $browserName;
-        if (($browserName eq "Chrome" && $browserVersion < 45) || 
-        ($browserName eq "Safari" && $browserVersion < 9) || 
+        if (($browserName eq "Chrome" && $browserVersion < 45) ||       #Verificato
+        ($browserName eq "Safari" && $browserVersion < 9) ||            #Verificato
         ($browserName eq "IE" && $browserVersion < 9) || 
-        ($browserName eq "Firefox" && $browserVersion < 42) || 
-        ($browserName eq "Opera" && $browserVersion < 34) ||
-        ($browserName eq "AndroidBrowser" && $browserVersion < 4.3) ||
+        ($browserName eq "Firefox" && $browserVersion < 42) ||          #Verificato
+        ($browserName eq "Opera" && $browserVersion < 34) ||            #Verificato
+        ($browserName eq "AndroidBrowser" && $browserVersion < 4.3) ||  
         ($browserName eq "ChromeAndroid" && $browserVersion < 47) || 
         ($browserName eq "iOsSafari" && $browserVersion < 8.4)) {
             print " <div id=\"compatibilityAlert\">
