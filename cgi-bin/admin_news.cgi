@@ -176,7 +176,7 @@ EOF
                     } else {
                         my $evidenza = $prodotto->findnodes("inEvidence/text()")->get_node(1);
                         $evidenza->setData("true");
-                        print "<span id=\"info_msg\" class=\"admin_message\">Prodotto ".$code." evidenziato correttamente</span>";
+                        print "<span id=\"info_msg\" class=\"admin_message\">Prodotto ".$codice_prodotto." evidenziato correttamente</span>";
                     }
                 } else {
                     my ( $name, $path, $extension ) = fileparse ( $image, '..*' );
@@ -207,7 +207,7 @@ EOF
             } else {
                 my $evidenza = $prodotto->findnodes("inEvidence/text()")->get_node(1);
                 $evidenza->setData("false");
-                print "<span id=\"info_msg\" class=\"admin_message\">Prodotto ".$codice_prodotto." \"nascosto\" correttamente</span>";
+                print "<span id=\"info_msg\" class=\"admin_message\">Prodotto ".$codice_prodotto." nascosto correttamente</span>";
             }
         }
         #serializzazione e chiusura del file
