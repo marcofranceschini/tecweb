@@ -6,6 +6,8 @@ use CGI::Carp qw(fatalsToBrowser);
 use CGI qw(:standard Vars);
 use CGI::Session;
 use warnings;
+use HTTP::BrowserDetect;
+
 
 #Da usare il lab
 #<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
@@ -60,6 +62,28 @@ if ($app) { # LOGOUT - E' stato premuto il link per uscire
 				<link rel="icon" type="image/png" href="../res/images/icon.png" />
 			</head>
 			<body>
+EOF
+    if ($cgi->param('compatibilityRead') ne "read") {
+        my $bd = new HTTP::BrowserDetect($cgi->user_agent());
+        my $browserName = $bd->browser_string();
+        my $browserVersion = $bd->public_version();
+        if (($browserName eq "Chrome" && $browserVersion < 48) || 
+        ($browserName eq "Safari" && $browserVersion < 9) || 
+        ($browserName eq "IE" && $browserVersion < 9) || 
+        ($browserName eq "Firefox" && $browserVersion < 42) || 
+        ($browserName eq "Opera" && $browserVersion < 34) ||
+        ($browserName eq "AndroidBrowser" && $browserVersion < 4.3) ||
+        ($browserName eq "ChromeAndroid" && $browserVersion < 47) || 
+        ($browserName eq "iOsSafari" && $browserVersion < 8.4)) {
+            print " <div id=\"compatibilityAlert\">
+                        <form method=\"post\" action=\"admin.cgi\">
+                            <p><span>Attenzione!</span> Il tuo browser non supporta pienamente le funzioni di questa pagina. Aggiornalo subito all'ultima versione per non avere problemi durante la navigazione.</p>
+                            <input type=\"hidden\" name=\"compatibilityRead\" value=\"read\"/>  
+                            <input type=\"submit\" class=\"button\" value=\"Ho capito\"/>
+                    </div>";
+        }  
+    }  
+    print <<EOF;
 				<div id="header" class="fadeInDown">
 					<div id="navbar_admin">
 						<a id="admin_back_icon" href="../cgi-bin/admin.cgi?logout=1"><i class="material-icons md-24">&#xE88A;</i></a>

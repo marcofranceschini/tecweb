@@ -73,6 +73,38 @@
 		padding: 0;
 		font-family: 'Maven Pro', sans-serif;
 	}
+    
+    #compatibilityAlert {
+        background: black;
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+    
+    #compatibilityAlert p {
+        color: white;
+        font-size: 1.2em;
+        margin-bottom: 1em;
+    }
+    
+    #compatibilityAlert p span {
+        text-transform: uppercase;
+    }
+    
+    #compatibilityAlert .button {
+        display: block;
+        margin: auto;
+        text-transform: uppercase;
+        font-size: 1em;
+        text-align: center;
+        background: lightgray;
+		border: none;
+		padding: 0.3em 0.5em 0.3em 0.5em;
+		border-radius: 3px;
+		cursor: pointer;
+		color: black;
+    }
 	
 	#header {
 		background: #A00;
