@@ -1065,6 +1065,13 @@
         margin-right: 0.5em;
         text-align: center;
     }
+	
+	#products_container_news .product_name {		/*-------------------------NEW--------------*/
+        text-align: left;
+        width: 11em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+    }
     
     #products_label span{ /* new */
         font-weight: bold;

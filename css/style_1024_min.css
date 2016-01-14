@@ -1130,6 +1130,11 @@
         text-align: center;
     }
     
+    #products_container_news .product_name {		/*-------------------------NEW--------------*/
+        text-align: left;
+        width: 11em;
+    }
+    
     #products_label span{ /* new */
         font-weight: bold;
         text-transform: uppercase;

@@ -869,18 +869,14 @@
 		/*margin-left: 7.6em;*/
 		background-color: darkred;
 		border: none;
-		margin-bottom: 1em;
-		margin-top: 3em;
+		margin-bottom: 1.5em;
+		margin-top: 1.5em;
 	}
 	
 	#dashboard_form_news {
-        display: inline;
+        display: block;
 		
-		ackground: darkred;        
-        text-align: center;
-        padding-top: 0.5em;
-        font-size: 1.1em;
-        font-weight: bold; 
+		margin: auto;
     }
     
     #dashboard_form_news select {
@@ -912,6 +908,9 @@
 		color: black;
         margin-left: 2em;
         margin-bottom: 0.5em;
+		
+		
+		margin-left: 5em,
 	}
 	
 	#submit_dashboard_news:hover{	/* NEW --------------------------------------*/
@@ -1003,6 +1002,16 @@
         vertical-align: middle;
     }
 	
+	#products_container .product_code { /* new */
+        padding-left: 0.5em;
+    }
+    
+    #products_container .product_name { /* new */
+        text-align: left;
+        width: 33%;
+        padding: 0em;
+    }
+	
 	#products_container_news {		/*-------------------------NEW--------------*/
         width: 100%;
         margin: auto;
@@ -1028,20 +1037,53 @@
         text-align: center;        
         vertical-align: middle;
     }
+	
+	#products_container_news .product_code {		/*-------------------------NEW--------------*/
+        padding-left: 0.5em;
+    }
+    
+    #products_container_news .product_name {		/*-------------------------NEW--------------*/
+        text-align: left;
+        width: 33%;
+        padding: 0em;
+    }
+	
+	/*.product_buttons {	
+        display: inline-block;
+        float: right;
+        margin-right: 1em;
+        width: 40%;
+        min-width: 9.5em;
+        padding-bottom: 0.6em;  
+        vertical-align: middle;
+        line-height: normal;
+    }
+    
+    .product_buttons form {	
+        display: inline-block;
+    }
+    
+    .product_buttons .button {		
+        display: inline-block;
+        background: #A00;
+		border: none;
+        padding: 0.4em;
+		box-shadow: 1px 1px 5px #B6B6B6;
+		border-radius: 3px;
+		font-size: 1em;
+		text-shadow: 1px 1px 1px #9E3F3F;
+		color: #FFF;
+    }
+    
+    .product_buttons .button:hover {	
+		background: rgba(200, 0, 0, 1);
+	}*/
     
     #products_label { /* new */
         display: none;
     }
     
-    #products_container .product_code { /* new */
-        padding-left: 0.5em;
-    }
     
-    #products_container .product_name { /* new */
-        text-align: left;
-        width: 33%;
-        padding: 0em;
-    }
     
     .product_buttons { /* new */
         display: inline-block;
