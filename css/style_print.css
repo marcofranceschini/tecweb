@@ -4,6 +4,10 @@
 		padding: 0;
 		font-family: 'Maven Pro', sans-serif;
 	}
+    
+    .skip_menu {
+        display: none;
+    }
 	
 	.material-icons.md-18 { 
 		font-size: 18px; 
