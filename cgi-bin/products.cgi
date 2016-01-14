@@ -35,7 +35,7 @@ print <<EOF;
 		<link rel="icon" type="image/png" href="../res/images/icon.png" />
 	</head>
 	<body>
-        <a class="skip_menu" href="#content_products_cgi">Salta la navigazione</a> 
+        <a class="skip_menu" href="#content_products_cgi" tabindex="1">Salta la navigazione</a> 
 		<div id="header">
 			<div id="contacts">
 				<p><i class="material-icons md-18">&#xE0CD;</i> +39 0422 445566</p>
