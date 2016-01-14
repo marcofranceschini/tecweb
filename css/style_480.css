@@ -862,24 +862,6 @@
 		background: #9d9d9d;
 	}
 	
-	#dashboard_form_news {		/*-------------------------NEW--------------*/
-		/*width: 5em;*/
-		display: inline;
-		margin: auto;
-		padding-top: 2em;
-		
-		/*margin-top: 1em;
-        margin-bottom: 1em;
-        background: darkred;
-        box-shadow: 1px 1px 3px;
-        border-radius: 0.2em;
-		vertical-align: middle;
-		height: 3em;
-		width: 20em;
-		
-		color: white;*/
-	}
-	
 	hr {		/*-------------------------NEW--------------*/
 		width: 85%;
 		margin: auto;
@@ -891,7 +873,35 @@
 		margin-top: 3em;
 	}
 	
-	#submit_dashboard_news {		/*-------------------------NEW--------------*/
+	#dashboard_form_news {
+        display: inline;
+		
+		ackground: darkred;        
+        text-align: center;
+        padding-top: 0.5em;
+        font-size: 1.1em;
+        font-weight: bold; 
+    }
+    
+    #dashboard_form_news select {
+        font-size: 1em;
+        border: none;
+		box-shadow: 1px 1px 5px #3D3D3D;
+		border-radius: 3px;	
+        margin-top: 0.5em;
+    }
+    
+    #dashboard_form_news .form_item {
+        display: inline;
+        padding-right: 0.5em;
+	}
+    
+    #dashboard_form_news label {
+        display: inline-block;
+        font-weight: normal;
+    }
+    
+    #submit_dashboard_news {
         font-size: 0.9em;
         background: lightgray;
 		border: none;
@@ -900,26 +910,14 @@
 		border-radius: 3px;
 		cursor: pointer;
 		color: black;
-        margin-bottom: 2em;
-		margin-left: 2em;    
+        margin-left: 2em;
+        margin-bottom: 0.5em;
 	}
 	
-	#submit_dashboard_news:hover{		/*-------------------------NEW--------------*/
+	#submit_dashboard_news:hover{	/* NEW --------------------------------------*/
 		background: #9d9d9d;
 	}
 	
-	#dashboard_form_news select {		/*-------------------------NEW--------------*/
-        font-size: 1em;
-        border: none;
-		box-shadow: 1px 1px 5px #3D3D3D;
-		border-radius: 3px;	
-        vertical-align: middle;
-    }
-    
-    #dashboard_form_news .form_item {		/*-------------------------NEW--------------*/
-        display: inline;
-        padding-right: 0.5em;
-    }
 	
 	#form_add {		/*-------------------------NEW--------------*/
 		float: right;
