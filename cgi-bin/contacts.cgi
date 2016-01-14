@@ -45,6 +45,7 @@ print <<EOF;
    		<script type="text/javascript" src="../js/contacts.js"></script>
 	</head>
 	<body>
+        <a class="skip_menu" href="#content_contacts">Salta la navigazione</a>
 		<div id="header">
 			<div id="contacts">
 				<p><i class="material-icons md-18">&#xE0CD;</i> +39 0422 445566</p>
