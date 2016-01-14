@@ -102,7 +102,7 @@ if (%FORM && $name =~ /[a-zA-Z0-9]/ && length($name) > 1 && $from =~ /[a-zA-Z0-9
 				<form id="contacts_form" action="../cgi-bin/contacts.cgi" method="post">
 					<div class="form_email_element">
 						<label for="form_email_name">Nome &#47; Azienda</label>
-						<input type="text" name="name" id="form_email_name"
+						<input tabindex="5" type="text" name="name" id="form_email_name"
 EOF
 print "value=\"".$name."\"/>";
 if (%FORM && (!($name =~ /[a-zA-Z0-9]/) || length($name) < 2 || $name eq "Inserire Nome o Azienda")) {
@@ -112,7 +112,7 @@ print <<EOF;
 					</div>
 					<div class="form_email_element">
 						<label for="form_email_mail"><span lang="en">Email</span></label>
-						<input type="text" name="mail" id="form_email_mail"
+						<input tabindex="6" type="text" name="mail" id="form_email_mail"
 EOF
 print "value=\"".$from."\"/>";
 if (%FORM && (!($from =~ /[a-zA-Z0-9]/) || length($from) < 4 || $from eq "Inserire propria Email")) {
@@ -126,7 +126,7 @@ print <<EOF;
 					</div>
 					<div class="form_email_element">
 						<label for="form_email_mex">Messaggio</label>
-						<textarea name="mex" id="form_email_mex" rows="5" cols="5">
+						<textarea tabindex="7" name="mex" id="form_email_mex" rows="5" cols="5">
 EOF
 print $body."</textarea>";
 if (%FORM && (!($body =~ /[a-zA-Z0-9]/) || length($body) < 4 || $body eq "Inserire messaggio")) {
@@ -135,7 +135,7 @@ if (%FORM && (!($body =~ /[a-zA-Z0-9]/) || length($body) < 4 || $body eq "Inseri
 print <<EOF;
 					</div>
 					<div class="form_email_element">
-						<input type="submit" value="Invia" id="form_email_submit"/>
+						<input tabindex="8" type="submit" value="Invia" id="form_email_submit"/>
 					</div>
 				</form>
 			</div>
