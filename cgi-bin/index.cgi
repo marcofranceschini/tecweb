@@ -32,6 +32,7 @@ print <<EOF;
 		<script type="text/javascript" src="../js/index.js"></script>
 	</head>
 	<body>
+        <a class="skip_menu" href="#content_home">Salta la navigazione</a> 
 		<div id="header">
 			<div id="contacts">
 				<p><i class="material-icons md-18">&#xE0CD;</i> +39 0422 445566</p>
@@ -40,7 +41,7 @@ print <<EOF;
 			<div id="navbar">
 				<img id="logo" src="../res/images/logo_bianco.png" alt="Logo Ju Rapida" />
 				<ul id="menu"> 
-					<li><span id="current" xml:lang="en">Home</span></li>
+					<li><span id="current" xml:lang="en" tabindex="1">Home</span></li>
 					<li><a href="../pages/products.html">Prodotti</a></li>
 					<li><a href="contacts.cgi">Contatti</a></li>
 					<li id="menu_last"><a href="../pages/about.html">Chi siamo</a></li>
