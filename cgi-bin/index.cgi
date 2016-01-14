@@ -41,10 +41,10 @@ print <<EOF;
 			<div id="navbar">
 				<img id="logo" src="../res/images/logo_bianco.png" alt="Logo Ju Rapida" />
 				<ul id="menu"> 
-					<li><span id="current" xml:lang="en" tabindex="2">Home</span></li>
-					<li><a href="../pages/products.html" tabindex="4">Prodotti</a></li>
+					<li><span id="current" xml:lang="en">Home</span></li>
+					<li><a href="../pages/products.html" tabindex="2">Prodotti</a></li>
 					<li><a href="contacts.cgi" tabindex="3">Contatti</a></li>
-					<li id="menu_last"><a href="../pages/about.html">Chi siamo</a></li>
+					<li id="menu_last"><a href="../pages/about.html" tabindex="4">Chi siamo</a></li>
 				</ul>
 			</div>
 			<div id="breadcrumb_home">
@@ -58,10 +58,11 @@ EOF
 $parser = XML::LibXML->new();
 my $doc = $parser->parse_file("../xml/db.xml");
 my $home_vuota = "true";
+my $tabIndexCount = 5;
 foreach my $item ($doc->findnodes('/products/product')) {
     if ($item->findnodes('./inEvidence') eq "true") {
         $home_vuota = "false";
-        print "     <a href=\"product_displayer.cgi?display_code=".$item->findnodes('./code')."&display_name=".$item->findnodes('./name')."&display_category=".$item->findnodes('./category')."\">
+        print "     <a tabindex=\"".$tabIndexCount."\" href=\"product_displayer.cgi?display_code=".$item->findnodes('./code')."&display_name=".$item->findnodes('./name')."&display_category=".$item->findnodes('./category')."\">
                         <div class=\"pane\" style=\"background-image: url('../res/images/".$item->findnodes('./backgroundImg')."')\">
                             <div class=\"pane_content\">
                                 <img src=\"../res/images/products/thumbnails/".$item->findnodes('./thumbnail')."\" alt=\"".$item->findnodes('./shortDescription')."\"/>
@@ -69,6 +70,7 @@ foreach my $item ($doc->findnodes('/products/product')) {
                             </div>
                         </div>
                     </a>";
+        $tabIndexCount++;
     }
 }
 print "     </div>";
@@ -79,17 +81,18 @@ if($home_vuota eq "true") {
                     <p id="welcome_title">Benvenuto in <span class="ju_rapida">Ju Rapida</span></p>
                     <p>Qui puoi trovare subito i prodotti che stai cercando!</p>
                     <p>Inizia subito un tour</p>
-                    <a href="../pages/products.html">Vai ai prodotti</a>
+                    <a href="../pages/products.html" tabindex="5">Vai ai prodotti</a>
                 </div>
             </div>
 EOF
-} else {	
-    print " <a id=\"backTop\" href=\"\">
+} else {
+    print " <a tabindex=\"".$tabIndexCount."\" id=\"backTop\" href=\"\">
 				<i class=\"material-icons\">&#xE316;</i>
 				Torna in alto alla pagina
 				<i class=\"material-icons\">&#xE316;</i>
 			</a>";
 }
+$tabIndexCount++;
 print <<EOF;
 		</div>
 
