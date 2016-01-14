@@ -869,14 +869,14 @@
 		/*margin-left: 7.6em;*/
 		background-color: darkred;
 		border: none;
-		margin-bottom: 1.5em;
-		margin-top: 1.5em;
+		margin-top: 2em;
+		margin-bottom: 1em;
 	}
 	
 	#dashboard_form_news {
-        display: block;
-		
-		margin: auto;
+        text-align: center;
+        padding-top: 0.5em;
+        font-size: 1.1em;
     }
     
     #dashboard_form_news select {
@@ -884,7 +884,7 @@
         border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
 		border-radius: 3px;	
-        margin-top: 0.5em;
+        margin-top: 1em;
     }
     
     #dashboard_form_news .form_item {
@@ -895,6 +895,7 @@
     #dashboard_form_news label {
         display: inline-block;
         font-weight: normal;
+		margin-top: 1em;
     }
     
     #submit_dashboard_news {
@@ -908,9 +909,7 @@
 		color: black;
         margin-left: 2em;
         margin-bottom: 0.5em;
-		
-		
-		margin-left: 5em,
+		margin-top: 1em;
 	}
 	
 	#submit_dashboard_news:hover{	/* NEW --------------------------------------*/
@@ -1047,37 +1046,6 @@
         width: 33%;
         padding: 0em;
     }
-	
-	/*.product_buttons {	
-        display: inline-block;
-        float: right;
-        margin-right: 1em;
-        width: 40%;
-        min-width: 9.5em;
-        padding-bottom: 0.6em;  
-        vertical-align: middle;
-        line-height: normal;
-    }
-    
-    .product_buttons form {	
-        display: inline-block;
-    }
-    
-    .product_buttons .button {		
-        display: inline-block;
-        background: #A00;
-		border: none;
-        padding: 0.4em;
-		box-shadow: 1px 1px 5px #B6B6B6;
-		border-radius: 3px;
-		font-size: 1em;
-		text-shadow: 1px 1px 1px #9E3F3F;
-		color: #FFF;
-    }
-    
-    .product_buttons .button:hover {	
-		background: rgba(200, 0, 0, 1);
-	}*/
     
     #products_label { /* new */
         display: none;
