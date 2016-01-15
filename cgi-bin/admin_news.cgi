@@ -86,6 +86,10 @@ if ($logout) {
     #{
     #    print "$key: $INPUT{$key}\n";
     #}
+    $stringa =CGI->new->url();
+    print $stringa;
+    my @words = split ('#', $stringa);
+    print @words;
 	print <<EOF;
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
@@ -109,8 +113,8 @@ if ($logout) {
 		<body>
 			<div id="header">
 				<div id="navbar_admin">
-					<a id="admin_back_icon" href="../cgi-bin/admin.cgi?logout=1"><i class="material-icons md-24">&#xE88A;</i></a>
-					<p><a id="admin_back" href="../cgi-bin/admin.cgi?logout=1">Torna al sito</a></p>
+					<a id="admin_back_icon" href="admin.cgi?logout=1" tabindex=\"1\"><i class="material-icons md-24">&#xE88A;</i></a>
+					<p><a id="admin_back" href="admin.cgi?logout=1" tabindex=\"1\">Torna al sito</a></p>
 					<p>Gestione Novit&agrave;</p>
 				</div>
 EOF
@@ -134,7 +138,7 @@ EOF
             print <<EOF;
                     <div id="openWallpaper" class="modalDialog">
                         <div>
-                            <a href="#close" title="Close" class="close">X</a>
+                            <a href="#close" title="Close" class="close" tabindex="">X</a>
                             <p>Evidenzia prodotto</p>
                             <form name="form_modal_wallpaper" id="form_modal_modify" action="admin_news.cgi" method="post" enctype="multipart/form-data">
 EOF
@@ -146,8 +150,8 @@ EOF
                 print "<input type=\"hidden\" name=\"evidence_code\" value=\"".$code."\" />";
 				print <<EOF;
 				                <label class="form_item" for="product_image">Nuovo sfondo</label>
-				                <input class="form_item" id="wallpaper_new_img" type="file" name="image" />
-				                <input class="submit_modal" id="submit_modal_wallpaper" name="add_evidence" type="submit" value="Aggiungi" />
+				                <input class="form_item" id="wallpaper_new_img" type="file" name="image" tabindex="1" />
+				                <input class="submit_modal" id="submit_modal_wallpaper" name="add_evidence" type="submit" value="Aggiungi" tabindex="2"/>
                             </form>
                         </div>
                    </div>
@@ -244,6 +248,7 @@ EOF
                             <span>Codice</span><span id="product_name_label">Nome</span><span>Categoria</span>
                         </div>
 EOF
+            $index_tab=2;
             foreach my $product (@prodotti) { # Stampo i prodotti che sono in evidenza
                 my $evidenza = $product->findnodes("./inEvidence");
                 if($evidenza eq "true") {
@@ -259,10 +264,11 @@ EOF
                     print "								<input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
                     print "								<input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
                     print "								<input type=\"hidden\" name=\"add_wallpaper\" />\n";
-                    print "							    <input class=\"button\" type=\"submit\" name=\"hide_evidence\" value=\"Rimuovi\" />\n";
+                    print "							    <input class=\"button\" type=\"submit\" name=\"hide_evidence\" value=\"Rimuovi\" tabindex=\"".$index_tab."\" />\n";
                     print "							</form>\n";
                     print "						</div>\n";
                     print "					</div>\n";
+                    $index_tab=$index_tab+1;
                 }
             }
             print "</div>"; # products_container_news
@@ -284,13 +290,12 @@ EOF
         print "<hr \>";
     }
     
-    
     print <<EOF;
 					<form name="dashboard_form_news" id="dashboard_form_news" action="admin_news.cgi" method="post" enctype="multipart/form-data">
                         <label class="form_item_news" for="display_category">Categoria:</label>
-						<select class="form_item_news" name="display_category">
 EOF
-print "							<option value=\"Tutte\"";
+	print "				<select class=\"form_item_news\" name=\"display_category\" tabindex=\"".$index_tab."\">
+							<option value=\"Tutte\"";
                             if($display_category eq "Tutte"){ print " selected ";}
                             print ">Tutte</option>\n";
 print "							<option value=\"Calcio\"";
@@ -320,12 +325,11 @@ print "							<option value=\"Protezioni\"";
 print "							<option value=\"Accessori\"";
                             if($display_category eq "Accessori"){ print " selected ";}
                             print ">Accessori</option>\n";
-                        print <<EOF;
-						</select>
-						<input id="submit_dashboard_news" type="submit" value="Aggiorna" />
+                 $index_tab=$index_tab+1;
+                 print "</select>
+						<input id=\"submit_dashboard_news\" type=\"submit\" value=\"Aggiorna\" tabindex=\"".$index_tab."\" />
 					</form>
-					<div id="products_container">
-EOF
+					<div id=\"products_container\">";
 
     my $cont=0;
     for(my $i=0; $i < scalar @prodottiLimitati && $cont!=1; $i++) { # Verifico se ci sono prodotti che non sono in evidenza
@@ -341,7 +345,7 @@ EOF
                         <span>Codice</span><span id="product_name_label">Nome</span><span>Categoria</span>
                     </div>
 EOF
-    
+        $index_tab=$index_tab+1;
         for(my $i=0; $i < scalar @prodottiLimitati; $i++) { # Stampo i prodotti che non sono in evidenza
             my $evidenza = $prodottiLimitati[$i]->findnodes("./inEvidence");
             if($evidenza ne "true") {
@@ -356,10 +360,11 @@ EOF
                 print "							<form name=\"form_wallpaper\" id=\"form_add\" class=\"form_add\" action=\"admin_news.cgi#openWallpaper\" method=\"post\" enctype=\"multipart/form-data\">\n";
                 print "								<input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
                 print "								<input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
-                print "							    <input class=\"button\" type=\"submit\" name=\"add_wallpaper\" value=\"Evidenzia\" />\n";
+                print "							    <input class=\"button\" type=\"submit\" name=\"add_wallpaper\" value=\"Evidenzia\" tabindex=\"".$index_tab."\" />\n";
                 print "							</form>\n";
                 print "						</div>\n";
                 print "					</div>\n";
+                $index_tab=$index_tab+1;
             }
         }
         
@@ -368,8 +373,11 @@ EOF
 	print <<EOF;
 			<div id="action_bar">
 				<div id="action_box_news">
-					<a id="action_back_news" class="linked_box" href="admin.cgi">Indietro</a>
-				</div>
+EOF
+    print"
+					<a id=\"action_back_news\" class=\"linked_box\" href=\"admin.cgi\" tabindex=\"".$index_tab."\">Indietro</a>";
+	print <<EOF;
+                </div>
 			</div>
 		</div>		
 			<div id="footer">
@@ -377,15 +385,18 @@ EOF
 					<p id="copy">Copyright &copy; 2016 - All right reserved. Ju Rapida SNC - VIA F. PETRARCA, 14/31100 TREVISO ITALY - P. IVA: 01836040269</p>
 					<p id="validation">
 						<span id="xhtml_valid">
-							<a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
+EOF
+    $index_tab=$index_tab+1;
+    $app=$index_tab+1;
+    print "
+							<a href=\"http://validator.w3.org/check?uri=referer\" tabindex=\"".$index_tab."\"><img src=\"http://www.w3.org/Icons/valid-xhtml10\" alt=\"Valid XHTML 1.0 Strict\" height=\"31\" width=\"88\" /></a>
 						</span>
-						<span id="css_valid">
-							<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="Valid CSS3" /></a>
+						<span id=\"css_valid\">
+							<a href=\"http://jigsaw.w3.org/css-validator/check/referer\" tabindex=\"".$app."\"><img style=\"border:0;width:88px;height:31px\" src=\"http://jigsaw.w3.org/css-validator/images/vcss-blue\" alt=\"Valid CSS3\" /></a>
 						</span>
 					</p>
 				</div>
 			</div>
 		</body>
-	</html>
-EOF
+	</html>";
 }
