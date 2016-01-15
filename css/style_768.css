@@ -165,9 +165,8 @@
 	}
 	
 	#breadcrumb_home {
-		visibility: hidden;
-		clear: both;
-	}
+        height: 2.4em;
+    }
 	
 	#breadcrumb {	
 		clear: both;

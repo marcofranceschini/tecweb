@@ -169,10 +169,7 @@
 	}
 	
 	#breadcrumb_home {
-		visibility: hidden;
-		clear: both;
-		padding-top: 0.7em;
-		padding-bottom: 0.7em;
+        height: 2.4em;
 	}
 	
 	#breadcrumb {	

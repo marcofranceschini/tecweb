@@ -222,14 +222,10 @@
 		border-bottom-color: white;
 		border-bottom-style: solid;
 	}
-	
-	#breadcrumb_home {
-		visibility: hidden;
-		clear: both;
-        height: 0em;
-		padding-top: 0.7em;
-		padding-bottom: 0.7em;
-	}
+    
+    #breadcrumb_home {
+        height: 2.4em;
+    }
 	
 	#breadcrumb {	
 		clear: both;

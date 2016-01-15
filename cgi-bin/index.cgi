@@ -47,9 +47,7 @@ print <<EOF;
 					<li id="menu_last"><a href="../pages/about.html" tabindex="4">Chi siamo</a></li>
 				</ul>
 			</div>
-			<div id="breadcrumb_home">
-				<img src="../res/images/ic_home.png" alt="Home page"</img>
-			</div>
+            <div id="breadcrumb_home"></div>
 		</div>
 		
 		<div id="content_home">
