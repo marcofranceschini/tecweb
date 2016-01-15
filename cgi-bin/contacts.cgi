@@ -150,7 +150,7 @@ print <<EOF;
 					<ul id="maps_menu">
 						<li><a href="../cgi-bin/index.cgi"><span xml:lang="en">Home</span></a></li>
 						<li><a href="../pages/products.html">Prodotti</a></li>
-						<li><a href="contacts.cgi">Contatti</a></li>
+						<li>Contatti</li>
 						<li><a href="../pages/about.html">Chi siamo</a></li>
 					</ul>
 					<ul id="maps_categories">

@@ -98,7 +98,7 @@ print <<EOF;
 			<div id="footer_top">
 				<div id="maps">
 					<ul id="maps_menu">
-						<li><span xml:lang="en">Home</span></a></li>
+						<li><span xml:lang="en">Home</span></li>
 						<li><a href="../pages/products.html">Prodotti</a></li>
 						<li><a href="contacts.cgi">Contatti</a></li>
 						<li><a href="../pages/about.html">Chi siamo</a></li>
