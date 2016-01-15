@@ -10,7 +10,16 @@ use warnings;
 my $cgi = CGI->new();
 my $category = $cgi->param('category');
 
-print "Content-Type: text/html\n\n";
+my $tabIndexCount = 0;
+sub tabindex {
+    $tabIndexCount++;
+    return (\$tabIndexCount); #ritorna il RIFERIMENTO alla variabile
+}
+if ($cgi->param('tabindex') ne '') {
+    $tabIndexCount = $tabIndexCount - $cgi->param('tabindex');
+}
+
+print CGI->header;
 print <<EOF;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
@@ -35,7 +44,7 @@ print <<EOF;
 		<link rel="icon" type="image/png" href="../res/images/icon.png" />
 	</head>
 	<body>
-        <a class="skip_menu" href="#content_products_cgi" tabindex="1">Salta la navigazione</a> 
+        <a class="skip_menu" href="products.cgi?tabindex=4&amp;category=$category#content_products_cgi" tabindex="${tabindex()}">Salta la navigazione</a> 
 		<div id="header">
 			<div id="contacts">
 				<p><i class="material-icons md-18">&#xE0CD;</i> +39 0422 445566</p>
