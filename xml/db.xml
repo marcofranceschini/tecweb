@@ -9,7 +9,7 @@
     <img>TRIDENT_4.png</img>
     <thumbnail>TRIDENT_4.png</thumbnail>
     <backgroundImg>running_wall.jpg</backgroundImg>
-    <inEvidence>false</inEvidence>
+    <inEvidence>true</inEvidence>
   </product>
   <product>
     <category>Calcio</category>
@@ -31,7 +31,7 @@
     <img>C0118_EVOLUTION_L_B.png</img>
     <thumbnail>C0118_EVOLUTION_L_B.png</thumbnail>
     <backgroundImg>nuoto_wall.jpg</backgroundImg>
-    <inEvidence>false</inEvidence>
+    <inEvidence>true</inEvidence>
   </product>
   <product>
     <category>Calcio</category>

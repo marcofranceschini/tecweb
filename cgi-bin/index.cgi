@@ -41,7 +41,7 @@ print <<EOF;
 		<script type="text/javascript" src="../js/index.js"></script>
 	</head>
 	<body>
-        <a class="skip_menu" href="index.cgi?tabindex=4" tabindex="${tabindex()}">Salta la navigazione</a> 
+        <a class="skip_menu" href="index.cgi?tabindex=4#content_home" tabindex="${tabindex()}">Salta la navigazione</a> 
         <div id="header">
 			<div id="contacts">
 				<p><i class="material-icons md-18">&#xE0CD;</i> +39 0422 445566</p>
