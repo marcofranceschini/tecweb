@@ -53,10 +53,10 @@ print <<EOF;
 			<div id="navbar">
 				<a href="../cgi-bin/index.cgi"><img id="logo" src="../res/images/logo_bianco.png" alt="Logo Ju Rapida" /></a>
 				<ul id="menu"> 
-					<li><a href="../cgi-bin/index.cgi"><span xml:lang="en">Home</span></a></li>
-					<li><a href="../pages/products.html">Prodotti</a></li>
-					<li><a href="../cgi-bin/contacts.cgi">Contatti</a></li>
-					<li><a href="../pages/about.html">Chi siamo</a></li>
+					<li><a tabindex="${tabindex()} href="../cgi-bin/index.cgi"><span xml:lang="en">Home</span></a></li>
+					<li><a tabindex="${tabindex()} href="../pages/products.html">Prodotti</a></li>
+					<li><a tabindex="${tabindex()} href="../cgi-bin/contacts.cgi">Contatti</a></li>
+					<li><a tabindex="${tabindex()} href="../pages/about.html">Chi siamo</a></li>
 				</ul>
 			</div>
 			<div id="breadcrumb">
