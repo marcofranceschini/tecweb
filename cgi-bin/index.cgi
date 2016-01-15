@@ -9,7 +9,7 @@ use warnings;
 my $tabIndexCount = 0;
 sub tabindex {
     $tabIndexCount++;
-    return (\$tabIndexCount);
+    return (\$tabIndexCount); #ritorna il RIFERIMENTO alla variabile
 }
 my $cgi = CGI->new();
 if ($cgi->param('tabindex') ne '') {
