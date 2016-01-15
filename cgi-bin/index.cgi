@@ -6,8 +6,17 @@ use CGI::Carp qw(fatalsToBrowser);
 use XML::LibXML;
 use warnings;
 
-print CGI->header;
+my $tabIndexCount = 0;
+sub tabindex {
+    $tabIndexCount++;
+    return (\$tabIndexCount);
+}
+my $cgi = CGI->new();
+if ($cgi->param('tabindex') ne '') {
+    $tabIndexCount = $tabIndexCount - $cgi->param('tabindex');
+}
 
+print CGI->header;
 print <<EOF;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
@@ -32,19 +41,19 @@ print <<EOF;
 		<script type="text/javascript" src="../js/index.js"></script>
 	</head>
 	<body>
-        <a class="skip_menu" href="#content_home" tabindex="1">Salta la navigazione</a> 
-		<div id="header">
+        <a class="skip_menu" href="index.cgi?tabindex=4" tabindex="${tabindex()}">Salta la navigazione</a> 
+        <div id="header">
 			<div id="contacts">
 				<p><i class="material-icons md-18">&#xE0CD;</i> +39 0422 445566</p>
 				<p><i class="material-icons md-18">&#xE0BE;</i> jurapida@gmail.com</p>
 			</div>
 			<div id="navbar">
 				<img id="logo" src="../res/images/logo_bianco.png" alt="Logo Ju Rapida" />
-				<ul id="menu"> 
+				<ul id="menu">
 					<li><span id="current" xml:lang="en">Home</span></li>
-					<li><a href="../pages/products.html" tabindex="2">Prodotti</a></li>
-					<li><a href="contacts.cgi" tabindex="3">Contatti</a></li>
-					<li id="menu_last"><a href="../pages/about.html" tabindex="4">Chi siamo</a></li>
+					<li><a href="../pages/products.html" tabindex="${tabindex()}">Prodotti</a></li>
+					<li><a href="contacts.cgi" tabindex="${tabindex()}">Contatti</a></li>
+					<li id="menu_last"><a href="../pages/about.html" tabindex="${tabindex()}">Chi siamo</a></li>
 				</ul>
 			</div>
             <div id="breadcrumb_home"></div>
@@ -56,11 +65,10 @@ EOF
 $parser = XML::LibXML->new();
 my $doc = $parser->parse_file("../xml/db.xml");
 my $home_vuota = "true";
-my $tabIndexCount = 5;
 foreach my $item ($doc->findnodes('/products/product')) {
     if ($item->findnodes('./inEvidence') eq "true") {
         $home_vuota = "false";
-        print "     <a tabindex=\"".$tabIndexCount."\" href=\"product_displayer.cgi?display_code=".$item->findnodes('./code')."&display_name=".$item->findnodes('./name')."&display_category=".$item->findnodes('./category')."\">
+        print "     <a tabindex=\"${tabindex()}\" href=\"product_displayer.cgi?display_code=".$item->findnodes('./code')."&display_name=".$item->findnodes('./name')."&display_category=".$item->findnodes('./category')."\">
                         <div class=\"pane\" style=\"background-image: url('../res/images/".$item->findnodes('./backgroundImg')."')\">
                             <div class=\"pane_content\">
                                 <img src=\"../res/images/products/thumbnails/".$item->findnodes('./thumbnail')."\" alt=\"".$item->findnodes('./shortDescription')."\"/>
@@ -68,7 +76,6 @@ foreach my $item ($doc->findnodes('/products/product')) {
                             </div>
                         </div>
                     </a>";
-        $tabIndexCount++;
     }
 }
 print "     </div>";
@@ -79,18 +86,17 @@ if($home_vuota eq "true") {
                     <p id="welcome_title">Benvenuto in <span class="ju_rapida">Ju Rapida</span></p>
                     <p>Qui puoi trovare subito i prodotti che stai cercando!</p>
                     <p>Inizia subito un tour</p>
-                    <a href="../pages/products.html" tabindex="5">Vai ai prodotti</a>
+                    <a href="../pages/products.html" tabindex="${tabindex()}">Vai ai prodotti</a>
                 </div>
             </div>
 EOF
 } else {
-    print " <a tabindex=\"".$tabIndexCount."\" id=\"backTop\" href=\"\">
+    print " <a tabindex=\"${tabindex()}\" id=\"backTop\" href=\"\">
 				<i class=\"material-icons\">&#xE316;</i>
 				Torna in alto alla pagina
 				<i class=\"material-icons\">&#xE316;</i>
 			</a>";
 }
-$tabIndexCount++;
 print <<EOF;
 		</div>
 
@@ -99,20 +105,20 @@ print <<EOF;
 				<div id="maps">
 					<ul id="maps_menu">
 						<li><span xml:lang="en">Home</span></li>
-						<li><a href="../pages/products.html">Prodotti</a></li>
-						<li><a href="contacts.cgi">Contatti</a></li>
-						<li><a href="../pages/about.html">Chi siamo</a></li>
+						<li><a tabindex=\"${tabindex()}\" href="../pages/products.html">Prodotti</a></li>
+						<li><a tabindex=\"${tabindex()}\"href="contacts.cgi">Contatti</a></li>
+						<li><a tabindex=\"${tabindex()}\"href="../pages/about.html">Chi siamo</a></li>
 					</ul>
 					<ul id="maps_categories">
-						<li><a href="products.cgi?category=Calcio">Calcio</a></li>
-						<li><a href="products.cgi?category=Basket"><span xml:lang="en">Basket</span></a></li>
-						<li><a href="products.cgi?category=Volley"><span xml:lang="en">Volley</span></a></li>
-						<li><a href="products.cgi?category=Tennistavolo">Tennistavolo</a></li>
-						<li><a href="products.cgi?category=Nuoto">Nuoto</a></li>
-						<li><a href="products.cgi?category=Minigolf">Minigolf</a></li>
-						<li><a href="products.cgi?category=Calciobalilla">Calciobalilla</a></li>
-						<li><a href="products.cgi?category=Protezioni">Protezioni</a></li>
-						<li><a href="products.cgi?category=Accessori">Accessori</a></li>
+						<li><a tabindex=\"${tabindex()}\" href="products.cgi?category=Calcio">Calcio</a></li>
+						<li><a tabindex=\"${tabindex()}\" href="products.cgi?category=Basket"><span xml:lang="en">Basket</span></a></li>
+						<li><a tabindex=\"${tabindex()}\" href="products.cgi?category=Volley"><span xml:lang="en">Volley</span></a></li>
+						<li><a tabindex=\"${tabindex()}\" href="products.cgi?category=Tennistavolo">Tennistavolo</a></li>
+						<li><a tabindex=\"${tabindex()}\" href="products.cgi?category=Nuoto">Nuoto</a></li>
+						<li><a tabindex=\"${tabindex()}\" href="products.cgi?category=Minigolf">Minigolf</a></li>
+						<li><a tabindex=\"${tabindex()}\" href="products.cgi?category=Calciobalilla">Calciobalilla</a></li>
+						<li><a tabindex=\"${tabindex()}\" href="products.cgi?category=Protezioni">Protezioni</a></li>
+						<li><a tabindex=\"${tabindex()}\" href="products.cgi?category=Accessori">Accessori</a></li>
 					</ul>
 				</div>
 				<div id="admin_form_panel">
@@ -121,11 +127,11 @@ print <<EOF;
 						<fieldset>
 							<legend><i class="material-icons md-18">&#xE853;</i>Area Riservata</legend>
 							<label class="form_item" for="username">Username</label>
-							<input class="form_item" id="username" type="text" name="username"/>
+							<input tabindex=\"${tabindex()}\" class="form_item" id="username" type="text" name="username"/>
 							<label class="form_item" for="password">Password</label>
-							<input class="form_item" id="password" type="password" name="password"/>
+							<input tabindex=\"${tabindex()}\" class="form_item" id="password" type="password" name="password"/>
 							<input type="hidden" name="page" value="index.cgi" />
-							<input id="submit" type="submit" value="Login" />
+							<input tabindex=\"${tabindex()}\" id="submit" type="submit" value="Login" />
 						</fieldset>
 					</form>
 				</div>
