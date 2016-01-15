@@ -1463,7 +1463,6 @@
 	#maps a {
 		text-decoration: none;
 		color: white;
-		text-transform: uppercase;
 	}
 	
 	#maps_menu {
@@ -1474,6 +1473,7 @@
 	
 	#maps_menu li {
 		margin: 0.4em;
+        text-transform: uppercase;
 	}
 	
 	#maps_menu li a:hover {
@@ -1485,6 +1485,7 @@
 		margin-left: 4em;
 		text-align: left;
 		letter-spacing: 0.4em;
+        text-transform: uppercase;
 	}
 	
 	#maps_categories li {
