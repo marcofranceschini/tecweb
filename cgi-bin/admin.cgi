@@ -102,15 +102,25 @@ EOF
 					</div>
 EOF
     
-    #Verifica XSD
+    #Verifica XML prodotti tramite XSD
     my $parser = XML::LibXML->new;
-    my $schema = XML::LibXML::Schema->new(location => "../xml/db_schema.xml");
+    my $schema = XML::LibXML::Schema->new(location => "../xml/db_schema.xsd");
     my $doc = $parser->parse_file("../xml/db.xml");
     my $result = eval { $schema->validate($doc); };
-    if ($result == 0) {
-        print "<span id=\"info_msg\" class=\"admin_message\">Database XML valido =D</span>";
+    if (defined $result) {
+        print "<span id=\"info_msg\" class=\"admin_message\">Database XML prodotti valido =D</span>";
     } else {
-        print "<span id=\"error_msg\" class=\"admin_message\">Database XML non valido =(</span>";
+        print "<span id=\"error_msg\" class=\"admin_message\">Database XML prodotti non valido =(</span>";
+    }
+    
+    #Verifica XML admin tramite XSD
+    $schema = XML::LibXML::Schema->new(location => "../xml/admin_db_schema.xsd");
+    $doc = $parser->parse_file("../xml/admin_db.xml");
+    $result = eval { $schema->validate($doc); };
+    if (defined $result) {
+        print "<span id=\"info_msg\" class=\"admin_message\">Database XML amministratori valido =D</span>";
+    } else {
+        print "<span id=\"error_msg\" class=\"admin_message\">Database XML amministratori non valido =(</span>";
     }
     
     print <<EOF;
