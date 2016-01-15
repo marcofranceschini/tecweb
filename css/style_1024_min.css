@@ -226,6 +226,7 @@
 	#breadcrumb_home {
 		visibility: hidden;
 		clear: both;
+        height: 0em;
 		padding-top: 0.7em;
 		padding-bottom: 0.7em;
 	}
@@ -241,8 +242,10 @@
 		background: darkred;
 	}
 	
-	#breadcrumb i {
+	#breadcrumb img {
 		vertical-align: middle;
+        width: 1em;
+        height: 1em;
 	}
     
     #breadcrumb a {             /* ------------------- NEW ------------------------------------------- */

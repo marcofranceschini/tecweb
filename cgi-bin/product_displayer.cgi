@@ -65,7 +65,7 @@ print <<EOF;
 			</div>
 			<div id="breadcrumb">
 EOF
-print "				<a href=\"../cgi-bin/index.cgi\"><i class=\"material-icons md-18\" >&#xE88A;</i></a> &gt; <a href=\"../pages/products.html\">Prodotti</a> &gt; <a href=\"products.cgi?category=".$categoria."\">".$categoria."</a> &gt; ".$nome."\n";
+print "				<a href=\"../cgi-bin/index.cgi\"><img src=\"../res/images/ic_home.png\" alt=\"Home page\"</img></a> &gt; <a href=\"../pages/products.html\">Prodotti</a> &gt; <a href=\"products.cgi?category=".$categoria."\">".$categoria."</a> &gt; ".$nome."\n";
 print <<EOF;
 			</div>
 		</div>

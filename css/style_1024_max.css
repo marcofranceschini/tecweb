@@ -188,9 +188,10 @@
 		background: darkred;
 	}
 	
-	#breadcrumb i {
+	#breadcrumb img {
 		vertical-align: middle;
-		
+        width: 1em;
+        height: 1em;
 	}
     
     #home_placeholder {

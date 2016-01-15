@@ -61,7 +61,7 @@ print <<EOF;
 				</ul>
 			</div>
 			<div id="breadcrumb">
-				<a href="../cgi-bin/index.cgi"><i class="material-icons md-18" >&#xE88A;</i></a> <span>&gt; Contatti</span>
+				<a href="../cgi-bin/index.cgi"><img src="../res/images/ic_home.png" alt="Home page"</img></a> &gt; Contatti
 			</div>
 		</div>
 		

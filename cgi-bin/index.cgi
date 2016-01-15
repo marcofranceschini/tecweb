@@ -48,7 +48,7 @@ print <<EOF;
 				</ul>
 			</div>
 			<div id="breadcrumb_home">
-				<i class="material-icons md-18" >&#xE88A;</i>
+				<img src="../res/images/ic_home.png" alt="Home page"</img>
 			</div>
 		</div>
 		
