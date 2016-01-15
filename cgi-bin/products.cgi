@@ -137,8 +137,8 @@ for(my $i=0; $i < scalar @prodotti; $i++) {
     print "\">";
     print "</div>";
 }
-print "            </div>\n";
-print "<div id=\"products_displayer\">";
+print "     </div>\n";
+print " <div id=\"products_displayer\">";
 print " <div id=\"products_displayer_frame\">";
 
 if(!@prodotti) {
@@ -204,15 +204,53 @@ print <<EOF;
 						<li><a href="about.html">Chi siamo</a></li>
 					</ul>
 					<ul id="maps_categories">
-						<li><a href="products.cgi?category=Calcio">Calcio</a></li>
-						<li><a href="products.cgi?category=Basket"><span xml:lang="en">Basket</span></a></li>
-						<li><a href="products.cgi?category=Volley"><span xml:lang="en">Volley</span></a></li>
-						<li><a href="products.cgi?category=Tennistavolo">Tennistavolo</a></li>
-						<li><a href="products.cgi?category=Nuoto">Nuoto</a></li>
-						<li><a href="products.cgi?category=Minigolf">Minigolf</a></li>
-						<li><a href="products.cgi?category=Calciobalilla">Calciobalilla</a></li>
-						<li><a href="products.cgi?category=Protezioni">Protezioni</a></li>
-						<li><a href="products.cgi?category=Accessori">Accessori</a></li>
+EOF
+if ($category ne "Calcio") { 
+    print "             <li><a href=\"products.cgi?category=Calcio\">Calcio</a></li>";
+} else {
+    print "             <li>Calcio</li>";
+}
+if ($category ne "Basket") { 
+    print "				<li><a href=\"products.cgi?category=Basket\"><span xml:lang=\"en\">Basket</span></a></li>";
+} else {
+    print "             <li><span xml:lang=\"en\">Basket</span></li>";
+}
+if ($category ne "Volley") { 
+    print "				<li><a href=\"products.cgi?category=Volley\"><span xml:lang=\"en\">Volley</span></a></li>";
+} else {
+    print "             <li><span xml:lang=\"en\">Volley</span></li>";
+}
+if ($category ne "Tennistavolo") { 
+    print "				<li><a href=\"products.cgi?category=Tennistavolo\">Tennistavolo</a></li>";
+} else {
+    print "             <li>Tennistavolo</li>";
+}
+if ($category ne "Nuoto") { 
+    print "				<li><a href=\"products.cgi?category=Nuoto\">Nuoto</a></li>";
+} else {
+    print "             <li>Nuoto</li>";
+}
+if ($category ne "Minigolf") { 
+    print "				<li><a href=\"products.cgi?category=Minigolf\">Minigolf</a></li>";
+} else {
+    print "             <li>Minigolf</li>";
+}
+if ($category ne "Calciobalilla") { 
+    print "				<li><a href=\"products.cgi?category=Calciobalilla\">Calciobalilla</a></li>";
+} else {
+    print "             <li>Calciobalilla</li>";
+}
+if ($category ne "Protezioni") { 
+    print "				<li><a href=\"products.cgi?category=Protezioni\">Protezioni</a></li>";
+} else {
+    print "             <li>Protezioni</li>";
+}
+if ($category ne "Accessori") { 
+    print "				<li><a href=\"products.cgi?category=Accessori\">Accessori</a></li>";
+} else {
+    print "             <li>Accessori</li>";
+}
+print <<EOF;
 					</ul>
 				</div>
 				<div id="admin_form_panel">
