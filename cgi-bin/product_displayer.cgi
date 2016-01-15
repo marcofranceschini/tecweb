@@ -48,6 +48,7 @@ print <<EOF;
 		<link rel="icon" type="image/png" href="../res/images/icon.png" />
 	</head>
 	<body>
+        <a class="skip_menu" href="#content_products_displayer_cgi" tabindex="1">Salta la navigazione</a> 
 		<div id="header">
 			<div id="contacts">
 				<p><i class="material-icons md-18">&#xE0CD;</i> +39 0422 445566</p>
@@ -64,7 +65,11 @@ print <<EOF;
 			</div>
 			<div id="breadcrumb">
 EOF
+<<<<<<< HEAD
 print "				<a href=\"index.cgi\" tabindex=\"7\"><i class=\"material-icons md-18\" >&#xE88A;</i></a> &gt; <a href=\"../pages/products.html\" tabindex=\"8\">Prodotti</a> &gt; <a href=\"products.cgi?category=".$categoria."\" tabindex=\"9\">".$categoria."</a> &gt; ".$nome."\n";
+=======
+print "				<a href=\"../cgi-bin/index.cgi\"><img src=\"../res/images/ic_home.png\" alt=\"Home page\"</img></a> &gt; <a href=\"../pages/products.html\">Prodotti</a> &gt; <a href=\"products.cgi?category=".$categoria."\">".$categoria."</a> &gt; ".$nome."\n";
+>>>>>>> fc8714133d68e1349560057012a180282728762e
 print <<EOF;
 			</div>
 		</div>
@@ -101,10 +106,17 @@ print <<EOF;
 			<div id="footer_top">
 				<div id="maps">
 					<ul id="maps_menu">
+<<<<<<< HEAD
 						<li><a href="index.cgi" tabindex=\"10\"><span xml:lang="en">Home</span></a></li>
 						<li><a href="products.html" tabindex=\"11\">Prodotti</a></li>                        
 						<li><a href="contacts.cgi" tabindex=\"12\">Contatti</a></li>
 						<li><a href="about.html" tabindex=\"13\">Chi siamo</a></li>
+=======
+						<li><a href="../cgi-bin/index.cgi"><span xml:lang="en">Home</span></a></li>
+						<li><a href="../pages/products.html">Prodotti</a></li>                        
+						<li><a href="../cgi-bin/contacts.cgi">Contatti</a></li>
+						<li><a href="about.html">Chi siamo</a></li>
+>>>>>>> fc8714133d68e1349560057012a180282728762e
 					</ul>
 					<ul id="maps_categories">
 						<li><a href="products.cgi?category=Calcio" tabindex=\"14\">Calcio</a></li>

@@ -4,6 +4,12 @@
 		padding: 0;
 		font-family: 'Maven Pro', sans-serif;
 	}
+    
+    .skip_menu {
+        position: absolute;
+        height: 0;
+        overflow: hidden;
+    }
 	
 	.material-icons.md-18 { 
 		font-size: 15px; 
@@ -125,6 +131,11 @@
 		float:left;
 		vertical-align: middle;
 	}
+    
+    #admin_back_icon img {
+        width: 1.5em;
+        height: 1.5em;
+    }
 	
 	#admin_back:hover {		/*NEW -------------------------------------*/
 		background-image: url("../res/images/corona_grigia.png");
@@ -158,10 +169,7 @@
 	}
 	
 	#breadcrumb_home {
-		visibility: hidden;
-		clear: both;
-		padding-top: 0.7em;
-		padding-bottom: 0.7em;
+        height: 2.4em;
 	}
 	
 	#breadcrumb {	
@@ -177,9 +185,10 @@
 		background: darkred;
 	}
 	
-	#breadcrumb i {
+	#breadcrumb img {
 		vertical-align: middle;
-		
+        width: 1em;
+        height: 1em;
 	}
     
     #home_placeholder {
@@ -1399,7 +1408,6 @@
 	#maps a {
 		text-decoration: none;
 		color: white;
-		text-transform: uppercase;
 	}
 	
 	#maps_menu {
@@ -1411,6 +1419,7 @@
 	
 	#maps_menu li {
 		margin: 0.4em;
+        text-transform: uppercase;
 	}
 	
 	#maps_menu li a:hover {
@@ -1425,6 +1434,7 @@
 	
 	#maps_categories li {
 		margin: 0.4em;
+        text-transform: uppercase;
 	}
 	
 	#maps_categories li a:hover {

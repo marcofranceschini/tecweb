@@ -74,6 +74,12 @@
 		font-family: 'Maven Pro', sans-serif;
 	}
     
+    .skip_menu {
+        position: absolute;
+        height: 0;
+        overflow: hidden;
+    }
+    
     #compatibilityAlert {
         background: black;
         padding-top: 1.5em;
@@ -216,13 +222,10 @@
 		border-bottom-color: white;
 		border-bottom-style: solid;
 	}
-	
-	#breadcrumb_home {
-		visibility: hidden;
-		clear: both;
-		padding-top: 0.7em;
-		padding-bottom: 0.7em;
-	}
+    
+    #breadcrumb_home {
+        height: 2.4em;
+    }
 	
 	#breadcrumb {	
 		clear: both;
@@ -235,8 +238,10 @@
 		background: darkred;
 	}
 	
-	#breadcrumb i {
+	#breadcrumb img {
 		vertical-align: middle;
+        width: 1em;
+        height: 1em;
 	}
     
     #breadcrumb a {             /* ------------------- NEW ------------------------------------------- */
@@ -1458,7 +1463,6 @@
 	#maps a {
 		text-decoration: none;
 		color: white;
-		text-transform: uppercase;
 	}
 	
 	#maps_menu {
@@ -1469,6 +1473,7 @@
 	
 	#maps_menu li {
 		margin: 0.4em;
+        text-transform: uppercase;
 	}
 	
 	#maps_menu li a:hover {
@@ -1480,6 +1485,7 @@
 		margin-left: 4em;
 		text-align: left;
 		letter-spacing: 0.4em;
+        text-transform: uppercase;
 	}
 	
 	#maps_categories li {

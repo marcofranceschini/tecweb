@@ -22,6 +22,16 @@ $body = $FORM{"mex"};
 #<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
 #<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
 
+my $tabIndexCount = 0;
+sub tabindex {
+    $tabIndexCount++;
+    return (\$tabIndexCount); #ritorna il RIFERIMENTO alla variabile
+}
+my $cgi = CGI->new();
+if ($cgi->param('tabindex') ne '') {
+    $tabIndexCount = $tabIndexCount - $cgi->param('tabindex');
+}
+
 print <<EOF;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
@@ -45,6 +55,7 @@ print <<EOF;
    		<script type="text/javascript" src="../js/contacts.js"></script>
 	</head>
 	<body>
+        <a class="skip_menu" href="contacts.cgi?tabindex=4#content_contacts" tabindex="${tabindex()}">Salta la navigazione</a>
 		<div id="header">
 			<div id="contacts">
 				<p><i class="material-icons md-18">&#xE0CD;</i> +39 0422 445566</p>
@@ -53,14 +64,14 @@ print <<EOF;
 			<div id="navbar">
 				<a href="../cgi-bin/index.cgi"><img id="logo" src="../res/images/logo_bianco.png" alt="Logo Ju Rapida" /></a>
 				<ul id="menu"> 
-					<li><a href="../cgi-bin/index.cgi"><span xml:lang="en">Home</span></a></li>
-					<li><a href="../pages/products.html">Prodotti</a></li>
+					<li><a href="../cgi-bin/index.cgi" tabindex="${tabindex()}"><span xml:lang="en">Home</span></a></li>
+					<li><a href="../pages/products.html" tabindex="${tabindex()}">Prodotti</a></li>
 					<li><span id="current">Contatti</span></li>
-					<li><a href="../pages/about.html">Chi siamo</a></li>
+					<li><a href="../pages/about.html" tabindex="${tabindex()}">Chi siamo</a></li>
 				</ul>
 			</div>
 			<div id="breadcrumb">
-				<a href="../cgi-bin/index.cgi"><i class="material-icons md-18" >&#xE88A;</i></a> <span>&gt; Contatti</span>
+				<a href="../cgi-bin/index.cgi"><img src="../res/images/ic_home.png" alt="Home page"</img></a> &gt; Contatti
 			</div>
 		</div>
 		
@@ -75,22 +86,24 @@ print <<EOF;
 			</div>
 EOF
 if (%FORM && $name =~ /[a-zA-Z0-9]/ && length($name) > 1 && $from =~ /[a-zA-Z0-9]/ && index($from, '@') != -1 && length($from) > 3 && $body =~ /[a-zA-Z0-9]/ && length($body) > 3) {
-    my $smtp = new Net::SMTP::TLS(
-        'smtp.gmail.com',
-		Port    =>  587,
-		User    => 	'request.jurapida',
-        Password=> 	'bellabella.12') or die "die";
+    #Causa bug della libreria presente nei server in laboratorio, il seguente codice per l'invio della email è stato commentato.
+    #Il bug è risolvibile cambiando una riga in un file della libreria, ma a scopi didattici eseguiamo solo un facsimile del risultato.
+#    my $smtp = new Net::SMTP::TLS(
+#       'smtp.gmail.com',
+#		Port    =>  587,
+#		User    => 	'request.jurapida',
+#       Password=> 	'bellabella.12') or die "die";
 		
-    $smtp->mail();
-	$smtp->to('request.jurapida@gmail.com');
-	$smtp->data();
-	$smtp->datasend("From: ".$from."\n");
-	$smtp->datasend("To: request.jurapida\@gmail.com\n");
-	$smtp->datasend("Reply-To: ".$from."\n");
-	$smtp->datasend("Subject: Richiesta da ".$from."\n\n");
-	$smtp->datasend($body."\n");
-	$smtp->dataend;
-	$smtp->quit;
+#   $smtp->mail();
+#	$smtp->to('request.jurapida@gmail.com');
+#	$smtp->data();
+#	$smtp->datasend("From: ".$from."\n");
+#	$smtp->datasend("To: request.jurapida\@gmail.com\n");
+#	$smtp->datasend("Reply-To: ".$from."\n");
+#	$smtp->datasend("Subject: Richiesta da ".$from."\n\n");
+#	$smtp->datasend($body."\n");
+#	$smtp->dataend;
+#	$smtp->quit;
 		
 	print " </div>
             <p id=\"mail_sent\">Grazie! La ricontatteremo al pi&ugrave; presto!</p>";	
@@ -101,7 +114,7 @@ if (%FORM && $name =~ /[a-zA-Z0-9]/ && length($name) > 1 && $from =~ /[a-zA-Z0-9
 				<form id="contacts_form" action="../cgi-bin/contacts.cgi" method="post">
 					<div class="form_email_element">
 						<label for="form_email_name">Nome &#47; Azienda</label>
-						<input type="text" name="name" id="form_email_name"
+						<input tabindex="${tabindex()}" type="text" name="name" id="form_email_name"
 EOF
 print "value=\"".$name."\"/>";
 if (%FORM && (!($name =~ /[a-zA-Z0-9]/) || length($name) < 2 || $name eq "Inserire Nome o Azienda")) {
@@ -111,7 +124,7 @@ print <<EOF;
 					</div>
 					<div class="form_email_element">
 						<label for="form_email_mail"><span lang="en">Email</span></label>
-						<input type="text" name="mail" id="form_email_mail"
+						<input tabindex="${tabindex()}" type="text" name="mail" id="form_email_mail"
 EOF
 print "value=\"".$from."\"/>";
 if (%FORM && (!($from =~ /[a-zA-Z0-9]/) || length($from) < 4 || $from eq "Inserire propria Email")) {
@@ -125,7 +138,7 @@ print <<EOF;
 					</div>
 					<div class="form_email_element">
 						<label for="form_email_mex">Messaggio</label>
-						<textarea name="mex" id="form_email_mex" rows="5" cols="5">
+						<textarea tabindex="${tabindex()}" name="mex" id="form_email_mex" rows="5" cols="5">
 EOF
 print $body."</textarea>";
 if (%FORM && (!($body =~ /[a-zA-Z0-9]/) || length($body) < 4 || $body eq "Inserire messaggio")) {
@@ -134,7 +147,7 @@ if (%FORM && (!($body =~ /[a-zA-Z0-9]/) || length($body) < 4 || $body eq "Inseri
 print <<EOF;
 					</div>
 					<div class="form_email_element">
-						<input type="submit" value="Invia" id="form_email_submit"/>
+						<input tabindex="${tabindex()}" type="submit" value="Invia" id="form_email_submit"/>
 					</div>
 				</form>
 			</div>
@@ -147,21 +160,21 @@ print <<EOF;
 			<div id="footer_top">
 				<div id="maps">
 					<ul id="maps_menu">
-						<li><a href="../cgi-bin/index.cgi"><span xml:lang="en">Home</span></a></li>
-						<li><a href="../pages/products.html">Prodotti</a></li>
-						<li><a href="contacts.cgi">Contatti</a></li>
-						<li><a href="../pages/about.html">Chi siamo</a></li>
+						<li><a tabindex="${tabindex()}" href="../cgi-bin/index.cgi"><span xml:lang="en">Home</span></a></li>
+						<li><a tabindex="${tabindex()}" href="../pages/products.html">Prodotti</a></li>
+						<li>Contatti</li>
+						<li><a tabindex="${tabindex()}" href="../pages/about.html">Chi siamo</a></li>
 					</ul>
 					<ul id="maps_categories">
-						<li><a href="products.cgi?category=Calcio">Calcio</a></li>
-						<li><a href="products.cgi?category=Basket"><span xml:lang="en">Basket</span></a></li>
-						<li><a href="products.cgi?category=Volley"><span xml:lang="en">Volley</span></a></li>
-						<li><a href="products.cgi?category=Tennistavolo">Tennistavolo</a></li>
-						<li><a href="products.cgi?category=Nuoto">Nuoto</a></li>
-						<li><a href="products.cgi?category=Minigolf">Minigolf</a></li>
-						<li><a href="products.cgi?category=Calciobalilla">Calciobalilla</a></li>
-						<li><a href="products.cgi?category=Protezioni">Protezioni</a></li>
-						<li><a href="products.cgi?category=Accessori">Accessori</a></li>
+						<li><a tabindex="${tabindex()}" href="products.cgi?category=Calcio">Calcio</a></li>
+						<li><a tabindex="${tabindex()}" href="products.cgi?category=Basket"><span xml:lang="en">Basket</span></a></li>
+						<li><a tabindex="${tabindex()}" href="products.cgi?category=Volley"><span xml:lang="en">Volley</span></a></li>
+						<li><a tabindex="${tabindex()}" href="products.cgi?category=Tennistavolo">Tennistavolo</a></li>
+						<li><a tabindex="${tabindex()}" href="products.cgi?category=Nuoto">Nuoto</a></li>
+						<li><a tabindex="${tabindex()}" href="products.cgi?category=Minigolf">Minigolf</a></li>
+						<li><a tabindex="${tabindex()}" href="products.cgi?category=Calciobalilla">Calciobalilla</a></li>
+						<li><a tabindex="${tabindex()}" href="products.cgi?category=Protezioni">Protezioni</a></li>
+						<li><a tabindex="${tabindex()}" href="products.cgi?category=Accessori">Accessori</a></li>
 					</ul>
 				</div>
 				<div id="admin_form_panel">
@@ -169,11 +182,11 @@ print <<EOF;
 						<fieldset>
 							<legend><i class="material-icons md-18">&#xE853;</i>Area Riservata</legend>
 							<label class="form_item" for="username">Username</label>
-							<input class="form_item" id="username" type="text" name="username"/>
+							<input tabindex="${tabindex()}" class="form_item" id="username" type="text" name="username"/>
 							<label class="form_item" for="password">Password</label>
-							<input class="form_item" id="password" type="password" name="password"/>
+							<input tabindex="${tabindex()}" class="form_item" id="password" type="password" name="password"/>
 							<input type="hidden" name="page" value="../cgi-bin/index.cgi" />
-							<input id="submit" type="submit" value="Login" />
+							<input tabindex="${tabindex()}" id="submit" type="submit" value="Login" />
 						</fieldset>
 					</form>
 				</div>

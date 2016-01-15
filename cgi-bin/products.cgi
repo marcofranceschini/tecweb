@@ -10,7 +10,16 @@ use warnings;
 my $cgi = CGI->new();
 my $category = $cgi->param('category');
 
-print "Content-Type: text/html\n\n";
+my $tabIndexCount = 0;
+sub tabindex {
+    $tabIndexCount++;
+    return (\$tabIndexCount); #ritorna il RIFERIMENTO alla variabile
+}
+if ($cgi->param('tabindex') ne '') {
+    $tabIndexCount = $tabIndexCount - $cgi->param('tabindex');
+}
+
+print CGI->header;
 print <<EOF;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
@@ -35,6 +44,7 @@ print <<EOF;
 		<link rel="icon" type="image/png" href="../res/images/icon.png" />
 	</head>
 	<body>
+        <a class="skip_menu" href="products.cgi?tabindex=4&amp;category=$category#content_products_cgi" tabindex="${tabindex()}">Salta la navigazione</a> 
 		<div id="header">
 			<div id="contacts">
 				<p><i class="material-icons md-18">&#xE0CD;</i> +39 0422 445566</p>
@@ -51,7 +61,7 @@ print <<EOF;
 			</div>
 			<div id="breadcrumb">
 EOF
-print "<a href=\"../cgi-bin/index.cgi\"><i class=\"material-icons md-18\" >&#xE88A;</i></a> &gt; <a href=\"../pages/products.html\">Prodotti</a> &gt; ".$category;
+print "<a href=\"../cgi-bin/index.cgi\"><img src=\"../res/images/ic_home.png\" alt=\"Home page\"</img></a> &gt; <a href=\"../pages/products.html\">Prodotti</a> &gt; ".$category;
 print <<EOF;
 			</div>
 		</div>
@@ -136,8 +146,8 @@ for(my $i=0; $i < scalar @prodotti; $i++) {
     print "\">";
     print "</div>";
 }
-print "            </div>\n";
-print "<div id=\"products_displayer\">";
+print "     </div>\n";
+print " <div id=\"products_displayer\">";
 print " <div id=\"products_displayer_frame\">";
 
 if(!@prodotti) {
@@ -198,20 +208,58 @@ print <<EOF;
 				<div id="maps">
 					<ul id="maps_menu">
 						<li><a href="../cgi-bin/index.cgi"><span xml:lang="en">Home</span></a></li>
-						<li><a href="products.html">Prodotti</a></li>
+						<li><a href="../pages/products.html">Prodotti</a></li>
 						<li><a href="../cgi-bin/contacts.cgi">Contatti</a></li>
 						<li><a href="about.html">Chi siamo</a></li>
 					</ul>
 					<ul id="maps_categories">
-						<li><a href="products.cgi?category=Calcio">Calcio</a></li>
-						<li><a href="products.cgi?category=Basket"><span xml:lang="en">Basket</span></a></li>
-						<li><a href="products.cgi?category=Volley"><span xml:lang="en">Volley</span></a></li>
-						<li><a href="products.cgi?category=Tennistavolo">Tennistavolo</a></li>
-						<li><a href="products.cgi?category=Nuoto">Nuoto</a></li>
-						<li><a href="products.cgi?category=Minigolf">Minigolf</a></li>
-						<li><a href="products.cgi?category=Calciobalilla">Calciobalilla</a></li>
-						<li><a href="products.cgi?category=Protezioni">Protezioni</a></li>
-						<li><a href="products.cgi?category=Accessori">Accessori</a></li>
+EOF
+if ($category ne "Calcio") { 
+    print "             <li><a href=\"products.cgi?category=Calcio\">Calcio</a></li>";
+} else {
+    print "             <li>Calcio</li>";
+}
+if ($category ne "Basket") { 
+    print "				<li><a href=\"products.cgi?category=Basket\"><span xml:lang=\"en\">Basket</span></a></li>";
+} else {
+    print "             <li><span xml:lang=\"en\">Basket</span></li>";
+}
+if ($category ne "Volley") { 
+    print "				<li><a href=\"products.cgi?category=Volley\"><span xml:lang=\"en\">Volley</span></a></li>";
+} else {
+    print "             <li><span xml:lang=\"en\">Volley</span></li>";
+}
+if ($category ne "Tennistavolo") { 
+    print "				<li><a href=\"products.cgi?category=Tennistavolo\">Tennistavolo</a></li>";
+} else {
+    print "             <li>Tennistavolo</li>";
+}
+if ($category ne "Nuoto") { 
+    print "				<li><a href=\"products.cgi?category=Nuoto\">Nuoto</a></li>";
+} else {
+    print "             <li>Nuoto</li>";
+}
+if ($category ne "Minigolf") { 
+    print "				<li><a href=\"products.cgi?category=Minigolf\">Minigolf</a></li>";
+} else {
+    print "             <li>Minigolf</li>";
+}
+if ($category ne "Calciobalilla") { 
+    print "				<li><a href=\"products.cgi?category=Calciobalilla\">Calciobalilla</a></li>";
+} else {
+    print "             <li>Calciobalilla</li>";
+}
+if ($category ne "Protezioni") { 
+    print "				<li><a href=\"products.cgi?category=Protezioni\">Protezioni</a></li>";
+} else {
+    print "             <li>Protezioni</li>";
+}
+if ($category ne "Accessori") { 
+    print "				<li><a href=\"products.cgi?category=Accessori\">Accessori</a></li>";
+} else {
+    print "             <li>Accessori</li>";
+}
+print <<EOF;
 					</ul>
 				</div>
 				<div id="admin_form_panel">
