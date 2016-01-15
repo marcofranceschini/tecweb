@@ -88,7 +88,7 @@ EOF
     print <<EOF;
 				<div id="header" class="fadeInDown">
 					<div id="navbar_admin">
-						<a id="admin_back_icon" href="../cgi-bin/admin.cgi?logout=1"><i class="material-icons md-24">&#xE88A;</i></a>
+						<a id="admin_back_icon" href="../cgi-bin/admin.cgi?logout=1"><img src="../res/images/ic_home.png" alt="Torna al sito"</img></a>
 						<p><a id="admin_back" href="../cgi-bin/admin.cgi?logout=1">Torna al sito</a></p>
 						<p>Area Amministrativa</p>
 					</div>

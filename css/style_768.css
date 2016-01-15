@@ -119,9 +119,15 @@
 		padding-left: 2em;
 	}
 	
-	#admin_back_icon {
-		float: left;
+	#admin_back_icon {		
+		float: right;
+        vertical-align: middle;
 	}
+    
+    #admin_back_icon img {
+        width: 1.5em;
+        height: 1.5em;
+    }
 	
 	#admin_back {
 		display: none;

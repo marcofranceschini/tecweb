@@ -131,6 +131,11 @@
 		float:left;
 		vertical-align: middle;
 	}
+    
+    #admin_back_icon img {
+        width: 1.5em;
+        height: 1.5em;
+    }
 	
 	#admin_back:hover {		/*NEW -------------------------------------*/
 		background-image: url("../res/images/corona_grigia.png");
