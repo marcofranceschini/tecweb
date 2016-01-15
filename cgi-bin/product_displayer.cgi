@@ -55,17 +55,16 @@ print <<EOF;
 				<p><i class="material-icons md-18">&#xE0BE;</i> jurapida@gmail.com</p>
 			</div>
 			<div id="navbar">
-				<a href="index.cgi" tabindex=\"2\"><img id="logo" src="../res/images/logo_bianco.png" alt="Logo Ju Rapida" /></a>
+				<a href="../cgi-bin/index.cgi"><img id="logo" src="../res/images/logo_bianco.png" alt="Logo Ju Rapida" /></a>
 				<ul id="menu"> 
-					<li><a href="index.cgi" tabindex=\"3\"><span xml:lang="en">Home</span></a></li>
-					<li><a href="../pages/products.html" tabindex=\"4\">Prodotti</a></li>
-					<li><a href="../cgi-bin/contacts.cgi" tabindex=\"5\">Contatti</a></li>
-					<li><a href="../pages/about.html" tabindex=\"6\">Chi siamo</a></li>
+					<li><a href="../cgi-bin/index.cgi"><span xml:lang="en">Home</span></a></li>
+					<li><a href="../pages/products.html">Prodotti</a></li>
+					<li><a href="../cgi-bin/contacts.cgi">Contatti</a></li>
+					<li><a href="../pages/about.html">Chi siamo</a></li>
 				</ul>
 			</div>
 			<div id="breadcrumb">
 EOF
-print "				<a href=\"index.cgi\" tabindex=\"7\"><i class=\"material-icons md-18\" >&#xE88A;</i></a> &gt; <a href=\"../pages/products.html\" tabindex=\"8\">Prodotti</a> &gt; <a href=\"products.cgi?category=".$categoria."\" tabindex=\"9\">".$categoria."</a> &gt; ".$nome."\n";
 print "				<a href=\"../cgi-bin/index.cgi\"><img src=\"../res/images/ic_home.png\" alt=\"Home page\"</img></a> &gt; <a href=\"../pages/products.html\">Prodotti</a> &gt; <a href=\"products.cgi?category=".$categoria."\">".$categoria."</a> &gt; ".$nome."\n";
 print <<EOF;
 			</div>
@@ -89,7 +88,7 @@ print "		           	<p class=\"product_description\">".$descrizione."</p>\n";
 print "                 <div class=\"product_back_button\">
                             <form action=\"products.cgi?\" method=\"post\">
                                 <input type=\"hidden\" name=\"category\" value=\"".$categoria."\" />
-                                <input class=\"button\" type=\"submit\" value=\"Torna ai prodotti\" tabindex=\"1\" />
+                                <input class=\"button\" type=\"submit\" value=\"Torna ai prodotti\" />
                             </form>
                         </div>\n";
 print "		       </div>\n";  
@@ -103,37 +102,33 @@ print <<EOF;
 			<div id="footer_top">
 				<div id="maps">
 					<ul id="maps_menu">
-						<li><a href="index.cgi" tabindex=\"10\"><span xml:lang="en">Home</span></a></li>
-						<li><a href="products.html" tabindex=\"11\">Prodotti</a></li>                        
-						<li><a href="contacts.cgi" tabindex=\"12\">Contatti</a></li>
-						<li><a href="about.html" tabindex=\"13\">Chi siamo</a></li>
 						<li><a href="../cgi-bin/index.cgi"><span xml:lang="en">Home</span></a></li>
 						<li><a href="../pages/products.html">Prodotti</a></li>                        
 						<li><a href="../cgi-bin/contacts.cgi">Contatti</a></li>
-						<li><a href="about.html">Chi siamo</a></li>
+						<li><a href="../pages/about.html">Chi siamo</a></li>
 					</ul>
 					<ul id="maps_categories">
-						<li><a href="products.cgi?category=Calcio" tabindex=\"14\">Calcio</a></li>
-						<li><a href="products.cgi?category=Basket" tabindex=\"15\"><span xml:lang="en">Basket</span></a></li>
-						<li><a href="products.cgi?category=Volley" tabindex=\"16\"><span xml:lang="en">Volley</span></a></li>
-						<li><a href="products.cgi?category=Tennistavolo" tabindex=\"17\">Tennistavolo</a></li>
-						<li><a href="products.cgi?category=Nuoto" tabindex=\"18\">Nuoto</a></li>
-						<li><a href="products.cgi?category=Minigolf" tabindex=\"19\">Minigolf</a></li>
-						<li><a href="products.cgi?category=Calciobalilla" tabindex=\"20\">Calciobalilla</a></li>
-						<li><a href="products.cgi?category=Protezioni" tabindex=\"21\">Protezioni</a></li>
-						<li><a href="products.cgi?category=Accessori" tabindex=\"22\">Accessori</a></li>
+						<li><a href="products.cgi?category=Calcio">Calcio</a></li>
+						<li><a href="products.cgi?category=Basket"><span xml:lang="en">Basket</span></a></li>
+						<li><a href="products.cgi?category=Volley"><span xml:lang="en">Volley</span></a></li>
+						<li><a href="products.cgi?category=Tennistavolo">Tennistavolo</a></li>
+						<li><a href="products.cgi?category=Nuoto">Nuoto</a></li>
+						<li><a href="products.cgi?category=Minigolf">Minigolf</a></li>
+						<li><a href="products.cgi?category=Calciobalilla">Calciobalilla</a></li>
+						<li><a href="products.cgi?category=Protezioni">Protezioni</a></li>
+						<li><a href="products.cgi?category=Accessori">Accessori</a></li>
 					</ul>
 				</div>
 				<div id="admin_form_panel">
-					<form id="admin_form" action="login.cgi" method="post">
+					<form id="admin_form" action="../cgi-bin/login.cgi" method="post">
 						<fieldset>
 							<legend><i class="material-icons md-18">&#xE853;</i>Area Riservata</legend>
 							<label class="form_item" for="username">Username</label>
-							<input class="form_item" id="username" type="text" name="username" tabindex=\"23\" />
+							<input class="form_item" id="username" type="text" name="username"/>
 							<label class="form_item" for="password">Password</label>
-							<input class="form_item" id="password" type="password" name="password" tabindex=\"24\" />
+							<input class="form_item" id="password" type="password" name="password"/>
 							<input type="hidden" name="page" value="../cgi-bin/index.cgi" />
-							<input id="submit" type="submit" value="Login" tabindex=\"25\" />
+							<input id="submit" type="submit" value="Login" />
 						</fieldset>
 					</form>
 				</div>
@@ -142,10 +137,10 @@ print <<EOF;
 				<p id="copy">Copyright &copy; 2016 - All right reserved. Ju Rapida SNC - VIA F. PETRARCA, 14/31100 TREVISO ITALY - P. IVA: 01836040269</p>
 				<p id="validation">
 					<span id="xhtml_valid">
-    					<a href="http://validator.w3.org/check?uri=referer" tabindex=\"26\"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
+    					<a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
   					</span>
 					<span id="css_valid">
-						<a href="http://jigsaw.w3.org/css-validator/check/referer" tabindex=\"27\"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="Valid CSS3" /></a>
+						<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="Valid CSS3" /></a>
 					</span>
 				</p>
 			</div>
