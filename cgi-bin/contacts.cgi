@@ -76,22 +76,24 @@ print <<EOF;
 			</div>
 EOF
 if (%FORM && $name =~ /[a-zA-Z0-9]/ && length($name) > 1 && $from =~ /[a-zA-Z0-9]/ && index($from, '@') != -1 && length($from) > 3 && $body =~ /[a-zA-Z0-9]/ && length($body) > 3) {
-    my $smtp = new Net::SMTP::TLS(
-        'smtp.gmail.com',
-		Port    =>  587,
-		User    => 	'request.jurapida',
-        Password=> 	'bellabella.12') or die "die";
+    #Causa bug della libreria presente nei server in laboratorio, il seguente codice per l'invio della email è stato commentato.
+    #Il bug è risolvibile cambiando una riga in un file della libreria, ma a scopi didattici eseguiamo solo un facsimile del risultato.
+#    my $smtp = new Net::SMTP::TLS(
+#       'smtp.gmail.com',
+#		Port    =>  587,
+#		User    => 	'request.jurapida',
+#       Password=> 	'bellabella.12') or die "die";
 		
-    $smtp->mail();
-	$smtp->to('request.jurapida@gmail.com');
-	$smtp->data();
-	$smtp->datasend("From: ".$from."\n");
-	$smtp->datasend("To: request.jurapida\@gmail.com\n");
-	$smtp->datasend("Reply-To: ".$from."\n");
-	$smtp->datasend("Subject: Richiesta da ".$from."\n\n");
-	$smtp->datasend($body."\n");
-	$smtp->dataend;
-	$smtp->quit;
+#   $smtp->mail();
+#	$smtp->to('request.jurapida@gmail.com');
+#	$smtp->data();
+#	$smtp->datasend("From: ".$from."\n");
+#	$smtp->datasend("To: request.jurapida\@gmail.com\n");
+#	$smtp->datasend("Reply-To: ".$from."\n");
+#	$smtp->datasend("Subject: Richiesta da ".$from."\n\n");
+#	$smtp->datasend($body."\n");
+#	$smtp->dataend;
+#	$smtp->quit;
 		
 	print " </div>
             <p id=\"mail_sent\">Grazie! La ricontatteremo al pi&ugrave; presto!</p>";	
