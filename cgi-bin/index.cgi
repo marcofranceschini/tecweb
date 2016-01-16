@@ -58,6 +58,7 @@ print <<EOF;
 			</div>
             <div id="breadcrumb_home"></div>
 		</div>
+        
 		
 		<div id="content_home">
             <div id="panes">
