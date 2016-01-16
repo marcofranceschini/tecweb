@@ -52,7 +52,7 @@ if ($app) { # LOGOUT - E' stato premuto il link per uscire
 				<meta name="description" content="Pagina di amministrazione del sito Ju Rapida." />
 				<meta name="author" content="Fabiano Tavallini, Marco Franceschini, Daniele Favaro" />
 				<meta name="copyright" content="Ju Rapida S.N.C." />
-				<meta name="viewport" content="width=device-width">
+				<meta name="viewport" content="width=device-width" />
 				<link href="../css/style_1024_max.css" rel="stylesheet" type="text/css" />
 				<link href="../css/style_768.css" rel="stylesheet" type="text/css" />
 				<link href="../css/style_480.css" rel="stylesheet" type="text/css" />

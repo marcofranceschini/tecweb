@@ -43,7 +43,7 @@ print <<EOF;
 		<meta name="keywords" content="ju rapida, contatti, telefono, fax, email;" />
 		<meta name="author" content="Fabiano Tavallini, Marco Franceschini, Daniele Favaro" />
 		<meta name="copyright" content="Ju Rapida S.N.C." />
-		<meta name="viewport" content="width=device-width">
+		<meta name="viewport" content="width=device-width"/>
 		<link href="../css/style_1024_max.css" rel="stylesheet" type="text/css" />
 		<link href="../css/style_768.css" rel="stylesheet" type="text/css" />
 		<link href="../css/style_480.css" rel="stylesheet" type="text/css" />
