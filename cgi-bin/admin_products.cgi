@@ -93,10 +93,10 @@ if ($logout) {
 } else {
 	print "Content-Type: text/html\n\n";
     # Stampa l'hash ricevuto
-    #foreach $key (keys %INPUT)
-    #{
-    #    print "$key: $INPUT{$key}\n";
-    #}
+    foreach $key (keys %INPUT)
+    {
+        print "$key: $INPUT{$key}\n";
+    }
 	print <<EOF;
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
@@ -184,11 +184,11 @@ EOF
             print <<EOF;
                     <div id="openModify" class="modalDialog">
                         <div>
-                            <a href="#close" title="Close" class="close">X</a>
+                            <a tabindex="" href="#close" title="Close" class="close">X</a>
                             <p>Modifica un prodotto</p>
                             <form name="form_modal_modify" id="form_modal_modify" action="admin_products.cgi" method="post" enctype="multipart/form-data">
                                 <label class="form_item" for="product_category">Categoria</label>
-                                <select class="form_item" id="product_category" name="product_category">
+                                <select  tabindex="" class="form_item" id="product_category" name="product_category">
 EOF
                                     print "<option value=\"Calcio\"";
                                     if($category eq "Calcio"){ print " selected ";}
@@ -221,21 +221,21 @@ EOF
                                 </select>
                                 <label class="form_item" for="product_code">Codice</label>
 EOF
-                    print "<input class=\"form_item\" id=\"product_code\" type=\"text\"  name=\"product_code\" value=\"".$code."\" disabled />";
+                    print "<input tabindex=\"\" class=\"form_item\" id=\"product_code\" type=\"text\"  name=\"product_code\" value=\"".$code."\" disabled />";
                     print "<label class=\"form_item\" for=\"product_name\">Nome</label>";
-                    print "<input class=\"form_item\" id=\"product_name\" type=\"text\" name=\"product_name\" value=\"".$name."\" />";
+                    print "<input tabindex=\"\" class=\"form_item\" id=\"product_name\" type=\"text\" name=\"product_name\" value=\"".$name."\" />";
                     print "<label class=\"form_item\" for=\"product_desc\">Descrizione</label>";
-                    print "<textarea class=\"form_item\" id=\"product_desc\"  name=\"product_desc\" >".$description."</textarea>";
+                    print "<textarea tabindex=\"\" class=\"form_item\" id=\"product_desc\"  name=\"product_desc\" >".$description."</textarea>";
                     print "<label class=\"form_item\" for=\"thumbnail_desc\">Descrizione breve</label>";
-                    print "<textarea class=\"form_item\" id=\"thumbnail_desc\"  name=\"thumbnail_desc\" >".$shortDescription."</textarea>";
+                    print "<textarea tabindex=\"\" class=\"form_item\" id=\"thumbnail_desc\"  name=\"thumbnail_desc\" >".$shortDescription."</textarea>";
                     print "<input type=\"hidden\" name=\"modify_code\" value=\"".$code."\" />";
                     print "<input type=\"hidden\" name=\"display_category_modify\" value=\"".$display_category."\" />\n";
                     print <<EOF;
                             <label class="form_item" for="product_image">Nuova immagine principale (massimo 5MB)</label>
-                            <input class="form_item" id="product_image" type="file" name="image" />
+                            <input tabindex=\"\" class="form_item" id="product_image" type="file" name="image" />
                             <label class="form_item" for="product_thumbnail">Nuova thumbnail (massimo 500KB)</label>
-                            <input class="form_item" id="product_thumbnail" type="file" name="thumbnail" />
-                            <input class="submit_modal" id="submit_modal_modify" name="modify" type="submit" value="Modifica" />
+                            <input tabindex=\"\" class="form_item" id="product_thumbnail" type="file" name="thumbnail" />
+                            <input tabindex=\"\" class="submit_modal" id="submit_modal_modify" name="modify" type="submit" value="Modifica" />
                         </form>
                     </div>
                 </div>
@@ -477,11 +477,11 @@ EOF
 	print <<EOF;
 			<div id="openModal" class="modalDialog">
 				<div>
-					<a href="#close" title="Close" class="close">X</a>
+					<a tabindex="" href="#close" title="Close" class="close">X</a>
 					<p>Inserisci un nuovo prodotto</p>
 					<form name="form_modal_insert" id="form_modal_insert" action="admin_products.cgi" method="post" enctype="multipart/form-data">
 						<label class="form_item" for="product_category">Categoria</label>
-						<select class="form_item" id="product_category" name="product_category">
+						<select tabindex="" class="form_item" id="product_category" name="product_category">
 EOF
 print "							<option value=\"Calcio\"";
                             if($display_category eq "Calcio"){ print " selected ";}
@@ -513,21 +513,21 @@ print "							<option value=\"Accessori\"";
 print <<EOF;
 						</select>
 						<label class="form_item" for="product_code">Codice</label>
-						<input class="form_item" id="product_code" type="text"  name="product_code" />
+						<input tabindex="" class="form_item" id="product_code" type="text"  name="product_code" />
 						<label class="form_item" for="product_name">Nome</label>
-						<input class="form_item" id="product_name" type="text" name="product_name" />
+						<input tabindex="" class="form_item" id="product_name" type="text" name="product_name" />
 						<label class="form_item" for="product_desc">Descrizione</label>
-						<textarea class="form_item" id="product_desc" name="product_desc"></textarea>
+						<textarea tabindex="" class="form_item" id="product_desc" name="product_desc"></textarea>
 						<label class="form_item" for="thumbnail_desc">Descrizione breve</label>
-						<textarea class="form_item" id="thumbnail_desc"  name="thumbnail_desc"></textarea>
+						<textarea tabindex="" class="form_item" id="thumbnail_desc"  name="thumbnail_desc"></textarea>
 						<label class="form_item" for="product_image">Immagine principale (massimo 5MB)</label>
-						<input class="form_item" id="product_image" type="file" name="image"/>
+						<input tabindex="" class="form_item" id="product_image" type="file" name="image"/>
 						<label class="form_item" for="product_thumbnail">Thumbnail (massimo 500KB)</label>
-						<input class="form_item" id="product_thumbnail" type="file" name="thumbnail"/>
+						<input tabindex="" class="form_item" id="product_thumbnail" type="file" name="thumbnail"/>
 EOF
 print "						<input type=\"hidden\" name=\"display_category\" value=\"".$display_category."\" />\n";
 print <<EOF;
-						<input class="submit_modal" id="submit_modal" type="submit" name="insert" value="Inserisci" />
+						<input tabindex="" class="submit_modal" id="submit_modal" type="submit" name="insert" value="Inserisci" />
 					</form>
 				</div>
 			</div>
