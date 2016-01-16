@@ -1,5 +1,5 @@
-#!/usr/bin/perl
 #!C:/Perl64/bin/perl.exe
+#!/usr/bin/perl
 
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
@@ -18,6 +18,12 @@ my $upload_dir_thumbnails = "../res/images/products/thumbnails";
 #<link href="../tecwebproject/css/style_768.css" rel="stylesheet" type="text/css" />
 #<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
 #<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
+
+my $tabIndexCount = 0;
+sub tabindex {
+    $tabIndexCount++;
+    return (\$tabIndexCount); #ritorna il RIFERIMENTO alla variabile
+}
 
 sub getSession() {
 	$sessione = CGI::Session->load() or die $!; #CGI::Session->errstr
@@ -43,7 +49,7 @@ sub printPlaceholder() {
 	$placeholder = 
 "				<div id=\"placeholder\">
 					<p>Nessun prodotto ancora inserito</p>
-					<img src=\"../res/images/empty_list.png\" alt=\"Immagina lista prodotti vuota\" \>
+					<img src=\"../res/images/empty_list.png\" alt=\"Immagine lista prodotti vuota\" \>
 				</div>
 			</div>\n";   #</content_admin>
 	return $placeholder;
@@ -54,6 +60,10 @@ getSession();
 
 my $cgi = CGI->new();
 my $error = $cgi->cgi_error();
+
+if (defined $cgi->param('tabindex') && $cgi->param('tabindex') ne '') {
+    $tabIndexCount = $tabIndexCount - $cgi->param('tabindex');
+}
 
 # Recupero i dati dall'input
 my %INPUT = Vars();
@@ -83,10 +93,10 @@ if ($logout) {
 } else {
 	print "Content-Type: text/html\n\n";
     # Stampa l'hash ricevuto
-    #foreach $key (keys %INPUT)
-    #{
-    #    print "$key: $INPUT{$key}\n";
-    #}
+    foreach $key (keys %INPUT)
+    {
+        print "$key: $INPUT{$key}\n";
+    }
 	print <<EOF;
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
@@ -110,8 +120,8 @@ if ($logout) {
 		<body>
 			<div id="header">
 				<div id="navbar_admin">
-					<a id="admin_back_icon" href="../cgi-bin/admin.cgi?logout=1"><i class="material-icons md-24">&#xE88A;</i></a>
-					<p><a id="admin_back" href="../cgi-bin/admin.cgi?logout=1">Torna al sito</a></p>
+					<a tabindex="${tabindex()}" id="admin_back_icon" href="../cgi-bin/admin.cgi?logout=1"><i class="material-icons md-24">&#xE88A;</i></a>
+					<p><a tabindex="${tabindex()}" id="admin_back" href="../cgi-bin/admin.cgi?logout=1">Torna al sito</a></p>
 					<p>Gestione Prodotti</p>
 				</div>
 				<div id="admin_dashboard">
@@ -120,7 +130,7 @@ EOF
 print <<EOF;
 					<form name="dashboard_form" id="dashboard_form" action="admin_products.cgi" method="post" enctype="multipart/form-data">
 						<label class="form_item" for="display_category">Categoria:</label>
-						<select class="form_item" name="display_category">
+						<select class="form_item" name="display_category" tabindex="${tabindex()}" >
 EOF
 print "							<option value=\"Tutte\"";
                             if($display_category eq "Tutte"){ print " selected ";}
@@ -154,7 +164,7 @@ print "							<option value=\"Accessori\"";
                             print ">Accessori</option>\n";
                         print <<EOF;
 						</select>
-						<input id="submit_dashboard" type="submit" value="Aggiorna" />
+						<input tabindex="${tabindex()}" id="submit_dashboard" type="submit" value="Aggiorna" />
 					</form>
 				</div>
 			</div>
@@ -174,11 +184,11 @@ EOF
             print <<EOF;
                     <div id="openModify" class="modalDialog">
                         <div>
-                            <a href="#close" title="Close" class="close">X</a>
+                            <a tabindex="" href="#close" title="Close" class="close">X</a>
                             <p>Modifica un prodotto</p>
                             <form name="form_modal_modify" id="form_modal_modify" action="admin_products.cgi" method="post" enctype="multipart/form-data">
                                 <label class="form_item" for="product_category">Categoria</label>
-                                <select class="form_item" id="product_category" name="product_category">
+                                <select  tabindex="" class="form_item" id="product_category" name="product_category">
 EOF
                                     print "<option value=\"Calcio\"";
                                     if($category eq "Calcio"){ print " selected ";}
@@ -211,21 +221,21 @@ EOF
                                 </select>
                                 <label class="form_item" for="product_code">Codice</label>
 EOF
-                    print "<input class=\"form_item\" id=\"product_code\" type=\"text\"  name=\"product_code\" value=\"".$code."\" disabled />";
+                    print "<input tabindex=\"\" class=\"form_item\" id=\"product_code\" type=\"text\"  name=\"product_code\" value=\"".$code."\" disabled />";
                     print "<label class=\"form_item\" for=\"product_name\">Nome</label>";
-                    print "<input class=\"form_item\" id=\"product_name\" type=\"text\" name=\"product_name\" value=\"".$name."\" />";
+                    print "<input tabindex=\"\" class=\"form_item\" id=\"product_name\" type=\"text\" name=\"product_name\" value=\"".$name."\" />";
                     print "<label class=\"form_item\" for=\"product_desc\">Descrizione</label>";
-                    print "<textarea class=\"form_item\" id=\"product_desc\"  name=\"product_desc\" >".$description."</textarea>";
+                    print "<textarea tabindex=\"\" class=\"form_item\" id=\"product_desc\"  name=\"product_desc\" >".$description."</textarea>";
                     print "<label class=\"form_item\" for=\"thumbnail_desc\">Descrizione breve</label>";
-                    print "<textarea class=\"form_item\" id=\"thumbnail_desc\"  name=\"thumbnail_desc\" >".$shortDescription."</textarea>";
+                    print "<textarea tabindex=\"\" class=\"form_item\" id=\"thumbnail_desc\"  name=\"thumbnail_desc\" >".$shortDescription."</textarea>";
                     print "<input type=\"hidden\" name=\"modify_code\" value=\"".$code."\" />";
                     print "<input type=\"hidden\" name=\"display_category_modify\" value=\"".$display_category."\" />\n";
                     print <<EOF;
                             <label class="form_item" for="product_image">Nuova immagine principale (massimo 5MB)</label>
-                            <input class="form_item" id="product_image" type="file" name="image" />
+                            <input tabindex=\"\" class="form_item" id="product_image" type="file" name="image" />
                             <label class="form_item" for="product_thumbnail">Nuova thumbnail (massimo 500KB)</label>
-                            <input class="form_item" id="product_thumbnail" type="file" name="thumbnail" />
-                            <input class="submit_modal" id="submit_modal_modify" name="modify" type="submit" value="Modifica" />
+                            <input tabindex=\"\" class="form_item" id="product_thumbnail" type="file" name="thumbnail" />
+                            <input tabindex=\"\" class="submit_modal" id="submit_modal_modify" name="modify" type="submit" value="Modifica" />
                         </form>
                     </div>
                 </div>
@@ -450,12 +460,12 @@ EOF
             print "							<form name=\"form_modify\" id=\"form_modify\" class=\"form_modify\" action=\"admin_products.cgi#openModify\" method=\"post\" enctype=\"multipart/form-data\">\n";
             print "								<input type=\"hidden\" name=\"display_category_modify\" value=\"".$display_category."\" />\n";
             print "								<input type=\"hidden\" name=\"modify_request_code\" value=\"".$codice."\" />\n";
-            print "								<input class=\"button\" type=\"submit\" name=\"modify_request\" value=\"Modifica\" />\n";
+            print "								<input tabindex=\"${tabindex()}\"  class=\"button\" type=\"submit\" name=\"modify_request\" value=\"Modifica\" />\n";
             print "							</form>\n";
             print "							<form name=\"form_remove\" id=\"form_remove\" class=\"form_remove\" action=\"admin_products.cgi\" method=\"post\" enctype=\"multipart/form-data\">\n";
             print "								<input type=\"hidden\" name=\"display_category_remove\" value=\"".$display_category."\" />\n";
             print "								<input type=\"hidden\" name=\"remove_code\" value=\"".$codice."\" />\n";
-            print "								<input class=\"button\" type=\"submit\" name=\"remove\" value=\"Rimuovi\" />\n";
+            print "								<input tabindex=\"${tabindex()}\" class=\"button\" type=\"submit\" name=\"remove\" value=\"Rimuovi\" />\n";
             print "							</form>\n";
             print "						</div>\n";
             print "					</div>\n";
@@ -467,11 +477,11 @@ EOF
 	print <<EOF;
 			<div id="openModal" class="modalDialog">
 				<div>
-					<a href="#close" title="Close" class="close">X</a>
+					<a tabindex="" href="#close" title="Close" class="close">X</a>
 					<p>Inserisci un nuovo prodotto</p>
 					<form name="form_modal_insert" id="form_modal_insert" action="admin_products.cgi" method="post" enctype="multipart/form-data">
 						<label class="form_item" for="product_category">Categoria</label>
-						<select class="form_item" id="product_category" name="product_category">
+						<select tabindex="" class="form_item" id="product_category" name="product_category">
 EOF
 print "							<option value=\"Calcio\"";
                             if($display_category eq "Calcio"){ print " selected ";}
@@ -503,29 +513,29 @@ print "							<option value=\"Accessori\"";
 print <<EOF;
 						</select>
 						<label class="form_item" for="product_code">Codice</label>
-						<input class="form_item" id="product_code" type="text"  name="product_code" />
+						<input tabindex="" class="form_item" id="product_code" type="text"  name="product_code" />
 						<label class="form_item" for="product_name">Nome</label>
-						<input class="form_item" id="product_name" type="text" name="product_name" />
+						<input tabindex="" class="form_item" id="product_name" type="text" name="product_name" />
 						<label class="form_item" for="product_desc">Descrizione</label>
-						<textarea class="form_item" id="product_desc" name="product_desc"></textarea>
+						<textarea tabindex="" class="form_item" id="product_desc" name="product_desc"></textarea>
 						<label class="form_item" for="thumbnail_desc">Descrizione breve</label>
-						<textarea class="form_item" id="thumbnail_desc"  name="thumbnail_desc"></textarea>
+						<textarea tabindex="" class="form_item" id="thumbnail_desc"  name="thumbnail_desc"></textarea>
 						<label class="form_item" for="product_image">Immagine principale (massimo 5MB)</label>
-						<input class="form_item" id="product_image" type="file" name="image"/>
+						<input tabindex="" class="form_item" id="product_image" type="file" name="image"/>
 						<label class="form_item" for="product_thumbnail">Thumbnail (massimo 500KB)</label>
-						<input class="form_item" id="product_thumbnail" type="file" name="thumbnail"/>
+						<input tabindex="" class="form_item" id="product_thumbnail" type="file" name="thumbnail"/>
 EOF
 print "						<input type=\"hidden\" name=\"display_category\" value=\"".$display_category."\" />\n";
 print <<EOF;
-						<input class="submit_modal" id="submit_modal" type="submit" name="insert" value="Inserisci" />
+						<input tabindex="" class="submit_modal" id="submit_modal" type="submit" name="insert" value="Inserisci" />
 					</form>
 				</div>
 			</div>
             
 			<div id="action_bar">
 				<div id="action_box">
-					<a id="action_back" class="linked_box" href="admin.cgi">Indietro</a>
-					<a id="action_add" class="linked_box" href="#openModal">Aggiungi</a>
+					<a tabindex="${tabindex()}" id="action_back" class="linked_box" href="admin.cgi">Indietro</a>
+					<a tabindex="${tabindex()}" id="action_add" class="linked_box" href="#openModal">Aggiungi</a>
 				</div>
 			</div>
 					
@@ -534,10 +544,10 @@ print <<EOF;
 					<p id="copy">Copyright &copy; 2016 - All right reserved. Ju Rapida SNC - VIA F. PETRARCA, 14/31100 TREVISO ITALY - P. IVA: 01836040269</p>
 					<p id="validation">
 						<span id="xhtml_valid">
-							<a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
+							<a tabindex="${tabindex()}" href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
 						</span>
 						<span id="css_valid">
-							<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="Valid CSS3" /></a>
+							<a tabindex="${tabindex()}" href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="Valid CSS3" /></a>
 						</span>
 					</p>
 				</div>
