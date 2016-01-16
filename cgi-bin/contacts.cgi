@@ -28,7 +28,7 @@ sub tabindex {
     return (\$tabIndexCount); #ritorna il RIFERIMENTO alla variabile
 }
 my $cgi = CGI->new();
-if ($cgi->param('tabindex') ne '') {
+if (defined $cgi->param('tabindex') && $cgi->param('tabindex') ne '') {
     $tabIndexCount = $tabIndexCount - $cgi->param('tabindex');
 }
 

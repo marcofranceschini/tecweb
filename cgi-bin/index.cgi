@@ -12,7 +12,7 @@ sub tabindex {
     return (\$tabIndexCount); #ritorna il RIFERIMENTO alla variabile
 }
 my $cgi = CGI->new();
-if ($cgi->param('tabindex') ne '') {
+if (defined $cgi->param('tabindex') && $cgi->param('tabindex') ne '') {
     $tabIndexCount = $tabIndexCount - $cgi->param('tabindex');
 }
 
@@ -45,7 +45,7 @@ print <<EOF;
         <div id="header">
 			<div id="contacts">
 				<p><i class="material-icons md-18">&#xE0CD;</i> +39 0422 445566</p>
-				<p><i class="material-icons md-18">&#xE0BE;</i> jurapida@gmail.com</p>
+				<p><i class="material-icons md-18">&#xE0BE;</i> jurapida\@gmail.com</p>
 			</div>
 			<div id="navbar">
 				<img id="logo" src="../res/images/logo_bianco.png" alt="Logo Ju Rapida" />

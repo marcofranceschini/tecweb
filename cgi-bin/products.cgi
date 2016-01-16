@@ -15,7 +15,7 @@ sub tabindex {
     $tabIndexCount++;
     return (\$tabIndexCount); #ritorna il RIFERIMENTO alla variabile
 }
-if ($cgi->param('tabindex') ne '') {
+if (defined $cgi->param('tabindex') && $cgi->param('tabindex') ne '') {
     $tabIndexCount = $tabIndexCount - $cgi->param('tabindex');
 }
 
@@ -25,12 +25,10 @@ print <<EOF;
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-EOF
-print "<title>".$category." - Ju Rapida</title>";
-print "<meta name=\"title\" content=\"".$category." - Ju Rapida S.N.C.\" />";
-print "<meta name=\"description\" content=\"Pagina dei prodotti nel mondo ".$category."\" di JU RAPIDA />";
-print "<meta name=\"keywords\" content=\"".$category.", ju rapida, articoli sportivi, prodotti, sport;\" />";
-print <<EOF;
+        <title>$category - Ju Rapida</title>
+        <meta name="title" content="$category - Ju Rapida S.N.C." />
+        <meta name="description" content="Pagina dei prodotti nel mondo $category di JU RAPIDA />
+        <meta name="keywords" content="$category", ju rapida, articoli sportivi, prodotti, sport" />
 		<meta name="author" content="Fabiano Tavallini, Marco Franceschini, Daniele Favaro" />
 		<meta name="copyright" content="Ju Rapida S.N.C." />
 		<meta name="viewport" content="width=device-width">
@@ -48,21 +46,19 @@ print <<EOF;
 		<div id="header">
 			<div id="contacts">
 				<p><i class="material-icons md-18">&#xE0CD;</i> +39 0422 445566</p>
-				<p><i class="material-icons md-18">&#xE0BE;</i> jurapida@gmail.com</p>
+				<p><i class="material-icons md-18">&#xE0BE;</i> jurapida\@gmail.com</p>
 			</div>
 			<div id="navbar">
 				<a href="../cgi-bin/index.cgi"><img id="logo" src="../res/images/logo_bianco.png" alt="Logo Ju Rapida" /></a>
 				<ul id="menu"> 
-					<li><a tabindex="${tabindex()} href="../cgi-bin/index.cgi"><span xml:lang="en">Home</span></a></li>
+					<li><a tabindex="${tabindex()} href="..index.cgi"><span xml:lang="en">Home</span></a></li>
 					<li><a tabindex="${tabindex()} href="../pages/products.html">Prodotti</a></li>
-					<li><a tabindex="${tabindex()} href="../cgi-bin/contacts.cgi">Contatti</a></li>
+					<li><a tabindex="${tabindex()} href="..contacts.cgi">Contatti</a></li>
 					<li><a tabindex="${tabindex()} href="../pages/about.html">Chi siamo</a></li>
 				</ul>
 			</div>
 			<div id="breadcrumb">
-EOF
-print "<a href=\"../cgi-bin/index.cgi\"><img src=\"../res/images/ic_home.png\" alt=\"Home page\"</img></a> &gt; <a href=\"../pages/products.html\">Prodotti</a> &gt; ".$category;
-print <<EOF;
+                <a href="index.cgi"><img src="../res/images/ic_home.png" alt="Home page"</img></a> &gt; <a href="../pages/products.html">Prodotti</a> &gt; $category
 			</div>
 		</div>
 				

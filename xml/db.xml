@@ -20,7 +20,7 @@
     <img>X-TREME.png</img>
     <thumbnail>X-TREME.png</thumbnail>
     <backgroundImg>volley_wall.jpg</backgroundImg>
-    <inEvidence>false</inEvidence>
+    <inEvidence>true</inEvidence>
   </product>
   <product>
     <category>Calcio</category>
