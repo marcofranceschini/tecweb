@@ -42,7 +42,7 @@ print <<EOF;
 		<link rel="icon" type="image/png" href="../res/images/icon.png" />
 	</head>
 	<body>
-        <a class="skip_menu" href="products.cgi?tabindex=5&amp;category=$category#content_products_cgi" tabindex="${tabindex()}">Salta la navigazione</a> 
+        <div><a class="skip_menu" href="products.cgi?tabindex=5&amp;category=$category#content_products_cgi" tabindex="${tabindex()}">Salta la navigazione</a></div>
 		<div id="header">
 			<div id="contacts">
 				<p><i class="material-icons md-18">&#xE0CD;</i> +39 0422 445566</p>
