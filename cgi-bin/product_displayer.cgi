@@ -75,25 +75,24 @@ EOF
 print "		<div id=\"product_card_displayer\">\n";
 my $immagine = $prodotto->findnodes("img/text()");
 my $descrizione = $prodotto->findnodes("description/text()");
-print "			<div class=\"product_card\">\n";
-print "				<div class=\"product_image\">\n";
-print "					<img src=\"../res/images/products/".$immagine."\" alt=\"".$descrizione_corta."\"/>\n";
-print "				</div>\n";
-print "				<div class=\"product_data\">\n";
-print "		      		<span class=\"product_name\">".$nome."</span>\n";
-print "			      	<span class=\"product_code\">Codice ".$codice."</span>\n";
-print "		           	<p class=\"product_description\">".$descrizione."</p>\n";
-print "                 <div class=\"product_back_button\">
-                            <form action=\"products.cgi?\" method=\"post\">
-                                <input type=\"hidden\" name=\"category\" value=\"".$categoria."\" />
-                                <input class=\"button\" type=\"submit\" value=\"Torna ai prodotti\" />
+print <<EOF;
+                <div class="product_card">
+                    <div class="product_image">
+                        <img src="../res/images/products/$immagine" alt="$descrizione_corta"/>
+				    </div>
+				    <div class="product_data">
+                        <span class="product_name">$nome</span>
+                        <span class="product_code">Codice $codice</span>
+                        <p class="product_description">$descrizione</p>
+                        <div class="product_back_button">
+                            <form action="products.cgi" method="post">
+                                <input type="hidden" name="category" value="$categoria"/>
+                                <input class="button" type="submit" value="Torna ai prodotti"/>
                             </form>
-                        </div>\n";
-print "		       </div>\n";  
-print "         </div>\n";
-print "     </div>\n";
-    
-print <<EOF;	
+                        </div>
+		            </div>  
+                </div>
+            </div>
 		</div>
 		
 		<div id="footer">
