@@ -71,7 +71,7 @@ print <<EOF;
 				</ul>
 			</div>
 			<div id="breadcrumb">
-				<a href="../cgi-bin/index.cgi"><img src="../res/images/ic_home.png" alt="Home page"</img></a> &gt; Contatti
+				<a href="../cgi-bin/index.cgi"><img src="../res/images/ic_home.png" alt="Home page"></img></a> &gt; Contatti
 			</div>
 		</div>
 		

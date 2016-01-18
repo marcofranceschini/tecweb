@@ -78,7 +78,7 @@ EOF
         my $bd = new HTTP::BrowserDetect($cgi->user_agent());
         my $browserName = $bd->browser_string();
         my $browserVersion = $bd->public_version();
-        print $browserName." ".$browserVersion;
+        #print $browserName." ".$browserVersion;
         if (($browserName eq "Chrome" && $browserVersion < 45) ||       #Verificato
         ($browserName eq "Safari" && $browserVersion < 9) ||            #Verificato
         ($browserName eq "IE" && $browserVersion < 9) ||                
@@ -97,7 +97,7 @@ EOF
     print <<EOF;
 				<div id="header" class="fadeInDown">
 					<div id="navbar_admin">
-						<a tabindex="${tabindex()}" id="admin_back_icon" href="../cgi-bin/admin.cgi?logout=1"><img src="../res/images/ic_home.png" alt="Torna al sito"</img></a>
+						<a tabindex="${tabindex()}" id="admin_back_icon" href="../cgi-bin/admin.cgi?logout=1"><img src="../res/images/ic_home.png" alt="Torna al sito"></img></a>
 						<p><a tabindex="${tabindex()}" id="admin_back" href="../cgi-bin/admin.cgi?logout=1">Torna al sito</a></p>
 						<p>Area Amministrativa</p>
 					</div>
@@ -112,25 +112,25 @@ EOF
 EOF
     
     #Verifica XML prodotti tramite XSD
-    my $parser = XML::LibXML->new;
-    my $schema = XML::LibXML::Schema->new(location => "../xml/db_schema.xsd");
-    my $doc = $parser->parse_file("../xml/db.xml");
-    my $result = eval { $schema->validate($doc); };
-    if (defined $result) {
-        print "<span id=\"info_msg\" class=\"admin_message\">Database XML prodotti valido =D</span>";
-    } else {
-        print "<span id=\"error_msg\" class=\"admin_message\">Database XML prodotti non valido =(</span>";
-    }
+    #my $parser = XML::LibXML->new;
+    #my $schema = XML::LibXML::Schema->new(location => "../xml/db_schema.xsd");
+    #my $doc = $parser->parse_file("../xml/db.xml");
+    #my $result = eval { $schema->validate($doc); };
+    #if (defined $result) {
+    #    print "<span class=\"admin_message\">Database XML prodotti valido =D</span>";
+    #} else {
+    #    print "<span class=\"admin_message\">Database XML prodotti non valido =(</span>";
+    #}
     
     #Verifica XML admin tramite XSD
-    $schema = XML::LibXML::Schema->new(location => "../xml/admin_db_schema.xsd");
-    $doc = $parser->parse_file("../xml/admin_db.xml");
-    $result = eval { $schema->validate($doc); };
-    if (defined $result) {
-        print "<span id=\"info_msg\" class=\"admin_message\">Database XML amministratori valido =D</span>";
-    } else {
-        print "<span id=\"error_msg\" class=\"admin_message\">Database XML amministratori non valido =(</span>";
-    }
+    #$schema = XML::LibXML::Schema->new(location => "../xml/admin_db_schema.xsd");
+    #$doc = $parser->parse_file("../xml/admin_db.xml");
+    #$result = eval { $schema->validate($doc); };
+    #if (defined $result) {
+    #    print "<span class=\"admin_message\">Database XML amministratori valido =D</span>";
+    #} else {
+    #    print "<span class=\"admin_message\">Database XML amministratori non valido =(</span>";
+    #}
     
     print <<EOF;
 				</div>
