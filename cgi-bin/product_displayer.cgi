@@ -62,9 +62,7 @@ print <<EOF;
 				</ul>
 			</div>
 			<div id="breadcrumb">
-EOF
-print "				<a href=\"../cgi-bin/index.cgi\"><img src=\"../res/images/ic_home.png\" alt=\"Home page\"></img></a> &gt; <a href=\"../pages/products.html\">Prodotti</a> &gt; <a href=\"products.cgi?category=".$categoria."\">".$categoria."</a> &gt; ".$nome."\n";
-print <<EOF;
+                <a href="../cgi-bin/index.cgi"><img src="../res/images/ic_home.png" alt="Home page"></img></a> &gt; <a href="../pages/products.html">Prodotti</a> &gt; <a href="products.cgi?category=$categoria">$categoria</a> &gt; $nome
 			</div>
 		</div>
 				
