@@ -93,10 +93,9 @@ if ($logout) {
 } else {
 	print "Content-Type: text/html\n\n";
     # Stampa l'hash ricevuto
-    foreach $key (keys %INPUT)
-    {
-        print "$key: $INPUT{$key}\n";
-    }
+    #foreach $key (keys %INPUT) {
+    #   print "$key: $INPUT{$key}\n";
+    #}
 	print <<EOF;
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">

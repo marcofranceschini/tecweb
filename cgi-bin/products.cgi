@@ -27,7 +27,7 @@ print <<EOF;
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>$category - Ju Rapida</title>
         <meta name="title" content="$category - Ju Rapida S.N.C." />
-        <meta name="description" content="Pagina dei prodotti nel mondo $category di JU RAPIDA />
+        <meta name="description" content="Pagina dei prodotti nel mondo $category di JU RAPIDA" />
         <meta name="keywords" content="$category", ju rapida, articoli sportivi, prodotti, sport" />
 		<meta name="author" content="Fabiano Tavallini, Marco Franceschini, Daniele Favaro" />
 		<meta name="copyright" content="Ju Rapida S.N.C." />
