@@ -84,8 +84,10 @@ print <<EOF;
                         <p class="product_description">$descrizione</p>
                         <div class="product_back_button">
                             <form action="products.cgi" method="post">
-                                <input type="hidden" name="category" value="$categoria"/>
-                                <input class="button" type="submit" value="Torna ai prodotti"/>
+                                <div>
+                                    <input type="hidden" name="category" value="$categoria"/>
+                                    <input class="button" type="submit" value="Torna ai prodotti"/>
+                                </div>
                             </form>
                         </div>
 		            </div>  
