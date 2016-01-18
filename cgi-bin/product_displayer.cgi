@@ -29,12 +29,10 @@ print <<EOF;
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-EOF
-print "<title>".$nome." - ".$categoria." - Ju Rapida</title>";
-print "<meta name=\"title\" content=\"".$nome." - ".$categoria." - Ju Rapida S.N.C.\" />";
-print "<meta name=\"description\" content=\"Pagina descrittiva del prodotto ".$nome." del mondo ".$categoria."\" di JU RAPIDA />";
-print "<meta name=\"keywords\" content=\"".$nome.", ".$categoria.", ".$codice.", ju rapida, articoli sportivi, prodotti, sport;\" />";
-print <<EOF;
+        <title>$nome - $categoria - Ju Rapida</title>
+        <meta name="title" content="$nome - $categoria - Ju Rapida S.N.C." />
+        <meta name="description" content="Pagina descrittiva del prodotto $nome del mondo $categoria di JU RAPIDA" />
+        <meta name="keywords" content="$nome, $categoria, $codice, ju rapida, articoli sportivi, prodotti, sport;" />
 		<meta name="author" content="Fabiano Tavallini, Marco Franceschini, Daniele Favaro" />
 		<meta name="copyright" content="Ju Rapida S.N.C." />
 		<meta name="viewport" content="width=device-width" />
@@ -65,7 +63,7 @@ print <<EOF;
 			</div>
 			<div id="breadcrumb">
 EOF
-print "				<a href=\"../cgi-bin/index.cgi\"><img src=\"../res/images/ic_home.png\" alt=\"Home page\"</img></a> &gt; <a href=\"../pages/products.html\">Prodotti</a> &gt; <a href=\"products.cgi?category=".$categoria."\">".$categoria."</a> &gt; ".$nome."\n";
+print "				<a href=\"../cgi-bin/index.cgi\"><img src=\"../res/images/ic_home.png\" alt=\"Home page\"></img></a> &gt; <a href=\"../pages/products.html\">Prodotti</a> &gt; <a href=\"products.cgi?category=".$categoria."\">".$categoria."</a> &gt; ".$nome."\n";
 print <<EOF;
 			</div>
 		</div>
@@ -127,7 +125,7 @@ print <<EOF;
 							<input class="form_item" id="username" type="text" name="username"/>
 							<label class="form_item" for="password">Password</label>
 							<input class="form_item" id="password" type="password" name="password"/>
-							<input type="hidden" name="page" value="../cgi-bin/index.cgi" />
+							<input type="hidden" name="page" value="../cgi-bin/index.cgi"/>
 							<input id="submit" type="submit" value="Login" />
 						</fieldset>
 					</form>
