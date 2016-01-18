@@ -68,7 +68,7 @@ my $home_vuota = "true";
 foreach my $item ($doc->findnodes('/products/product')) {
     if ($item->findnodes('./inEvidence') eq "true") {
         $home_vuota = "false";
-        print "     <a tabindex=\"${tabindex()}\" href=\"product_displayer.cgi?display_code=".$item->findnodes('./code')."&display_name=".$item->findnodes('./name')."&display_category=".$item->findnodes('./category')."\">
+        print "     <a tabindex=\"${tabindex()}\" href=\"product_displayer.cgi?display_code=".$item->findnodes('./code')."&amp;display_name=".$item->findnodes('./name')."&amp;display_category=".$item->findnodes('./category')."\">
                         <div class=\"pane\" style=\"background-image: url('../res/images/".$item->findnodes('./backgroundImg')."')\">
                             <div class=\"pane_content\">
                                 <img src=\"../res/images/products/thumbnails/".$item->findnodes('./thumbnail')."\" alt=\"".$item->findnodes('./shortDescription')."\"/>
