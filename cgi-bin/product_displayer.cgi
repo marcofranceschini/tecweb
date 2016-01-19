@@ -53,16 +53,16 @@ print <<EOF;
 				<p><i class="material-icons md-18">&#xE0BE;</i> jurapida@gmail.com</p>
 			</div>
 			<div id="navbar">
-				<a href="../cgi-bin/index.cgi"><img id="logo" src="../res/images/logo_bianco.png" alt="Logo Ju Rapida" /></a>
+				<a href="index.cgi"><img id="logo" src="../res/images/logo_bianco.png" alt="Logo Ju Rapida" /></a>
 				<ul id="menu"> 
-					<li><a href="../cgi-bin/index.cgi"><span xml:lang="en">Home</span></a></li>
+					<li><a href="index.cgi"><span xml:lang="en">Home</span></a></li>
 					<li><a href="../pages/products.html">Prodotti</a></li>
-					<li><a href="../cgi-bin/contacts.cgi">Contatti</a></li>
+					<li><a href="contacts.cgi">Contatti</a></li>
 					<li><a href="../pages/about.html">Chi siamo</a></li>
 				</ul>
 			</div>
 			<div id="breadcrumb">
-                <a href="../cgi-bin/index.cgi"><img src="../res/images/ic_home.png" alt="Home page"></img></a> &gt; <a href="../pages/products.html">Prodotti</a> &gt; <a href="products.cgi?category=$categoria">$categoria</a> &gt; $nome
+                <a href="index.cgi"><img src="../res/images/ic_home.png" alt="Home page"></img></a> &gt; <a href="../pages/products.html">Prodotti</a> &gt; <a href="products.cgi?category=$categoria">$categoria</a> &gt; $nome
 			</div>
 		</div>
 				
@@ -99,9 +99,9 @@ print <<EOF;
 			<div id="footer_top">
 				<div id="maps">
 					<ul id="maps_menu">
-						<li><a href="../cgi-bin/index.cgi"><span xml:lang="en">Home</span></a></li>
+						<li><a href="index.cgi"><span xml:lang="en">Home</span></a></li>
 						<li><a href="../pages/products.html">Prodotti</a></li>                        
-						<li><a href="../cgi-bin/contacts.cgi">Contatti</a></li>
+						<li><a href="contacts.cgi">Contatti</a></li>
 						<li><a href="../pages/about.html">Chi siamo</a></li>
 					</ul>
 					<ul id="maps_categories">
@@ -117,14 +117,14 @@ print <<EOF;
 					</ul>
 				</div>
 				<div id="admin_form_panel">
-					<form id="admin_form" action="../cgi-bin/login.cgi" method="post">
+					<form id="admin_form" action="login.cgi" method="post">
 						<fieldset>
 							<legend><i class="material-icons md-18">&#xE853;</i>Area Riservata</legend>
 							<label class="form_item" for="username">Username</label>
 							<input class="form_item" id="username" type="text" name="username"/>
 							<label class="form_item" for="password">Password</label>
 							<input class="form_item" id="password" type="password" name="password"/>
-							<input type="hidden" name="page" value="../cgi-bin/index.cgi"/>
+							<input type="hidden" name="page" value="index.cgi"/>
 							<input id="submit" type="submit" value="Login" />
 						</fieldset>
 					</form>

@@ -37,7 +37,7 @@ sub destroySession() {
 	$session->close() or die "errore close";
 	$session->delete() or die "errore delete";
 	$session->flush() or die "errore flush";
-	print redirect(-url=>'../cgi-bin/index.cgi'); # Torno in home
+	print redirect(-url=>'index.cgi'); # Torno in home
 }
 	
 my $session = getSession(); # Verifico che la sessione ci sia
@@ -96,8 +96,8 @@ EOF
     print <<EOF;
 				<div id="header" class="fadeInDown">
 					<div id="navbar_admin">
-						<a tabindex="${tabindex()}" id="admin_back_icon" href="../cgi-bin/admin.cgi?logout=1"><img src="../res/images/ic_home.png" alt="Torna al sito"></img></a>
-						<p><a tabindex="${tabindex()}" id="admin_back" href="../cgi-bin/admin.cgi?logout=1">Torna al sito</a></p>
+						<a tabindex="${tabindex()}" id="admin_back_icon" href="admin.cgi?logout=1"><img src="../res/images/ic_home.png" alt="Torna al sito"></img></a>
+						<p><a tabindex="${tabindex()}" id="admin_back" href="admin.cgi?logout=1">Torna al sito</a></p>
 						<p>Area Amministrativa</p>
 					</div>
 				</div>

@@ -49,7 +49,7 @@ print <<EOF;
 				<p><i class="material-icons md-18">&#xE0BE;</i> jurapida\@gmail.com</p>
 			</div>
 			<div id="navbar">
-				<a href="../cgi-bin/index.cgi"><img id="logo" src="../res/images/logo_bianco.png" alt="Logo Ju Rapida" /></a>
+				<a href="index.cgi"><img id="logo" src="../res/images/logo_bianco.png" alt="Logo Ju Rapida" /></a>
 				<ul id="menu"> 
 					<li><a tabindex="${tabindex()}" href="index.cgi"><span xml:lang="en">Home</span></a></li>
 					<li><a tabindex="${tabindex()}" href="../pages/products.html">Prodotti</a></li>
@@ -257,14 +257,14 @@ print <<EOF;
 					</ul>
 				</div>
 				<div id="admin_form_panel">
-					<form id="admin_form" action="../cgi-bin/login.cgi" method="post">
+					<form id="admin_form" action="login.cgi" method="post">
 						<fieldset>
 							<legend><i class="material-icons md-18">&#xE853;</i>Area Riservata</legend>
 							<label class="form_item" for="username">Username</label>
 							<input tabindex="${tabindex()}" class="form_item" id="username" type="text" name="username"/>
 							<label class="form_item" for="password">Password</label>
 							<input tabindex="${tabindex()}" class="form_item" id="password" type="password" name="password"/>
-							<input type="hidden" name="page" value="../cgi-bin/index.cgi" />
+							<input type="hidden" name="page" value="index.cgi" />
 							<input tabindex="${tabindex()}" id="submit" type="submit" value="Login" />
 						</fieldset>
 					</form>

@@ -62,16 +62,16 @@ print <<EOF;
 				<p><i class="material-icons md-18">&#xE0BE;</i> jurapida@gmail.com</p>
 			</div>
 			<div id="navbar">
-				<a href="../cgi-bin/index.cgi"><img id="logo" src="../res/images/logo_bianco.png" alt="Logo Ju Rapida" /></a>
+				<a href="index.cgi"><img id="logo" src="../res/images/logo_bianco.png" alt="Logo Ju Rapida" /></a>
 				<ul id="menu"> 
-					<li><a href="../cgi-bin/index.cgi" tabindex="${tabindex()}"><span xml:lang="en">Home</span></a></li>
+					<li><a href="index.cgi" tabindex="${tabindex()}"><span xml:lang="en">Home</span></a></li>
 					<li><a href="../pages/products.html" tabindex="${tabindex()}">Prodotti</a></li>
 					<li><span id="current">Contatti</span></li>
 					<li><a href="../pages/about.html" tabindex="${tabindex()}">Chi siamo</a></li>
 				</ul>
 			</div>
 			<div id="breadcrumb">
-				<a href="../cgi-bin/index.cgi"><img src="../res/images/ic_home.png" alt="Home page"></img></a> &gt; Contatti
+				<a href="index.cgi"><img src="../res/images/ic_home.png" alt="Home page"></img></a> &gt; Contatti
 			</div>
 		</div>
 		
@@ -111,7 +111,7 @@ if (%FORM && $name =~ /[a-zA-Z0-9]/ && length($name) > 1 && $from =~ /[a-zA-Z0-9
     print <<EOF;
 		    <div id="form_email">
 				<p>Oppure contattaci ora via <span lang="en">Email</span></p>
-				<form id="contacts_form" action="../cgi-bin/contacts.cgi" method="post">
+				<form id="contacts_form" action="contacts.cgi" method="post">
 					<div class="form_email_element">
 						<label for="form_email_name">Nome &#47; Azienda</label>
 						<input tabindex="${tabindex()}" type="text" name="name" id="form_email_name"
@@ -160,7 +160,7 @@ print <<EOF;
 			<div id="footer_top">
 				<div id="maps">
 					<ul id="maps_menu">
-						<li><a tabindex="${tabindex()}" href="../cgi-bin/index.cgi"><span xml:lang="en">Home</span></a></li>
+						<li><a tabindex="${tabindex()}" href="index.cgi"><span xml:lang="en">Home</span></a></li>
 						<li><a tabindex="${tabindex()}" href="../pages/products.html">Prodotti</a></li>
 						<li>Contatti</li>
 						<li><a tabindex="${tabindex()}" href="../pages/about.html">Chi siamo</a></li>
@@ -178,14 +178,14 @@ print <<EOF;
 					</ul>
 				</div>
 				<div id="admin_form_panel">
-					<form id="admin_form" action="../cgi-bin/login.cgi" method="post">
+					<form id="admin_form" action="login.cgi" method="post">
 						<fieldset>
 							<legend><i class="material-icons md-18">&#xE853;</i>Area Riservata</legend>
 							<label class="form_item" for="username">Username</label>
 							<input tabindex="${tabindex()}" class="form_item" id="username" type="text" name="username"/>
 							<label class="form_item" for="password">Password</label>
 							<input tabindex="${tabindex()}" class="form_item" id="password" type="password" name="password"/>
-							<input type="hidden" name="page" value="../cgi-bin/index.cgi" />
+							<input type="hidden" name="page" value="index.cgi" />
 							<input tabindex="${tabindex()}" id="submit" type="submit" value="Login" />
 						</fieldset>
 					</form>
