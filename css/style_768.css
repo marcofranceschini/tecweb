@@ -1464,6 +1464,7 @@
 	}
 	
 	#admin_form legend {
+		color: #FFF; /*per colore in IE*/
 		padding-left: 1em;
 		padding-right: 1em;
 	}
