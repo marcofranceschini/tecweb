@@ -28,7 +28,7 @@ print <<EOF;
         <title>$category - Ju Rapida</title>
         <meta name="title" content="$category - Ju Rapida S.N.C." />
         <meta name="description" content="Pagina dei prodotti nel mondo $category di JU RAPIDA" />
-        <meta name="keywords" content="$category", ju rapida, articoli sportivi, prodotti, sport" />
+        <meta name="keywords" content="$category, ju rapida, articoli sportivi, prodotti, sport;" />
 		<meta name="author" content="Fabiano Tavallini, Marco Franceschini, Daniele Favaro" />
 		<meta name="copyright" content="Ju Rapida S.N.C." />
 		<meta name="viewport" content="width=device-width" />
@@ -58,7 +58,7 @@ print <<EOF;
 				</ul>
 			</div>
 			<div id="breadcrumb">
-                <a href="index.cgi"><img src="../res/images/ic_home.png" alt="Home page"</img></a> &gt; <a href="../pages/products.html">Prodotti</a> &gt; $category
+                <a href="index.cgi"><img src="../res/images/ic_home.png" alt="Home page"></img></a> &gt; <a href="../pages/products.html">Prodotti</a> &gt; $category
 			</div>
 		</div>
 				
@@ -181,10 +181,12 @@ if(!@prodotti) {
         print " <p class=\"product_short_description\">".$descrizione_corta."</p>";
         print " <div class=\"product_display_button\">
                     <form class=\"form_display\" action=\"product_displayer.cgi#content_products_displayer_cgi\" method=\"post\">
-                        <input type=\"hidden\" name=\"display_code\" value=\"".$codice."\" />
-                        <input type=\"hidden\" name=\"display_name\" value=\"".$nome_originale."\" />
-                        <input type=\"hidden\" name=\"display_category\" value=\"".$category."\" />
-                        <input tabindex=\"${tabindex()}\" class=\"button\" type=\"submit\" value=\"Apri\" />
+                        <div>
+                            <input type=\"hidden\" name=\"display_code\" value=\"".$codice."\" />
+                            <input type=\"hidden\" name=\"display_name\" value=\"".$nome_originale."\" />
+                            <input type=\"hidden\" name=\"display_category\" value=\"".$category."\" />
+                            <input tabindex=\"${tabindex()}\" class=\"button\" type=\"submit\" value=\"Apri\" />
+                        </div>
                     </form>
                 </div>";
         print " </div>";
