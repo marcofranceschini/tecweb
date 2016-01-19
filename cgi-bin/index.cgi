@@ -72,8 +72,11 @@ foreach my $item ($doc->findnodes('/products/product')) {
                     <div class=\"pane_content\">
                     <img src=\"../res/images/products/thumbnails/".$item->findnodes('./thumbnail')."\" alt=\"".$item->findnodes('./shortDescription')."\"/>
                     <p>".$item->findnodes('./shortDescription')."</p>
-                    <form action=\"product_displayer.cgi?display_code=".$item->findnodes('./code')."&amp;display_name=".$item->findnodes('./name')."&amp;display_category=".$item->findnodes('./category')."\">
+                    <form action=\"product_displayer.cgi\">
                         <div>
+                            <input type=\"hidden\" name=\"display_category\" value=\"".$item->findnodes('./category')."\" />
+                            <input type=\"hidden\" name=\"display_code\" value=\"".$item->findnodes('./code')."\" />
+                            <input type=\"hidden\" name=\"display_name\" value=\"".$item->findnodes('./name')."\" />
                             <input tabindex=\"${tabindex()}\" type=\"submit\" value=\"Visualizza\"/>
                         </div>
                     </form>
