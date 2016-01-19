@@ -1263,27 +1263,27 @@
         margin: auto;
     }
 	
-	#product_category { /*-----new----*/
+	.product_category_modal { /*-----new----*/
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
 		border-radius: 3px;
         padding: 0.2em;	
 	}
 	
-	#product_code {
+	.product_code_modal {
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
 		border-radius: 3px;
         padding: 0.2em;	
 	}
 	
-	#product_name {
+	.product_name_modal {
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
 		border-radius: 3px;	
         padding: 0.2em;
 	}
-	
+    
 	.modalDialog textarea {
 		border: none;
 		box-shadow: 1px 1px 5px #3D3D3D;
