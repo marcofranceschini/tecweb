@@ -68,14 +68,17 @@ my $home_vuota = "true";
 foreach my $item ($doc->findnodes('/products/product')) {
     if ($item->findnodes('./inEvidence') eq "true") {
         $home_vuota = "false";
-        print "     <a tabindex=\"${tabindex()}\" href=\"product_displayer.cgi?display_code=".$item->findnodes('./code')."&amp;display_name=".$item->findnodes('./name')."&amp;display_category=".$item->findnodes('./category')."\">
-                        <div class=\"pane\" style=\"background-image: url('../res/images/".$item->findnodes('./backgroundImg')."')\">
-                            <div class=\"pane_content\">
-                                <img src=\"../res/images/products/thumbnails/".$item->findnodes('./thumbnail')."\" alt=\"".$item->findnodes('./shortDescription')."\"/>
-                                <p>".$item->findnodes('./shortDescription')."</p>
-                            </div>
+        print " <div class=\"pane\" style=\"background-image: url('../res/images/".$item->findnodes('./backgroundImg')."')\">
+                    <div class=\"pane_content\">
+                    <img src=\"../res/images/products/thumbnails/".$item->findnodes('./thumbnail')."\" alt=\"".$item->findnodes('./shortDescription')."\"/>
+                    <p>".$item->findnodes('./shortDescription')."</p>
+                    <form action=\"product_displayer.cgi?display_code=".$item->findnodes('./code')."&amp;display_name=".$item->findnodes('./name')."&amp;display_category=".$item->findnodes('./category')."\">
+                        <div>
+                            <input tabindex=\"${tabindex()}\" type=\"submit\" value=\"Visualizza\"/>
                         </div>
-                    </a>";
+                    </form>
+                    </div>
+                </div>";
     }
 }
 print "     </div>";
@@ -108,8 +111,8 @@ print <<EOF;
 					<ul id="maps_menu">
 						<li><span xml:lang="en">Home</span></li>
 						<li><a tabindex=\"${tabindex()}\" href="../pages/products.html">Prodotti</a></li>
-						<li><a tabindex=\"${tabindex()}\"href="contacts.cgi">Contatti</a></li>
-						<li><a tabindex=\"${tabindex()}\"href="../pages/about.html">Chi siamo</a></li>
+						<li><a tabindex=\"${tabindex()}\" href="contacts.cgi">Contatti</a></li>
+						<li><a tabindex=\"${tabindex()}\" href="../pages/about.html">Chi siamo</a></li>
 					</ul>
 					<ul id="maps_categories">
 						<li><a tabindex=\"${tabindex()}\" href="products.cgi?category=Calcio">Calcio</a></li>
