@@ -78,7 +78,7 @@ EOF
         my $bd = new HTTP::BrowserDetect($cgi->user_agent());
         my $browserName = $bd->browser_string();
         my $browserVersion = $bd->public_version();
-        print $browserName." ".$browserVersion;
+        #print $browserName." ".$browserVersion;
         if (($browserName eq "Chrome" && $browserVersion < 45) ||       #Verificato
         ($browserName eq "Safari" && $browserVersion < 9) ||            #Verificato
         ($browserName eq "MSIE" && $browserVersion < 9) ||              #Verificato 
