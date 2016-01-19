@@ -28,7 +28,7 @@ sub tabindex {
 sub getSession() {
 	$sessione = CGI::Session->load() or die $!; #CGI::Session->errstr
 	if ($sessione->is_expired || $sessione->is_empty) { # Se manca la sessione torno in home
-		print redirect(-url=>'../cgi-bin/index.cgi');
+		print redirect(-url=>'index.cgi');
 	}
 }
 
@@ -119,8 +119,8 @@ if ($logout) {
 		<body>
 			<div id="header">
 				<div id="navbar_admin">
-					<a tabindex="${tabindex()}" id="admin_back_icon" href="../cgi-bin/admin.cgi?logout=1"><i class="material-icons md-24">&#xE88A;</i></a>
-					<p><a tabindex="${tabindex()}" id="admin_back" href="../cgi-bin/admin.cgi?logout=1">Torna al sito</a></p>
+					<a tabindex="${tabindex()}" id="admin_back_icon" href="admin.cgi?logout=1"><i class="material-icons md-24">&#xE88A;</i></a>
+					<p><a tabindex="${tabindex()}" id="admin_back" href="admin.cgi?logout=1">Torna al sito</a></p>
 					<p>Gestione Prodotti</p>
 				</div>
 				<div id="admin_dashboard">
