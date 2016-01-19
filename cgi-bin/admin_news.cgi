@@ -303,7 +303,7 @@ EOF
 					<form id="dashboard_form_news" action="admin_news.cgi" method="post" enctype="multipart/form-data">
                         <div>
                             <label class="form_item_news" for="display_category">Categoria:</label>
-                            <select class="form_item_news" name="display_category" tabindex="${tabindex()}">
+                            <select class="form_item_news" id="display_category" tabindex="${tabindex()}">
                                 <option value=\"Tutte\"";
 EOF
                                 if($display_category eq "Tutte"){ print " selected ";}
@@ -335,10 +335,10 @@ EOF
     print "							<option value=\"Accessori\"";
                                 if($display_category eq "Accessori"){ print " selected ";}
                                 print ">Accessori</option>\n";
-                       print "</select>
-                         </div>
-						<input id=\"submit_dashboard_news\" type=\"submit\" value=\"Aggiorna\" tabindex=\"${tabindex()}\" />
-					</form>
+                     print "</select>
+						    <input id=\"submit_dashboard_news\" type=\"submit\" value=\"Aggiorna\" tabindex=\"${tabindex()}\" />
+					   </div>
+                    </form>
 					<div id=\"products_container\">";
 
     my $cont=0;
