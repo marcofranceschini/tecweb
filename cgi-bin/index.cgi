@@ -91,11 +91,13 @@ if($home_vuota eq "true") {
             </div>
 EOF
 } else {
-    print " <a tabindex=\"${tabindex()}\" id=\"backTop\" href=\"\">
-				<i class=\"material-icons\">&#xE316;</i>
-				Torna in alto alla pagina
-				<i class=\"material-icons\">&#xE316;</i>
-			</a>";
+    print <<EOF;
+            <a tabindex="${tabindex()}" id="backTop" href="">
+				<i class="material-icons">&#xE316;</i>
+                Torna in alto alla pagina
+				<i class="material-icons">&#xE316;</i>
+			</a>
+EOF
 }
 print <<EOF;
 		</div>
