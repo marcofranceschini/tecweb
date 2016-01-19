@@ -83,7 +83,7 @@ EOF
         ($browserName eq "Safari" && $browserVersion < 9) ||            #Verificato
         ($browserName eq "MSIE" && $browserVersion < 9) ||              #Verificato 
         ($browserName eq "Firefox" && $browserVersion < 42) ||          #Verificato
-        ($browserName eq "Opera" && $browserVersion < 34) {             #Verificato
+        ($browserName eq "Opera" && $browserVersion < 34)) {            #Verificato
             print " <div id=\"compatibilityAlert\">
                         <form method=\"post\" action=\"admin.cgi\">
                             <p><span>Attenzione!</span> Il tuo browser non supporta pienamente le funzioni di questa pagina. Aggiornalo subito all'ultima versione per non avere problemi durante la navigazione.</p>
