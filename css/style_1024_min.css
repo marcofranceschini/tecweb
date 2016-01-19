@@ -64,6 +64,10 @@
 		font-family: 'Maven Pro', sans-serif;
 	}
     
+	a img{ /* bordi immagini che fanno da link in IE 10*/ 
+        border: 0px;
+    }
+	
     .skip_menu {
         position: absolute;
         height: 0;
