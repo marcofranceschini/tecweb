@@ -1,6 +1,5 @@
-#!C:/Perl64/bin/perl.exe
 #!/usr/bin/perl
-
+#!C:/Perl64/bin/perl.exe
 
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
@@ -79,7 +78,7 @@ EOF
         my $bd = new HTTP::BrowserDetect($cgi->user_agent());
         my $browserName = $bd->browser_string();
         my $browserVersion = $bd->public_version();
-        #print $browserName." ".$browserVersion;
+        print $browserName." ".$browserVersion;
         if (($browserName eq "Chrome" && $browserVersion < 45) ||       #Verificato
         ($browserName eq "Safari" && $browserVersion < 9) ||            #Verificato
         ($browserName eq "IE" && $browserVersion < 9) ||                
