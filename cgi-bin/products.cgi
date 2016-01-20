@@ -1,6 +1,5 @@
-#!C:/Perl64/bin/perl.exe
 #!/usr/bin/perl
-
+#!C:/Perl64/bin/perl.exe
 
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
@@ -69,8 +68,10 @@ print <<EOF;
 					<p class="navigator_title">Categoria</p>
 					<ul class=\"navigator_list\">
 EOF
-if ($category ne "Calcio" && !@prodotti) {
+my $isCategoryEmpty = 0;
+if ($category ne "Calcio" && !@prodotti && $isCategoryEmpty == 0) {
     print "             <li><a id=\"firstProduct\" href=\"products.cgi?category=Calcio\">Calcio</a></li>\n";
+    $isCategoryEmpty = 1;
 } else {
     if ($category ne "Calcio") {
         print "			<li><a href=\"products.cgi?category=Calcio\">Calcio</a></li>\n";
@@ -78,8 +79,10 @@ if ($category ne "Calcio" && !@prodotti) {
         print "			<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Calcio</li>\n";
     }
 }
-if ($category ne "Basket" && !@prodotti) {
+
+if ($category ne "Basket" && !@prodotti && $isCategoryEmpty == 0) {
     print "             <li><a id=\"firstProduct\" href=\"products.cgi?category=Basket\"><span xml:lang=\"en\">Basket</span></a></li>\n";
+    $isCategoryEmpty = true;
 } else {
     if ($category ne "Basket") {
         print "         <li><a href=\"products.cgi?category=Basket\"><span xml:lang=\"en\">Basket</span></a></li>\n";
@@ -87,8 +90,10 @@ if ($category ne "Basket" && !@prodotti) {
         print "         <li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i><span xml:lang=\"en\">Basket</span></li>\n";
     }
 }
-if ($category ne "Volley" && !@prodotti) {
+
+if ($category ne "Volley" && !@prodotti && $isCategoryEmpty == 0) {
     print "             <li><a id=\"firstProduct\" href=\"products.cgi?category=Volley\"><span xml:lang=\"en\">Volley</span></a></li>\n";
+    $isCategoryEmpty = true;
 } else {
     if ($category ne "Volley") {
         print "			<li><a href=\"products.cgi?category=Volley\"><span xml:lang=\"en\">Volley</span></a></li>\n";
@@ -96,8 +101,10 @@ if ($category ne "Volley" && !@prodotti) {
         print "		   	<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i><span xml:lang=\"en\">Volley</span></li>\n";
     }
 }
-if ($category ne "Tennistavolo" && !@prodotti) {
+
+if ($category ne "Tennistavolo" && !@prodotti && $isCategoryEmpty == 0) {
     print "             <li><a id=\"firstProduct\" href=\"products.cgi?category=Tennistavolo\">Tennistavolo</a></li>\n";
+    $isCategoryEmpty = true;
 } else {
     if ($category ne "Tennistavolo") {
         print "	        <li><a href=\"products.cgi?category=Tennistavolo\">Tennistavolo</a></li>\n";
@@ -105,8 +112,10 @@ if ($category ne "Tennistavolo" && !@prodotti) {
         print "			<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Tennistavolo</li>\n";
     }
 }
-if ($category ne "Nuoto" && !@prodotti) {
+
+if ($category ne "Nuoto" && !@prodotti && $isCategoryEmpty == 0) {
     print "             <li><a id=\"firstProduct\" href=\"products.cgi?category=Nuoto\">Nuoto</a></li>\n";
+    $isCategoryEmpty = true;
 } else {
     if ($category ne "Nuoto") {
         print "			<li><a href=\"products.cgi?category=Nuoto\">Nuoto</a></li>\n";
@@ -114,8 +123,10 @@ if ($category ne "Nuoto" && !@prodotti) {
         print "			<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Nuoto</li>\n";
     }
 }
-if ($category ne "Minigolf" && !@prodotti) {
+
+if ($category ne "Minigolf" && !@prodotti && $isCategoryEmpty == 0) {
     print "             <li><a id=\"firstProduct\" href=\"products.cgi?category=Minigolf\">Minigolf</a></li>\n";
+    $isCategoryEmpty = true;
 } else {
     if ($category ne "Minigolf") {
         print "			<li><a href=\"products.cgi?category=Minigolf\">Minigolf</a></li>\n";
@@ -123,8 +134,10 @@ if ($category ne "Minigolf" && !@prodotti) {
         print "			<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Minigolf</li>\n";
     }
 }
-if ($category ne "Calciobalilla" && !@prodotti) {
+
+if ($category ne "Calciobalilla" && !@prodotti && $isCategoryEmpty == 0) {
     print "             <li><a id=\"firstProduct\" href=\"products.cgi?category=Calciobalilla\">Calciobalilla</a></li>\n";
+    $isCategoryEmpty = true;
 } else {
     if ($category ne "Calciobalilla") {
         print "         <li><a href=\"products.cgi?category=Calciobalilla\">Calciobalilla</a></li>\n";
@@ -132,8 +145,10 @@ if ($category ne "Calciobalilla" && !@prodotti) {
         print "			<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Calciobalilla</li>\n";
     }
 }
-if ($category ne "Protezioni" && !@prodotti) {
+
+if ($category ne "Protezioni" && !@prodotti && $isCategoryEmpty == 0) {
     print "             <li><a id=\"firstProduct\" href=\"products.cgi?category=Protezioni\">Protezioni</a></li>\n";
+    $isCategoryEmpty = true;
 } else {
     if ($category ne "Protezioni") {
         print "			<li><a href=\"products.cgi?category=Protezioni\">Protezioni</a></li>\n";
@@ -141,8 +156,10 @@ if ($category ne "Protezioni" && !@prodotti) {
         print "			<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Protezioni</li>\n";
     }
 }
-if ($category ne "Accessori" && !@prodotti) {
+
+if ($category ne "Accessori" && !@prodotti && $isCategoryEmpty == 0) {
     print "             <li><a id=\"firstProduct\" href=\"products.cgi?category=Accessori\">Accessori</a></li>\n";
+    $isCategoryEmpty = true;
 } else {
     if ($category ne "Accessori") {
         print "			<li><a href=\"products.cgi?category=Accessori\">Accessori</a></li>\n";
