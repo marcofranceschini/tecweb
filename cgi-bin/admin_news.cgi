@@ -28,7 +28,7 @@ sub tabindex {
 sub getSession() {
 	$sessione = CGI::Session->load() or die $!; #CGI::Session->errstr
 	if ($sessione->is_expired || $sessione->is_empty) { # Se manca la sessione torno in home
-		print redirect(-url=>'../cgi-bin/index.cgi');
+		print redirect(-url=>'index.cgi');
 	}
 }
 
@@ -250,7 +250,7 @@ EOF
             # Stampa le card dei prodotti
             print <<EOF;
                     <div id="products_container_news">
-                        <div id="products_label_news">
+                        <div class="products_label_news">
                             <span>Codice</span><span class="product_name_label">Nome</span><span>Categoria</span>
                         </div>
 EOF
@@ -304,34 +304,34 @@ EOF
                             <select class="form_item_news" id="display_category" tabindex="${tabindex()}">
                                 <option value="Tutte"
 EOF
-                                if($display_category eq "Tutte"){ print " selected ";}
+                                if($display_category eq "Tutte"){ print " selected=\"selected\" ";}
                                 print ">Tutte</option>\n";
     print "							<option value=\"Calcio\"";
-                                if($display_category eq "Calcio"){ print " selected ";}
+                                if($display_category eq "Calcio"){ print " selected=\"selected\" ";}
                                 print ">Calcio</option>\n";
     print "							<option lang=\"en\" value=\"Basket\"";
-                                if($display_category eq "Basket"){ print " selected ";}
+                                if($display_category eq "Basket"){ print " selected=\"selected\" ";}
                                 print ">Basket</option>\n";
     print "							<option lang=\"en\" value=\"Volley\"";
-                                if($display_category eq "Volley"){ print " selected ";}
+                                if($display_category eq "Volley"){ print " selected=\"selected\" ";}
                                 print ">Volley</option>\n";
     print "							<option value=\"Tennistavolo\"";
-                                if($display_category eq "Tennistavolo"){ print " selected ";}
+                                if($display_category eq "Tennistavolo"){ print " selected=\"selected\" ";}
                                 print">Tennistavolo</option>\n";
     print "							<option value=\"Nuoto\"";
-                                if($display_category eq "Nuoto"){ print " selected ";}
+                                if($display_category eq "Nuoto"){ print " selected=\"selected\" ";}
                                 print ">Nuoto</option>\n";
     print "							<option value=\"Minigolf\"";
-                                if($display_category eq "Minigolf"){ print " selected ";}
+                                if($display_category eq "Minigolf"){ print " selected=\"selected\" ";}
                                 print ">Minigolf</option>\n";
     print "							<option value=\"Calciobalilla\"";
-                                if($display_category eq "Calciobalilla"){ print " selected ";}
+                                if($display_category eq "Calciobalilla"){ print " selected=\"selected\" ";}
                                 print ">Calciobalilla</option>\n";
     print "							<option value=\"Protezioni\"";
-                                if($display_category eq "Protezioni" ){ print " selected ";}
+                                if($display_category eq "Protezioni" ){ print " selected=\"selected\" ";}
                                 print ">Protezioni</option>\n";
     print "							<option value=\"Accessori\"";
-                                if($display_category eq "Accessori"){ print " selected ";}
+                                if($display_category eq "Accessori"){ print " selected=\"selected\" ";}
                                 print ">Accessori</option>\n";
                      print "</select>
 						    <input id=\"submit_dashboard_news\" type=\"submit\" value=\"Aggiorna\" tabindex=\"${tabindex()}\" />
@@ -349,7 +349,7 @@ EOF
     if($cont!=0) { # Ho almeno 1 prodotto non in evidenza
         # Stampa le card dei prodotti
         print <<EOF;
-                    <div id="products_label_news">
+                    <div class="products_label_news">
                         <span>Codice</span><span class="product_name_label">Nome</span><span>Categoria</span>
                     </div>
 EOF
@@ -364,7 +364,7 @@ EOF
                 print "						<span class=\"product_name\">".$nome."</span>\n";
                 print "						<span class=\"product_category\">".$categoria."</span>\n";
                 print "				        <div class=\"product_buttons\">\n";
-                print "							<form id=\"form_add\" class=\"form_add\" action=\"admin_news.cgi#openWallpaper\" method=\"post\" enctype=\"multipart/form-data\">\n";
+                print "							<form class=\"form_add\" action=\"admin_news.cgi#openWallpaper\" method=\"post\" enctype=\"multipart/form-data\">\n";
                 print "								<div>
                                                         <input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
                 print "								    <input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
