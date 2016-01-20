@@ -191,7 +191,7 @@ EOF
 						<form id="form_modal_modify" action="admin_products.cgi" method="post" enctype="multipart/form-data">
 							<div>
 							<label class="form_item" for="category_modify">Categoria</label>
-							<select  tabindex="" class="form_item product_category_modal" id="category_modify">
+							<select  tabindex="" class="form_item product_category_modal" id="category_modify" name="product_category">
 EOF
 print "								<option value=\"Calcio\"";
 if($category eq "Calcio"){ print " selected=\"selected\" ";}
@@ -224,20 +224,20 @@ print <<EOF;
 							</select>
 							<label class="form_item" for="code_modify">Codice</label>
 EOF
-print "							<input tabindex=\"\" class=\"form_item product_code_modal\" id=\"code_modify\" type=\"text\" value=\"".$code."\" disabled=\"disabled\" />";
+print "							<input tabindex=\"\" class=\"form_item product_code_modal\" id=\"code_modify\" name=\"product_code\" type=\"text\" value=\"".$code."\" disabled=\"disabled\" />";
 print "							<label class=\"form_item\" for=\"name_modify\">Nome</label>\n";
-print "							<input tabindex=\"\" class=\"form_item product_name_modal\" type=\"text\" id=\"name_modify\" value=\"".$name."\" />\n";
+print "							<input tabindex=\"\" class=\"form_item product_name_modal\" type=\"text\" id=\"name_modify\" name=\"product_name\" value=\"".$name."\" />\n";
 print "							<label class=\"form_item\" for=\"desc_modify\">Descrizione</label>\n";
-print "							<textarea tabindex=\"\" class=\"form_item product_desc_modal\"  id=\"desc_modify\" rows=\"2\" cols=\"20\">".$description."</textarea>\n";
+print "							<textarea tabindex=\"\" class=\"form_item product_desc_modal\"  id=\"desc_modify\"  name=\"product_desc\" rows=\"2\" cols=\"20\">".$description."</textarea>\n";
 print "							<label class=\"form_item\" for=\"thumbnail_desc_modify\">Descrizione breve</label>\n";
-print "							<textarea tabindex=\"\" class=\"form_item thumbnail_desc_modal\" id=\"thumbnail_desc_modify\" rows=\"2\" cols=\"20\">".$shortDescription."</textarea>\n";
+print "							<textarea tabindex=\"\" class=\"form_item thumbnail_desc_modal\" id=\"thumbnail_desc_modify\" name=\"thumbnail_desc\" rows=\"2\" cols=\"20\">".$shortDescription."</textarea>\n";
 print "							<input type=\"hidden\" name=\"modify_code\" value=\"".$code."\" />\n";
 print "							<input type=\"hidden\" name=\"display_category_modify\" value=\"".$display_category."\" />\n";
 print <<EOF;
                                     <label class="form_item" for="image_modify">Nuova immagine principale (massimo 5MB)</label>
-                                    <input tabindex=\"\" class="form_item product_image_modal" type="file" id="image_modify" />
+                                    <input tabindex=\"\" class="form_item product_image_modal" type="file" id="image_modify" name=\"image\" />
                                     <label class="form_item" for="thumbnail_modify">Nuova thumbnail (massimo 500KB)</label>
-                                    <input tabindex=\"\" class="form_item product_thumbnail_modal" type="file" id="thumbnail_modify" />
+                                    <input tabindex=\"\" class="form_item product_thumbnail_modal" type="file" id="thumbnail_modify" name=\"thumbnail\"/>
                                     <input tabindex=\"\" class="submit_modal" id="submit_modal_modify" name="modify" type="submit" value="Modifica" />
                                 </div>
                         </form>
@@ -490,7 +490,7 @@ EOF
 					<form id="form_modal_insert" action="admin_products.cgi" method="post" enctype="multipart/form-data">
 						<div>
 						  <label class="form_item" for="category_insert">Categoria</label>
-						  <select tabindex="" class="form_item product_category_modal" id="category_insert">
+						  <select tabindex="" class="form_item product_category_modal" id="category_insert" name="product_category">
 EOF
 print "							  <option value=\"Calcio\"";
                             if($display_category eq "Calcio"){ print " selected ";}
@@ -522,17 +522,17 @@ print "							  <option value=\"Accessori\"";
 print <<EOF;
                             </select>
                             <label class="form_item" for="code_insert">Codice</label>
-                            <input tabindex="" class="form_item product_code_modal" type="text"  id="code_insert" />
+                            <input tabindex="" class="form_item product_code_modal" type="text" id="code_insert" name="product_code" />
                             <label class="form_item" for="name_insert">Nome</label>
-                            <input tabindex="" class="form_item product_name_modal" type="text" id="name_insert" />
+                            <input tabindex="" class="form_item product_name_modal" type="text" id="name_insert" name="product_name" />
                             <label class="form_item" for="desc_insert">Descrizione</label>
-                            <textarea tabindex="" class="form_item product_desc_modal" id="desc_insert" rows="2" cols="20"></textarea>
+                            <textarea tabindex="" class="form_item product_desc_modal" id="desc_insert" name="product_desc" rows="2" cols="20"></textarea>
                             <label class="form_item" for="thumbnail_desc_insert">Descrizione breve</label>
-                            <textarea tabindex="" class="form_item thumbnail_desc_modal" id="thumbnail_desc_insert" rows="2" cols="20"></textarea>
+                            <textarea tabindex="" class="form_item thumbnail_desc_modal" id="thumbnail_desc_insert" name="thumbnail_desc" rows="2" cols="20"></textarea>
                             <label class="form_item" for="image_insert">Immagine principale (massimo 5MB)</label>
-                            <input tabindex="" class="form_item product_image_modal" type="file" id="image_insert"/>
+                            <input tabindex="" class="form_item product_image_modal" type="file" id="image_insert" name=\"image\" />
                             <label class="form_item" for="thumbnail_insert">Thumbnail (massimo 500KB)</label>
-                            <input tabindex="" class="form_item product_thumbnail_modal" type="file" id="thumbnail_insert"/>
+                            <input tabindex="" class="form_item product_thumbnail_modal" type="file" id="thumbnail_insert" name=\"thumbnail\" />
 EOF
 print "						<input type=\"hidden\" name=\"display_category\" value=\"".$display_category."\" />\n";
 print <<EOF;
