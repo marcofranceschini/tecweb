@@ -1,6 +1,5 @@
-#!C:/Perl64/bin/perl.exe
 #!/usr/bin/perl
-
+#!C:/Perl64/bin/perl.exe
 
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
@@ -105,7 +104,6 @@ if ($logout) {
 			<title>Gestione Prodotti - Amministrazione - Ju Rapida</title>
 			<meta name="title" content="Ju Rapida S.N.C." />
 			<meta name="description" content="Pagina di amministrazione dei prodotti del sito Ju Rapida." />
-			<!-- meta name="keywords" content="ju rapida, ammin, articoli sportivi, calcio, tennistavolo, volley, carlo tavallini, vendita;" -->
 			<meta name="author" content="Fabiano Tavallini, Marco Franceschini, Daniele Favaro" />
 			<meta name="copyright" content="Ju Rapida S.N.C." />
 			<meta name="viewport" content="width=device-width"/>

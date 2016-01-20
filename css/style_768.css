@@ -991,7 +991,7 @@
         padding-right: 0.5em;
     }
 	
-	#form_add {		/*-------------------------NEW--------------*/
+	.form_add {		/*-------------------------NEW--------------*/
 		float: right;
 	}
 	
@@ -1121,6 +1121,17 @@
         text-align: left;
     }
     
+    .products_label_news span{ /* new */
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    
+    .products_label_news .product_name_label { /* new */
+        padding-left: 1em;
+        width: 20%;
+        text-align: left;
+    }
+    
     #products_container .product_code { /* new */
         padding-left: 0.5em;
     }
@@ -1163,7 +1174,7 @@
 		background: rgba(200, 0, 0, 1);
 	}
 
-    #form_remove {
+    .form_remove {
         float: right;
     }
     

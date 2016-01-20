@@ -19,16 +19,25 @@ my $file = '../xml/db.xml';
 #<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
 #<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
 
+my $cgi = CGI->new();
+my $error = $cgi->cgi_error();
+# Recupero i dati dall'input
+my %INPUT = Vars();
+
 my $tabIndexCount = 0;
-sub tabindex {
-    $tabIndexCount++;
-    return (\$tabIndexCount); #ritorna il RIFERIMENTO alla variabile
+sub tabIndex {
+    if ($INPUT{'add_wallpaper'}) {
+        $tabIndexCount = -1;
+    } else {
+        $tabIndexCount++;
+    } 
+    return (\$tabIndexCount);
 }
 
 sub getSession() {
 	$sessione = CGI::Session->load() or die $!; #CGI::Session->errstr
 	if ($sessione->is_expired || $sessione->is_empty) { # Se manca la sessione torno in home
-		print redirect(-url=>'../cgi-bin/index.cgi');
+		print redirect(-url=>'index.cgi');
 	}
 }
 
@@ -46,27 +55,16 @@ sub destroySession() {
 
 sub printPlaceholder() {
 	# Da usare in lab: ../tecwebproject/res/images/empty_list.png
-	$placeholder = 
-"				<div id=\"placeholder\">
-					<p>Nessun prodotto ancora inserito</p>
-					<img src=\"../res/images/empty_list.png\" alt=\"Immagina lista prodotti vuota\" \>
-				</div>
+	$placeholder = "<div id=\"placeholder\">
+					   <p>Nessun prodotto ancora inserito</p>
+					   <img src=\"../res/images/empty_list.png\" alt=\"Immagina lista prodotti vuota\" \>
+				    </div>
 			</div>\n";   #</content_admin>
 	return $placeholder;
 }
 
 # Verifica della sessione
 getSession();
-
-my $cgi = CGI->new();
-my $error = $cgi->cgi_error();
-
-if (defined $cgi->param('tabindex') && $cgi->param('tabindex') ne '') {
-    $tabIndexCount = $tabIndexCount - $cgi->param('tabindex');
-}
-
-# Recupero i dati dall'input
-my %INPUT = Vars();
     
 # Apertura file XML
 $parser = XML::LibXML->new();
@@ -104,7 +102,6 @@ if ($logout) {
 			<title>Gestione Prodotti - Amministrazione - Ju Rapida</title>
 			<meta name="title" content="Ju Rapida S.N.C." />
 			<meta name="description" content="Pagina di amministrazione delle novit&agrave; del sito Ju Rapida." />
-			<!-- meta name="keywords" content="ju rapida, ammin, articoli sportivi, calcio, tennistavolo, volley, carlo tavallini, vendita;" -->
 			<meta name="author" content="Fabiano Tavallini, Marco Franceschini, Daniele Favaro" />
 			<meta name="copyright" content="Ju Rapida S.N.C." />
 			<meta name="viewport" content="width=device-width"/>
@@ -119,17 +116,15 @@ if ($logout) {
 		<body>
 			<div id="header">
 				<div id="navbar_admin">
-					<a id="admin_back_icon" href="admin.cgi?logout=1" tabindex="${tabindex()}"><i class="material-icons md-24">&#xE88A;</i></a>
-					<p><a id="admin_back" href="admin.cgi?logout=1" tabindex="${tabindex()}">Torna al sito</a></p>
+					<a tabindex="${tabIndex()}" id="admin_back_icon" href="admin.cgi?logout=1"><i class="material-icons md-24">&#xE88A;</i></a>
+					<p><a tabindex="${tabIndex()}" id="admin_back" href="admin.cgi?logout=1">Torna al sito</a></p>
 					<p>Gestione Novit&agrave;</p>
 				</div>
 EOF
 #print "					<span id=\"products_number\">Sono presenti ".scalar @prodotti." prodotti</span>\n";
 
-     print <<EOF;
-			</div>
-			<div id="content_admin">	
-EOF
+    print "     </div>
+            <div id=\"content_admin\">";	
 
 	if(%INPUT or $error) {  # Se riceve dati in input o errori
         if($INPUT{'add_wallpaper'}) {
@@ -144,20 +139,20 @@ EOF
             print <<EOF;
                     <div id="openWallpaper" class="modalDialog">
                         <div>
-                            <a href="#close" title="Close" class="close" tabindex="">X</a>
+                            <a tabindex="1" href="admin_news.cgi" title="Close" class="close">X</a>
                             <p>Evidenzia prodotto</p>
                             <form id="form_modal_modify" action="admin_news.cgi" method="post" enctype="multipart/form-data">
 EOF
-                print "<label class=\"form_item\" for=\"product_category\">Categoria: ".$category."</label>";
+                print "         <label class=\"form_item\" for=\"product_category\">Categoria: ".$category."</label>";
 				if ($sfondo ne "none") {
-       				print "<label class=\"form_item\" for=\"wallpaper_img\">Sfondo</label>";
-                    print "<img src=\"../res/images/".$sfondo."\" class=\"form_item\" id=\"wallpaper_img\" name\"wallpaper_img\" height=\"50\" width=\"90\" />";
+       				print "     <label class=\"form_item\" for=\"wallpaper_img\">Sfondo</label>";
+                    print "     <img src=\"../res/images/".$sfondo."\" class=\"form_item\" id=\"wallpaper_img\" name\"wallpaper_img\" height=\"50\" width=\"90\" />";
                 }
-                print "<input type=\"hidden\" name=\"evidence_code\" value=\"".$code."\" />";
+                print "         <input type=\"hidden\" name=\"evidence_code\" value=\"".$code."\" />";
 				print <<EOF;
-				                <label class="form_item" for="image_modify">Nuovo sfondo</label>
-				                <input class="form_item" id="wallpaper_new_img" type="file" name="image" tabindex="" />
-				                <input class="submit_modal" id="submit_modal_wallpaper" name="add_evidence" type="submit" value="Aggiungi" tabindex=""/>
+				                <label class="form_item" for="wallpaper_new_img">Nuovo sfondo</label>
+				                <input tabindex="2" class="form_item" id="wallpaper_new_img" type="file" name="image"/>
+				                <input tabindex="3" class="submit_modal" id="submit_modal_wallpaper" name="add_evidence" type="submit" value="Aggiungi"/>
                             </form>
                         </div>
                    </div>
@@ -250,8 +245,8 @@ EOF
             # Stampa le card dei prodotti
             print <<EOF;
                     <div id="products_container_news">
-                        <div id="products_label">
-                            <span>Codice</span><span id="product_name_label">Nome</span><span>Categoria</span>
+                        <div class="products_label_news">
+                            <span>Codice</span><span class="product_name_label">Nome</span><span>Categoria</span>
                         </div>
 EOF
             foreach my $product (@prodotti) { # Stampo i prodotti che sono in evidenza
@@ -265,12 +260,13 @@ EOF
                     print "						<span class=\"product_name\">".$nome."</span>\n";
                     print "						<span class=\"product_category\">".$categoria."</span>\n";
                     print "				        <div class=\"product_buttons\">\n";
-                    print "							<form id=\"form_remove\" class=\"form_remove\" action=\"admin_news.cgi\" method=\"post\" enctype=\"multipart/form-data\">\n";
-                    print "								<input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
-                    print "								<input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
-                    print "								<input type=\"hidden\" name=\"add_wallpaper\" />\n";
-                    print "							    <input class=\"button\" type=\"submit\" name=\"hide_evidence\" value=\"Rimuovi\" tabindex=\"".$index_tab."\" />\n";
-                    print "							</form>\n";
+                    print "							<form class=\"form_remove\" action=\"admin_news.cgi\" method=\"post\" enctype=\"multipart/form-data\">\n";
+                    print "								<div>
+                                                            <input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
+                    print "								    <input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
+                    print "							        <input tabindex=\"${tabIndex()}\" class=\"button\" type=\"submit\" name=\"hide_evidence\" value=\"Rimuovi\" />\n";
+                    print "							    </div>
+                                                    </form>\n";
                     print "						</div>\n";
                     print "					</div>\n";
                     $index_tab=$index_tab+1;
@@ -292,47 +288,47 @@ EOF
         }
     }
     if (@notInEvidence && @inEvidence) {
-        print "<hr \>";
+        print "<hr />";
     }
     
     print <<EOF;
 					<form id="dashboard_form_news" action="admin_news.cgi" method="post" enctype="multipart/form-data">
                         <div>
                             <label class="form_item_news" for="display_category">Categoria:</label>
-                            <select class="form_item_news" id="display_category" tabindex="${tabindex()}">
-                                <option value=\"Tutte\"";
+                            <select tabindex=\"${tabIndex()}\" class="form_item_news" id="display_category">
+                                <option value="Tutte"
 EOF
-                                if($display_category eq "Tutte"){ print " selected ";}
+                                if($display_category eq "Tutte"){ print " selected=\"selected\" ";}
                                 print ">Tutte</option>\n";
     print "							<option value=\"Calcio\"";
-                                if($display_category eq "Calcio"){ print " selected ";}
+                                if($display_category eq "Calcio"){ print " selected=\"selected\" ";}
                                 print ">Calcio</option>\n";
-    print "							<option value=\"Basket\"";
-                                if($display_category eq "Basket"){ print " selected ";}
-                                print "><span lang=\"en\">Basket</span></option>\n";
-    print "							<option value=\"Volley\"";
-                                if($display_category eq "Volley"){ print " selected ";}
-                                print "><span lang=\"en\">Volley</span></option>\n";
+    print "							<option lang=\"en\" value=\"Basket\"";
+                                if($display_category eq "Basket"){ print " selected=\"selected\" ";}
+                                print ">Basket</option>\n";
+    print "							<option lang=\"en\" value=\"Volley\"";
+                                if($display_category eq "Volley"){ print " selected=\"selected\" ";}
+                                print ">Volley</option>\n";
     print "							<option value=\"Tennistavolo\"";
-                                if($display_category eq "Tennistavolo"){ print " selected ";}
+                                if($display_category eq "Tennistavolo"){ print " selected=\"selected\" ";}
                                 print">Tennistavolo</option>\n";
     print "							<option value=\"Nuoto\"";
-                                if($display_category eq "Nuoto"){ print " selected ";}
+                                if($display_category eq "Nuoto"){ print " selected=\"selected\" ";}
                                 print ">Nuoto</option>\n";
     print "							<option value=\"Minigolf\"";
-                                if($display_category eq "Minigolf"){ print " selected ";}
+                                if($display_category eq "Minigolf"){ print " selected=\"selected\" ";}
                                 print ">Minigolf</option>\n";
     print "							<option value=\"Calciobalilla\"";
-                                if($display_category eq "Calciobalilla"){ print " selected ";}
+                                if($display_category eq "Calciobalilla"){ print " selected=\"selected\" ";}
                                 print ">Calciobalilla</option>\n";
     print "							<option value=\"Protezioni\"";
-                                if($display_category eq "Protezioni" ){ print " selected ";}
+                                if($display_category eq "Protezioni" ){ print " selected=\"selected\" ";}
                                 print ">Protezioni</option>\n";
     print "							<option value=\"Accessori\"";
-                                if($display_category eq "Accessori"){ print " selected ";}
+                                if($display_category eq "Accessori"){ print " selected=\"selected\" ";}
                                 print ">Accessori</option>\n";
                      print "</select>
-						    <input id=\"submit_dashboard_news\" type=\"submit\" value=\"Aggiorna\" tabindex=\"${tabindex()}\" />
+						    <input tabindex=\"${tabIndex()}\" id=\"submit_dashboard_news\" type=\"submit\" value=\"Aggiorna\" />
 					   </div>
                     </form>
 					<div id=\"products_container\">";
@@ -347,8 +343,8 @@ EOF
     if($cont!=0) { # Ho almeno 1 prodotto non in evidenza
         # Stampa le card dei prodotti
         print <<EOF;
-                    <div id="products_label">
-                        <span>Codice</span><span id="product_name_label">Nome</span><span>Categoria</span>
+                    <div class="products_label_news">
+                        <span>Codice</span><span class="product_name_label">Nome</span><span>Categoria</span>
                     </div>
 EOF
         for(my $i=0; $i < scalar @prodottiLimitati; $i++) { # Stampo i prodotti che non sono in evidenza
@@ -362,11 +358,13 @@ EOF
                 print "						<span class=\"product_name\">".$nome."</span>\n";
                 print "						<span class=\"product_category\">".$categoria."</span>\n";
                 print "				        <div class=\"product_buttons\">\n";
-                print "							<form id=\"form_add\" class=\"form_add\" action=\"admin_news.cgi#openWallpaper\" method=\"post\" enctype=\"multipart/form-data\">\n";
-                print "								<input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
-                print "								<input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
-                print "							    <input class=\"button\" type=\"submit\" name=\"add_wallpaper\" value=\"Evidenzia\" tabindex=\"${tabindex()}\" />\n";
-                print "							</form>\n";
+                print "							<form class=\"form_add\" action=\"admin_news.cgi#openWallpaper\" method=\"post\" enctype=\"multipart/form-data\">\n";
+                print "								<div>
+                                                        <input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
+                print "								    <input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
+                print "							        <input tabindex=\"${tabIndex()}\" class=\"button\" type=\"submit\" name=\"add_wallpaper\" value=\"Evidenzia\" />\n";
+                print "							    </div>
+                                                </form>\n";
                 print "						</div>\n";
                 print "					</div>\n";
             }
@@ -377,28 +375,24 @@ EOF
 	print <<EOF;
 			<div id="action_bar">
 				<div id="action_box_news">
-EOF
-    print"
-					<a id=\"action_back_news\" class=\"linked_box\" href=\"admin.cgi\" tabindex=\"${tabindex()}\">Indietro</a>";
-	print <<EOF;
+                    <a tabindex="${tabIndex()}" id="action_back_news" class="linked_box" href="admin.cgi">Indietro</a>
                 </div>
 			</div>
 		</div>		
-			<div id="footer">
-				<div id="copy_panel">
-					<p id="copy">Copyright &copy; 2016 - All right reserved. Ju Rapida SNC - VIA F. PETRARCA, 14/31100 TREVISO ITALY - P. IVA: 01836040269</p>
-					<p id="validation">
-						<span id="xhtml_valid">
+		<div id="footer">
+            <div id="copy_panel">
+                <p id="copy">Copyright &copy; 2016 - All right reserved. Ju Rapida SNC - VIA F. PETRARCA, 14/31100 TREVISO ITALY - P. IVA: 01836040269</p>
+                <p id="validation">
+                    <span id="xhtml_valid">
+                        <a tabindex="${tabIndex()}" href=\"http://validator.w3.org/check?uri=referer\"><img src=\"http://www.w3.org/Icons/valid-xhtml10\" alt=\"Valid XHTML 1.0 Strict\" height=\"31\" width=\"88\" /></a>
+                    </span>
+                    <span id=\"css_valid\">
+                        <a tabindex="${tabIndex()}" href=\"http://jigsaw.w3.org/css-validator/check/referer\"><img style=\"border:0;width:88px;height:31px\" src=\"http://jigsaw.w3.org/css-validator/images/vcss-blue\" alt=\"Valid CSS3\" /></a>
+                    </span>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
 EOF
-    print "
-							<a href=\"http://validator.w3.org/check?uri=referer\" tabindex=\"${tabindex()}\"><img src=\"http://www.w3.org/Icons/valid-xhtml10\" alt=\"Valid XHTML 1.0 Strict\" height=\"31\" width=\"88\" /></a>
-						</span>
-						<span id=\"css_valid\">
-							<a href=\"http://jigsaw.w3.org/css-validator/check/referer\" tabindex=\"${tabindex()}\"><img style=\"border:0;width:88px;height:31px\" src=\"http://jigsaw.w3.org/css-validator/images/vcss-blue\" alt=\"Valid CSS3\" /></a>
-						</span>
-					</p>
-				</div>
-			</div>
-		</body>
-	</html>";
 }

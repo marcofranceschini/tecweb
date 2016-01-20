@@ -46,7 +46,7 @@ print <<EOF;
 		<link rel="icon" type="image/png" href="../res/images/icon.png" />
 	</head>
 	<body>
-        <div><a class="skip_menu" href="#content_products_displayer_cgi" tabindex="1">Salta la navigazione</a></div>
+        <div><a class="skip_menu" href="#firstProduct"Salta la navigazione</a></div>
 		<div id="header">
 			<div id="contacts">
 				<p><i class="material-icons md-18">&#xE0CD;</i> +39 0422 445566</p>
@@ -69,7 +69,6 @@ print <<EOF;
 		<div id="content_products_displayer_cgi">
 EOF
 
-# Stampa la scheda del prodotto
 print "		<div id=\"product_card_displayer\">\n";
 my $immagine = $prodotto->findnodes("img/text()");
 my $descrizione = $prodotto->findnodes("description/text()");
@@ -83,10 +82,10 @@ print <<EOF;
                         <span class="product_code">Codice $codice</span>
                         <p class="product_description">$descrizione</p>
                         <div class="product_back_button">
-                            <form action="products.cgi" method="post">
+                            <form action="products.cgi">
                                 <div>
                                     <input type="hidden" name="category" value="$categoria"/>
-                                    <input class="button" type="submit" value="Torna ai prodotti"/>
+                                    <input id=\"firstProduct\" class="button" type="submit" value="Torna ai prodotti"/>
                                 </div>
                             </form>
                         </div>
