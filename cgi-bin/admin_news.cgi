@@ -46,11 +46,10 @@ sub destroySession() {
 
 sub printPlaceholder() {
 	# Da usare in lab: ../tecwebproject/res/images/empty_list.png
-	$placeholder = 
-"				<div id=\"placeholder\">
-					<p>Nessun prodotto ancora inserito</p>
-					<img src=\"../res/images/empty_list.png\" alt=\"Immagina lista prodotti vuota\" \>
-				</div>
+	$placeholder = "<div id=\"placeholder\">
+					   <p>Nessun prodotto ancora inserito</p>
+					   <img src=\"../res/images/empty_list.png\" alt=\"Immagina lista prodotti vuota\" \>
+				    </div>
 			</div>\n";   #</content_admin>
 	return $placeholder;
 }
