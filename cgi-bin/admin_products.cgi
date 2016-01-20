@@ -19,10 +19,18 @@ my $upload_dir_thumbnails = "../res/images/products/thumbnails";
 #<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
 #<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
 
+my $cgi = CGI->new();
+my $error = $cgi->cgi_error();
+my %INPUT = Vars();
+
 my $tabIndexCount = 0;
-sub tabindex {
-    $tabIndexCount++;
-    return (\$tabIndexCount); #ritorna il RIFERIMENTO alla variabile
+sub tabIndex {
+    if ($INPUT{'add_wallpaper'}) {
+        $tabIndexCount = -1;
+    } else {
+        $tabIndexCount++;
+    } 
+    return (\$tabIndexCount);
 }
 
 sub getSession() {
@@ -57,16 +65,6 @@ sub printPlaceholder() {
 
 # Verifica della sessione
 getSession();
-
-my $cgi = CGI->new();
-my $error = $cgi->cgi_error();
-
-if (defined $cgi->param('tabindex') && $cgi->param('tabindex') ne '') {
-    $tabIndexCount = $tabIndexCount - $cgi->param('tabindex');
-}
-
-# Recupero i dati dall'input
-my %INPUT = Vars();
     
 # Apertura file XML
 $file = '../xml/db.xml';
@@ -93,9 +91,9 @@ if ($logout) {
 } else {
 	print "Content-Type: text/html\n\n";
     # Stampa l'hash ricevuto
-    #foreach $key (keys %INPUT) {
-    #   print "$key: $INPUT{$key}\n";
-    #}
+    foreach $key (keys %INPUT) {
+       print "$key: $INPUT{$key}\n";
+    }
 	print <<EOF;
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">

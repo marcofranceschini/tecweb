@@ -21,7 +21,6 @@ my $file = '../xml/db.xml';
 
 my $cgi = CGI->new();
 my $error = $cgi->cgi_error();
-# Recupero i dati dall'input
 my %INPUT = Vars();
 
 my $tabIndexCount = 0;
@@ -89,11 +88,6 @@ if ($logout) {
 	destroySession();
 } else {
 	print "Content-Type: text/html\n\n";
-    # Stampa l'hash ricevuto
-    #foreach $key (keys %INPUT)
-    #{
-    #    print "$key: $INPUT{$key}\n";
-    #}
 	print <<EOF;
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
