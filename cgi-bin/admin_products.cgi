@@ -117,9 +117,6 @@ if ($logout) {
 					<p>Gestione Prodotti</p>
 				</div>
 				<div id="admin_dashboard">
-EOF
-#print "					<span id=\"products_number\">Sono presenti ".scalar @prodotti." prodotti</span>\n";
-print <<EOF;
 					<form id="dashboard_form" action="admin_products.cgi" method="post" enctype="multipart/form-data">
 						<div>
 							<label class="form_item" for="display_category">Categoria:</label>
@@ -178,12 +175,12 @@ EOF
             print <<EOF;
 				<div id="openModify" class="modalDialog">
 					<div>
-						<a tabindex="" href="#close" title="Close" class="close">X</a>
+						<a tabindex="1" href="admin_products.cgi" title="Close" class="close">X</a>
 						<p>Modifica un prodotto</p>
 						<form id="form_modal_modify" action="admin_products.cgi" method="post" enctype="multipart/form-data">
 							<div>
-							<label class="form_item" for="category_modify">Categoria</label>
-							<select  tabindex="" class="form_item product_category_modal" id="category_modify" name="product_category">
+                                <label class="form_item" for="category_modify">Categoria</label>
+                                <select  tabindex="2" class="form_item product_category_modal" id="category_modify" name="product_category">
 EOF
 print "								<option value=\"Calcio\"";
 if($category eq "Calcio"){ print " selected=\"selected\" ";}
@@ -213,25 +210,23 @@ print "								<option value=\"Accessori\"";
 if($category eq "Accessori"){ print " selected ";}
 print ">Accessori</option>\n";
 print <<EOF;
-							</select>
-							<label class="form_item" for="code_modify">Codice</label>
-EOF
-print "							<input tabindex=\"\" class=\"form_item product_code_modal\" id=\"code_modify\" name=\"product_code\" type=\"text\" value=\"".$code."\" disabled=\"disabled\" />";
-print "							<label class=\"form_item\" for=\"name_modify\">Nome</label>\n";
-print "							<input tabindex=\"\" class=\"form_item product_name_modal\" type=\"text\" id=\"name_modify\" name=\"product_name\" value=\"".$name."\" />\n";
-print "							<label class=\"form_item\" for=\"desc_modify\">Descrizione</label>\n";
-print "							<textarea tabindex=\"\" class=\"form_item product_desc_modal\"  id=\"desc_modify\"  name=\"product_desc\" rows=\"2\" cols=\"20\">".$description."</textarea>\n";
-print "							<label class=\"form_item\" for=\"thumbnail_desc_modify\">Descrizione breve</label>\n";
-print "							<textarea tabindex=\"\" class=\"form_item thumbnail_desc_modal\" id=\"thumbnail_desc_modify\" name=\"thumbnail_desc\" rows=\"2\" cols=\"20\">".$shortDescription."</textarea>\n";
-print "							<input type=\"hidden\" name=\"modify_code\" value=\"".$code."\" />\n";
-print "							<input type=\"hidden\" name=\"display_category_modify\" value=\"".$display_category."\" />\n";
-print <<EOF;
-                                    <label class="form_item" for="image_modify">Nuova immagine principale (massimo 5MB)</label>
-                                    <input tabindex=\"\" class="form_item product_image_modal" type="file" id="image_modify" name=\"image\" />
-                                    <label class="form_item" for="thumbnail_modify">Nuova thumbnail (massimo 500KB)</label>
-                                    <input tabindex=\"\" class="form_item product_thumbnail_modal" type="file" id="thumbnail_modify" name=\"thumbnail\"/>
-                                    <input tabindex=\"\" class="submit_modal" id="submit_modal_modify" name="modify" type="submit" value="Modifica" />
-                                </div>
+                                </select>
+                                <label class="form_item" for="code_modify">Codice</label>
+                                <input tabindex="3" class="form_item product_code_modal" id="code_modify" name="product_code" type="text" value="$code" disabled="disabled" />
+                                <label class="form_item" for="name_modify">Nome</label>
+                                <input tabindex="4" class="form_item product_name_modal" type="text" id="name_modify" name="product_name" value="$name" />
+ 			    				<label class="form_item" for="desc_modify">Descrizione</label>
+ 				   	       		<textarea tabindex="5" class="form_item product_desc_modal"  id="desc_modify" name="product_desc" rows="2" cols="20">$description</textarea>
+                                <label class="form_item" for="thumbnail_desc_modify">Descrizione breve</label>
+                                <textarea tabindex="5" class="form_item thumbnail_desc_modal" id="thumbnail_desc_modify" name="thumbnail_desc" rows="2" cols="20">$shortDescription</textarea>
+                                <input type="hidden" name="modify_code" value="$code" />
+ 							    <input type="hidden" name="display_category_modify" value="$display_category" />
+                                <label class="form_item" for="image_modify">Nuova immagine principale (massimo 5MB)</label>
+                                <input tabindex="6" class="form_item product_image_modal" type="file" id="image_modify" name="image" />
+                                <label class="form_item" for="thumbnail_modify">Nuova thumbnail (massimo 500KB)</label>
+                                <input tabindex="7" class="form_item product_thumbnail_modal" type="file" id="thumbnail_modify" name="thumbnail"/>
+                                <input tabindex="8" class="submit_modal" id="submit_modal_modify" name="modify" type="submit" value="Modifica" />
+                            </div>
                         </form>
                     </div>
                 </div>
