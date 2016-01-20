@@ -155,7 +155,7 @@ EOF
                 }
                 print "<input type=\"hidden\" name=\"evidence_code\" value=\"".$code."\" />";
 				print <<EOF;
-				                <label class="form_item" for="image_modify">Nuovo sfondo</label>
+				                <label class="form_item" for="wallpaper_new_img">Nuovo sfondo</label>
 				                <input class="form_item" id="wallpaper_new_img" type="file" name="image" tabindex="" />
 				                <input class="submit_modal" id="submit_modal_wallpaper" name="add_evidence" type="submit" value="Aggiungi" tabindex=""/>
                             </form>
@@ -250,8 +250,8 @@ EOF
             # Stampa le card dei prodotti
             print <<EOF;
                     <div id="products_container_news">
-                        <div id="products_label">
-                            <span>Codice</span><span id="product_name_label">Nome</span><span>Categoria</span>
+                        <div id="products_label_news">
+                            <span>Codice</span><span class="product_name_label">Nome</span><span>Categoria</span>
                         </div>
 EOF
             foreach my $product (@prodotti) { # Stampo i prodotti che sono in evidenza
@@ -265,12 +265,14 @@ EOF
                     print "						<span class=\"product_name\">".$nome."</span>\n";
                     print "						<span class=\"product_category\">".$categoria."</span>\n";
                     print "				        <div class=\"product_buttons\">\n";
-                    print "							<form id=\"form_remove\" class=\"form_remove\" action=\"admin_news.cgi\" method=\"post\" enctype=\"multipart/form-data\">\n";
-                    print "								<input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
-                    print "								<input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
-                    print "								<input type=\"hidden\" name=\"add_wallpaper\" />\n";
-                    print "							    <input class=\"button\" type=\"submit\" name=\"hide_evidence\" value=\"Rimuovi\" tabindex=\"".$index_tab."\" />\n";
-                    print "							</form>\n";
+                    print "							<form class=\"form_remove\" action=\"admin_news.cgi\" method=\"post\" enctype=\"multipart/form-data\">\n";
+                    print "								<div>
+                                                            <input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
+                    print "								    <input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
+                    print "								    <input type=\"hidden\" name=\"add_wallpaper\" />\n";
+                    print "							        <input class=\"button\" type=\"submit\" name=\"hide_evidence\" value=\"Rimuovi\" tabindex=\"".$index_tab."\" />\n";
+                    print "							    </div>
+                                                    </form>\n";
                     print "						</div>\n";
                     print "					</div>\n";
                     $index_tab=$index_tab+1;
@@ -292,7 +294,7 @@ EOF
         }
     }
     if (@notInEvidence && @inEvidence) {
-        print "<hr \>";
+        print "<hr />";
     }
     
     print <<EOF;
@@ -300,19 +302,19 @@ EOF
                         <div>
                             <label class="form_item_news" for="display_category">Categoria:</label>
                             <select class="form_item_news" id="display_category" tabindex="${tabindex()}">
-                                <option value=\"Tutte\"";
+                                <option value="Tutte"
 EOF
                                 if($display_category eq "Tutte"){ print " selected ";}
                                 print ">Tutte</option>\n";
     print "							<option value=\"Calcio\"";
                                 if($display_category eq "Calcio"){ print " selected ";}
                                 print ">Calcio</option>\n";
-    print "							<option value=\"Basket\"";
+    print "							<option lang=\"en\" value=\"Basket\"";
                                 if($display_category eq "Basket"){ print " selected ";}
-                                print "><span lang=\"en\">Basket</span></option>\n";
-    print "							<option value=\"Volley\"";
+                                print ">Basket</option>\n";
+    print "							<option lang=\"en\" value=\"Volley\"";
                                 if($display_category eq "Volley"){ print " selected ";}
-                                print "><span lang=\"en\">Volley</span></option>\n";
+                                print ">Volley</option>\n";
     print "							<option value=\"Tennistavolo\"";
                                 if($display_category eq "Tennistavolo"){ print " selected ";}
                                 print">Tennistavolo</option>\n";
@@ -347,8 +349,8 @@ EOF
     if($cont!=0) { # Ho almeno 1 prodotto non in evidenza
         # Stampa le card dei prodotti
         print <<EOF;
-                    <div id="products_label">
-                        <span>Codice</span><span id="product_name_label">Nome</span><span>Categoria</span>
+                    <div id="products_label_news">
+                        <span>Codice</span><span class="product_name_label">Nome</span><span>Categoria</span>
                     </div>
 EOF
         for(my $i=0; $i < scalar @prodottiLimitati; $i++) { # Stampo i prodotti che non sono in evidenza
@@ -363,10 +365,12 @@ EOF
                 print "						<span class=\"product_category\">".$categoria."</span>\n";
                 print "				        <div class=\"product_buttons\">\n";
                 print "							<form id=\"form_add\" class=\"form_add\" action=\"admin_news.cgi#openWallpaper\" method=\"post\" enctype=\"multipart/form-data\">\n";
-                print "								<input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
-                print "								<input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
-                print "							    <input class=\"button\" type=\"submit\" name=\"add_wallpaper\" value=\"Evidenzia\" tabindex=\"${tabindex()}\" />\n";
-                print "							</form>\n";
+                print "								<div>
+                                                        <input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
+                print "								    <input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
+                print "							         <input class=\"button\" type=\"submit\" name=\"add_wallpaper\" value=\"Evidenzia\" tabindex=\"${tabindex()}\" />\n";
+                print "							    </div>
+                                                </form>\n";
                 print "						</div>\n";
                 print "					</div>\n";
             }
