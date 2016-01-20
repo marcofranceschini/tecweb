@@ -10,6 +10,15 @@ use warnings;
 my $cgi = CGI->new();
 my $category = $cgi->param('category');
 
+# Lettura da file XML
+my $file = '../xml/db.xml';
+my $parser = XML::LibXML->new();
+$parser->keep_blanks(0);
+my $doc = $parser->parse_file($file) or die "Errore nel parsing";
+my $radice = $doc->getDocumentElement or die "Errore elemento radice";
+my $query = "/products/product[category=\"".$category."\"]";
+my @prodotti = $doc->findnodes($query);
+
 print CGI->header;
 print <<EOF;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -59,62 +68,89 @@ print <<EOF;
 					<p class="navigator_title">Categoria</p>
 					<ul class=\"navigator_list\">
 EOF
-if($category ne "Calcio") {
-    print "						<li><a href=\"products.cgi?category=Calcio\">Calcio</a></li>\n";
+if ($category ne "Calcio" && !@prodotti) {
+    print "             <li><a id=\"firstProduct\" href=\"products.cgi?category=Calcio\">Calcio</a></li>\n";
 } else {
-    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Calcio</li>\n";
+    if ($category ne "Calcio") {
+        print "			<li><a href=\"products.cgi?category=Calcio\">Calcio</a></li>\n";
+    } else {
+        print "			<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Calcio</li>\n";
+    }
 }
-if($category ne "Basket") {
-    print "						<li><a href=\"products.cgi?category=Basket\"><span xml:lang=\"en\">Basket</span></a></li>\n";
+if ($category ne "Basket" && !@prodotti) {
+    print "             <li><a id=\"firstProduct\" href=\"products.cgi?category=Basket\"><span xml:lang=\"en\">Basket</span></a></li>\n";
 } else {
-    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i><span xml:lang=\"en\">Basket</span></li>\n";
+    if ($category ne "Basket") {
+        print "         <li><a href=\"products.cgi?category=Basket\"><span xml:lang=\"en\">Basket</span></a></li>\n";
+    } else {
+        print "         <li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i><span xml:lang=\"en\">Basket</span></li>\n";
+    }
 }
-if($category ne "Volley") {
-    print "						<li><a href=\"products.cgi?category=Volley\"><span xml:lang=\"en\">Volley</span></a></li>\n";
+if ($category ne "Volley" && !@prodotti) {
+    print "             <li><a id=\"firstProduct\" href=\"products.cgi?category=Volley\"><span xml:lang=\"en\">Volley</span></a></li>\n";
 } else {
-    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i><span xml:lang=\"en\">Volley</span></li>\n";
+    if ($category ne "Volley") {
+        print "			<li><a href=\"products.cgi?category=Volley\"><span xml:lang=\"en\">Volley</span></a></li>\n";
+    } else {
+        print "		   	<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i><span xml:lang=\"en\">Volley</span></li>\n";
+    }
 }
-if($category ne "Tennistavolo") {
-    print "						<li><a href=\"products.cgi?category=Tennistavolo\">Tennistavolo</a></li>\n";
+if ($category ne "Tennistavolo" && !@prodotti) {
+    print "             <li><a id=\"firstProduct\" href=\"products.cgi?category=Tennistavolo\">Tennistavolo</a></li>\n";
 } else {
-    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Tennistavolo</li>\n";
+    if ($category ne "Tennistavolo") {
+        print "	        <li><a href=\"products.cgi?category=Tennistavolo\">Tennistavolo</a></li>\n";
+    } else {
+        print "			<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Tennistavolo</li>\n";
+    }
 }
-if($category ne "Nuoto") {
-    print "						<li><a href=\"products.cgi?category=Nuoto\">Nuoto</a></li>\n";
+if ($category ne "Nuoto" && !@prodotti) {
+    print "             <li><a id=\"firstProduct\" href=\"products.cgi?category=Nuoto\">Nuoto</a></li>\n";
 } else {
-    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Nuoto</li>\n";
+    if ($category ne "Nuoto") {
+        print "			<li><a href=\"products.cgi?category=Nuoto\">Nuoto</a></li>\n";
+    } else {
+        print "			<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Nuoto</li>\n";
+    }
 }
-if($category ne "Minigolf") {
-    print "						<li><a href=\"products.cgi?category=Minigolf\">Minigolf</a></li>\n";
+if ($category ne "Minigolf" && !@prodotti) {
+    print "             <li><a id=\"firstProduct\" href=\"products.cgi?category=Minigolf\">Minigolf</a></li>\n";
 } else {
-    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Minigolf</li>\n";
+    if ($category ne "Minigolf") {
+        print "			<li><a href=\"products.cgi?category=Minigolf\">Minigolf</a></li>\n";
+    } else {
+        print "			<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Minigolf</li>\n";
+    }
 }
-if($category ne "Calciobalilla") {
-    print "						<li><a href=\"products.cgi?category=Calciobalilla\">Calciobalilla</a></li>\n";
+if ($category ne "Calciobalilla" && !@prodotti) {
+    print "             <li><a id=\"firstProduct\" href=\"products.cgi?category=Calciobalilla\">Calciobalilla</a></li>\n";
 } else {
-    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Calciobalilla</li>\n";
+    if ($category ne "Calciobalilla") {
+        print "         <li><a href=\"products.cgi?category=Calciobalilla\">Calciobalilla</a></li>\n";
+    } else {
+        print "			<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Calciobalilla</li>\n";
+    }
 }
-if($category ne "Protezioni") {
-    print "						<li><a href=\"products.cgi?category=Protezioni\">Protezioni</a></li>\n";
+if ($category ne "Protezioni" && !@prodotti) {
+    print "             <li><a id=\"firstProduct\" href=\"products.cgi?category=Protezioni\">Protezioni</a></li>\n";
 } else {
-    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Protezioni</li>\n";
+    if ($category ne "Protezioni") {
+        print "			<li><a href=\"products.cgi?category=Protezioni\">Protezioni</a></li>\n";
+    } else {
+        print "			<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Protezioni</li>\n";
+    }
 }
-if($category ne "Accessori") {
-    print "						<li><a href=\"products.cgi?category=Accessori\">Accessori</a></li>\n";
+if ($category ne "Accessori" && !@prodotti) {
+    print "             <li><a id=\"firstProduct\" href=\"products.cgi?category=Accessori\">Accessori</a></li>\n";
 } else {
-    print "						<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Accessori</li>\n";
+    if ($category ne "Accessori") {
+        print "			<li><a href=\"products.cgi?category=Accessori\">Accessori</a></li>\n";
+    } else {
+        print "			<li class=\"navigator_current\"><i class=\"material-icons md-24\">&#xE892;</i>Accessori</li>\n";
+    }
 }
 print "	            </ul>
 				</div>";
-
-# Lettura da file XML
-my $file = '../xml/db.xml';
-my $parser = XML::LibXML->new();
-$parser->keep_blanks(0);
-my $doc = $parser->parse_file($file) or die "Errore nel parsing";
-my $radice = $doc->getDocumentElement or die "Errore elemento radice";
-my $query = "/products/product[category=\"".$category."\"]";
-my @prodotti = $doc->findnodes($query);
 
 # Stampo i placeholder del menu
 for(my $i=0; $i < scalar @prodotti; $i++) {
