@@ -6,15 +6,7 @@ use CGI::Carp qw(fatalsToBrowser);
 use XML::LibXML;
 use warnings;
 
-my $tabIndexCount = 0;
-sub tabindex {
-    $tabIndexCount++;
-    return (\$tabIndexCount); #ritorna il RIFERIMENTO alla variabile
-}
 my $cgi = CGI->new();
-if (defined $cgi->param('tabindex') && $cgi->param('tabindex') ne '') {
-    $tabIndexCount = $tabIndexCount - $cgi->param('tabindex');
-}
 
 print CGI->header;
 print <<EOF;
@@ -41,7 +33,7 @@ print <<EOF;
 		<script type="text/javascript" src="../js/index.js"></script>
 	</head>
 	<body>
-        <div><a class="skip_menu" href="index.cgi?tabindex=4#content_home" tabindex="${tabindex()}">Salta la navigazione</a></div>
+        <div><a class="skip_menu" href="index.cgi#firstProduct">Salta la navigazione</a></div>
         <div id="header">
 			<div id="contacts">
 				<p><i class="material-icons md-18">&#xE0CD;</i> +39 0422 445566</p>
@@ -51,9 +43,9 @@ print <<EOF;
 				<img id="logo" src="../res/images/logo_bianco.png" alt="Logo Ju Rapida" />
 				<ul id="menu">
 					<li><span id="current" xml:lang="en">Home</span></li>
-					<li><a href="../pages/products.html" tabindex="${tabindex()}">Prodotti</a></li>
-					<li><a href="contacts.cgi" tabindex="${tabindex()}">Contatti</a></li>
-					<li id="menu_last"><a href="../pages/about.html" tabindex="${tabindex()}">Chi siamo</a></li>
+					<li><a href="../pages/products.html">Prodotti</a></li>
+					<li><a href="contacts.cgi">Contatti</a></li>
+					<li id="menu_last"><a href="../pages/about.html">Chi siamo</a></li>
 				</ul>
 			</div>
             <div id="breadcrumb_home"></div>
@@ -65,20 +57,25 @@ EOF
 $parser = XML::LibXML->new();
 my $doc = $parser->parse_file("../xml/db.xml");
 my $home_vuota = "true";
-foreach my $item ($doc->findnodes('/products/product')) {
-    if ($item->findnodes('./inEvidence') eq "true") {
+my @products = $doc->findnodes('/products/product');
+for (my $i = 0; $i < scalar @products; $i++) {
+    if ($products[$i]->findnodes('./inEvidence') eq "true") {
         $home_vuota = "false";
-        print " <div class=\"pane\" style=\"background-image: url('../res/images/".$item->findnodes('./backgroundImg')."')\">
+        print " <div class=\"pane\" style=\"background-image: url('../res/images/".$products[$i]->findnodes('./backgroundImg')."')\">
                     <div class=\"pane_content\">
-                    <img src=\"../res/images/products/thumbnails/".$item->findnodes('./thumbnail')."\" alt=\"".$item->findnodes('./shortDescription')."\"/>
-                    <p>".$item->findnodes('./shortDescription')."</p>
+                    <img src=\"../res/images/products/thumbnails/".$products[$i]->findnodes('./thumbnail')."\" alt=\"".$products[$i]->findnodes('./shortDescription')."\"/>
+                    <p>".$products[$i]->findnodes('./shortDescription')."</p>
                     <form action=\"product_displayer.cgi\">
                         <div>
-                            <input type=\"hidden\" name=\"display_category\" value=\"".$item->findnodes('./category')."\" />
-                            <input type=\"hidden\" name=\"display_code\" value=\"".$item->findnodes('./code')."\" />
-                            <input type=\"hidden\" name=\"display_name\" value=\"".$item->findnodes('./name')."\" />
-                            <input tabindex=\"${tabindex()}\" type=\"submit\" value=\"Visualizza\"/>
-                        </div>
+                            <input type=\"hidden\" name=\"display_category\" value=\"".$products[$i]->findnodes('./category')."\" />
+                            <input type=\"hidden\" name=\"display_code\" value=\"".$products[$i]->findnodes('./code')."\" />
+                            <input type=\"hidden\" name=\"display_name\" value=\"".$products[$i]->findnodes('./name')."\" />";
+        if ($i == 0) {
+            print "         <input id=\"firstProduct\" type=\"submit\" value=\"Visualizza\"/>";
+        } else {
+            print "         <input type=\"submit\" value=\"Visualizza\"/>";
+        }
+        print "         </div>
                     </form>
                     </div>
                 </div>";
@@ -92,13 +89,13 @@ if($home_vuota eq "true") {
                     <p id="welcome_title">Benvenuto in <span class="ju_rapida">Ju Rapida</span></p>
                     <p>Qui puoi trovare subito i prodotti che stai cercando!</p>
                     <p>Inizia subito un tour</p>
-                    <a href="../pages/products.html" tabindex="${tabindex()}">Vai ai prodotti</a>
+                    <a href="../pages/products.html">Vai ai prodotti</a>
                 </div>
             </div>
 EOF
 } else {
     print <<EOF;
-            <a tabindex="${tabindex()}" id="backTop" href="">
+            <a id="backTop" href="">
 				<i class="material-icons">&#xE316;</i>
                 Torna in alto alla pagina
 				<i class="material-icons">&#xE316;</i>
@@ -113,20 +110,20 @@ print <<EOF;
 				<div id="maps">
 					<ul id="maps_menu">
 						<li><span xml:lang="en">Home</span></li>
-						<li><a tabindex=\"${tabindex()}\" href="../pages/products.html">Prodotti</a></li>
-						<li><a tabindex=\"${tabindex()}\" href="contacts.cgi">Contatti</a></li>
-						<li><a tabindex=\"${tabindex()}\" href="../pages/about.html">Chi siamo</a></li>
+						<li><a href="../pages/products.html">Prodotti</a></li>
+						<li><a href="contacts.cgi">Contatti</a></li>
+						<li><a href="../pages/about.html">Chi siamo</a></li>
 					</ul>
 					<ul id="maps_categories">
-						<li><a tabindex=\"${tabindex()}\" href="products.cgi?category=Calcio">Calcio</a></li>
-						<li><a tabindex=\"${tabindex()}\" href="products.cgi?category=Basket"><span xml:lang="en">Basket</span></a></li>
-						<li><a tabindex=\"${tabindex()}\" href="products.cgi?category=Volley"><span xml:lang="en">Volley</span></a></li>
-						<li><a tabindex=\"${tabindex()}\" href="products.cgi?category=Tennistavolo">Tennistavolo</a></li>
-						<li><a tabindex=\"${tabindex()}\" href="products.cgi?category=Nuoto">Nuoto</a></li>
-						<li><a tabindex=\"${tabindex()}\" href="products.cgi?category=Minigolf">Minigolf</a></li>
-						<li><a tabindex=\"${tabindex()}\" href="products.cgi?category=Calciobalilla">Calciobalilla</a></li>
-						<li><a tabindex=\"${tabindex()}\" href="products.cgi?category=Protezioni">Protezioni</a></li>
-						<li><a tabindex=\"${tabindex()}\" href="products.cgi?category=Accessori">Accessori</a></li>
+						<li><a href="products.cgi?category=Calcio">Calcio</a></li>
+						<li><a href="products.cgi?category=Basket"><span xml:lang="en">Basket</span></a></li>
+						<li><a href="products.cgi?category=Volley"><span xml:lang="en">Volley</span></a></li>
+						<li><a href="products.cgi?category=Tennistavolo">Tennistavolo</a></li>
+						<li><a href="products.cgi?category=Nuoto">Nuoto</a></li>
+						<li><a href="products.cgi?category=Minigolf">Minigolf</a></li>
+						<li><a href="products.cgi?category=Calciobalilla">Calciobalilla</a></li>
+						<li><a href="products.cgi?category=Protezioni">Protezioni</a></li>
+						<li><a href="products.cgi?category=Accessori">Accessori</a></li>
 					</ul>
 				</div>
 				<div id="admin_form_panel">
@@ -135,11 +132,11 @@ print <<EOF;
 						<fieldset>
 							<legend><i class="material-icons md-18">&#xE853;</i>Area Riservata</legend>
 							<label class="form_item" for="username">Username</label>
-							<input tabindex=\"${tabindex()}\" class="form_item" id="username" type="text" name="username"/>
+							<input class="form_item" id="username" type="text" name="username"/>
 							<label class="form_item" for="password">Password</label>
-							<input tabindex=\"${tabindex()}\" class="form_item" id="password" type="password" name="password"/>
+							<input class="form_item" id="password" type="password" name="password"/>
 							<input type="hidden" name="page" value="index.cgi" />
-							<input tabindex=\"${tabindex()}\" id="submit" type="submit" value="Login" />
+							<input id="submit" type="submit" value="Login" />
 						</fieldset>
 					</form>
 				</div>
