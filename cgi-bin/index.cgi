@@ -33,7 +33,7 @@ print <<EOF;
 		<script type="text/javascript" src="../js/index.js"></script>
 	</head>
 	<body>
-        <div><a class="skip_menu" href="index.cgi#firstProduct">Salta la navigazione</a></div>
+        <div><a class="skip_menu" href="#firstProduct">Salta la navigazione</a></div>
         <div id="header">
 			<div id="contacts">
 				<p><i class="material-icons md-18">&#xE0CD;</i> +39 0422 445566</p>
