@@ -19,10 +19,19 @@ my $file = '../xml/db.xml';
 #<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
 #<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
 
+my $cgi = CGI->new();
+my $error = $cgi->cgi_error();
+# Recupero i dati dall'input
+my %INPUT = Vars();
+
 my $tabIndexCount = 0;
-sub tabindex {
-    $tabIndexCount++;
-    return (\$tabIndexCount); #ritorna il RIFERIMENTO alla variabile
+sub tabIndex {
+    if ($INPUT{'add_wallpaper'}) {
+        $tabIndexCount = -1;
+    } else {
+        $tabIndexCount++;
+    } 
+    return (\$tabIndexCount);
 }
 
 sub getSession() {
@@ -56,16 +65,6 @@ sub printPlaceholder() {
 
 # Verifica della sessione
 getSession();
-
-my $cgi = CGI->new();
-my $error = $cgi->cgi_error();
-
-if (defined $cgi->param('tabindex') && $cgi->param('tabindex') ne '') {
-    $tabIndexCount = $tabIndexCount - $cgi->param('tabindex');
-}
-
-# Recupero i dati dall'input
-my %INPUT = Vars();
     
 # Apertura file XML
 $parser = XML::LibXML->new();
@@ -117,17 +116,15 @@ if ($logout) {
 		<body>
 			<div id="header">
 				<div id="navbar_admin">
-					<a id="admin_back_icon" href="admin.cgi?logout=1"><i class="material-icons md-24">&#xE88A;</i></a>
-					<p><a id="admin_back" href="admin.cgi?logout=1">Torna al sito</a></p>
+					<a tabindex="${tabIndex()}" id="admin_back_icon" href="admin.cgi?logout=1"><i class="material-icons md-24">&#xE88A;</i></a>
+					<p><a tabindex="${tabIndex()}" id="admin_back" href="admin.cgi?logout=1">Torna al sito</a></p>
 					<p>Gestione Novit&agrave;</p>
 				</div>
 EOF
 #print "					<span id=\"products_number\">Sono presenti ".scalar @prodotti." prodotti</span>\n";
 
-     print <<EOF;
-			</div>
-			<div id="content_admin">	
-EOF
+    print "     </div>
+            <div id=\"content_admin\">";	
 
 	if(%INPUT or $error) {  # Se riceve dati in input o errori
         if($INPUT{'add_wallpaper'}) {
@@ -142,20 +139,20 @@ EOF
             print <<EOF;
                     <div id="openWallpaper" class="modalDialog">
                         <div>
-                            <a href="#close" title="Close" class="close">X</a>
+                            <a tabindex="1" href="admin_news.cgi" title="Close" class="close">X</a>
                             <p>Evidenzia prodotto</p>
                             <form id="form_modal_modify" action="admin_news.cgi" method="post" enctype="multipart/form-data">
 EOF
-                print "<label class=\"form_item\" for=\"product_category\">Categoria: ".$category."</label>";
+                print "         <label class=\"form_item\" for=\"product_category\">Categoria: ".$category."</label>";
 				if ($sfondo ne "none") {
-       				print "<label class=\"form_item\" for=\"wallpaper_img\">Sfondo</label>";
-                    print "<img src=\"../res/images/".$sfondo."\" class=\"form_item\" id=\"wallpaper_img\" name\"wallpaper_img\" height=\"50\" width=\"90\" />";
+       				print "     <label class=\"form_item\" for=\"wallpaper_img\">Sfondo</label>";
+                    print "     <img src=\"../res/images/".$sfondo."\" class=\"form_item\" id=\"wallpaper_img\" name\"wallpaper_img\" height=\"50\" width=\"90\" />";
                 }
-                print "<input type=\"hidden\" name=\"evidence_code\" value=\"".$code."\" />";
+                print "         <input type=\"hidden\" name=\"evidence_code\" value=\"".$code."\" />";
 				print <<EOF;
 				                <label class="form_item" for="wallpaper_new_img">Nuovo sfondo</label>
-				                <input class="form_item" id="wallpaper_new_img" type="file" name="image"/>
-				                <input class="submit_modal" id="submit_modal_wallpaper" name="add_evidence" type="submit" value="Aggiungi"/>
+				                <input tabindex="2" class="form_item" id="wallpaper_new_img" type="file" name="image"/>
+				                <input tabindex="3" class="submit_modal" id="submit_modal_wallpaper" name="add_evidence" type="submit" value="Aggiungi"/>
                             </form>
                         </div>
                    </div>
@@ -267,8 +264,7 @@ EOF
                     print "								<div>
                                                             <input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
                     print "								    <input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
-                    print "								    <input type=\"hidden\" name=\"add_wallpaper\" />\n";
-                    print "							        <input class=\"button\" type=\"submit\" name=\"hide_evidence\" value=\"Rimuovi\" />\n";
+                    print "							        <input tabindex=\"${tabIndex()}\" class=\"button\" type=\"submit\" name=\"hide_evidence\" value=\"Rimuovi\" />\n";
                     print "							    </div>
                                                     </form>\n";
                     print "						</div>\n";
@@ -299,7 +295,7 @@ EOF
 					<form id="dashboard_form_news" action="admin_news.cgi" method="post" enctype="multipart/form-data">
                         <div>
                             <label class="form_item_news" for="display_category">Categoria:</label>
-                            <select class="form_item_news" id="display_category">
+                            <select tabindex=\"${tabIndex()}\" class="form_item_news" id="display_category">
                                 <option value="Tutte"
 EOF
                                 if($display_category eq "Tutte"){ print " selected=\"selected\" ";}
@@ -332,7 +328,7 @@ EOF
                                 if($display_category eq "Accessori"){ print " selected=\"selected\" ";}
                                 print ">Accessori</option>\n";
                      print "</select>
-						    <input id=\"submit_dashboard_news\" type=\"submit\" value=\"Aggiorna\" />
+						    <input tabindex=\"${tabIndex()}\" id=\"submit_dashboard_news\" type=\"submit\" value=\"Aggiorna\" />
 					   </div>
                     </form>
 					<div id=\"products_container\">";
@@ -366,7 +362,7 @@ EOF
                 print "								<div>
                                                         <input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
                 print "								    <input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
-                print "							         <input class=\"button\" type=\"submit\" name=\"add_wallpaper\" value=\"Evidenzia\" />\n";
+                print "							        <input tabindex=\"${tabIndex()}\" class=\"button\" type=\"submit\" name=\"add_wallpaper\" value=\"Evidenzia\" />\n";
                 print "							    </div>
                                                 </form>\n";
                 print "						</div>\n";
@@ -379,28 +375,24 @@ EOF
 	print <<EOF;
 			<div id="action_bar">
 				<div id="action_box_news">
-EOF
-    print"
-					<a id=\"action_back_news\" class=\"linked_box\" href=\"admin.cgi\">Indietro</a>";
-	print <<EOF;
+                    <a tabindex="${tabIndex()}" id="action_back_news" class="linked_box" href="admin.cgi">Indietro</a>
                 </div>
 			</div>
 		</div>		
-			<div id="footer">
-				<div id="copy_panel">
-					<p id="copy">Copyright &copy; 2016 - All right reserved. Ju Rapida SNC - VIA F. PETRARCA, 14/31100 TREVISO ITALY - P. IVA: 01836040269</p>
-					<p id="validation">
-						<span id="xhtml_valid">
+		<div id="footer">
+            <div id="copy_panel">
+                <p id="copy">Copyright &copy; 2016 - All right reserved. Ju Rapida SNC - VIA F. PETRARCA, 14/31100 TREVISO ITALY - P. IVA: 01836040269</p>
+                <p id="validation">
+                    <span id="xhtml_valid">
+                        <a tabindex="${tabIndex()}" href=\"http://validator.w3.org/check?uri=referer\"><img src=\"http://www.w3.org/Icons/valid-xhtml10\" alt=\"Valid XHTML 1.0 Strict\" height=\"31\" width=\"88\" /></a>
+                    </span>
+                    <span id=\"css_valid\">
+                        <a tabindex="${tabIndex()}" href=\"http://jigsaw.w3.org/css-validator/check/referer\"><img style=\"border:0;width:88px;height:31px\" src=\"http://jigsaw.w3.org/css-validator/images/vcss-blue\" alt=\"Valid CSS3\" /></a>
+                    </span>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
 EOF
-    print "
-							<a href=\"http://validator.w3.org/check?uri=referer\"><img src=\"http://www.w3.org/Icons/valid-xhtml10\" alt=\"Valid XHTML 1.0 Strict\" height=\"31\" width=\"88\" /></a>
-						</span>
-						<span id=\"css_valid\">
-							<a href=\"http://jigsaw.w3.org/css-validator/check/referer\"><img style=\"border:0;width:88px;height:31px\" src=\"http://jigsaw.w3.org/css-validator/images/vcss-blue\" alt=\"Valid CSS3\" /></a>
-						</span>
-					</p>
-				</div>
-			</div>
-		</body>
-	</html>";
 }
