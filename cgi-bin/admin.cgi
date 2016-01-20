@@ -15,12 +15,6 @@ use XML::LibXML;
 #<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
 #<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
 
-my $tabIndexCount = 0;
-sub tabindex {
-    $tabIndexCount++;
-    return (\$tabIndexCount); #ritorna il RIFERIMENTO alla variabile
-}
-
 sub getSession() {
 	$sessione = CGI::Session->load() or die $!; #CGI::Session->errstr
 	if ($sessione->is_expired || $sessione->is_empty) { # Se manca la sessione torno in home
@@ -43,10 +37,6 @@ sub destroySession() {
 my $session = getSession(); # Verifico che la sessione ci sia
 
 my $cgi = CGI->new();
-
-if (defined $cgi->param('tabindex') && $cgi->param('tabindex') ne '') {
-    $tabIndexCount = $tabIndexCount - $cgi->param('tabindex');
-}
 
 my $app = $cgi->param('logout');
 if ($app) { # LOGOUT - E' stato premuto il link per uscire
@@ -88,7 +78,7 @@ EOF
                         <form method=\"post\" action=\"admin.cgi\">
                             <p><span>Attenzione!</span> Il tuo browser non supporta pienamente le funzioni di questa pagina. Aggiornalo subito all'ultima versione per non avere problemi durante la navigazione.</p>
                             <input type=\"hidden\" name=\"compatibilityRead\" value=\"read\"/>  
-                            <input tabindex=\"${tabindex()}\" type=\"submit\" class=\"button\" value=\"Ho capito\"/>
+                            <input type=\"submit\" class=\"button\" value=\"Ho capito\"/>
                     </div>";
         }
     }
@@ -96,8 +86,8 @@ EOF
     print <<EOF;
 				<div id="header" class="fadeInDown">
 					<div id="navbar_admin">
-						<a tabindex="${tabindex()}" id="admin_back_icon" href="admin.cgi?logout=1"><img src="../res/images/ic_home.png" alt="Torna al sito"></img></a>
-						<p><a tabindex="${tabindex()}" id="admin_back" href="admin.cgi?logout=1">Torna al sito</a></p>
+						<a id="admin_back_icon" href="admin.cgi?logout=1"><img src="../res/images/ic_home.png" alt="Torna al sito"></img></a>
+						<p><a id="admin_back" href="admin.cgi?logout=1">Torna al sito</a></p>
 						<p>Area Amministrativa</p>
 					</div>
 				</div>
@@ -105,8 +95,8 @@ EOF
 				<div id="content_admin">
 					<p>Benvenuti nell'amministrazione del sito, selezionare una delle seguenti opzioni per gestire novit&agrave; e prodotti.</p>
 					<div id="admin_panel">
-						<a tabindex="${tabindex()}" id="news" class="linked_box fadeInLeft" href="admin_news.cgi"><span class="admin_label">Novit&agrave;</span></a>	
-						<a tabindex="${tabindex()}" id="products" class="linked_box fadeInRight" href="admin_products.cgi"><span class="admin_label">Prodotti</span></a>
+						<a id="news" class="linked_box fadeInLeft" href="admin_news.cgi"><span class="admin_label">Novit&agrave;</span></a>	
+						<a id="products" class="linked_box fadeInRight" href="admin_products.cgi"><span class="admin_label">Prodotti</span></a>
 					</div>
 EOF
     
@@ -139,10 +129,10 @@ EOF
 						<p id="copy">Copyright &copy; 2016 - All right reserved. Ju Rapida SNC - VIA F. PETRARCA, 14/31100 TREVISO ITALY - P. IVA: 01836040269</p>
 						<p id="validation">
 							<span id="xhtml_valid">
-								<a tabindex="${tabindex()}" href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
+								<a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
 							</span>
 							<span id="css_valid">
-								<a tabindex="${tabindex()}" href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="Valid CSS3" /></a>
+								<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="Valid CSS3" /></a>
 							</span>
 						</p>
 					</div>
