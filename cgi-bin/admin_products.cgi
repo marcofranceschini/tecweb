@@ -24,7 +24,7 @@ my $error = $cgi->cgi_error();
 my %INPUT = Vars();
 
 my $tabIndexCount = 0;
-sub tabIndex() {
+sub tabindex {
     if ($INPUT{'add_wallpaper'}) {
         $tabIndexCount = -1;
     } else {
