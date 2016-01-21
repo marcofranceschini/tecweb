@@ -136,17 +136,19 @@ EOF
                             <a tabindex="1" href="admin_news.cgi" title="Close" class="close">X</a>
                             <p>Evidenzia prodotto</p>
                             <form id="form_modal_modify" action="admin_news.cgi" method="post" enctype="multipart/form-data">
+                                <div>
+                                    <label class="form_item">Categoria: $category</label>
 EOF
-                print "         <label class=\"form_item\" for=\"product_category\">Categoria: ".$category."</label>";
 				if ($sfondo ne "none") {
-       				print "     <label class=\"form_item\" for=\"wallpaper_img\">Sfondo</label>";
-                    print "     <img src=\"../res/images/".$sfondo."\" class=\"form_item\" id=\"wallpaper_img\" name\"wallpaper_img\" height=\"50\" width=\"90\" />";
+                    print "         <label class=\"form_item\" for=\"wallpaper_img\">Sfondo</label>";
+                    print "         <img src=\"../res/images/".$sfondo."\" class=\"form_item\" id=\"wallpaper_img\" alt=\"Immagine di sfondo\" height=\"50\" width=\"90\" />";
                 }
-                print "         <input type=\"hidden\" name=\"evidence_code\" value=\"".$code."\" />";
-				print <<EOF;
-				                <label class="form_item" for="wallpaper_new_img">Nuovo sfondo</label>
-				                <input tabindex="2" class="form_item" id="wallpaper_new_img" type="file" name="image"/>
-				                <input tabindex="3" class="submit_modal" id="submit_modal_wallpaper" name="add_evidence" type="submit" value="Aggiungi"/>
+                print <<EOF;             
+                                    <input type="hidden" name="evidence_code" value="$code" />				
+                                    <label class="form_item" for="wallpaper_new_img">Nuovo sfondo</label>
+                                    <input tabindex="2" class="form_item" id="wallpaper_new_img" type="file" name="image"/>
+                                    <input tabindex="3" class="submit_modal" id="submit_modal_wallpaper" name="add_evidence" type="submit" value="Aggiungi"/>
+                                </div>
                             </form>
                         </div>
                    </div>
