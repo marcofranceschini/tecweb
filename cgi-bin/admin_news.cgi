@@ -288,7 +288,7 @@ EOF
     }
     
     print <<EOF;
-					<form id="dashboard_form_news" action="admin_news.cgi" method="post" enctype="multipart/form-data">
+					<form id="dashboard_form_news" action="admin_news.cgi" method="post">
                         <div>
                             <label class="form_item_news" for="display_category">Categoria:</label>
                             <select tabindex=\"${tabIndex()}\" class="form_item_news" id="display_category">
