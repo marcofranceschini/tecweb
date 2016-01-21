@@ -25,7 +25,7 @@ my %INPUT = Vars();
 
 my $tabIndexCount = 0;
 sub tabindex {
-    if ($INPUT{'add_wallpaper'}) {
+    if ($INPUT{'modify_request'} || $INPUT{'add_request'}) {
         $tabIndexCount = -1;
     } else {
         $tabIndexCount++;
@@ -230,6 +230,66 @@ print <<EOF;
                         </form>
                     </div>
                 </div>
+EOF
+        }
+        if ($INPUT{'add_request'}) {
+            print <<EOF;
+            <div id="openModal" class="modalDialog">
+				<div>
+					<a tabindex="1" href="admin_products.cgi" title="Close" class="close">X</a>
+					<p>Inserisci un nuovo prodotto</p>
+					<form id="form_modal_insert" action="admin_products.cgi" method="post" enctype="multipart/form-data">
+						<div>
+						  <label class="form_item" for="category_insert">Categoria</label>
+						  <select tabindex="2" class="form_item product_category_modal" id="category_insert" name="product_category">
+EOF
+print "							  <option value=\"Calcio\"";
+                            if($display_category eq "Calcio"){ print " selected ";}
+                            print ">Calcio</option>\n";
+print "							  <option lang=\"en\" value=\"Basket\"";
+                            if($display_category eq "Basket"){ print " selected ";}
+                            print ">Basket</option>\n";
+print "							  <option lang=\"en\" value=\"Volley\"";
+                            if($display_category eq "Volley"){ print " selected ";}
+                            print ">Volley</option>\n";
+print "							  <option value=\"Tennistavolo\"";
+                            if($display_category eq "Tennistavolo"){ print " selected ";}
+                            print">Tennistavolo</option>\n";
+print "							  <option value=\"Nuoto\"";
+                            if($display_category eq "Nuoto"){ print " selected ";}
+                            print ">Nuoto</option>\n";
+print "							  <option value=\"Minigolf\"";
+                            if($display_category eq "Minigolf"){ print " selected ";}
+                            print ">Minigolf</option>\n";
+print "							  <option value=\"Calciobalilla\"";
+                            if($display_category eq "Calciobalilla"){ print " selected ";}
+                            print ">Calciobalilla</option>\n";
+print "							  <option value=\"Protezioni\"";
+                            if($display_category eq "Protezioni" ){ print " selected ";}
+                            print ">Protezioni</option>\n";
+print "							  <option value=\"Accessori\"";
+                            if($display_category eq "Accessori"){ print " selected ";}
+                            print ">Accessori</option>\n";
+print <<EOF;
+                            </select>
+                            <label class="form_item" for="code_insert">Codice</label>
+                            <input tabindex="3" class="form_item product_code_modal" type="text" id="code_insert" name="product_code" />
+                            <label class="form_item" for="name_insert">Nome</label>
+                            <input tabindex="4" class="form_item product_name_modal" type="text" id="name_insert" name="product_name" />
+                            <label class="form_item" for="desc_insert">Descrizione</label>
+                            <textarea tabindex="5" class="form_item product_desc_modal" id="desc_insert" name="product_desc" rows="2" cols="20"></textarea>
+                            <label class="form_item" for="thumbnail_desc_insert">Descrizione breve</label>
+                            <textarea tabindex="6" class="form_item thumbnail_desc_modal" id="thumbnail_desc_insert" name="thumbnail_desc" rows="2" cols="20"></textarea>
+                            <label class="form_item" for="image_insert">Immagine principale (massimo 5MB)</label>
+                            <input tabindex="7" class="form_item product_image_modal" type="file" id="image_insert" name=\"image\" />
+                            <label class="form_item" for="thumbnail_insert">Thumbnail (massimo 500KB)</label>
+                            <input tabindex="8" class="form_item product_thumbnail_modal" type="file" id="thumbnail_insert" name=\"thumbnail\" />
+                            <input type="hidden" name="display_category" value="$display_category" />
+                            <input tabindex="9" class="submit_modal" id="submit_modal" type="submit" name="insert" value="Inserisci" />
+						</div>
+					</form>
+				</div>
+			</div>
 EOF
         }
         if($error) {
@@ -468,71 +528,17 @@ EOF
         print "				</div>\n";
         print "			</div>\n";    # </content_admin>
     }
-    
-	print <<EOF;
-			<div id="openModal" class="modalDialog">
-				<div>
-					<a tabindex="" href="#close" title="Close" class="close">X</a>
-					<p>Inserisci un nuovo prodotto</p>
-					<form id="form_modal_insert" action="admin_products.cgi" method="post" enctype="multipart/form-data">
-						<div>
-						  <label class="form_item" for="category_insert">Categoria</label>
-						  <select tabindex="" class="form_item product_category_modal" id="category_insert" name="product_category">
-EOF
-print "							  <option value=\"Calcio\"";
-                            if($display_category eq "Calcio"){ print " selected ";}
-                            print ">Calcio</option>\n";
-print "							  <option lang=\"en\" value=\"Basket\"";
-                            if($display_category eq "Basket"){ print " selected ";}
-                            print ">Basket</option>\n";
-print "							  <option lang=\"en\" value=\"Volley\"";
-                            if($display_category eq "Volley"){ print " selected ";}
-                            print ">Volley</option>\n";
-print "							  <option value=\"Tennistavolo\"";
-                            if($display_category eq "Tennistavolo"){ print " selected ";}
-                            print">Tennistavolo</option>\n";
-print "							  <option value=\"Nuoto\"";
-                            if($display_category eq "Nuoto"){ print " selected ";}
-                            print ">Nuoto</option>\n";
-print "							  <option value=\"Minigolf\"";
-                            if($display_category eq "Minigolf"){ print " selected ";}
-                            print ">Minigolf</option>\n";
-print "							  <option value=\"Calciobalilla\"";
-                            if($display_category eq "Calciobalilla"){ print " selected ";}
-                            print ">Calciobalilla</option>\n";
-print "							  <option value=\"Protezioni\"";
-                            if($display_category eq "Protezioni" ){ print " selected ";}
-                            print ">Protezioni</option>\n";
-print "							  <option value=\"Accessori\"";
-                            if($display_category eq "Accessori"){ print " selected ";}
-                            print ">Accessori</option>\n";
 print <<EOF;
-                            </select>
-                            <label class="form_item" for="code_insert">Codice</label>
-                            <input tabindex="" class="form_item product_code_modal" type="text" id="code_insert" name="product_code" />
-                            <label class="form_item" for="name_insert">Nome</label>
-                            <input tabindex="" class="form_item product_name_modal" type="text" id="name_insert" name="product_name" />
-                            <label class="form_item" for="desc_insert">Descrizione</label>
-                            <textarea tabindex="" class="form_item product_desc_modal" id="desc_insert" name="product_desc" rows="2" cols="20"></textarea>
-                            <label class="form_item" for="thumbnail_desc_insert">Descrizione breve</label>
-                            <textarea tabindex="" class="form_item thumbnail_desc_modal" id="thumbnail_desc_insert" name="thumbnail_desc" rows="2" cols="20"></textarea>
-                            <label class="form_item" for="image_insert">Immagine principale (massimo 5MB)</label>
-                            <input tabindex="" class="form_item product_image_modal" type="file" id="image_insert" name=\"image\" />
-                            <label class="form_item" for="thumbnail_insert">Thumbnail (massimo 500KB)</label>
-                            <input tabindex="" class="form_item product_thumbnail_modal" type="file" id="thumbnail_insert" name=\"thumbnail\" />
-EOF
-print "						<input type=\"hidden\" name=\"display_category\" value=\"".$display_category."\" />\n";
-print <<EOF;
-						  <input tabindex="" class="submit_modal" id="submit_modal" type="submit" name="insert" value="Inserisci" />
-						</div>
-					</form>
-				</div>
-			</div>
             
 			<div id="action_bar">
 				<div id="action_box">
 					<a tabindex="${tabindex()}" id="action_back" class="linked_box" href="admin.cgi">Indietro</a>
-					<a tabindex="${tabindex()}" id="action_add" class="linked_box" href="#openModal">Aggiungi</a>
+                    <form action="admin_products.cgi#openModal" method="post">
+                        <div>
+                            <input tabindex="${tabindex()}" class="linked_box" id="action_add" type="submit" name="add_request" value="Aggiungi" />
+                        </div>
+                    </form>
+					<!--<a tabindex="${tabindex()}" id="action_add" class="linked_box" href="#openModal">Aggiungi</a>-->
 				</div>
 			</div>
 					
