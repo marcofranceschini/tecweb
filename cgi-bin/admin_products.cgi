@@ -108,6 +108,7 @@ if ($logout) {
 			<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type='text/css' />
 			<link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css' />
 			<link rel="icon" type="image/png" href="../res/images/icon.png" />
+            <script type="text/javascript" src="../js/admin_products.js"></script>
 		</head>
 		<body>
 			<div id="header">
