@@ -7,23 +7,32 @@ var mexHint = "Inserire messaggio";
 var mexError = "Inserisci un messaggio";
 
 function setNameHint() {
-    if (document.getElementById("form_email_name").value == "" || document.getElementById("form_email_name").value == nameHint) {
-        document.getElementById("form_email_name").value = nameHint;
-        document.getElementById("form_email_name").style.color = "grey";
+    var tag = document.getElementById("form_email_name");
+    if (tag.value == "" || 
+    tag.value == nameHint ||
+    tag.value.search(/\w{2,}/) == -1) {
+        tag.value = nameHint;
+        tag.style.color = "grey";
     }
 }
 
 function setMailHint() {
-    if (document.getElementById("form_email_mail").value == "" || document.getElementById("form_email_mail").value == mailHint) {
-        document.getElementById("form_email_mail").value = mailHint;
-        document.getElementById("form_email_mail").style.color = "grey";
+    var tag = document.getElementById("form_email_mail");
+    if (tag.value == "" || 
+    tag.value == mailHint ||
+    tag.value.search(/\w{4,}/) == -1) {
+        tag.value = mailHint;
+        tag.style.color = "grey";
     }  
 }
 
 function setMexHint() {
-    if (document.getElementById("form_email_mex").value == "" || document.getElementById("form_email_mex").value == mexHint) {
-        document.getElementById("form_email_mex").value = mexHint;
-        document.getElementById("form_email_mex").style.color = "grey";
+    var tag = document.getElementById("form_email_mex");
+    if (tag.value == "" || 
+    tag.value == mexHint ||
+    tag.value.search(/\w{4,}/) == -1) {
+        tag.value = mexHint;
+        tag.style.color = "grey";
     }
 }
 
@@ -31,6 +40,7 @@ function setSubmitState() {
     if (document.getElementById("form_email_name").value != nameHint && 
     document.getElementById("form_email_mail").value != mailHint &&
     document.getElementById("form_email_mail").value.search("@") != -1 &&
+    document.getElementById("form_email_mail").value.search(/\w{4,}/) != -1 &&
     document.getElementById("form_email_mex").value != mexHint) {
         document.getElementById("form_email_submit").disabled = false;
     }
