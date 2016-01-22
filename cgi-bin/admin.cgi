@@ -38,8 +38,8 @@ my $session = getSession(); # Verifico che la sessione ci sia
 
 my $cgi = CGI->new();
 
-my $app = $cgi->param('logout');
-if ($app) { # LOGOUT - E' stato premuto il link per uscire
+my $logout = $cgi->param('logout');
+if ($logout) { # LOGOUT - E' stato premuto il link per uscire
 	destroySession();
 } else {
 	print "Content-Type: text/html\n\n";

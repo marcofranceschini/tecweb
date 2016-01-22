@@ -1,5 +1,5 @@
-#!/usr/bin/perl
 #!C:/Perl64/bin/perl.exe
+#!/usr/bin/perl
 
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
@@ -532,13 +532,8 @@ print <<EOF;
             
 			<div id="action_bar">
 				<div id="action_box">
-					<a tabindex="${tabindex()}" id="action_back" class="linked_box" href="admin.cgi">Indietro</a>
-                    <form action="admin_products.cgi#openModal" method="post">
-                        <div>
-                            <input tabindex="${tabindex()}" class="linked_box" id="action_add" type="submit" name="add_request" value="Aggiungi" />
-                        </div>
-                    </form>
-					<!--<a tabindex="${tabindex()}" id="action_add" class="linked_box" href="#openModal">Aggiungi</a>-->
+					<a tabindex="${tabindex()}" id="action_back" class="linked_box" href="admin.cgi">Indietro</a>                    
+					<a tabindex="${tabindex()}" id="action_add" class="linked_box" href="admin_products.cgi?add_request=true#openModal">Aggiungi</a>
 				</div>
 			</div>
 					
