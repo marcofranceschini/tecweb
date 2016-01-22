@@ -27,12 +27,22 @@ function setMexHint() {
     }
 }
 
+function setSubmitState() {
+    if (document.getElementById("form_email_name").value != nameHint && 
+    document.getElementById("form_email_mail").value != mailHint &&
+    document.getElementById("form_email_mail").value.search("@") != -1 &&
+    document.getElementById("form_email_mex").value != mexHint) {
+        document.getElementById("form_email_submit").disabled = false;
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     //Inizializzo placeholder
     setNameHint();
     setMailHint();
-    setMexHint();    
-    
+    setMexHint(); 
+   
+    document.getElementById("form_email_submit").disabled = true;
     document.getElementById("form_email_name").addEventListener("focus", function() {
         if (document.getElementById("form_email_name").value == nameHint) {
             document.getElementById("form_email_name").value = "";
@@ -66,6 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
             parent.removeChild(parent.children[2]);
         }
         setNameHint();
+        setSubmitState();
     }, true);
     
     document.getElementById("form_email_mail").addEventListener("blur", function() {
@@ -87,6 +98,7 @@ document.addEventListener("DOMContentLoaded", function() {
             parent.removeChild(parent.children[2]);
         }
         setMailHint();
+        setSubmitState();
     }, true);
     
     document.getElementById("form_email_mex").addEventListener("blur", function() {
@@ -102,6 +114,7 @@ document.addEventListener("DOMContentLoaded", function() {
             parent.removeChild(parent.children[2]);
         }
         setMexHint();
+        setSubmitState();
     }, true);
     
 }, true);
