@@ -29,8 +29,10 @@ document.addEventListener("DOMContentLoaded", function() {
             error.innerHTML = nameError;
             //error.className = "mail_form_error";
             parent.appendChild(error);
+            document.getElementById("submit_dashboard_new").disabled = true; // Disattivo il submit
         } else if (parent.children.length == 3 && tag.value.search(regexp) != -1) {
             parent.removeChild(parent.children[2]);
+            document.getElementById("submit_dashboard_new").disabled = false; // Riattivo il submit
         }
         setImageHint();
     }, true);    
