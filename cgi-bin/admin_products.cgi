@@ -238,7 +238,7 @@ EOF
             <div id="openModal" class="modalDialog">
 				<div>
 					<a tabindex="1" href="admin_products.cgi" title="Close" class="close">X</a>
-					<p id="p_del_modal">Inserisci un nuovo prodotto</p>
+					<p>Inserisci un nuovo prodotto</p>
 					<form id="form_modal_insert" action="admin_products.cgi" method="post" enctype="multipart/form-data">
 						<div>
 						  <label class="form_item" for="category_insert">Categoria</label>
