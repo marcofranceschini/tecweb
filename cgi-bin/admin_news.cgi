@@ -1,5 +1,5 @@
-#!/usr/bin/perl
 #!C:/Perl64/bin/perl.exe
+#!/usr/bin/perl
 
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
@@ -229,47 +229,38 @@ EOF
 	
     if (!@prodotti) {
 	   	print printPlaceholder();
-    } else {
-        my $flag = 0;
-        for (my $i=0; $i < scalar @prodottiLimitati && $cont!=1; $i++) { # Verifico se ci sono prodotti che non sono in evidenza
-            my $evidenza = $prodottiLimitati[$i]->findnodes("./inEvidence");
-            if ($evidenza eq "true") {
-                $flag = 1;
-            }
-        }
-        if ($flag == 1) {
-            # Stampa le card dei prodotti
-            print <<EOF;
-                    <div id="products_container_news">
-                        <div class="products_label_news">
-                            <span>Codice</span><span class="product_name_label">Nome</span><span>Categoria</span>
-                        </div>
+    } else {        
+        # Stampa le card dei prodotti
+        print <<EOF;
+                <div id="products_container_news">
+                    <div class="products_label_news">
+                        <span>Codice</span><span class="product_name_label">Nome</span><span>Categoria</span>
+                    </div>
 EOF
-            foreach my $product (@prodotti) { # Stampo i prodotti che sono in evidenza
-                my $evidenza = $product->findnodes("./inEvidence");
-                if($evidenza eq "true") {
-                    my $codice = $product->findnodes("code/text()");
-                    my $nome = $product->findnodes("name/text()");
-                    my $categoria = $product->findnodes("category/text()");
-                    print "					<div class=\"product_card\">\n";
-                    print "						<span class=\"product_code\">".$codice."</span>\n";
-                    print "						<span class=\"product_name\">".$nome."</span>\n";
-                    print "						<span class=\"product_category\">".$categoria."</span>\n";
-                    print "				        <div class=\"product_buttons\">\n";
-                    print "							<form class=\"form_remove\" action=\"admin_news.cgi\" method=\"post\" enctype=\"multipart/form-data\">\n";
-                    print "								<div>
-                                                            <input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
-                    print "								    <input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
-                    print "							        <input tabindex=\"${tabIndex()}\" class=\"button\" type=\"submit\" name=\"hide_evidence\" value=\"Rimuovi\" />\n";
-                    print "							    </div>
-                                                    </form>\n";
-                    print "						</div>\n";
-                    print "					</div>\n";
-                    $index_tab=$index_tab+1;
-                }
+        foreach my $product (@prodotti) { # Stampo i prodotti che sono in evidenza
+            my $evidenza = $product->findnodes("./inEvidence");
+            if($evidenza eq "true") {
+                my $codice = $product->findnodes("code/text()");
+                my $nome = $product->findnodes("name/text()");
+                my $categoria = $product->findnodes("category/text()");
+                print "					<div class=\"product_card\">\n";
+                print "						<span class=\"product_code\">".$codice."</span>\n";
+                print "						<span class=\"product_name\">".$nome."</span>\n";
+                print "						<span class=\"product_category\">".$categoria."</span>\n";
+                print "				        <div class=\"product_buttons\">\n";
+                print "							<form class=\"form_remove\" action=\"admin_news.cgi\" method=\"post\" enctype=\"multipart/form-data\">\n";
+                print "								<div>
+                                                        <input type=\"hidden\" name=\"display_category_evidence\" value=\"".$display_category."\" />\n";
+                print "								    <input type=\"hidden\" name=\"evidence_code\" value=\"".$codice."\" />\n";
+                print "							        <input tabindex=\"${tabIndex()}\" class=\"button\" type=\"submit\" name=\"hide_evidence\" value=\"Rimuovi\" />\n";
+                print "							    </div>
+                                                </form>\n";
+                print "						</div>\n";
+                print "					</div>\n";
+                $index_tab=$index_tab+1;
             }
-            print "</div>"; # products_container_news
         }
+        print "</div>"; # products_container_news        
     }
     
     # Due cicli for utili solo alla stampa della linea di separazione
@@ -291,7 +282,7 @@ EOF
 					<form id="dashboard_form_news" action="admin_news.cgi" method="post">
                         <div>
                             <label class="form_item_news" for="display_category">Categoria:</label>
-                            <select tabindex=\"${tabIndex()}\" class="form_item_news" id="display_category">
+                            <select tabindex=\"${tabIndex()}\" class="form_item_news" id="display_category" name="display_category">
                                 <option value="Tutte"
 EOF
                                 if($display_category eq "Tutte"){ print " selected=\"selected\" ";}
@@ -364,8 +355,7 @@ EOF
                 print "						</div>\n";
                 print "					</div>\n";
             }
-        }
-        
+        }        
     }
     print "	</div>\n"; # products_container
 	print <<EOF;
