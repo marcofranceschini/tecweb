@@ -1,39 +1,46 @@
-var imageHint = "Inserire immagine";
+var imageDefault = "null"; 
+var errorImage = 1;
+var modify = false;
 
-
-function setImageHint() {
-    if (document.getElementById("wallpaper_img").value == "" || document.getElementById("wallpaper_img").value == imageHint) {
-        document.getElementById("wallpaper_img").value = imageHint;
-        document.getElementById("wallpaper_img").style.color = "grey";
+function checkImage() {
+    var regexp = /\w+\.(gif|png|jpg|jpeg)/i;
+    var tag = null;
+    tag = document.getElementById("wallpaper_new_img");
+    if (tag.value.search(regexp) == -1 || tag.value == imageDefault) {
+    	// Inserito un file che non è immagine o 
+        tag.style.color = "red";
+        errorImage = 1;
+    } else {
+        tag.style.color = "black";
+        errorImage = 0;
     }
+    checkSubmit();
+}
+
+function checkSubmit() {
+    var tag = null;
+    tag = document.getElementById("submit_modal_wallpaper");
+    if(errorImage) {
+	// Manca l'immagine o c'è stato un caricamento errato
+	tag.disabled = true;
+	tag.style.background =  "gray";
+	tag.style.textShadow = "1px 1px 2px black";
+     } else {
+	tag.disabled = false;
+	tag.style.background =  "#A00";
+	tag.style.textShadow = "1px 1px 1px #9E3F3F";
+     }   
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Inizializzo placeholder
-    setImageHint();    
-    
-    document.getElementById("wallpaper_img").addEventListener("focus", function() {
-        if (document.getElementById("wallpaper_img").value == imageHint) {
-            document.getElementById("wallpaper_img").value = "";
-            document.getElementById("wallpaper_img").style.color = "black";
-        } 
-    }, true);
-    
-    // Inizializzo errori
-    document.getElementById("wallpaper_img").addEventListener("blur", function() {
-        var regexp = /\w{2,}/;
-        var tag = document.getElementById("wallpaper_img");
-        var parent = tag.parentNode;
-        if (parent.children.length == 2 && tag.value.search(regexp) == -1) {
-            var error = document.createElement("h5");
-            error.innerHTML = nameError;
-            //error.className = "mail_form_error";
-            parent.appendChild(error);
-            document.getElementById("submit_dashboard_new").disabled = true; // Disattivo il submit
-        } else if (parent.children.length == 3 && tag.value.search(regexp) != -1) {
-            parent.removeChild(parent.children[2]);
-            document.getElementById("submit_dashboard_new").disabled = false; // Riattivo il submit
-        }
-        setImageHint();
-    }, true);    
+    if(document.getElementById("submit_modal_wallpaper")) {
+        // Stringhe di base dell'input type=file
+        imageDefault = document.getElementById("wallpaper_new_img").value;
+ 
+        // Inizializzo errori  
+        document.getElementById("wallpaper_new_img").addEventListener("blur", checkImage, true);
+        document.getElementById("wallpaper_new_img").addEventListener("change", checkImage, true);
+    }  
+    // Controllo sumbit
+    checkSubmit();
 }, true);
