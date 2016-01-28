@@ -218,8 +218,8 @@ function checkImage() {
     if(modify) {
         tag = document.getElementById("image_modify");
         if (tag.value == imageDefault) {
-            tag.style.color = "black";
-            errorThumbnail = 0;
+            tag.style.color = "red";
+            errorThumbnail = 1;
         } else if(tag.value.search(regexp) == -1) {
             tag.style.color = "red";
             errorThumbnail = 1;
@@ -248,8 +248,8 @@ function checkThumbnail() {
     if(modify) {
         tag = document.getElementById("thumbnail_modify");
         if (tag.value == thumbnailDefault) {
-            tag.style.color = "black";
-            errorThumbnail = 0;
+            tag.style.color = "red";
+            errorThumbnail = 1;
         } else if(tag.value.search(regexp) == -1) {
             tag.style.color = "red";
             errorThumbnail = 1;
@@ -318,6 +318,9 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("image_insert").addEventListener("change", checkImage, true);
         document.getElementById("thumbnail_insert").addEventListener("blur", checkThumbnail, true);
         document.getElementById("thumbnail_insert").addEventListener("change", checkThumbnail, true);
+
+	//Controllo sumbit
+    	checkSubmit();
     }
     if(document.getElementById("form_modal_modify")) {
         modify = true;
@@ -351,8 +354,8 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("image_modify").addEventListener("change", checkImage, true);
         document.getElementById("thumbnail_modify").addEventListener("blur", checkThumbnail, true);
         document.getElementById("thumbnail_modify").addEventListener("change", checkThumbnail, true);
+
+	//Controllo sumbit
+    	checkSubmit();
     }
-    
-    //Controllo sumbit
-    checkSubmit();
 }, true);
