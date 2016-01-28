@@ -1,5 +1,4 @@
 #!/usr/bin/perl
-#!C:/Perl64/bin/perl.exe
  
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
@@ -7,6 +6,13 @@ use CGI qw(:standard Vars);
 use CGI::Session;
 use XML::LibXML;
 use warnings;
+
+sub createSession() {
+	my $session = new CGI::Session();
+	$session->param('user', $username);
+	$session->param('pass', $password);
+	return $session;
+}
 	
 $username = "";	# Per il messaggio con user vuoto
 $password = "";	# Per il messaggio con password vuota
@@ -19,7 +25,7 @@ $page = $data{"page"};
 
 # Leggo dati login da db
 my $parser = XML::LibXML->new();
-my $doc = $parser->parse_file("../xml/admin_db.xml");
+my $doc = $parser->parse_file("../data/xml/admin_db.xml");
 
 my @admins = $doc->findnodes('/administrators/user');
 my $admin = $admins[0]; # In questo progetto esiste un solo amministratore
@@ -92,13 +98,4 @@ EOF
 		</body>
 	</html>
 EOF
-
- 	
- }
- 
-sub createSession() {
-	$session = new CGI::Session();
-	$session->param('user', $username);
-	$session->param('pass', $password);
-	return $session;
 }
