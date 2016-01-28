@@ -1,4 +1,3 @@
-#!C:/Perl64/bin/perl.exe
 #!/usr/bin/perl
 
 use CGI;
@@ -11,13 +10,7 @@ use warnings;
 $CGI::POST_MAX = 1024 * 5000;   #massimo upload
 my $safe_filename_characters = "a-zA-Z0-9_.-";  #caratteri sicuri
 my $upload_dir = "../res/images/";
-my $file = '../xml/db.xml';
-
-#Da usare il lab
-#<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
-#<link href="../tecwebproject/css/style_768.css" rel="stylesheet" type="text/css" />
-#<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
-#<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
+my $file = '../data/xml/db.xml';
 
 my $cgi = CGI->new();
 my $error = $cgi->cgi_error();
@@ -34,26 +27,21 @@ sub tabIndex {
 }
 
 sub getSession() {
-	$sessione = CGI::Session->load() or die $!; #CGI::Session->errstr
-	if ($sessione->is_expired || $sessione->is_empty) { # Se manca la sessione torno in home
+	my $session = CGI::Session->load() or die "Errore"; #CGI::Session->errstr
+	if ($session->is_expired || $session->is_empty) { # Se manca la sessione torno in home
 		print redirect(-url=>'index.cgi');
 	}
 }
 
 sub destroySession() {
-	$session = CGI::Session->load() or die $!;
-	#$SID = $session->id();
+	my $session = CGI::Session->load() or die "Errore";
 	$session->close();
 	$session->delete();
 	$session->flush();
-	#print redirect(-url=>'../'); # Torno in home
-	print "Content-Type: text/html\n\n";
-	$sessione = CGI::Session->load() or die $!; #CGI::Session->errstr
-	print $session->param('pass');
+	print redirect(-url=>'index.cgi'); # Torno in home
 }
 
 sub printPlaceholder() {
-	# Da usare in lab: ../tecwebproject/res/images/empty_list.png
 	$placeholder = "<div id=\"placeholder\">
 					   <p>Nessun prodotto ancora inserito</p>
 					   <img src=\"../res/images/empty_list.png\" alt=\"Immagina lista prodotti vuota\" \>
@@ -142,13 +130,20 @@ EOF
 EOF
 				if ($sfondo ne "none") {
                     print "         <label class=\"form_item\" for=\"wallpaper_img\">Sfondo</label>";
-                    print "         <img src=\"../res/images/".$sfondo."\" class=\"form_item\" id=\"wallpaper_img\" alt=\"Immagine di sfondo\" height=\"50\" width=\"90\" />";
+                    print "         <img src=\"../res/images/".$sfondo."\" class=\"form_item\" id=\"wallpaper_img\" alt=\"Immagine di sfondo\" />";
                 }
                 print <<EOF;             
                                     <input type="hidden" name="evidence_code" value="$code" />				
                                     <label class="form_item" for="wallpaper_new_img">Nuovo sfondo</label>
                                     <input tabindex="2" class="form_item" id="wallpaper_new_img" type="file" name="image"/>
-                                    <input tabindex="3" class="submit_modal" id="submit_modal_wallpaper" name="add_evidence" type="submit" value="Aggiungi"/>
+EOF
+									if ($sfondo ne "none") {
+										print "<input tabindex=\"3\" accept=\"image/*\" class=\"submit_modal\" id=\"submit_modal_wallpaper\" name=\"add_evidence\" type=\"submit\" value=\"Aggiorna\"/>";
+									} else {
+                                    	print "<input tabindex=\"3\" accept=\"image/*\" class=\"submit_modal\" id=\"submit_modal_wallpaper\" name=\"add_evidence\" type=\"submit\" value=\"Aggiungi\"/>";
+        		                    }
+                print <<EOF;
+                
                                 </div>
                             </form>
                         </div>
