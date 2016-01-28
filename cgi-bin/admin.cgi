@@ -1,6 +1,5 @@
-#!C:/Perl64/bin/perl.exe
 #!/usr/bin/perl
-
+ 
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
 use CGI qw(:standard Vars);
@@ -9,38 +8,29 @@ use warnings;
 use HTTP::BrowserDetect;
 use XML::LibXML;
 
-#Da usare il lab
-#<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
-#<link href="../tecwebproject/css/style_768.css" rel="stylesheet" type="text/css" />
-#<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
-#<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
-
 sub getSession() {
-	$sessione = CGI::Session->load() or die $!; #CGI::Session->errstr
-	if ($sessione->is_expired || $sessione->is_empty) { # Se manca la sessione torno in home
-		print redirect(-url=>'../');
-	} else {
-		print $sessione->param('pass');
-		return $sessione;
+	my $session = CGI::Session->load() or die "Errore"; #CGI::Session->errstr
+	if ($session->is_expired || $session->is_empty) { # Se manca la sessione torno in home
+		print redirect(-url=>'index.cgi');
 	}
 }
 
 sub destroySession() {
-	$session = CGI::Session->load() or die $!;
-	#$SID = $session->id();
-	$session->close() or die "errore close";
-	$session->delete() or die "errore delete";
-	$session->flush() or die "errore flush";
+	my $session = CGI::Session->load() or die "Errore";
+	$session->close();
+	$session->delete();
+	$session->flush();
 	print redirect(-url=>'index.cgi'); # Torno in home
 }
 	
-my $session = getSession(); # Verifico che la sessione ci sia
+getSession(); # Verifico che la sessione ci sia
 
 my $cgi = CGI->new();
 
 my $logout = $cgi->param('logout');
 if ($logout) { # LOGOUT - E' stato premuto il link per uscire
 	destroySession();
+	
 } else {
 	print "Content-Type: text/html\n\n";
 	print <<EOF;
@@ -102,8 +92,8 @@ EOF
     
     #Verifica XML prodotti tramite XSD
     #my $parser = XML::LibXML->new;
-    #my $schema = XML::LibXML::Schema->new(location => "../xml/db_schema.xsd");
-    #my $doc = $parser->parse_file("../xml/db.xml");
+    #my $schema = XML::LibXML::Schema->new(location => "../data/xml/db_schema.xsd");
+    #my $doc = $parser->parse_file("../data/xml/db.xml");
     #my $result = eval { $schema->validate($doc); };
     #if (defined $result) {
     #    print "<span class=\"admin_message\">Database XML prodotti valido =D</span>";
@@ -112,8 +102,8 @@ EOF
     #}
     
     #Verifica XML admin tramite XSD
-    #$schema = XML::LibXML::Schema->new(location => "../xml/admin_db_schema.xsd");
-    #$doc = $parser->parse_file("../xml/admin_db.xml");
+    #$schema = XML::LibXML::Schema->new(location => "../data/xml/admin_db_schema.xsd");
+    #$doc = $parser->parse_file("../data/xml/admin_db.xml");
     #$result = eval { $schema->validate($doc); };
     #if (defined $result) {
     #    print "<span class=\"admin_message\">Database XML amministratori valido =D</span>";

@@ -1,4 +1,3 @@
-#!C:/Perl64/bin/perl.exe
 #!/usr/bin/perl
 
 use CGI;
@@ -12,12 +11,6 @@ $CGI::POST_MAX = 1024 * 5000;   #massimo upload 5MB
 my $safe_filename_characters = "a-zA-Z0-9_.-";  #caratteri sicuri
 my $upload_dir = "../res/images/products";
 my $upload_dir_thumbnails = "../res/images/products/thumbnails";
-
-#Da usare il lab
-#<link href="../tecwebproject/css/style_1024_max.css" rel="stylesheet" type="text/css" />
-#<link href="../tecwebproject/css/style_768.css" rel="stylesheet" type="text/css" />
-#<link href="../tecwebproject/css/style_480.css" rel="stylesheet" type="text/css" />
-#<link href="../tecwebproject/css/style_1024_min.css" rel="stylesheet" type="text/css" />
 
 my $cgi = CGI->new();
 my $error = $cgi->cgi_error();
@@ -34,22 +27,18 @@ sub tabindex {
 }
 
 sub getSession() {
-	$sessione = CGI::Session->load() or die $!; #CGI::Session->errstr
-	if ($sessione->is_expired || $sessione->is_empty) { # Se manca la sessione torno in home
+	my $session = CGI::Session->load() or die "Errore"; #CGI::Session->errstr
+	if ($session->is_expired || $session->is_empty) { # Se manca la sessione torno in home
 		print redirect(-url=>'index.cgi');
 	}
 }
 
 sub destroySession() {
-	$session = CGI::Session->load() or die $!;
-	#$SID = $session->id();
+	my $session = CGI::Session->load() or die "Errore";
 	$session->close();
 	$session->delete();
 	$session->flush();
-	#print redirect(-url=>'../'); # Torno in home
-	print "Content-Type: text/html\n\n";
-	$sessione = CGI::Session->load() or die $!; #CGI::Session->errstr
-	print $session->param('pass');
+	print redirect(-url=>'index.cgi'); # Torno in home
 }
 
 sub printPlaceholder() {
@@ -67,7 +56,7 @@ sub printPlaceholder() {
 getSession();
     
 # Apertura file XML
-$file = '../xml/db.xml';
+$file = '../data/xml/db.xml';
 $parser = XML::LibXML->new();
 $parser->keep_blanks(0);
 $doc = $parser->parse_file($file) or die "Errore nel parsing";
@@ -426,7 +415,7 @@ EOF
                                     $image =~ tr/ /_/;
                                     $image =~ s/[^$safe_filename_characters]//g;
                                     my $upload_file_handle = $cgi->upload("image");
-                                    open ( UPLOADFILE, ">$upload_dir/$image" ) or die "$!";
+                                    open ( UPLOADFILE, ">$upload_dir/$image" ) or die $upload_dir." ".$image;
                                     binmode UPLOADFILE;
                                     while ( <$upload_file_handle> ) {
                                         print UPLOADFILE;
