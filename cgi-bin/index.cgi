@@ -65,9 +65,9 @@ for (my $i = 0; $i < scalar @products; $i++) {
                     <div class=\"pane_content\">
                     <img src=\"../res/images/products/thumbnails/".$products[$i]->findnodes('./thumbnail')."\" alt=\"".$products[$i]->findnodes('./shortDescription')."\"/>";
         if ($i == 0) {
-            print "         <p><a id=\"firstProduct\" href=\"product_displayer.cgi?display_category=".$products[$i]->findnodes('./category')."&display_code=".$products[$i]->findnodes('./code')."&display_name=".$products[$i]->findnodes('./name')."\">".$products[$i]->findnodes('./shortDescription')."</a></p>";
+            print "         <p><a id=\"firstProduct\" href=\"product_displayer.cgi?display_category=".$products[$i]->findnodes('./category')."&amp;display_code=".$products[$i]->findnodes('./code')."&amp;display_name=".$products[$i]->findnodes('./name')."\">".$products[$i]->findnodes('./shortDescription')."</a></p>";
         } else {
-            print "         <p><a href=\"product_displayer.cgi?display_category=".$products[$i]->findnodes('./category')."&display_code=".$products[$i]->findnodes('./code')."&display_name=".$products[$i]->findnodes('./name')."\">".$products[$i]->findnodes('./shortDescription')."</a></p>";
+            print "         <p><a href=\"product_displayer.cgi?display_category=".$products[$i]->findnodes('./category')."&amp;display_code=".$products[$i]->findnodes('./code')."&amp;display_name=".$products[$i]->findnodes('./name')."\">".$products[$i]->findnodes('./shortDescription')."</a></p>";
         }
         print " </div>
                 </div>";
