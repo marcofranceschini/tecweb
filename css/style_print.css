@@ -145,13 +145,15 @@
 		width: 10em;
 	}
 	
-	.pane_content p {
+	.pane_content a {
+        display: block;
+        text-decoration: none;
 		padding: 2em;
 		color: white;
         font-weight: bold;
-        font-size: 1.2em;
+        font-size: 1.3em;
         text-transform: uppercase;
-		background-color: rgba(0, 0, 0, 0.3);
+		background-color: rgba(0, 0, 0, 0.4);
 	}
 	
 	#backTop {

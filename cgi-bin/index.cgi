@@ -64,19 +64,7 @@ for (my $i = 0; $i < scalar @products; $i++) {
         print " <div class=\"pane\" style=\"background-image: url('../res/images/".$products[$i]->findnodes('./backgroundImg')."')\">
                     <div class=\"pane_content\">
                     <img src=\"../res/images/products/thumbnails/".$products[$i]->findnodes('./thumbnail')."\" alt=\"".$products[$i]->findnodes('./shortDescription')."\"/>
-                    <p>".$products[$i]->findnodes('./shortDescription')."</p>
-                    <form action=\"product_displayer.cgi\">
-                        <div>
-                            <input type=\"hidden\" name=\"display_category\" value=\"".$products[$i]->findnodes('./category')."\" />
-                            <input type=\"hidden\" name=\"display_code\" value=\"".$products[$i]->findnodes('./code')."\" />
-                            <input type=\"hidden\" name=\"display_name\" value=\"".$products[$i]->findnodes('./name')."\" />";
-        if ($i == 0) {
-            print "         <input id=\"firstProduct\" type=\"submit\" value=\"Visualizza\"/>";
-        } else {
-            print "         <input type=\"submit\" value=\"Visualizza\"/>";
-        }
-        print "         </div>
-                    </form>
+                    <p><a href=\"product_displayer.cgi?display_category=".$products[$i]->findnodes('./category')."&display_code=".$products[$i]->findnodes('./code')."&display_name=".$products[$i]->findnodes('./name')."\">".$products[$i]->findnodes('./shortDescription')."</a></p>
                     </div>
                 </div>";
     }
