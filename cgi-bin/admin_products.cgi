@@ -1,3 +1,4 @@
+#!C:/Perl64/bin/perl.exe
 #!/usr/bin/perl
 
 use CGI;
@@ -56,7 +57,7 @@ sub printPlaceholder() {
 getSession();
     
 # Apertura file XML
-$file = '../data/xml/db.xml';
+$file = '../xml/db.xml';
 $parser = XML::LibXML->new();
 $parser->keep_blanks(0);
 $doc = $parser->parse_file($file) or die "Errore nel parsing";

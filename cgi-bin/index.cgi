@@ -1,3 +1,4 @@
+#!C:/Perl64/bin/perl.exe
 #!/usr/bin/perl
  
 use CGI;
@@ -54,7 +55,7 @@ print <<EOF;
             <div id="panes">
 EOF
 $parser = XML::LibXML->new();
-my $doc = $parser->parse_file("../data/xml/db.xml");
+my $doc = $parser->parse_file("../xml/db.xml");
 my $home_vuota = "true";
 my @products = $doc->findnodes('/products/product');
 for (my $i = 0; $i < scalar @products; $i++) {

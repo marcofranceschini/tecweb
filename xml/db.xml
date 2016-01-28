@@ -20,7 +20,7 @@
     <img>X-TREME.png</img>
     <thumbnail>X-TREME.png</thumbnail>
     <backgroundImg>nuoto_wall.jpg</backgroundImg>
-    <inEvidence>true</inEvidence>
+    <inEvidence>false</inEvidence>
   </product>
   <product>
     <category>Calcio</category>
@@ -65,5 +65,27 @@
     <thumbnail>BGG6-.png</thumbnail>
     <backgroundImg>none</backgroundImg>
     <inEvidence>false</inEvidence>
+  </product>
+  <product>
+    <category>Volley</category>
+    <code>VL022</code>
+    <name>COMPETITION</name>
+    <description>Pallone da volley da gara in poliuretano PU</description>
+    <shortDescription>Pallone da volley da gara</shortDescription>
+    <img>volley_competition.png</img>
+    <thumbnail>volley_competition.png</thumbnail>
+    <backgroundImg>volley_wall.jpg</backgroundImg>
+    <inEvidence>true</inEvidence>
+  </product>
+  <product>
+    <category>Nuoto</category>
+    <code>N0001</code>
+    <name>Cuffia in Silicone</name>
+    <description>Cuffia da nuoto in silicone</description>
+    <shortDescription>Cuffia da nuoto in silicone</shortDescription>
+    <img>IMG_6193.png</img>
+    <thumbnail>IMG_6193.png</thumbnail>
+    <backgroundImg>nuoto_wall.jpg</backgroundImg>
+    <inEvidence>true</inEvidence>
   </product>
 </products>

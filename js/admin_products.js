@@ -143,7 +143,7 @@ function checkName() {
 }
 
 function checkDesc() {
-    var regexp = /\w{10,}/;
+    var regexp = /\w+/;
     var tag = null;
     if(insert) {
         tag = document.getElementById("desc_insert");
@@ -219,13 +219,13 @@ function checkImage() {
         tag = document.getElementById("image_modify");
         if (tag.value == imageDefault) {
             tag.style.color = "red";
-            errorThumbnail = 1;
+            errorImage = 1;
         } else if(tag.value.search(regexp) == -1) {
             tag.style.color = "red";
-            errorThumbnail = 1;
+            errorImage = 1;
         } else {
             tag.style.color = "black";
-            errorThumbnail = 0;
+            errorImage = 0;
         }
         checkSubmit();
     }

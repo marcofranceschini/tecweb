@@ -1,3 +1,4 @@
+#!C:/Perl64/bin/perl.exe
 #!/usr/bin/perl
 
 use CGI;
@@ -10,7 +11,7 @@ use warnings;
 $CGI::POST_MAX = 1024 * 5000;   #massimo upload
 my $safe_filename_characters = "a-zA-Z0-9_.-";  #caratteri sicuri
 my $upload_dir = "../res/images/";
-my $file = '../data/xml/db.xml';
+my $file = '../xml/db.xml';
 
 my $cgi = CGI->new();
 my $error = $cgi->cgi_error();
@@ -166,7 +167,7 @@ EOF
                 print "<span id=\"error_msg\" class=\"admin_message\">Prodotto ".$codice_prodotto." non trovato, &egrave; possibile che sia stato rimosso</span>";
             } else {
                 $image = $cgi->param("image");
-                my $old_image = $prodotto->findnodes("./backgroundImg");
+                my $old_image = $prodotto->findnodes("backgroundImg/text()")->get_node(1);
                 if (!$image) {
                     if ($old_image eq "none") {
                         print "<span id=\"error_msg\" class=\"admin_message\">Immagine di sfondo non inserita</span>";
