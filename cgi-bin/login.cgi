@@ -25,7 +25,7 @@ $page = $data{"page"};
 
 # Leggo dati login da db
 my $parser = XML::LibXML->new();
-my $doc = $parser->parse_file("../data/xml/admin_db.xml");
+my $doc = $parser->parse_file("../xml/admin_db.xml");
 
 my @admins = $doc->findnodes('/administrators/user');
 my $admin = $admins[0]; # In questo progetto esiste un solo amministratore
