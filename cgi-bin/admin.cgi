@@ -48,6 +48,9 @@ if ($logout) { # LOGOUT - E' stato premuto il link per uscire
 				<link href="../css/style_768.css" rel="stylesheet" type="text/css" />
 				<link href="../css/style_480.css" rel="stylesheet" type="text/css" />
 				<link href="../css/style_1024_min.css" rel="stylesheet" type="text/css" />
+                <!--[if lte IE 8]>
+                    <link rel="stylesheet" type="text/css" href="../css/style_ie8.css" />
+                <![endif]-->
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type='text/css' />
 				<link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css' />
 				<link rel="icon" type="image/png" href="../res/images/icon.png" />
@@ -58,7 +61,6 @@ EOF
         my $bd = new HTTP::BrowserDetect($cgi->user_agent());
         my $browserName = $bd->browser_string();
         my $browserVersion = $bd->public_version();
-        #print $browserName." ".$browserVersion;
         if (($browserName eq "Chrome" && $browserVersion < 45) ||       #Verificato
         ($browserName eq "Safari" && $browserVersion < 9) ||            #Verificato
         ($browserName eq "MSIE" && $browserVersion < 9) ||              #Verificato 
