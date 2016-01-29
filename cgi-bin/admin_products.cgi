@@ -56,7 +56,7 @@ sub printPlaceholder() {
 getSession();
     
 # Apertura file XML
-$file = '../xml/db.xml';
+$file = '../data/xml/db.xml';
 $parser = XML::LibXML->new();
 $parser->keep_blanks(0);
 $doc = $parser->parse_file($file) or die "Errore nel parsing";

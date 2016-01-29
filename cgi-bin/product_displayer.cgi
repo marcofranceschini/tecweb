@@ -12,7 +12,7 @@ my $nome = $cgi->param('display_name');
 my $categoria = $cgi->param('display_category');
 
 # Lettura da file XML
-my $file = '../xml/db.xml';
+my $file = '../data/xml/db.xml';
 my $parser = XML::LibXML->new();
 $parser->keep_blanks(0);
 my $doc = $parser->parse_file($file) or die "Errore nel parsing";

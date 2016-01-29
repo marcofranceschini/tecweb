@@ -10,7 +10,7 @@ use warnings;
 $CGI::POST_MAX = 1024 * 5000;   #massimo upload
 my $safe_filename_characters = "a-zA-Z0-9_.-";  #caratteri sicuri
 my $upload_dir = "../res/images/";
-my $file = '../xml/db.xml';
+my $file = '../data/xml/db.xml';
 
 my $cgi = CGI->new();
 my $error = $cgi->cgi_error();
