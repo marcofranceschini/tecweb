@@ -85,7 +85,7 @@ if ($logout) {
 		<head>
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 			<title>Gestione Prodotti - Amministrazione - Ju Rapida</title>
-            <meta name="robots" content="noindex, nofollow">
+            <meta name="robots" content="noindex, nofollow" />
 			<meta name="title" content="Ju Rapida S.N.C." />
 			<meta name="description" content="Pagina di amministrazione dei prodotti del sito Ju Rapida." />
 			<meta name="author" content="Fabiano Tavallini, Marco Franceschini, Daniele Favaro" />
