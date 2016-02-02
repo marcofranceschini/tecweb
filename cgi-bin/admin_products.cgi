@@ -111,10 +111,10 @@ if ($logout) {
 					<p>Gestione Prodotti</p>
 				</div>
 				<div id="admin_dashboard">
-					<form id="dashboard_form" action="admin_products.cgi" method="post" enctype="multipart/form-data">
+					<form id="dashboard_form" action="admin_products.cgi" method="post">
 						<div>
 							<label class="form_item" for="display_category">Categoria:</label>
-							<select class="form_item" id="display_category" tabindex="${tabindex()}" >
+							<select class="form_item" id="display_category" name="display_category" tabindex="${tabindex()}" >
 EOF
 print "								<option value=\"Tutte\"";
                             if($display_category eq "Tutte"){ print " selected=\"selected\" ";}
