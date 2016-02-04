@@ -65,7 +65,7 @@ for (my $i = 0; $i < scalar @products; $i++) {
         print " <div class=\"pane\" style=\"background-image: url('../res/images/".$products[$i]->findnodes('./backgroundImg')."')\">
                     <div class=\"pane_content\">
                     <img src=\"../res/images/products/thumbnails/".$products[$i]->findnodes('./thumbnail')."\" alt=\"".$products[$i]->findnodes('./shortDescription')."\"/>";
-        if ($home_vuota == "true") {
+        if ($home_vuota eq "true") {
 			$home_vuota = "false";
             print "         <p><a id=\"firstProduct\" href=\"product_displayer.cgi?display_category=".$products[$i]->findnodes('./category')."&amp;display_code=".$products[$i]->findnodes('./code')."&amp;display_name=".$products[$i]->findnodes('./name')."\">".$products[$i]->findnodes('./shortDescription')."</a></p>";
         } else {
