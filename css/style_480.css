@@ -256,6 +256,15 @@
 		background-color: rgba(0, 0, 0, 0.4);
 	}
 	
+	.pane_content a:hover {
+		text-shadow: black 1px 1px 1px;
+		background-color: rgba(0, 0, 0, 0.7);
+		transition: all 0.5s ;
+		-webkit-transition: all 0.5s ;
+		-o-transition: all 0.5s ;
+		-moz-transition: all 0.5s ;
+	}
+	
 	#backTop {
 		text-align: center;
 		display: block;
