@@ -1,4 +1,4 @@
-Progetto
+#Progetto#
 
 Si richiede la progettazione e lo sviluppo di un sito web con contenuto a scelta dello studente ma che rispetti le seguenti caratteristiche:
 
